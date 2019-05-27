@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">데레스테 가챠 시뮬레이터 모바일</string>
+    <string name="GachaMenu">가챠</string>
+    <string name="InfoMenu">정보</string>
+    <string name="MoneyMenu">과금</string>
+</resources>
