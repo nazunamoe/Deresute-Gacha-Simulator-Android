@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.nazunamoe.deresutegachasimulatorm.R;
 
@@ -55,23 +56,46 @@ public class GachaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_gacha, container, false);
+        View view = inflater.inflate(R.layout.fragment_gacha,container,false);
+        Button onegacha = (Button) view.findViewById(R.id.gacha1);
+        Button tengacha = (Button) view.findViewById(R.id.gacha10);
+        Button goldgacha = (Button) view.findViewById(R.id.gacha1_gold);
+
+        onegacha.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                System.out.println("GachaOnce");
+                mListener.test("GachaOnce");
+            }
+        });
+
+        tengacha.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                System.out.println("GachaTen");
+            }
+        });
+
+        goldgacha.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                System.out.println("GachaOnce_Gold");
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+
         }
     }
 
@@ -103,7 +127,6 @@ public class GachaFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void test(String input);
     }
 }

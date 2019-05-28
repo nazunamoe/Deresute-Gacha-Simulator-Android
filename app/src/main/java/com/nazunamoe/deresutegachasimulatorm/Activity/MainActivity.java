@@ -1,27 +1,21 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
-import android.icu.text.IDNA;
-import android.net.Uri;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ViewUtils;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toolbar;
 
+import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.MoneyFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements GachaFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, MoneyFragment.OnFragmentInteractionListener {
 
-    private ViewPager viewPager;
+    public ArrayList<GachaCardData> test = new ArrayList<GachaCardData>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +50,11 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
         });
     }
 
+    public void onFragmentInteraction(String input) {
+
+    }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void test(String input) {
     }
 }

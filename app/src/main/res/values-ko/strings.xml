@@ -4,4 +4,7 @@
     <string name="GachaMenu">가챠</string>
     <string name="InfoMenu">정보</string>
     <string name="MoneyMenu">과금</string>
+    <string name="Gold_gacha">1회 가챠 (연금)</string>
+    <string name="OneGacha">1회 가챠</string>
+    <string name="TenGacha">10회 가챠</string>
 </resources>

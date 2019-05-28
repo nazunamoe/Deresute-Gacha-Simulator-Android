@@ -32,6 +32,8 @@ public class Card {
     public Boolean Limited;
     public Boolean Fes;
 
+    public GachaCardData GachaCard;
+
     public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
                 String skillExplain, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes){
         this.No = no;
@@ -114,5 +116,7 @@ public class Card {
 
         this.Limited = limited;
         this.Fes = fes;
+
+        this.GachaCard = new GachaCardData(cardName,rarity,this.Type);
     }
 }

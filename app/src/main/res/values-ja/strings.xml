@@ -4,4 +4,7 @@
     <string name="GachaMenu">ガシャ</string>
     <string name="InfoMenu">情報</string>
     <string name="MoneyMenu">課金</string>
+    <string name="Gold_gacha">1 ガシャ(60)</string>
+    <string name="OneGacha">1　ガシャ</string>
+    <string name="TenGacha">10　ガシャ</string>
 </resources>

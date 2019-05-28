@@ -1,28 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
     tools:context=".Activity.MainActivity">
+
+
+    <include
+        layout="@layout/statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5" />
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/Viewpage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="90">
+
+
+    </android.support.v4.view.ViewPager>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/layout_tab"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:layout_weight="5"
         app:tabGravity="fill"
-        app:tabIndicatorGravity="top">
-    </android.support.design.widget.TabLayout>
+        app:tabIndicatorGravity="top" />
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
