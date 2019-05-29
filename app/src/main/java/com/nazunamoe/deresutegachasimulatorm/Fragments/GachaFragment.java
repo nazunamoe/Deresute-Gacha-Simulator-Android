@@ -8,7 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 
+import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
+import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 /**
@@ -30,6 +34,8 @@ public class GachaFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    CustomListAdapter adapter;
+    ListView listView;
 
     public GachaFragment() {
         // Required empty public constructor
@@ -58,6 +64,10 @@ public class GachaFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    public void addCard(String name, String rarity, String type){
+        adapter.addItem(name,rarity,type);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,26 +76,38 @@ public class GachaFragment extends Fragment {
         Button onegacha = (Button) view.findViewById(R.id.gacha1);
         Button tengacha = (Button) view.findViewById(R.id.gacha10);
         Button goldgacha = (Button) view.findViewById(R.id.gacha1_gold);
+        adapter = new CustomListAdapter();
+        ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
+        listView.setAdapter(adapter);
+
+
 
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                System.out.println("GachaOnce");
-                mListener.test("GachaOnce");
+                adapter.clearItem();
+                adapter.addItem("ASUKA","SSRARE","COOL");
+                adapter.notifyDataSetChanged();
             }
         });
 
         tengacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                System.out.println("GachaTen");
+                adapter.clearItem();
+                for(int a=0; a<10; a++){
+                    adapter.addItem("test","test","test");
+                }
+                adapter.notifyDataSetChanged();
             }
         });
 
         goldgacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                System.out.println("GachaOnce_Gold");
+                adapter.clearItem();
+                adapter.addItem("YUUKI","SSRARE","CUTE");
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -129,4 +151,6 @@ public class GachaFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         void test(String input);
     }
+
+
 }

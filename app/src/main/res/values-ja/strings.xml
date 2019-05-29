@@ -7,4 +7,9 @@
     <string name="Gold_gacha">1 ガシャ(60)</string>
     <string name="OneGacha">1　ガシャ</string>
     <string name="TenGacha">10　ガシャ</string>
+    <string name="GachaSetting">ガシャ設定</string>
+    <string name="pButton">確率設定</string>
+    <string name="cardName">Name</string>
+    <string name="cardRarity">Rarity</string>
+    <string name="cardType">Type</string>
 </resources>

@@ -7,4 +7,9 @@
     <string name="Gold_gacha">1회 가챠 (연금)</string>
     <string name="OneGacha">1회 가챠</string>
     <string name="TenGacha">10회 가챠</string>
+    <string name="pButton">확률 조정</string>
+    <string name="GachaSetting">가챠 설정</string>
+    <string name="cardName">Name</string>
+    <string name="cardRarity">Rarity</string>
+    <string name="cardType">Type</string>
 </resources>
