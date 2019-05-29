@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nazunamoe.deresutegachasimulatorm.R;
@@ -47,12 +49,31 @@ public class CustomListAdapter extends BaseAdapter {
         TextView Rarity = (TextView) convertView.findViewById(R.id.cardRarity);
         TextView Type = (TextView) convertView.findViewById(R.id.cardType);
 
-        GachaCardData cardData = list.get(position);
+        ImageView type = (ImageView) convertView.findViewById(R.id.typeView);
 
+        GachaCardData cardData = list.get(position);
 
         Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.name);
         Rarity.setText(parent.getResources().getString(R.string.cardRarity)+" : "+cardData.rarity);
         Type.setText(parent.getResources().getString(R.string.cardType)+" : "+cardData.type);
+
+        switch(cardData.type){
+            case "CUTE":{
+                type.setImageResource(R.drawable.cinde_markcute);
+                break;
+            }
+            case "COOL":{
+                type.setImageResource(R.drawable.cinde_markcool);
+                break;
+            }
+            case "PASSION":{
+                type.setImageResource(R.drawable.cinde_markpassion);
+                break;
+            }
+            default:{
+                break;
+            }
+        }
 
         return convertView;
     }

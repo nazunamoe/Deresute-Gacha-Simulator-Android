@@ -12,4 +12,7 @@
     <string name="cardName">Name</string>
     <string name="cardRarity">Rarity</string>
     <string name="cardType">Type</string>
+    <string name="info">정보</string>
+    <string name="CurrentVersion">현재 버전</string>
+    <string name="Exit">종료</string>
 </resources>

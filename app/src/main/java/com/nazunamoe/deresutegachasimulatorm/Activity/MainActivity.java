@@ -1,5 +1,7 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,6 +12,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
@@ -33,6 +38,23 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.action_info) {
+            AlertDialog.Builder alert_confirm = new AlertDialog.Builder(this);
+            alert_confirm.setMessage(getResources().getString(R.string.CurrentVersion)+" : "+getResources().getString(R.string.Version));
+            alert_confirm.setPositiveButton("OK", null);
+            AlertDialog alert = alert_confirm.create();
+
+            alert.setTitle(R.string.info);
+            alert.show();
+        }
+        if (menuItem.getItemId() == R.id.exit) {
+            finishAffinity();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     @Override

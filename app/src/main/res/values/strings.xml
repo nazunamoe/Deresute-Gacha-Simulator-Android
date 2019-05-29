@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Deresute Gacha Simulator Mobile</string>
+    <string name="app_name">Deresute Gacha Simulator Mobile</string>
     <string name="MoneyMenu">Money</string>
     <string name="GachaMenu">Gacha</string>
     <string name="InfoMenu">Info</string>
@@ -11,4 +11,8 @@
     <string name="cardType">Type</string>
     <string name="GachaSetting">Gacha Settings</string>
     <string name="pButton">Probability Settings</string>
+    <string name="info">Info</string>
+    <string name="Version" translatable="false">Alpha 2</string>
+    <string name="CurrentVersion">Current Version</string>
+    <string name="Exit">Exit</string>
 </resources>
