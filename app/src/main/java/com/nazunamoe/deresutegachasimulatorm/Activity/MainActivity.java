@@ -11,13 +11,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
-import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.MoneyFragment;
+import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.io.IOException;
@@ -27,9 +26,6 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
 
     public ArrayList<GachaCardData> test = new ArrayList<GachaCardData>();
     Toolbar toolbar;
-
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -43,21 +39,6 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        mDBHelper = new DatabaseHelper(this);
-
-        try {
-            mDBHelper.updateDataBase();
-        } catch (IOException mIOException) {
-            throw new Error("UnableToUpdateDatabase");
-        }
-
-        try {
-            mDb = mDBHelper.getWritableDatabase();
-        } catch (SQLException mSQLException) {
-            throw mSQLException;
-        }
-        mDBHelper.openDataBase();
 
         // Attaching the layout to the toolbar object
         toolbar = (Toolbar) findViewById(R.id.toolbar);

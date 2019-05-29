@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Random;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "10056000.sqlite";
@@ -22,6 +23,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mDataBase;
     private final Context mContext;
     private boolean mNeedUpdate = false;
+
+    Random random = new Random();
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -37,15 +40,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void updateDataBase() throws IOException {
-        if (mNeedUpdate) {
-            File dbFile = new File(DB_PATH + DB_NAME);
-            if (dbFile.exists())
-                dbFile.delete();
+        File dbFile = new File(DB_PATH + DB_NAME);
+        if (dbFile.exists())
+            dbFile.delete();
 
-            copyDataBase();
+        copyDataBase();
 
-            mNeedUpdate = false;
-        }
     }
 
     private boolean checkDataBase() {
@@ -94,10 +94,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
     }
-
+    // id를 넣어서 카드를 반환받는 메소드
     public Card getResult(int id){
+        // 결과 카드 선언
         Card result = null;
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info WHERE card_info.id=100573",null);
+        // SQL문 실행
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info WHERE card_info.id="+id,null);
         cursor.moveToFirst();
         /*
             public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
@@ -125,14 +127,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String eventname = cursor.getString(19);
 
-        boolean limited = cursor.getInt(20) > 0;
-        boolean fes = cursor.getInt(21) > 0;
+        int limitedint = cursor.getInt(cursor.getColumnIndex("limited2"));
+        int fesint = cursor.getInt(cursor.getColumnIndex("fes"));
 
+        boolean limited = false;
+        if(limitedint == 1){
+            limited = true;
+        }else{
+            limited = false;
+        }
+
+        boolean fes = false;
+        if(fesint == 1){
+            fes = true;
+        }else{
+            fes = false;
+        }
+
+        // 필요한 정보를 모두 변수에 연결.
         result = new Card(cardno, cardname, charaname, rarity
                     , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max
                     , skillname, skillexplain, centerskillname, centerskillexplain
                     , eventname, limited, fes);
         return result;
+        // DB에서 받아온 정보를 이용해 새 카드 클래스를 생성 후 반환
+    }
+
+    // 특정 레어도의 카드를 랜덤으로 가져오는 메소드
+    public Card getRarityCard(String rarity){
+        Card result = null;
+        // 결과 카드 선언
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info WHERE rarity="+rarity,null);
+        // 쿼리문 실행
+        cursor.moveToFirst();
+        int pos = random.nextInt(cursor.getCount());
+        // 쿼리문 결과 크기를 이용해서 랜덤 상수 획득
+        cursor.moveToPosition(pos);
+        result = getResult(cursor.getInt(0));
+        return result;
+        // 해당하는 위치로 이동 후 getResult 메소드를 이용해 해당하는 카드 변수 반환
     }
 
     @Override

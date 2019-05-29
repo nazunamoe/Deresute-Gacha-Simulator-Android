@@ -1,6 +1,8 @@
 package com.nazunamoe.deresutegachasimulatorm.Fragments;
 
 import android.content.Context;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,8 +14,11 @@ import android.widget.ListView;
 
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
-import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
+import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
+import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
+
+import java.io.IOException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,10 +37,14 @@ public class GachaFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
     CustomListAdapter adapter;
     ListView listView;
+
+    private DatabaseHelper mDBHelper;
+    private SQLiteDatabase mDb;
+
+    Gacha gacha;
 
     public GachaFragment() {
         // Required empty public constructor
@@ -61,6 +70,12 @@ public class GachaFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        mDBHelper = new DatabaseHelper(getActivity());
+        try{
+            mDBHelper.updateDataBase();
+        }catch(IOException e){
+
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -72,6 +87,24 @@ public class GachaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        gacha = new Gacha(0);
+
+
+
+        try {
+            mDBHelper.updateDataBase();
+        } catch (IOException mIOException) {
+            throw new Error("UnableToUpdateDatabase");
+        }
+
+        try {
+            mDb = mDBHelper.getWritableDatabase();
+        } catch (SQLException mSQLException) {
+            throw mSQLException;
+        }
+        mDBHelper.openDataBase();
+
+
         View view = inflater.inflate(R.layout.fragment_gacha,container,false);
         Button onegacha = (Button) view.findViewById(R.id.gacha1);
         Button tengacha = (Button) view.findViewById(R.id.gacha10);
@@ -85,8 +118,15 @@ public class GachaFragment extends Fragment {
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Card gacharesult = null;
                 adapter.clearItem();
-                adapter.addItem("ASUKA","SSRARE","COOL");
+                while(true){
+                    gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
+                    if(gacharesult.Limited == false && gacharesult.EventName == null){
+                        break;
+                    }
+                }
+                adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 adapter.notifyDataSetChanged();
             }
         });
@@ -95,9 +135,23 @@ public class GachaFragment extends Fragment {
             @Override
             public void onClick(View v){
                 adapter.clearItem();
-                for(int a=0; a<10; a++){
-                    adapter.addItem("test","test","test");
+                Card gacharesult = null;
+                for(int a=0; a<9; a++){
+                    while(true){
+                        gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
+                        if(gacharesult.Limited == false && gacharesult.EventName == null){
+                            break;
+                        }
+                    }
+                    adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 }
+                while(true){
+                    gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR());
+                    if(gacharesult.Limited == false && gacharesult.EventName == null){
+                        break;
+                    }
+                }
+                adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 adapter.notifyDataSetChanged();
             }
         });
@@ -105,14 +159,22 @@ public class GachaFragment extends Fragment {
         goldgacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Card gacharesult = null;
                 adapter.clearItem();
-                adapter.addItem("YUUKI","SSRARE","CUTE");
+                while(true){
+                    gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
+                    if(gacharesult.Limited == false && gacharesult.EventName == null){
+                        break;
+                    }
+                }
+                adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 adapter.notifyDataSetChanged();
             }
         });
 
         return view;
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
