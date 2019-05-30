@@ -9,10 +9,10 @@
     <string name="TenGacha">10회 가챠</string>
     <string name="pButton">확률 조정</string>
     <string name="GachaSetting">가챠 설정</string>
-    <string name="cardName">Name</string>
-    <string name="cardRarity">Rarity</string>
-    <string name="cardType">Type</string>
+    <string name="cardType">속성</string>
     <string name="info">정보</string>
     <string name="CurrentVersion">현재 버전</string>
     <string name="Exit">종료</string>
+    <string name="cardName">이름</string>
+    <string name="cardRarity">레어도</string>
 </resources>
