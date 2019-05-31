@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#2196F3</color>
     <color name="colorAccent">#9C27B0</color>
     <color name="White">#FFFFFF</color>
+    <color name="tab_background_selected">#2196F3</color>
+    <color name="tab_background_unselected">#2196F3</color>
+    <color name="navbarbg">#4D000000</color>.
+    <color name="statusbarbg">#00000000</color>
 </resources>

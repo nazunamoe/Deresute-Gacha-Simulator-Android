@@ -118,5 +118,6 @@ public class Card {
         this.Fes = fes;
 
         this.GachaCard = new GachaCardData(cardName,rarity,this.Type);
+
     }
 }

@@ -12,7 +12,20 @@
     <string name="GachaSetting">Gacha Settings</string>
     <string name="pButton">Probability Settings</string>
     <string name="info">Info</string>
-    <string name="Version" translatable="false">Alpha 2</string>
+    <string name="Version" translatable="false">Alpha 3</string>
     <string name="CurrentVersion">Current Version</string>
     <string name="Exit">Exit</string>
+    <string name="SSRare" translatable="false">SS Rare</string>
+    <string name="SRare" translatable="false">S Rare</string>
+    <string name="Rare" translatable="false">Rare</string>
+    <string name="Cute" translatable="false">Cute</string>
+    <string name="Cool" translatable="false">Cool</string>
+    <string name="Passion" translatable="false">Passion</string>
+    <string name="Fes">CindeFes</string>
+    <string name="LimitedSwitch">Limited</string>
+    <string name="MoneyTitle">Money</string>
+    <string name="UsedMoneyTitle">Used Money</string>
+    <string name="JewelTitle">Jewel</string>
+    <string name="UsedJewelTitle">Used Jewel</string>
+    <string name="zero">0</string>
 </resources>

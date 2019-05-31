@@ -62,9 +62,7 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Attaching the layout to the toolbar object
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // Setting toolbar as the ActionBar with setSupportActionBar() call
         setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.layout_tab);

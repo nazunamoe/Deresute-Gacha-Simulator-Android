@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">デレステガシャシミュレーターモバイル</string>
+    <string name="app_name">デレステガシャシミュレーターモバイル</string>
     <string name="GachaMenu">ガシャ</string>
     <string name="InfoMenu">情報</string>
     <string name="MoneyMenu">課金</string>
@@ -15,4 +15,6 @@
     <string name="info">情報</string>
     <string name="CurrentVersion">現在ヴァージョン</string>
     <string name="Exit">終了</string>
+    <string name="Fes">ｼﾝﾃﾞﾚﾗﾌｪｽ</string>
+    <string name="LimitedSwitch">限定カード</string>
 </resources>

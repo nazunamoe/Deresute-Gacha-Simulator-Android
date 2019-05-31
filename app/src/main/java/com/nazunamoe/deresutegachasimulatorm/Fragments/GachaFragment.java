@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
@@ -44,7 +47,23 @@ public class GachaFragment extends Fragment {
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
 
+    int SSRare = 0;
+    int SRare = 0;
+    int Rare = 0;
+
+    int Cute = 0;
+    int Cool = 0;
+    int Passion = 0;
+
     Gacha gacha;
+
+    TextView SSRareNumber;
+    TextView SRareNumber;
+    TextView RareNumber;
+    TextView CuteNumber;
+    TextView CoolNumber;
+    TextView PassionNumber;
+
 
     public GachaFragment() {
         // Required empty public constructor
@@ -70,6 +89,9 @@ public class GachaFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
+
+
         mDBHelper = new DatabaseHelper(getActivity());
         try{
             mDBHelper.updateDataBase();
@@ -86,11 +108,8 @@ public class GachaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         gacha = new Gacha(0);
-
-
-
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
@@ -104,8 +123,8 @@ public class GachaFragment extends Fragment {
         }
         mDBHelper.openDataBase();
 
-
         View view = inflater.inflate(R.layout.fragment_gacha,container,false);
+
         Button onegacha = (Button) view.findViewById(R.id.gacha1);
         Button tengacha = (Button) view.findViewById(R.id.gacha10);
         Button goldgacha = (Button) view.findViewById(R.id.gacha1_gold);
@@ -113,7 +132,21 @@ public class GachaFragment extends Fragment {
         ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
         listView.setAdapter(adapter);
 
+        SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
+        SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
+        RareNumber = (TextView)view.findViewById(R.id.RareNum);
 
+        CuteNumber = (TextView)view.findViewById(R.id.CuteNum);
+        CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
+        PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
+
+        Switch Fes = (Switch)view.findViewById(R.id.Fes);
+        Fes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                gacha.Fes(isChecked);
+            }
+        });
 
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -123,10 +156,12 @@ public class GachaFragment extends Fragment {
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
+                        cardRarityTypeCount(gacharesult);
                         break;
                     }
                 }
                 adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
         });
@@ -140,6 +175,7 @@ public class GachaFragment extends Fragment {
                     while(true){
                         gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
                         if(gacharesult.Limited == false && gacharesult.EventName == null){
+                            cardRarityTypeCount(gacharesult);
                             break;
                         }
                     }
@@ -148,10 +184,12 @@ public class GachaFragment extends Fragment {
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR());
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
+                        cardRarityTypeCount(gacharesult);
                         break;
                     }
                 }
                 adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
         });
@@ -164,15 +202,66 @@ public class GachaFragment extends Fragment {
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
+                        cardRarityTypeCount(gacharesult);
                         break;
                     }
                 }
                 adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
         });
 
         return view;
+    }
+
+    private void cardRarityTypeCount(Card card){
+        switch(card.Rarity){
+            case "SS RARE":{
+                SSRare++;
+                break;
+            }
+            case "S RARE":{
+                SRare++;
+                break;
+            }
+            case "RARE":{
+                Rare++;
+                break;
+            }
+        }
+
+        switch(card.Type){
+            case "CUTE":{
+                Cute++;
+                break;
+            }
+            case "COOL":{
+                Cool++;
+                break;
+            }
+            case "PASSION":{
+                Passion++;
+                break;
+            }
+        }
+    }
+
+    private void updateGachaStatus(){
+        SSRareNumber.setText(""+SSRare);
+        SRareNumber.setText(""+SRare);
+        RareNumber.setText(""+Rare);
+
+        CuteNumber.setText(""+Cute);
+        CoolNumber.setText(""+Cool);
+        PassionNumber.setText(""+Passion);
+
+        SSRare = 0;
+        SRare = 0;
+        Rare = 0;
+        Cute = 0;
+        Cool = 0;
+        Passion = 0;
     }
 
 

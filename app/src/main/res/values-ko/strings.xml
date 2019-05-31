@@ -15,4 +15,6 @@
     <string name="Exit">종료</string>
     <string name="cardName">이름</string>
     <string name="cardRarity">레어도</string>
+    <string name="Fes">페스 확률</string>
+    <string name="LimitedSwitch">한정 카드</string>
 </resources>

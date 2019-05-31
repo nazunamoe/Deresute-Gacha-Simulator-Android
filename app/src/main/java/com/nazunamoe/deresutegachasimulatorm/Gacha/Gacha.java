@@ -14,6 +14,15 @@ public class Gacha {
         initalize(mode);
     }
 
+    public void Fes(boolean set){
+        if(set){
+            initalize(1);
+        }
+        else{
+            initalize(0);
+        }
+    }
+
     private void initalize(int mode){
         if(mode == 0){
             SSRp = 3.0;
