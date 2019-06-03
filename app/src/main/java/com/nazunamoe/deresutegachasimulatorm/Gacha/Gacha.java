@@ -2,47 +2,23 @@ package com.nazunamoe.deresutegachasimulatorm.Gacha;
 
 import java.util.Random;
 
+
 public class Gacha {
-    private double SSRp;
-    private double SRp;
-    private double Rp;
-    private int mode;
+
+    int MAX = 999;
     Random random = new Random();
 
-    public Gacha(int mode){
-        this.mode = mode;
-        initalize(mode);
+    public Gacha(){
+
     }
 
-    public void Fes(boolean set){
-        if(set){
-            initalize(1);
-            mode = 1;
-        }
-        else{
-            initalize(0);
-            mode = 0;
-        }
-    }
-
-    private void initalize(int mode){
-        if(mode == 0){
-            SSRp = 3.0;
-            SRp = 12.0;
-        }else if (mode == 1){
-            SSRp = 6.0;
-            SRp = 12.0;
-        }
-        Rp = 100 - (SSRp+SRp);
-    }
-
-    public String GachaExecute(){
+    public String GachaExecute(float SSRp, float SRp){
         String result = "";
         int temp;
-        temp=random.nextInt(999);
-        if(temp<999*(SSRp*0.01)){
+        temp=random.nextInt(MAX);
+        if(temp<MAX*(SSRp*0.01)){
             result = "7";
-        }else if(temp<999*(SRp*0.01)){
+        }else if(temp<MAX*(SRp*0.01)){
             result = "5";
         }else {
             result = "3";
@@ -50,20 +26,27 @@ public class Gacha {
         return result;
     }
 
-    public String rensyaSR(){
+    public String rensyaSR(float SSRp, float SRp){
         String result = "";
-        int temp=random.nextInt(999);
-        if(mode == 0){
-            SSRp = 15.0;
-        }else if(mode == 1){
-            SSRp = 20.0;;
+
+        float RenSSRp = (SSRp/(SSRp+SRp));
+        float RenSRp = 1-RenSSRp;
+
+        int temp;
+        while(true){
+            temp=random.nextInt(MAX);
+
+            if(temp<MAX*(RenSSRp)){
+                result = "7";
+                break;
+            }else if(temp<MAX*(RenSRp)){
+                result = "5";
+                break;
+            }
+            else{
+                continue;
+            }
         }
-        if(temp<999*(SSRp*0.01)) {
-            result = "7";
-        }else{
-            result = "5";
-        }
-        initalize(mode);
         return result;
     }
 

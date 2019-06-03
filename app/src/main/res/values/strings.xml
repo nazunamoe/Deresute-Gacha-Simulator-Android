@@ -28,4 +28,9 @@
     <string name="JewelTitle">Jewel</string>
     <string name="UsedJewelTitle">Used Jewel</string>
     <string name="zero">0</string>
+    <string name="OriginalPButton">Original Probability</string>
+    <string name="Apply">Apply</string>
+    <string name="PAlert">The probability is out of the specified range. Please set again.</string>
+    <string name="PApplySuccess">Successfully Applied</string>
+    <string name="ApplyGacha">Apply Probability</string>
 </resources>

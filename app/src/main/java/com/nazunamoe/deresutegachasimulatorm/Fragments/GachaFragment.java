@@ -1,6 +1,8 @@
 package com.nazunamoe.deresutegachasimulatorm.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -15,6 +17,7 @@ import android.widget.ListView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.nazunamoe.deresutegachasimulatorm.Activity.pActivity;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
@@ -22,6 +25,8 @@ import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.io.IOException;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,7 +69,6 @@ public class GachaFragment extends Fragment {
     TextView CoolNumber;
     TextView PassionNumber;
 
-
     public GachaFragment() {
         // Required empty public constructor
     }
@@ -90,8 +94,6 @@ public class GachaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-
-
         mDBHelper = new DatabaseHelper(getActivity());
         try{
             mDBHelper.updateDataBase();
@@ -109,7 +111,6 @@ public class GachaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        gacha = new Gacha(0);
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
@@ -124,10 +125,15 @@ public class GachaFragment extends Fragment {
         mDBHelper.openDataBase();
 
         View view = inflater.inflate(R.layout.fragment_gacha,container,false);
+        final SharedPreferences pref = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
+        gacha = new Gacha();
 
-        Button onegacha = (Button) view.findViewById(R.id.gacha1);
-        Button tengacha = (Button) view.findViewById(R.id.gacha10);
+        Button onegacha = (Button) view.findViewById(R.id.gacha10);
+        Button tengacha = (Button) view.findViewById(R.id.gacha1);
         Button goldgacha = (Button) view.findViewById(R.id.gacha1_gold);
+
+        Button pButton = (Button) view.findViewById(R.id.pButton);
+
         adapter = new CustomListAdapter();
         ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
         listView.setAdapter(adapter);
@@ -140,11 +146,10 @@ public class GachaFragment extends Fragment {
         CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
         PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
 
-        Switch Fes = (Switch)view.findViewById(R.id.Fes);
-        Fes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        pButton.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                gacha.Fes(isChecked);
+            public void onClick(View v){
+                startActivity(new Intent(getContext(), pActivity.class));
             }
         });
 
@@ -154,7 +159,7 @@ public class GachaFragment extends Fragment {
                 Card gacharesult = null;
                 adapter.clearItem();
                 while(true){
-                    gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
+                    gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
                         cardRarityTypeCount(gacharesult);
                         break;
@@ -173,7 +178,7 @@ public class GachaFragment extends Fragment {
                 Card gacharesult = null;
                 for(int a=0; a<9; a++){
                     while(true){
-                        gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
+                        gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                         if(gacharesult.Limited == false && gacharesult.EventName == null){
                             cardRarityTypeCount(gacharesult);
                             break;
@@ -182,7 +187,7 @@ public class GachaFragment extends Fragment {
                     adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 }
                 while(true){
-                    gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR());
+                    gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
                         cardRarityTypeCount(gacharesult);
                         break;
@@ -200,7 +205,7 @@ public class GachaFragment extends Fragment {
                 Card gacharesult = null;
                 adapter.clearItem();
                 while(true){
-                    gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute());
+                    gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
                         cardRarityTypeCount(gacharesult);
                         break;
@@ -245,6 +250,9 @@ public class GachaFragment extends Fragment {
                 break;
             }
         }
+    }
+
+    private void updateGachaP(){
     }
 
     private void updateGachaStatus(){

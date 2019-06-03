@@ -19,6 +19,11 @@
         <item name="android:textColor">#ffffffff</item>
     </style>
 
+    <style name="Dialog2" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
     <!-- ToolBar -->
     <style name="ToolBarStyle" parent="Theme.AppCompat">
         <item name="android:textColorPrimary">@android:color/white</item>

@@ -2,6 +2,7 @@ package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
         //return super.onCreateOptionsMenu(menu);
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
+
         return true;
     }
 
@@ -60,10 +62,17 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        SharedPreferences Shared = getSharedPreferences("Shared", 0);
+        SharedPreferences.Editor editor = Shared.edit();
+        editor.putFloat("SSRP",(float)3.0);
+        editor.putFloat("SRP",(float)12.0);
+        editor.commit();
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.layout_tab);
         tabLayout.addTab(tabLayout.newTab().setText(R.string.MoneyMenu));

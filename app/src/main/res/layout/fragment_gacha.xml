@@ -177,53 +177,28 @@
             android:gravity="center">
 
             <Switch
-                android:id="@+id/Fes"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="0dp"
-                android:layout_weight="0"
-                android:text="@string/Fes"
-                android:textAlignment="center"
-                card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/button3"
-                card:layout_constraintStart_toEndOf="@+id/switch2"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1"
-                tools:layout_editor_absoluteX="144dp"
-                tools:layout_editor_absoluteY="7dp" />
-
-            <Switch
                 android:id="@+id/switch2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/LimitedSwitch"
                 android:textAlignment="center"
                 card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/Fes"
+                card:layout_constraintEnd_toStartOf="@+id/pButton"
                 card:layout_constraintStart_toStartOf="parent"
                 card:layout_constraintTop_toTopOf="parent"
                 card:layout_constraintVertical_weight="1" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/pButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="2dp"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginBottom="0dp"
+                android:layout_marginEnd="16dp"
                 android:background="@android:color/transparent"
                 android:text="@string/pButton"
                 card:layout_constraintBottom_toBottomOf="parent"
                 card:layout_constraintEnd_toEndOf="parent"
-                card:layout_constraintStart_toEndOf="@+id/Fes"
+                card:layout_constraintStart_toEndOf="@+id/switch2"
                 card:layout_constraintTop_toTopOf="parent"
                 card:layout_constraintVertical_weight="1" />
 
@@ -255,28 +230,15 @@
             tools:layout_editor_absoluteY="13dp">
 
             <Button
-                android:id="@+id/gacha1-gold"
+                android:id="@+id/gacha1_gold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:text="@string/Gold_gacha"
                 android:textSize="16sp"
                 card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/gacha10"
-                card:layout_constraintStart_toStartOf="parent"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
-
-            <Button
-                android:id="@+id/gacha10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="@string/TenGacha"
-                android:textSize="16sp"
-                card:layout_constraintBottom_toBottomOf="parent"
                 card:layout_constraintEnd_toStartOf="@+id/gacha1"
-                card:layout_constraintStart_toEndOf="@+id/gacha1-gold"
+                card:layout_constraintStart_toStartOf="parent"
                 card:layout_constraintTop_toTopOf="parent"
                 card:layout_constraintVertical_weight="1" />
 
@@ -285,11 +247,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
+                android:text="@string/TenGacha"
+                android:textSize="16sp"
+                card:layout_constraintBottom_toBottomOf="parent"
+                card:layout_constraintEnd_toStartOf="@+id/gacha10"
+                card:layout_constraintStart_toEndOf="@+id/gacha1_gold"
+                card:layout_constraintTop_toTopOf="parent"
+                card:layout_constraintVertical_weight="1" />
+
+            <Button
+                android:id="@+id/gacha10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
                 android:text="@string/OneGacha"
                 android:textSize="16sp"
                 card:layout_constraintBottom_toBottomOf="parent"
                 card:layout_constraintEnd_toEndOf="parent"
-                card:layout_constraintStart_toEndOf="@+id/gacha10"
+                card:layout_constraintStart_toEndOf="@+id/gacha1"
                 card:layout_constraintTop_toTopOf="parent"
                 card:layout_constraintVertical_weight="1" />
 

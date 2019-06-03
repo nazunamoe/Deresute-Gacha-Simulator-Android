@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.nazunamoe.deresutegachasimulatorm.Activity.pActivity">
+
+
+    <TextView
+        android:id="@+id/SSRSeekTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/SSRare"
+        card:layout_constraintBottom_toTopOf="@+id/SRSeek"
+        card:layout_constraintEnd_toStartOf="@+id/SSRSeek"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toTopOf="parent"
+        card:layout_constraintHorizontal_weight="2"  />
+
+    <SeekBar
+        android:id="@+id/SSRSeek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:max="200"
+        card:layout_constraintBottom_toTopOf="@+id/SRSeek"
+        card:layout_constraintEnd_toStartOf="@id/SSRPText"
+        card:layout_constraintHorizontal_weight="6"
+        card:layout_constraintStart_toEndOf="@+id/SSRSeekTitle"
+        card:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/SRSeekTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/SRare"
+        card:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        card:layout_constraintEnd_toStartOf="@+id/SRSeek"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toBottomOf="@+id/SSRSeekTitle"
+        card:layout_constraintVertical_bias="0.347"
+        card:layout_constraintHorizontal_weight="2"    />
+
+    <SeekBar
+        android:id="@+id/SRSeek"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:max="200"
+        card:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        card:layout_constraintEnd_toStartOf="@id/SRPText"
+        card:layout_constraintHorizontal_weight="6"
+        card:layout_constraintStart_toEndOf="@+id/SRSeekTitle"
+        card:layout_constraintTop_toBottomOf="@+id/SSRSeek" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        card:layout_constraintBottom_toBottomOf="parent"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toBottomOf="@+id/SRSeek">
+
+        <Button
+            android:id="@+id/FesPButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/Fes"
+            android:textSize="16sp"
+            card:layout_constraintBottom_toBottomOf="parent"
+            card:layout_constraintEnd_toStartOf="@+id/OriginalButton"
+            card:layout_constraintStart_toStartOf="parent"
+            card:layout_constraintTop_toTopOf="parent"
+            card:layout_constraintVertical_weight="1" />
+
+        <Button
+            android:id="@+id/OriginalButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/OriginalPButton"
+            android:textSize="16sp"
+            card:layout_constraintBottom_toBottomOf="parent"
+            card:layout_constraintEnd_toStartOf="@+id/ApplyButton"
+            card:layout_constraintStart_toEndOf="@+id/FesPButton"
+            card:layout_constraintTop_toTopOf="parent"
+            card:layout_constraintVertical_bias="1.0"
+            card:layout_constraintVertical_weight="1" />
+
+        <Button
+            android:id="@+id/ApplyButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/Apply"
+            android:textSize="16sp"
+            card:layout_constraintBottom_toBottomOf="parent"
+            card:layout_constraintEnd_toEndOf="parent"
+            card:layout_constraintStart_toEndOf="@+id/OriginalButton"
+            card:layout_constraintTop_toTopOf="parent"
+            card:layout_constraintVertical_weight="1" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/SSRPText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        card:layout_constraintBottom_toTopOf="@+id/SRPText"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintHorizontal_weight="2"
+        card:layout_constraintStart_toEndOf="@+id/SSRSeek"
+        card:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/SRPText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        card:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintHorizontal_weight="2"
+        card:layout_constraintStart_toEndOf="@+id/SRSeek" />
+
+</android.support.constraint.ConstraintLayout>

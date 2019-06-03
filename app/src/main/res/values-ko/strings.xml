@@ -17,4 +17,9 @@
     <string name="cardRarity">레어도</string>
     <string name="Fes">페스 확률</string>
     <string name="LimitedSwitch">한정 카드</string>
+    <string name="OriginalPButton">원래 확률</string>
+    <string name="Apply">적용</string>
+    <string name="PAlert">확률이 지정된 범위를 벗어났습니다. 다시 설정해 주세요.</string>
+    <string name="PApplySuccess">성공적으로 적용되었습니다.</string>
+    <string name="ApplyGacha">확률 적용</string>
 </resources>
