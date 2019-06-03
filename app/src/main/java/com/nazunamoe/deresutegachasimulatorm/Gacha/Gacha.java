@@ -17,9 +17,11 @@ public class Gacha {
     public void Fes(boolean set){
         if(set){
             initalize(1);
+            mode = 1;
         }
         else{
             initalize(0);
+            mode = 0;
         }
     }
 
