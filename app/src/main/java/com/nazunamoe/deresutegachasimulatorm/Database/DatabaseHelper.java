@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.util.Random;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10056000.sqlite";
+    private static String DB_NAME = "10056500.sqlite";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -127,7 +127,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String eventname = cursor.getString(19);
 
-        int limitedint = cursor.getInt(cursor.getColumnIndex("limited2"));
+        int limitedint = cursor.getInt(cursor.getColumnIndex("limited"));
         int fesint = cursor.getInt(cursor.getColumnIndex("fes"));
 
         boolean limited = false;
