@@ -1,11 +1,7 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.app.AlertDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -14,18 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
-import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.MoneyFragment;
-import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements GachaFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, MoneyFragment.OnFragmentInteractionListener {
@@ -100,10 +91,6 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
 
             }
         });
-
-    }
-
-    public void onFragmentInteraction(String input) {
 
     }
 

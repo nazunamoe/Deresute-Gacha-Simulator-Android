@@ -17,12 +17,11 @@ import java.util.Random;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "10056500.sqlite";
-    private static String DB_PATH = "";
+    private static String DB_PATH = "10056500.sqlite";
     private static final int DB_VERSION = 1;
 
     private SQLiteDatabase mDataBase;
     private final Context mContext;
-    private boolean mNeedUpdate = false;
 
     Random random = new Random();
 
@@ -170,7 +169,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (newVersion > oldVersion)
-            mNeedUpdate = true;
+
     }
 }
