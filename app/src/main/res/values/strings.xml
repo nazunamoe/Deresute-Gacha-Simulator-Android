@@ -12,7 +12,7 @@
     <string name="GachaSetting">Gacha Settings</string>
     <string name="pButton">Probability Settings</string>
     <string name="info">Info</string>
-    <string name="Version" translatable="false">Alpha 3</string>
+    <string name="Version" translatable="false">Alpha 4</string>
     <string name="CurrentVersion">Current Version</string>
     <string name="Exit">Exit</string>
     <string name="SSRare" translatable="false">SS Rare</string>
