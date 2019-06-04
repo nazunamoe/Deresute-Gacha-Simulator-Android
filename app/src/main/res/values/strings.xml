@@ -38,5 +38,6 @@
     <string name="SuccessTitle">Success</string>
     <string name="FailedTitle">Failed</string>
     <string name="OK">OK</string>
+    <string name="Menu">Menu</string>
 
 </resources>

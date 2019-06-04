@@ -25,4 +25,5 @@
     <string name="FailedTitle">失敗</string>
     <string name="SuccessTitle">成功</string>
     <string name="OK">確認</string>
+    <string name="Menu">メニュー</string>
 </resources>
