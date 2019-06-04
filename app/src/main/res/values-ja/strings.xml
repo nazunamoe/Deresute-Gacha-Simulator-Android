@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">デレステガシャシミュレーターモバイル</string>
+    <string name="app_name">デレステガシャシミュレーター</string>
     <string name="GachaMenu">ガシャ</string>
     <string name="InfoMenu">情報</string>
     <string name="MoneyMenu">課金</string>
@@ -17,4 +17,12 @@
     <string name="Exit">終了</string>
     <string name="Fes">ｼﾝﾃﾞﾚﾗﾌｪｽ</string>
     <string name="LimitedSwitch">限定カード</string>
+    <string name="OriginalPButton">元の設定</string>
+    <string name="PAlert">確率が指定された範囲を超えています。</string>
+    <string name="PApplySuccess">成功的に適用されました。</string>
+    <string name="Apply">適用</string>
+    <string name="ApplyGacha">確率適用</string>
+    <string name="FailedTitle">失敗</string>
+    <string name="SuccessTitle">成功</string>
+    <string name="OK">確認</string>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Deresute Gacha Simulator Mobile</string>
+    <string name="app_name">Deresute Gacha Simulator</string>
     <string name="MoneyMenu">Money</string>
     <string name="GachaMenu">Gacha</string>
     <string name="InfoMenu">Info</string>
@@ -12,7 +12,6 @@
     <string name="GachaSetting">Gacha Settings</string>
     <string name="pButton">Probability Settings</string>
     <string name="info">Info</string>
-    <string name="Version" translatable="false">Alpha 4</string>
     <string name="CurrentVersion">Current Version</string>
     <string name="Exit">Exit</string>
     <string name="SSRare" translatable="false">SS Rare</string>
@@ -27,10 +26,17 @@
     <string name="UsedMoneyTitle">Used Money</string>
     <string name="JewelTitle">Jewel</string>
     <string name="UsedJewelTitle">Used Jewel</string>
-    <string name="zero">0</string>
     <string name="OriginalPButton">Original Probability</string>
     <string name="Apply">Apply</string>
     <string name="PAlert">The probability is out of the specified range. Please set again.</string>
     <string name="PApplySuccess">Successfully Applied</string>
     <string name="ApplyGacha">Apply Probability</string>
+    <string name="twitter">Twitter @nazunamoe</string>
+    <string name="action_settings">Settings</string>
+    <string name="zero">0</string>
+    <string name="Version" translatable="false">Alpha 4</string>
+    <string name="SuccessTitle">Success</string>
+    <string name="FailedTitle">Failed</string>
+    <string name="OK">OK</string>
+
 </resources>

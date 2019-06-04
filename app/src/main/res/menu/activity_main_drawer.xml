@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item android:title="@string/GachaMenu">
+        <menu>
+            <item
+                android:id="@+id/limitedswitch"
+                android:title="@string/LimitedSwitch"
+                app:actionLayout="@layout/switch_item"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/pbutton2"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/pButton" />
+        </menu>
+    </item>
+
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_cardinfo"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/InfoMenu" />
+            <item
+                android:id="@+id/nav_money"
+                android:icon="@drawable/ic_menu_money"
+                android:title="@string/MoneyMenu" />
+        </menu>
+    </item>
+
+</menu>

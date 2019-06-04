@@ -130,8 +130,6 @@ public class GachaFragment extends Fragment {
         Button tengacha = (Button) view.findViewById(R.id.gacha1);
         Button goldgacha = (Button) view.findViewById(R.id.gacha1_gold);
 
-        Button pButton = (Button) view.findViewById(R.id.pButton);
-
         adapter = new CustomListAdapter();
         ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
         listView.setAdapter(adapter);
@@ -144,17 +142,11 @@ public class GachaFragment extends Fragment {
         CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
         PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
 
-        pButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                startActivity(new Intent(getContext(), pActivity.class));
-            }
-        });
-
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Card gacharesult = null;
+                System.out.println(pref.getFloat("SSRP",(float)0.0));
                 adapter.clearItem();
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));

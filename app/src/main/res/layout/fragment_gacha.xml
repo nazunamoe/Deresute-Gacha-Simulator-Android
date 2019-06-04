@@ -1,7 +1,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinatorLayout"
+    android:id="@+id/mainlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -28,7 +28,7 @@
         card:cardElevation="2dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="4dp"
-        card:layout_constraintBottom_toTopOf="@+id/cardView"
+        card:layout_constraintBottom_toTopOf="@+id/cardView2"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHeight_percent="0.05"
         card:layout_constraintStart_toStartOf="parent"
@@ -168,43 +168,7 @@
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toBottomOf="@+id/gacharesultview"
-        card:layout_constraintVertical_chainStyle="packed">
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <Switch
-                android:id="@+id/switch2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/LimitedSwitch"
-                android:textAlignment="center"
-                card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/pButton"
-                card:layout_constraintStart_toStartOf="parent"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
-
-            <Button
-                android:id="@+id/pButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="@android:color/transparent"
-                android:text="@string/pButton"
-                card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toEndOf="parent"
-                card:layout_constraintStart_toEndOf="@+id/switch2"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
-
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
+        card:layout_constraintVertical_chainStyle="packed"/>
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView2"
@@ -218,7 +182,7 @@
         card:layout_constraintBottom_toBottomOf="parent"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/cardView"
+        card:layout_constraintTop_toBottomOf="@+id/gacharesultview"
         card:layout_constraintVertical_chainStyle="packed">
 
         <android.support.constraint.ConstraintLayout

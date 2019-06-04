@@ -5,11 +5,10 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/navbarbg</item>
         <item name="colorPrimaryDark">@color/navbarbg</item>
-        <item name="titleTextColor">#ffffffff</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:navigationBarColor">@color/navbarbg</item>
         <item name="android:statusBarColor">@color/navbarbg</item>
-</style>
+    </style>
 
     <style name="AppTheme2" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
@@ -30,4 +29,13 @@
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="actionMenuTextColor">@android:color/white</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

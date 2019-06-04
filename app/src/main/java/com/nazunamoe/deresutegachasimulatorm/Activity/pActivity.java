@@ -83,6 +83,7 @@ public class pActivity extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                System.out.println(SSRPValue);
                 SSRP.setText (getConvertedValue(progress,1)+" %");
             }
 
@@ -101,7 +102,7 @@ public class pActivity extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                SRP.setText (getConvertedValue(progress,1)+" %");
+                SRP.setText (getConvertedValue(progress,0)+" %");
             }
 
             @Override
@@ -120,9 +121,9 @@ public class pActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(SSRPValue + SRPValue > 100){
                     AlertDialog alert_confirm = new AlertDialog.Builder(pActivity.this).create();
-                    alert_confirm.setTitle("ALERT");
+                    alert_confirm.setTitle(getResources().getString(R.string.FailedTitle));
                     alert_confirm.setMessage(getResources().getString(R.string.PAlert));
-                    alert_confirm.setButton(Dialog.BUTTON_NEGATIVE,"OK", new DialogInterface.OnClickListener() {
+                    alert_confirm.setButton(Dialog.BUTTON_NEGATIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -132,12 +133,12 @@ public class pActivity extends AppCompatActivity {
                 }
                 else{
                     AlertDialog alert_confirm = new AlertDialog.Builder(pActivity.this).create();
-                    alert_confirm.setTitle("SUCCESS");
+                    alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
                     alert_confirm.setMessage(getResources().getString(R.string.PApplySuccess));
                     editor.putFloat("SSRP",(float)SSRPValue);
                     editor.putFloat("SRP",(float)SRPValue);
                     editor.commit();
-                    alert_confirm.setButton(Dialog.BUTTON_POSITIVE,"OK", new DialogInterface.OnClickListener() {
+                    alert_confirm.setButton(Dialog.BUTTON_POSITIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
 
                         public void onClick(DialogInterface dialog, int which) {
 

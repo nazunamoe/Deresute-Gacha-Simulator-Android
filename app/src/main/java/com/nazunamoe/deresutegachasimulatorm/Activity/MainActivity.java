@@ -1,27 +1,32 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.view.MenuInflater;
+import android.view.View;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 
-import com.nazunamoe.deresutegachasimulatorm.Card.GachaCardData;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
-import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
-import com.nazunamoe.deresutegachasimulatorm.Fragments.MoneyFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.util.ArrayList;
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener, GachaFragment.OnFragmentInteractionListener {
 
-public class MainActivity extends AppCompatActivity implements GachaFragment.OnFragmentInteractionListener, InfoFragment.OnFragmentInteractionListener, MoneyFragment.OnFragmentInteractionListener {
-
-    public ArrayList<GachaCardData> test = new ArrayList<GachaCardData>();
+    NavigationView navigationView;
     Toolbar toolbar;
 
     @Override
@@ -53,48 +58,70 @@ public class MainActivity extends AppCompatActivity implements GachaFragment.OnF
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        /*FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, 0, 0);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
         SharedPreferences Shared = getSharedPreferences("Shared", 0);
         SharedPreferences.Editor editor = Shared.edit();
         editor.putFloat("SSRP",(float)3.0);
         editor.putFloat("SRP",(float)12.0);
-        editor.commit();
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.layout_tab);
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.MoneyMenu));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.GachaMenu));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.InfoMenu));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.Viewpage);
-        final PageAdapter adapter = new PageAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(adapter);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition());
-            }
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.maincontents,new GachaFragment());
+        fragmentTransaction.commit();
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
 
     }
 
     @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if(id == R.id.limitedswitch){
+
+        }else if(id == R.id.pbutton2){
+            startActivity(new Intent(this, pActivity.class));
+        }else if(id == R.id.nav_money){
+
+        }else if(id == R.id.nav_cardinfo){
+
+        }
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
     public void test(String input) {
+
     }
 }
