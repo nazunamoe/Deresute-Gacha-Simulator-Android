@@ -26,4 +26,10 @@
     <string name="OK">확인</string>
     <string name="cardName">이름</string>
     <string name="Menu">메뉴</string>
+    <string name="CardInfo">카드 정보</string>
+    <string name="carfdLimited">한정/이벤트</string>
+    <string name="Usual">통상</string>
+    <string name="Limited">한정</string>
+    <string name="FesCard">페스</string>
+    <string name="Event">이벤트</string>
 </resources>

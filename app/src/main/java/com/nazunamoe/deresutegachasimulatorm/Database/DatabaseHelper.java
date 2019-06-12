@@ -13,11 +13,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10056500.sqlite";
-    private static String DB_PATH = "10056500.sqlite";
+    private static String DB_NAME = "10056900.sqlite";
+    private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
     private SQLiteDatabase mDataBase;
@@ -44,7 +45,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             dbFile.delete();
 
         copyDataBase();
-
     }
 
     private boolean checkDataBase() {
@@ -126,7 +126,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String eventname = cursor.getString(19);
 
-        int limitedint = cursor.getInt(cursor.getColumnIndex("limited"));
+        int limitedint = cursor.getInt(cursor.getColumnIndex("limited2"));
         int fesint = cursor.getInt(cursor.getColumnIndex("fes"));
 
         boolean limited = false;
@@ -166,6 +166,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
         // 해당하는 위치로 이동 후 getResult 메소드를 이용해 해당하는 카드 변수 반환
     }
+
+    public ArrayList<Card> getAllCardList(){
+        ArrayList<Card> result = new ArrayList<Card>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info ",null);
+        cursor.moveToFirst();
+        for(int i=0; i<cursor.getCount(); i++){
+            result.add(getResult(cursor.getInt(0)));
+            cursor.moveToNext();
+        }
+        return result;
+    }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        card:layout_constraintBottom_toTopOf="@+id/card_select_optionbar"
+        card:layout_constraintEnd_toStartOf="parent"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toTopOf="parent"
+        card:layout_constraintVertical_weight="1"
+        card:title="@string/CardInfo" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_select_optionbar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        card:cardCornerRadius="16dp"
+        card:cardElevation="2dp"
+        card:cardUseCompatPadding="true"
+        card:contentPadding="0dp"
+        card:layout_constraintBottom_toTopOf="@+id/cardView"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintHorizontal_bias="0.6"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        card:layout_constraintVertical_weight="2.5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            card:layout_constraintBottom_toTopOf="@+id/cardView"
+            card:layout_constraintEnd_toEndOf="parent"
+            card:layout_constraintStart_toStartOf="parent"
+            card:layout_constraintTop_toBottomOf="@+id/toolbar2"
+            card:layout_constraintVertical_weight="2">>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cardType"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CuteOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Cute"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CoolOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Cool"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/PassionOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Passion"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cardRarity"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/SSROnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/SSRare"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/SROnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/SRare"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/ROnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Rare"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/NormalOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Normal"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/carfdLimited"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/UsualOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Usual"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/LimitedOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Limited"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/FesOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/FesCard"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/EventOnly"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Event"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:elevation="1dp"
+        card:cardCornerRadius="16dp"
+        card:cardElevation="2dp"
+        card:cardUseCompatPadding="true"
+        card:contentPadding="0dp"
+        card:layout_constraintBottom_toBottomOf="parent"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toBottomOf="@+id/card_select_optionbar"
+        card:layout_constraintVertical_weight="7.5">
+
+        <ListView
+            android:id="@+id/CardList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#00000000"
+            android:divider="#00000000"
+            android:dividerHeight="0dp"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"></ListView>
+
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>

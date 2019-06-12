@@ -101,8 +101,8 @@ public class GachaFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void addCard(String name, String rarity, String type){
-        adapter.addItem(name,rarity,type);
+    public void addCard(int no,String name, String rarity, String type){
+        adapter.addItem(no,name,rarity,type);
     }
 
     @Override
@@ -155,7 +155,7 @@ public class GachaFragment extends Fragment {
                         break;
                     }
                 }
-                adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
@@ -174,7 +174,7 @@ public class GachaFragment extends Fragment {
                             break;
                         }
                     }
-                    adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                    adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 }
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
@@ -183,7 +183,7 @@ public class GachaFragment extends Fragment {
                         break;
                     }
                 }
-                adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
@@ -201,7 +201,7 @@ public class GachaFragment extends Fragment {
                         break;
                     }
                 }
-                adapter.addItem(gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
                 updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }

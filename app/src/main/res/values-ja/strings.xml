@@ -9,9 +9,7 @@
     <string name="TenGacha">10　ガシャ</string>
     <string name="GachaSetting">ガシャ設定</string>
     <string name="pButton">確率設定</string>
-    <string name="cardName">Name</string>
-    <string name="cardRarity">Rarity</string>
-    <string name="cardType">Type</string>
+    <string name="cardType">タイプ</string>
     <string name="info">情報</string>
     <string name="CurrentVersion">現在ヴァージョン</string>
     <string name="Exit">終了</string>
@@ -26,4 +24,12 @@
     <string name="SuccessTitle">成功</string>
     <string name="OK">確認</string>
     <string name="Menu">メニュー</string>
+    <string name="CardInfo">カード情報</string>
+    <string name="carfdLimited">限定・イベント</string>
+    <string name="cardRarity">レアリティ</string>
+    <string name="cardName">名前</string>
+    <string name="Event">イベント</string>
+    <string name="FesCard">フェス</string>
+    <string name="Limited">限定</string>
+    <string name="Usual">通常</string>
 </resources>

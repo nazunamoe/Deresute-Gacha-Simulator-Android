@@ -1,6 +1,8 @@
 package com.nazunamoe.deresutegachasimulatorm.Card;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,17 +59,20 @@ public class CustomListAdapter extends BaseAdapter {
         Rarity.setText(parent.getResources().getString(R.string.cardRarity)+" : "+cardData.rarity);
         Type.setText(parent.getResources().getString(R.string.cardType)+" : "+cardData.type);
 
+        Resources resources = convertView.getResources();
+        final int resourceId = resources.getIdentifier("card_"+cardData.No, "drawable",
+                context.getPackageName());
+
+        type.setImageResource(resourceId);
+
         switch(cardData.type){
             case "CUTE":{
-                type.setImageResource(R.drawable.cinde_markcute);
                 break;
             }
             case "COOL":{
-                type.setImageResource(R.drawable.cinde_markcool);
                 break;
             }
             case "PASSION":{
-                type.setImageResource(R.drawable.cinde_markpassion);
                 break;
             }
             default:{
@@ -78,8 +83,8 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(String cardName, String cardRarity, String cardType) {
-        GachaCardData newCard = new GachaCardData(cardName,cardRarity,cardType);
+    public void addItem(int no,String cardName, String cardRarity, String cardType) {
+        GachaCardData newCard = new GachaCardData(no,cardName,cardRarity,cardType);
         list.add(newCard);
     }
 

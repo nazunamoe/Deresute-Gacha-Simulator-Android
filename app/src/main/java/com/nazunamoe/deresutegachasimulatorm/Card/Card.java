@@ -32,6 +32,8 @@ public class Card {
     public Boolean Limited;
     public Boolean Fes;
 
+    public Boolean EventCard;
+
     public GachaCardData GachaCard;
 
     public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
@@ -113,11 +115,16 @@ public class Card {
         this.CenterSkillExplain = centerSkillExplain;
 
         this.EventName = eventName;
+        if(eventName == null){
+            this.EventCard = false;
+        }else{
+            this.EventCard = true;
+        }
 
         this.Limited = limited;
         this.Fes = fes;
 
-        this.GachaCard = new GachaCardData(cardName,rarity,this.Type);
+        this.GachaCard = new GachaCardData(No,cardName,rarity,this.Type);
 
     }
 }

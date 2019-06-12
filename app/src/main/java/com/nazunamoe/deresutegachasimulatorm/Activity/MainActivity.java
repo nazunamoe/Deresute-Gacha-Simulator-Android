@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.nav_money){
 
         }else if(id == R.id.nav_cardinfo){
-
+            startActivity(new Intent(this, InfoActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
