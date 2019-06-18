@@ -26,26 +26,19 @@ public class Gacha {
         return result;
     }
 
-    public String rensyaSR(float SSRp, float SRp){
+    public String rensyaSR(float SSRp){
         String result = "";
-
-        float RenSSRp = (SSRp/(SSRp+SRp));
-        float RenSRp = 1-RenSSRp;
 
         int temp;
         while(true){
             temp=random.nextInt(MAX);
 
-            if(temp<MAX*(RenSSRp)){
+            if(temp<MAX*(SSRp*0.01)){
                 result = "7";
                 break;
-            }else if(temp<MAX*(RenSRp)){
-                result = "5";
-                break;
-            }
-            else{
-                continue;
-            }
+            }else
+                {result ="5";
+                break;}
         }
         return result;
     }

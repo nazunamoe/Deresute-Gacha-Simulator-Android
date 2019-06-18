@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,6 +54,12 @@ public class pActivity extends AppCompatActivity {
 
         SSR.setProgress(6);
         SR.setProgress(24);
+
+        SSR.getProgressDrawable().setColorFilter(getResources().getColor(R.color.accentstatus,null), PorterDuff.Mode.SRC_IN);
+        SSR.getThumb().setColorFilter(getResources().getColor(R.color.accentstatus,null), PorterDuff.Mode.SRC_IN);
+
+        SR.getProgressDrawable().setColorFilter(getResources().getColor(R.color.accentstatus,null), PorterDuff.Mode.SRC_IN);
+        SR.getThumb().setColorFilter(getResources().getColor(R.color.accentstatus,null), PorterDuff.Mode.SRC_IN);
 
         SSRP.setText("3.0 %");
         SRP.setText("12.0 %");

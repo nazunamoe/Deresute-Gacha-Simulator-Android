@@ -12,6 +12,7 @@
                 android:title="@string/LimitedSwitch"
                 android:icon="@drawable/ic_card"
                 app:actionLayout="@layout/switch_item"
+                app:theme="@style/SwitchCompatTheme"
                 app:showAsAction="always" />
             <item
                 android:id="@+id/pbutton2"

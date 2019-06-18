@@ -8,4 +8,6 @@
     <color name="tab_background_unselected">#2196F3</color>
     <color name="navbarbg">#4D000000</color>.
     <color name="statusbarbg">#00000000</color>
+    <color name="accent">#aac8463b</color>
+    <color name="accentstatus">#ffc8463b</color>
 </resources>

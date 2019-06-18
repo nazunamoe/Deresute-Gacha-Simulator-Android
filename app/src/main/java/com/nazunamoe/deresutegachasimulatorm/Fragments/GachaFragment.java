@@ -3,6 +3,7 @@ package com.nazunamoe.deresutegachasimulatorm.Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -11,18 +12,21 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.nazunamoe.deresutegachasimulatorm.Activity.pActivity;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -39,6 +43,9 @@ public class GachaFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    ArrayList<Card> usinglist = new ArrayList<Card>();
+    ArrayList<ImageView> GachaResult = new ArrayList<ImageView>();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -59,14 +66,15 @@ public class GachaFragment extends Fragment {
     int Passion = 0;
 
     Gacha gacha;
-
+    Resources resources;
     TextView SSRareNumber;
     TextView SRareNumber;
     TextView RareNumber;
     TextView CuteNumber;
     TextView CoolNumber;
     TextView PassionNumber;
-
+    View view;
+    int resourceId;
     public GachaFragment() {
         // Required empty public constructor
     }
@@ -101,9 +109,6 @@ public class GachaFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    public void addCard(int no,String name, String rarity, String type){
-        adapter.addItem(no,name,rarity,type);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -122,7 +127,7 @@ public class GachaFragment extends Fragment {
         }
         mDBHelper.openDataBase();
 
-        View view = inflater.inflate(R.layout.fragment_gacha,container,false);
+        view = inflater.inflate(R.layout.fragment_gacha,container,false);
         final SharedPreferences pref = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
         gacha = new Gacha();
 
@@ -133,6 +138,28 @@ public class GachaFragment extends Fragment {
         adapter = new CustomListAdapter();
         ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
         listView.setAdapter(adapter);
+
+       /* ImageView gachaResult1 = view.findViewById(R.id.GachaResult1);
+        ImageView gachaResult2 = view.findViewById(R.id.GachaResult2);
+        ImageView gachaResult3 = view.findViewById(R.id.GachaResult3);
+        ImageView gachaResult4 = view.findViewById(R.id.GachaResult4);
+        ImageView gachaResult5 = view.findViewById(R.id.GachaResult5);
+        ImageView gachaResult6 = view.findViewById(R.id.GachaResult6);
+        ImageView gachaResult7 = view.findViewById(R.id.GachaResult7);
+        ImageView gachaResult8 = view.findViewById(R.id.GachaResult8);
+        ImageView gachaResult9 = view.findViewById(R.id.GachaResult9);
+        ImageView gachaResult10 = view.findViewById(R.id.GachaResult10);
+        GachaResult.add(gachaResult1);
+        GachaResult.add(gachaResult2);
+        GachaResult.add(gachaResult3);
+        GachaResult.add(gachaResult4);
+        GachaResult.add(gachaResult5);
+        GachaResult.add(gachaResult6);
+        GachaResult.add(gachaResult7);
+        GachaResult.add(gachaResult8);
+        GachaResult.add(gachaResult9);
+        GachaResult.add(gachaResult10);*/
+
 
         SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
         SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
@@ -146,16 +173,18 @@ public class GachaFragment extends Fragment {
             @Override
             public void onClick(View v){
                 Card gacharesult = null;
+                usinglist.clear();
                 System.out.println(pref.getFloat("SSRP",(float)0.0));
-                adapter.clearItem();
+                //adapter.clearItem();
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
                         cardRarityTypeCount(gacharesult);
+                        usinglist.add(gacharesult);
                         break;
                     }
                 }
-                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type, view.getContext());
                 updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
@@ -165,25 +194,28 @@ public class GachaFragment extends Fragment {
             @Override
             public void onClick(View v){
                 adapter.clearItem();
+                usinglist.clear();
                 Card gacharesult = null;
                 for(int a=0; a<9; a++){
                     while(true){
                         gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                         if(gacharesult.Limited == false && gacharesult.EventName == null){
                             cardRarityTypeCount(gacharesult);
+                            usinglist.add(gacharesult);
                             break;
                         }
                     }
-                    adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                    adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type, view.getContext());
                 }
                 while(true){
-                    gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
+                    gacharesult = mDBHelper.getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0)));
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
                         cardRarityTypeCount(gacharesult);
+                        usinglist.add(gacharesult);
                         break;
                     }
                 }
-                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type, view.getContext());
                 updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
@@ -194,18 +226,30 @@ public class GachaFragment extends Fragment {
             public void onClick(View v){
                 Card gacharesult = null;
                 adapter.clearItem();
+                usinglist.clear();
                 while(true){
                     gacharesult = mDBHelper.getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
                     if(gacharesult.Limited == false && gacharesult.EventName == null){
                         cardRarityTypeCount(gacharesult);
+                        usinglist.add(gacharesult);
                         break;
                     }
                 }
-                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type);
+                adapter.addItem(gacharesult.No,gacharesult.CardName,gacharesult.Rarity,gacharesult.Type, view.getContext());
                 updateGachaStatus();
                 adapter.notifyDataSetChanged();
             }
         });
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(view.getContext(), CardInfoActivity.class);
+                intent.putExtra("card",((Card)usinglist.get(position)).No);
+                startActivity(intent);
+            }
+        });*/
+
 
         return view;
     }
@@ -242,8 +286,12 @@ public class GachaFragment extends Fragment {
         }
     }
 
-    private void updateGachaP(){
-    }
+   /* private void setImageforGacha(int position, int no){
+        resourceId = view.getResources().getIdentifier("card_"+no+".png", "drawable", GachaResult.get(position).getContext().getPackageName());
+        System.out.println(resourceId);
+        GachaResult.get(position).setImageResource(resourceId);
+        Picasso.with(view.getContext()).load(adapter.getGachaImage()).into(GachaResult.get(position));
+    }*/
 
     private void updateGachaStatus(){
         SSRareNumber.setText(""+SSRare);

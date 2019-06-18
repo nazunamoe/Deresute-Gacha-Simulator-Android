@@ -3,22 +3,38 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/navbarbg</item>
-        <item name="colorPrimaryDark">@color/navbarbg</item>
+        <item name="colorPrimary">@color/accentstatus</item>
+        <item name="colorPrimaryDark">@color/accentstatus</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:navigationBarColor">@color/navbarbg</item>
-        <item name="android:statusBarColor">@color/navbarbg</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:titleTextColor">#ffffffff</item>
+        <item name="android:subtitleTextColor">#ffffffff</item>
+        <item name="android:navigationBarColor">@color/accentstatus</item>
+        <item name="android:statusBarColor">@color/accentstatus</item>
+        <item name="colorControlNormal">@color/White</item>
     </style>
 
-    <style name="AppTheme2" parent="Theme.AppCompat.DayNight">
+    <style name="AppTheme2" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/navbarbg</item>
-        <item name="colorPrimaryDark">@color/navbarbg</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">#ffffffff</item>
+        <item name="colorPrimary">@color/accentstatus</item>
+        <item name="colorPrimaryDark">@color/accentstatus</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:titleTextColor">#ffffffff</item>
+        <item name="android:subtitleTextColor">#ffffffff</item>
+        <item name="android:navigationBarColor">@color/accentstatus</item>
+        <item name="android:statusBarColor">@color/accentstatus</item>
+        <item name="colorControlNormal">@color/White</item>
     </style>
 
     <style name="Dialog2" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorPrimary">@color/accentstatus</item>
+        <item name="colorPrimaryDark">@color/accentstatus</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:titleTextColor">#ffffffff</item>
+        <item name="android:subtitleTextColor">#ffffffff</item>
+        <item name="android:navigationBarColor">@color/accentstatus</item>
+        <item name="android:statusBarColor">@color/accentstatus</item>
+        <item name="colorControlNormal">@color/White</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
     </style>
@@ -36,6 +52,13 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="SwitchCompatTheme" >
+        <item name="colorControlActivated">@color/accentstatus</item>
+        <item name="thumbTint">@color/accentstatus</item>
+        <item name="trackTint">@color/accentstatus</item>
+        <item name="android:colorControlActivated">@color/accentstatus</item>
+    </style>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

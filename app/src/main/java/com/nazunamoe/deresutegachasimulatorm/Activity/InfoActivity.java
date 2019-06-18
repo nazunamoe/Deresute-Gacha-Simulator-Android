@@ -1,12 +1,23 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
+import android.content.Intent;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
@@ -20,7 +31,10 @@ public class InfoActivity extends AppCompatActivity {
     CustomListAdapter adapter;
     private DatabaseHelper mDBHelper;
     private SQLiteDatabase mDb;
+
     ArrayList<Card> wholelist;
+    ArrayList<Card> usinglist;
+
     CheckBox cuteonlycheck;
     CheckBox coolonlycheck;
     CheckBox passiononlycheck;
@@ -48,18 +62,87 @@ public class InfoActivity extends AppCompatActivity {
     boolean limitedonly=false;
     boolean fesonly=false;
     boolean eventonly=false;
-
-
+    Toolbar toolbar;
+    LinearLayout settings;
+    ListView listView;
+    CardView listViewCard;
+    int s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.activity_card_info);
 
         adapter = new CustomListAdapter();
+        toolbar = findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
+        toolbar.setSubtitleTextColor(Color.WHITE);
+        listView = (ListView)findViewById(R.id.CardList);
+        listViewCard = (CardView)findViewById(R.id.cardlistcard);
+        s = 0;
+        settings = (LinearLayout)findViewById(R.id.settings);
 
-        ListView listView = (ListView)findViewById(R.id.CardList);
+        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = true;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbarLayout.setTitle(getResources().getString(R.string.info));
+                    settings.setVisibility(LinearLayout.INVISIBLE);
+                    s = 0;
+                    isShow = true;
+                } else if(isShow) {
+                    collapsingToolbarLayout.setTitle(" ");
+                    s = 1;
+                    settings.setVisibility(LinearLayout.VISIBLE);//careful there should a space between double quote otherwise it wont work
+                    isShow = false;
+                }
+                listViewCard.setPadding(16,16,16,verticalOffset);
+            }
+        });
+
+
         listView.setAdapter(adapter);
+
+
+        listView.setOnTouchListener(new ListView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
         mDBHelper = new DatabaseHelper(this);
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent=new Intent(InfoActivity.this,CardInfoActivity.class);
+                intent.putExtra("card",((Card)usinglist.get(position)).No);
+                startActivity(intent);
+            }
+        });*/
 
         cuteonlycheck = (CheckBox)findViewById(R.id.CuteOnly);
         coolonlycheck = (CheckBox)findViewById(R.id.CoolOnly);
@@ -223,35 +306,46 @@ public class InfoActivity extends AppCompatActivity {
         mDBHelper.openDataBase();
 
         wholelist = mDBHelper.getAllCardList();
-
+        usinglist= mDBHelper.getAllCardList();
         for(int i=0; i<wholelist.size(); i++){
-            adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type);
+           // if(!wholelist.get(i).CardName.contains("＋")) {
+                adapter.addItem(wholelist.get(i).No, wholelist.get(i).CardName, wholelist.get(i).Rarity, wholelist.get(i).Type, getApplicationContext());
+           // }
         }
+
+
     }
 
     private void updateListbyType(){
         adapter.clearItem();
+        usinglist.clear();
         for(int i=0; i<wholelist.size(); i++){
-            if(cuteonly && wholelist.get(i).Type=="CUTE"){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type);
+            //if(!wholelist.get(i).CardName.contains("＋")) {
+                if(cuteonly && wholelist.get(i).Type=="CUTE"){
+                    if(updateListbyRarity(wholelist.get(i))){
+                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
+                        usinglist.add(wholelist.get(i));
+                    }
                 }
-            }
-            if(coolonly && wholelist.get(i).Type=="COOL"){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type);
+                if(coolonly && wholelist.get(i).Type=="COOL"){
+                    if(updateListbyRarity(wholelist.get(i))){
+                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
+                        usinglist.add(wholelist.get(i));
+                    }
                 }
-            }
-            if(passiononly && wholelist.get(i).Type=="PASSION"){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type);
+                if(passiononly && wholelist.get(i).Type=="PASSION"){
+                    if(updateListbyRarity(wholelist.get(i))){
+                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
+                        usinglist.add(wholelist.get(i));
+                    }
                 }
-            }
-            if(!cuteonly && !coolonly && !passiononly){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type);
+                if(!cuteonly && !coolonly && !passiononly){
+                    if(updateListbyRarity(wholelist.get(i))){
+                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
+                        usinglist.add(wholelist.get(i));
+                    }
                 }
-            }
+           // }
         }
         adapter.notifyDataSetChanged();
     }
@@ -276,7 +370,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     private boolean updateListbyLimited(Card input){
-        if(usualonly && (!input.Limited && !input.Fes)){
+        if(usualonly && (!input.Limited && !input.Fes && !input.EventCard)){
             return true;
         }
         if(eventonly && (input.EventCard && (input.Rarity !="RARE"||input.Rarity!="RARE+"))){

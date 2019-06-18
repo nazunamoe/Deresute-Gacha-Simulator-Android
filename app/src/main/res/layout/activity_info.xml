@@ -13,15 +13,15 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        card:layout_constraintBottom_toTopOf="@+id/card_select_optionbar"
+        card:layout_constraintBottom_toTopOf="@+id/cardlistcard"
         card:layout_constraintEnd_toStartOf="parent"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toTopOf="parent"
         card:layout_constraintVertical_weight="1"
         card:title="@string/CardInfo" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/card_select_optionbar"
+        <android.support.v7.widget.CardView
+        android:id="@+id/cardlistcard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -42,10 +42,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             card:layout_constraintBottom_toTopOf="@+id/cardView"
             card:layout_constraintEnd_toEndOf="parent"
             card:layout_constraintStart_toStartOf="parent"
@@ -72,6 +72,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Cute"
                     android:textAlignment="center" />
 
@@ -80,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Cool"
                     android:textAlignment="center" />
 
@@ -88,6 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Passion"
                     android:textAlignment="center" />
 
@@ -113,6 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/SSRare"
                     android:textAlignment="center" />
 
@@ -121,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/SRare"
                     android:textAlignment="center" />
 
@@ -129,6 +134,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Rare"
                     android:textAlignment="center" />
 
@@ -137,6 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Normal"
                     android:textAlignment="center" />
             </LinearLayout>
@@ -161,6 +168,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Usual"
                     android:textAlignment="center" />
 
@@ -169,6 +177,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Limited"
                     android:textAlignment="center" />
 
@@ -177,6 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/FesCard"
                     android:textAlignment="center" />
 
@@ -185,6 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:buttonTint="@color/accentstatus"
                     android:text="@string/Event"
                     android:textAlignment="center" />
             </LinearLayout>
@@ -208,7 +219,7 @@
         card:layout_constraintBottom_toBottomOf="parent"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/card_select_optionbar"
+        card:layout_constraintTop_toBottomOf="@+id/cardlistcard"
         card:layout_constraintVertical_weight="7.5">
 
         <ListView

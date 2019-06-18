@@ -82,12 +82,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return mDataBase != null;
     }
 
-    @Override
-    public synchronized void close() {
-        if (mDataBase != null)
-            mDataBase.close();
-        super.close();
-    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
