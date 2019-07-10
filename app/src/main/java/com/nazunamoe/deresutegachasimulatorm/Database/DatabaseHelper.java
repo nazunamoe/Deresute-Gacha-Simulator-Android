@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10056900.sqlite";
+    private static String DB_NAME = "10058000.sqlite";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -87,6 +87,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
     }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
     // id를 넣어서 카드를 반환받는 메소드
     public Card getResult(int id){
         // 결과 카드 선언
@@ -137,28 +143,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             fes = false;
         }
 
+        boolean ava;
+
+        if(fes||limited) {
+            ava = false;
+        }else{
+            ava = true;
+        }
+
         // 필요한 정보를 모두 변수에 연결.
         result = new Card(cardno, cardname, charaname, rarity
                     , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max
                     , skillname, skillexplain, centerskillname, centerskillexplain
-                    , eventname, limited, fes);
+                    , eventname, limited, fes, ava);
         return result;
         // DB에서 받아온 정보를 이용해 새 카드 클래스를 생성 후 반환
-    }
-
-    // 특정 레어도의 카드를 랜덤으로 가져오는 메소드
-    public Card getRarityCard(String rarity){
-        Card result = null;
-        // 결과 카드 선언
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info WHERE rarity="+rarity,null);
-        // 쿼리문 실행
-        cursor.moveToFirst();
-        int pos = random.nextInt(cursor.getCount());
-        // 쿼리문 결과 크기를 이용해서 랜덤 상수 획득
-        cursor.moveToPosition(pos);
-        result = getResult(cursor.getInt(0));
-        return result;
-        // 해당하는 위치로 이동 후 getResult 메소드를 이용해 해당하는 카드 변수 반환
     }
 
     public ArrayList<Card> getAllCardList(){
@@ -172,9 +171,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public ArrayList<Card> getGachaCardList(){
+        ArrayList<Card> result = new ArrayList<Card>();
+        ArrayList<Card> temp = getAllCardList();
+        for(int i=0; i<temp.size(); i++){
+            if(!(temp.get(i).CardName.contains("＋")||temp.get(i).RarityInt==1||temp.get(i).RarityInt==2)||temp.get(i).EventCard){
+                result.add(temp.get(i));
+            }
+        }
+        return result;
+    }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    public ArrayList<Card> getLimitedCardList(){
+        ArrayList<Card> result = new ArrayList<Card>();
+        ArrayList<Card> temp = getGachaCardList();
+        for(int i=0; i<temp.size(); i++){
+            if(!(temp.get(i).Availablity)){
+                result.add(temp.get(i));
+            }
+        }
+        return result;
     }
 }

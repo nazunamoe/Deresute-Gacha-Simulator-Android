@@ -33,7 +33,7 @@
     <string name="twitter">Twitter @nazunamoe</string>
     <string name="action_settings">Settings</string>
     <string name="zero">0</string>
-    <string name="Version" translatable="false">Beta 2</string>
+    <string name="Version" translatable="false">Beta 3</string>
     <string name="SuccessTitle">Success</string>
     <string name="FailedTitle">Failed</string>
     <string name="OK">OK</string>
@@ -46,5 +46,8 @@
     <string name="FesCard">Fes</string>
     <string name="Usual">Usual</string>
     <string name="Normal">Normal</string>
+    <string name="LimitedSetSucess">OK</string>
+    <string name="NoMoreLimited">This card is no more limited card now</string>
+    <string name="MoreLimited">This card is limited card now</string>
 
 </resources>

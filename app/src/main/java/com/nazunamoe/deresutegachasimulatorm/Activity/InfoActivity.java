@@ -1,9 +1,12 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -12,20 +15,25 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class InfoActivity extends AppCompatActivity {
     CustomListAdapter adapter;
@@ -62,6 +70,7 @@ public class InfoActivity extends AppCompatActivity {
     boolean limitedonly=false;
     boolean fesonly=false;
     boolean eventonly=false;
+
     Toolbar toolbar;
     LinearLayout settings;
     ListView listView;
@@ -108,9 +117,7 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-
         listView.setAdapter(adapter);
-
 
         listView.setOnTouchListener(new ListView.OnTouchListener() {
             @Override
@@ -134,15 +141,6 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
         mDBHelper = new DatabaseHelper(this);
-
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent=new Intent(InfoActivity.this,CardInfoActivity.class);
-                intent.putExtra("card",((Card)usinglist.get(position)).No);
-                startActivity(intent);
-            }
-        });*/
 
         cuteonlycheck = (CheckBox)findViewById(R.id.CuteOnly);
         coolonlycheck = (CheckBox)findViewById(R.id.CoolOnly);
@@ -242,8 +240,6 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        //
-
         usualonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -292,75 +288,60 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        try {
-            mDBHelper.updateDataBase();
-        } catch (IOException mIOException) {
-            throw new Error("UnableToUpdateDatabase");
-        }
-
-        try {
-            mDb = mDBHelper.getWritableDatabase();
-        } catch (SQLException mSQLException) {
-            throw mSQLException;
-        }
-        mDBHelper.openDataBase();
-
-        wholelist = mDBHelper.getAllCardList();
-        usinglist= mDBHelper.getAllCardList();
+        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        Gson gson = new Gson();
+        String json = appSharedPrefs.getString("CardList","");
+        Type type = new TypeToken<List<Card>>(){}.getType();
+        wholelist = gson.fromJson(json, type);
+        usinglist = gson.fromJson(json, type);
         for(int i=0; i<wholelist.size(); i++){
-           // if(!wholelist.get(i).CardName.contains("＋")) {
-                adapter.addItem(wholelist.get(i).No, wholelist.get(i).CardName, wholelist.get(i).Rarity, wholelist.get(i).Type, getApplicationContext());
-           // }
+            adapter.addItem(wholelist.get(i));
         }
-
-
     }
 
     private void updateListbyType(){
         adapter.clearItem();
         usinglist.clear();
         for(int i=0; i<wholelist.size(); i++){
-            //if(!wholelist.get(i).CardName.contains("＋")) {
-                if(cuteonly && wholelist.get(i).Type=="CUTE"){
-                    if(updateListbyRarity(wholelist.get(i))){
-                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
-                        usinglist.add(wholelist.get(i));
-                    }
+            if(cuteonly && wholelist.get(i).Type.equals("CUTE")){
+                if(updateListbyRarity(wholelist.get(i))){
+                    adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
-                if(coolonly && wholelist.get(i).Type=="COOL"){
-                    if(updateListbyRarity(wholelist.get(i))){
-                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
-                        usinglist.add(wholelist.get(i));
-                    }
+            }
+            if(coolonly && wholelist.get(i).Type.equals("COOL")){
+                if(updateListbyRarity(wholelist.get(i))){
+                    adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
-                if(passiononly && wholelist.get(i).Type=="PASSION"){
-                    if(updateListbyRarity(wholelist.get(i))){
-                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
-                        usinglist.add(wholelist.get(i));
-                    }
+            }
+            if(passiononly && wholelist.get(i).Type.equals("PASSION")){
+                if(updateListbyRarity(wholelist.get(i))){
+                    adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
-                if(!cuteonly && !coolonly && !passiononly){
-                    if(updateListbyRarity(wholelist.get(i))){
-                        adapter.addItem(wholelist.get(i).No,wholelist.get(i).CardName,wholelist.get(i).Rarity,wholelist.get(i).Type, getApplicationContext());
-                        usinglist.add(wholelist.get(i));
-                    }
+            }
+            if(!cuteonly && !coolonly && !passiononly){
+                if(updateListbyRarity(wholelist.get(i))){
+                    adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
-           // }
+            }
         }
         adapter.notifyDataSetChanged();
     }
 
     private boolean updateListbyRarity(Card input){
-        if(ssronly && (input.Rarity == "SS RARE" || input.Rarity == "SS RARE+")){
+        if(ssronly && (input.Rarity.equals("SS RARE") || input.Rarity.equals("SS RARE+"))){
             return updateListbyLimited(input);
         }
-        if(sronly && (input.Rarity == "S RARE" || input.Rarity == "S RARE+")){
+        if(sronly && (input.Rarity.equals("S RARE") || input.Rarity.equals("S RARE+"))){
             return updateListbyLimited(input);
         }
-        if(ronly && (input.Rarity == "RARE" || input.Rarity == "RARE+")){
+        if(ronly && (input.Rarity.equals("RARE") || input.Rarity.equals("RARE+"))){
             return updateListbyLimited(input);
         }
-        if(nonly && (input.Rarity == "NORMAL" || input.Rarity == "NORMAL+")){
+        if(nonly && (input.Rarity.equals("NORMAL") || input.Rarity.equals("NORMAL+"))){
             return updateListbyLimited(input);
         }
         if(!ssronly && !sronly && !ronly && !nonly){
@@ -373,7 +354,7 @@ public class InfoActivity extends AppCompatActivity {
         if(usualonly && (!input.Limited && !input.Fes && !input.EventCard)){
             return true;
         }
-        if(eventonly && (input.EventCard && (input.Rarity !="RARE"||input.Rarity!="RARE+"))){
+        if(eventonly && (input.EventCard && (!(input.Rarity.equals("RARE"))||!(input.Rarity.equals("RARE+"))))){
             return true;
         }
         if(fesonly && (input.Limited && input.Fes)){
@@ -387,4 +368,5 @@ public class InfoActivity extends AppCompatActivity {
         }
         return false;
     }
+
 }

@@ -32,4 +32,6 @@
     <string name="FesCard">フェス</string>
     <string name="Limited">限定</string>
     <string name="Usual">通常</string>
+    <string name="MoreLimited">このカードはガシャから出ません。</string>
+    <string name="NoMoreLimited">このカードはガシャで出ます。</string>
 </resources>

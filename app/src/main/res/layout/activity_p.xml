@@ -17,9 +17,9 @@
         android:text="@string/SSRare"
         card:layout_constraintBottom_toTopOf="@+id/SRSeek"
         card:layout_constraintEnd_toStartOf="@+id/SSRSeek"
+        card:layout_constraintHorizontal_weight="2"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toTopOf="parent"
-        card:layout_constraintHorizontal_weight="2"  />
+        card:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
         android:id="@+id/SSRSeek"
@@ -42,14 +42,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:text="@string/SRare"
         card:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         card:layout_constraintEnd_toStartOf="@+id/SRSeek"
+        card:layout_constraintHorizontal_weight="2"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/SSRSeekTitle"
-        card:layout_constraintVertical_bias="0.347"
-        card:layout_constraintHorizontal_weight="2"    />
+        card:layout_constraintTop_toBottomOf="@+id/SSRSeekTitle" />
 
     <SeekBar
         android:id="@+id/SRSeek"
@@ -129,7 +128,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         card:layout_constraintBottom_toTopOf="@+id/SRPText"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHorizontal_weight="2"
@@ -141,11 +140,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="32dp"
         card:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHorizontal_weight="2"
-        card:layout_constraintStart_toEndOf="@+id/SRSeek" />
+        card:layout_constraintStart_toEndOf="@+id/SRSeek"
+        card:layout_constraintTop_toBottomOf="@+id/SSRPText" />
 
 </android.support.constraint.ConstraintLayout>

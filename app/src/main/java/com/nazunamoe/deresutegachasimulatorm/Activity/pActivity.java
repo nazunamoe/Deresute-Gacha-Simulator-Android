@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -86,7 +85,6 @@ public class pActivity extends AppCompatActivity {
             }
         });
 
-
         SSR.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
 
             @Override
@@ -132,7 +130,6 @@ public class pActivity extends AppCompatActivity {
                     alert_confirm.setTitle(getResources().getString(R.string.FailedTitle));
                     alert_confirm.setMessage(getResources().getString(R.string.PAlert));
                     alert_confirm.setButton(Dialog.BUTTON_NEGATIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
-
                         public void onClick(DialogInterface dialog, int which) {
 
                         }

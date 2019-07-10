@@ -1,17 +1,15 @@
 package com.nazunamoe.deresutegachasimulatorm.Card;
 
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.os.Parcel;
 
-import com.nazunamoe.deresutegachasimulatorm.R;
+public class Card{
+    public Boolean Availablity;
 
-public class Card {
     public int No;
     public String CardName;
     public String CharaName;
     public String Rarity;
+    public int RarityInt;
     public String Type;
 
     public int Hp_Min;
@@ -41,14 +39,13 @@ public class Card {
 
     public Boolean EventCard;
 
-    public GachaCardData GachaCard;
-    public Image cardImage;
-
     public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
-                String skillExplain, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes){
+                String skillExplain, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes, Boolean ava){
         this.No = no;
         this.CardName = cardName;
         this.CharaName = charaName;
+
+        this.RarityInt = Integer.parseInt(rarity);
 
         switch(rarity){
             case "1":{
@@ -131,9 +128,6 @@ public class Card {
 
         this.Limited = limited;
         this.Fes = fes;
-
-        this.GachaCard = new GachaCardData(No,cardName,rarity,this.Type);
-
-
+        this.Availablity = ava;
     }
 }

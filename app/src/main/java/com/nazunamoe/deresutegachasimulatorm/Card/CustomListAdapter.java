@@ -3,15 +3,11 @@ package com.nazunamoe.deresutegachasimulatorm.Card;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.nazunamoe.deresutegachasimulatorm.R;
@@ -21,16 +17,16 @@ import java.util.ArrayList;
 
 public class CustomListAdapter extends BaseAdapter {
 
-    private ArrayList<GachaCardData> list = new ArrayList<GachaCardData>();
+    private ArrayList<Card> list = new ArrayList<Card>();
     int num;
     int resourceId;
     Resources resources;
     ImageView type;
     TextView Rarity;
     View con;
-    public CustomListAdapter(){
+    Card cardData;
+    TextView Name;
 
-    }
     @Override
     public int getCount() {
         return list.size();
@@ -46,7 +42,6 @@ public class CustomListAdapter extends BaseAdapter {
         return position;
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
@@ -57,32 +52,37 @@ public class CustomListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.card,parent,false);
         }
 
-        TextView Name = (TextView) convertView.findViewById(R.id.cardName);
+        Name = (TextView) convertView.findViewById(R.id.cardName);
         Rarity = (TextView) convertView.findViewById(R.id.cardRarity);
         TextView Type = (TextView) convertView.findViewById(R.id.cardType);
 
-
         type = (ImageView) convertView.findViewById(R.id.typeView);
 
-        GachaCardData cardData = list.get(position);
+        cardData = list.get(position);
 
-        Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.name);
-        Rarity.setText(parent.getResources().getString(R.string.cardRarity)+" : "+cardData.rarity);
-        if(cardData.rarity == "SS RARE" || cardData.rarity == "SS RARE+"){
+        Rarity.setText(parent.getResources().getString(R.string.cardRarity)+" : "+cardData.Rarity);
+        if(cardData.Rarity == "SS RARE" || cardData.Rarity == "SS RARE+"){
             Rarity.setTextColor(Color.GREEN);
-        }else if(cardData.rarity == "S RARE" || cardData.rarity == "S RARE+"){
+        }else if(cardData.Rarity == "S RARE" || cardData.Rarity == "S RARE+"){
             Rarity.setTextColor(Color.CYAN);
         }else{
-            Rarity.setTextColor(Name.getTextColors());
+            Rarity.setTextColor(Type.getTextColors());
         }
-        Type.setText(parent.getResources().getString(R.string.cardType)+" : "+cardData.type);
-
+        Type.setText(parent.getResources().getString(R.string.cardType)+" : "+cardData.Type);
         num = cardData.No;
+
+        if(cardData.Fes || cardData.Limited){
+            Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.CardName+" * ");
+            Name.setTextColor(Color.RED);
+        }else{
+            Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.CardName);
+            Name.setTextColor(Rarity.getTextColors());
+        }
 
         resources = convertView.getResources();
         resourceId = resources.getIdentifier("card_"+cardData.No, "drawable", context.getPackageName());
         Picasso.with(context).load(resourceId).into(type);
-        switch(cardData.type) {
+        switch(cardData.Type) {
             case "CUTE": {
                 break;
             }
@@ -100,12 +100,15 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(int no,String cardName, String cardRarity, String cardType, Context context) {
-        GachaCardData newCard = new GachaCardData(no,cardName,cardRarity,cardType);
-        list.add(newCard);
+    public void addItem(Card input) {
+        list.add(input);
     }
 
+    @Override
+    public void notifyDataSetChanged(){
+        super.notifyDataSetChanged();
 
+    }
     public void clearItem(){
         list.removeAll(list);
     }
