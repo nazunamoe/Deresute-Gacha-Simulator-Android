@@ -24,15 +24,7 @@ public class CardInfoActivity extends AppCompatActivity {
     Gson gson;
     Card card;
     Toolbar toolbar;
-    int resourceId;
-    Resources resources;
-    ImageView type;
 
-    TextView cardCharaName;
-    TextView cardCV;
-    TextView cardCVFuri;
-    TextView cardType;
-    TextView cardRarity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,22 +47,10 @@ public class CardInfoActivity extends AppCompatActivity {
         toolbar.setTitleTextColor(Color.WHITE);
         toolbar.setSubtitleTextColor(Color.WHITE);
         toolbar.setTitle(card.CardName);
-        type = findViewById(R.id.cardImage);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White,null), PorterDuff.Mode.SRC_ATOP);
 
-        resources = getResources();
-        resourceId = resources.getIdentifier("card_"+card.No, "drawable", getPackageName());
-        Picasso.with(getApplicationContext()).load(resourceId).into(type);
 
-        cardCharaName = findViewById(R.id.CardInfoCharaName);
-        cardCV = findViewById(R.id.CardInfoCVName);
-        cardCVFuri = findViewById(R.id.CardInfoCVFuri);
-        cardType = findViewById(R.id.CardInfoType);
-        cardRarity = findViewById(R.id.CardInfoRarity);
-
-
-        cardCharaName.setText(getResources().getString(R.string.cardName)+card.CharaName);
     }
 }
