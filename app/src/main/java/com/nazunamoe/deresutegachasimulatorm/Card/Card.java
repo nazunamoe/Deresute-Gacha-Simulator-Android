@@ -1,7 +1,5 @@
 package com.nazunamoe.deresutegachasimulatorm.Card;
 
-import android.os.Parcel;
-
 public class Card{
     public Boolean Availablity;
 

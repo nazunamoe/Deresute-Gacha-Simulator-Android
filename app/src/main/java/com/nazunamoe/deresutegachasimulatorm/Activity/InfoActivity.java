@@ -15,6 +15,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -119,7 +120,24 @@ public class InfoActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+        listView.setOnItemClickListener(new ListView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent();
+                SharedPreferences addSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor prefsEditor = addSharedPrefs.edit();
+                Gson gson = new Gson();
+                String json = gson.toJson(usinglist.get(position));
+                prefsEditor.putString("SelectedCard", json);
+                prefsEditor.commit();
+                intent = new Intent(getApplicationContext(), CardInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         listView.setOnTouchListener(new ListView.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 int action = event.getAction();
@@ -134,7 +152,6 @@ public class InfoActivity extends AppCompatActivity {
                         v.getParent().requestDisallowInterceptTouchEvent(false);
                         break;
                 }
-
                 // Handle ListView touch events.
                 v.onTouchEvent(event);
                 return true;
