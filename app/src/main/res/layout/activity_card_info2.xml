@@ -29,16 +29,17 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/idolinfo2ndbox"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar5">
 
         <android.support.v7.widget.CardView
             android:id="@+id/idolinfo1stview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:elevation="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,11 +57,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/idolinfo3rdbox"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idolinfo1stbox">
 
@@ -78,7 +79,7 @@
             card:layout_constraintHeight_percent="0.05"
             card:layout_constraintStart_toStartOf="parent"
             card:layout_constraintTop_toBottomOf="@+id/include4"
-            card:layout_constraintVertical_chainStyle="packed">
+            card:layout_constraintVertical_chainStyle="packed" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -87,11 +88,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/idolinfo4thbox"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idolinfo2ndbox">
 
@@ -109,7 +110,7 @@
             card:layout_constraintHeight_percent="0.05"
             card:layout_constraintStart_toStartOf="parent"
             card:layout_constraintTop_toBottomOf="@+id/include4"
-            card:layout_constraintVertical_chainStyle="packed">
+            card:layout_constraintVertical_chainStyle="packed" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -118,11 +119,12 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="percent"
+        app:layout_constraintHeight_percent="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idolinfo3rdbox">
 
@@ -140,7 +142,7 @@
             card:layout_constraintHeight_percent="0.05"
             card:layout_constraintStart_toStartOf="parent"
             card:layout_constraintTop_toBottomOf="@+id/include4"
-            card:layout_constraintVertical_chainStyle="packed">
+            card:layout_constraintVertical_chainStyle="packed" />
 
     </android.support.constraint.ConstraintLayout>
 
