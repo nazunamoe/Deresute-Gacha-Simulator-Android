@@ -27,7 +27,7 @@
         <item name="colorControlNormal">@color/White</item>
     </style>
 
-    <style name="Dialog2" parent="Theme.AppCompat.Dialog.Alert">
+    <style name="Dialog2" parent="Theme.AppCompat.DayNight.Dialog.Alert">
         <item name="colorPrimary">@color/accentstatus</item>
         <item name="colorPrimaryDark">@color/accentstatus</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -38,6 +38,7 @@
         <item name="colorControlNormal">@color/White</item>
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:windowBackground">@drawable/dialog_bg</item>
     </style>
 
     <!-- ToolBar -->
