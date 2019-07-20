@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.CardInfoActivity"
-            android:theme="@style/AppTheme2"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/Dialog2"></activity>
         <activity
             android:name=".Activity.LimitedCardActivity"
             android:screenOrientation="portrait"
@@ -35,6 +36,7 @@
         </activity>
         <activity
             android:name=".Activity.pActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Dialog2" />
     </application>
 

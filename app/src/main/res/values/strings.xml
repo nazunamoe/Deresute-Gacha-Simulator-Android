@@ -48,6 +48,14 @@
     <string name="LimitedSetSucess">OK</string>
     <string name="NoMoreLimited">This card is no more limited card now</string>
     <string name="MoreLimited">This card is limited card now</string>
-    <string name="Version" translatable="false">Beta 4</string>
+    <string name="Version" translatable="false">Beta 5</string>
+    <string name="Stat">Stat</string>
+    <string name="Skill">Skill</string>
+    <string name="Vocal">Vocal</string>
+    <string name="Dance">Dance</string>
+    <string name="Visual">Visual</string>
+    <string name="Sum">Sum</string>
+    <string name="Hp">Hp</string>
+    <string name="CharaCVInfo">Chara/CV Info</string>
 
 </resources>

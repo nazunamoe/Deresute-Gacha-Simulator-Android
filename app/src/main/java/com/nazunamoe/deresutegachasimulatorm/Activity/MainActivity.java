@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        // Handle navigation view  item clicks here.
         int id = item.getItemId();
         Intent intentgogo=null;
         Bundle bundle = new Bundle();
