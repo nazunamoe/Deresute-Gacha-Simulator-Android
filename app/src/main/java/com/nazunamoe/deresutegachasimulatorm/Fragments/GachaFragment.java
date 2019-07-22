@@ -69,7 +69,6 @@ public class GachaFragment extends Fragment {
         gson = new Gson();
         String json = appSharedPrefs.getString("GachaCardList","");
         wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-
     }
 
     @Override

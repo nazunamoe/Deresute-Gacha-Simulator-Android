@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#2196F3</color>
-    <color name="colorAccent">#9C27B0</color>
-    <color name="White">#FFFFFF</color>
-    <color name="tab_background_selected">#2196F3</color>
-    <color name="tab_background_unselected">#2196F3</color>
-    <color name="navbarbg">#4D000000</color>.
-    <color name="statusbarbg">#00000000</color>
-    <color name="accent">#aac8463b</color>
-    <color name="accentstatus">#ffc8463b</color>
+<color name="colorPrimary">#2196F3</color>
+<color name="colorPrimaryDark">#2196F3</color>
+<color name="colorAccent">#9C27B0</color>
+<color name="White">#FFFFFF</color>
+<color name="tab_background_selected">#2196F3</color>
+<color name="tab_background_unselected">#2196F3</color>
+<color name="navbarbg">#4D000000</color>.
+<color name="statusbarbg">#00000000</color>
+<color name="accent">#aa5a46a9</color>
+<color name="accentstatus">#ff5a46a9</color>
 </resources>
