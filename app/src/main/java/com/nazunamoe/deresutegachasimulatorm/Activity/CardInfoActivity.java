@@ -1,5 +1,6 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -106,9 +107,8 @@ public class CardInfoActivity extends AppCompatActivity {
         CardCenterSkill = (TextView)findViewById(R.id.cardInfoCardCenterSkill);
         CardCenterSkillStatus = (TextView)findViewById(R.id.cardInfoCardCenterSkillStatus);
 
-        resources = getResources();
-        resourceId = resources.getIdentifier("card_"+card.No, "drawable", getPackageName());
-        Picasso.with(getApplicationContext()).load(resourceId).into(CardImage);
+        Picasso.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+card.No+".png").into(CardImage);
+        Picasso.get().setLoggingEnabled(true);
 
         CardName.setText(card.CharaName);
         CardRarity.setText(card.Rarity);
