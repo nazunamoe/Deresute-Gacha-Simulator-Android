@@ -177,7 +177,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:textAlignment="center" />
 
@@ -186,7 +185,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:text="@string/Vocal"
                             android:textAlignment="center" />
@@ -196,7 +194,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:text="@string/Dance"
                             android:textAlignment="center" />
@@ -206,7 +203,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:text="@string/Visual"
                             android:textAlignment="center" />
@@ -216,7 +212,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:text="@string/Sum"
                             android:textAlignment="center" />
@@ -226,7 +221,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:text="@string/Hp"
                             android:textAlignment="center" />
@@ -243,7 +237,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:text="Min"
                             android:textAlignment="center" />
@@ -253,7 +246,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center_vertical"
                             android:padding="5dp"
                             android:textAlignment="center" />
 
@@ -263,7 +255,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -272,7 +263,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -281,7 +271,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -290,7 +279,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
                     </LinearLayout>
 
@@ -306,7 +294,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:text="Max"
                             android:textAlignment="center" />
 
@@ -316,7 +303,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -325,7 +311,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -334,7 +319,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -343,7 +327,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
 
                         <TextView
@@ -352,7 +335,6 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="5dp"
-                            android:gravity="center_vertical"
                             android:textAlignment="center" />
                     </LinearLayout>
                 </LinearLayout>

@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0">
+                app:layout_collapseParallaxMultiplier="1">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -224,6 +224,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:elevation="1dp"
+            app:cardCornerRadius="16dp"
             card:cardCornerRadius="16dp"
             card:cardElevation="2dp"
             card:cardUseCompatPadding="true"
@@ -236,6 +238,12 @@
                 android:cacheColorHint="#00000000"
                 android:divider="#00000000"
                 android:dividerHeight="0dp"
+                android:elevation="1dp"
+                app:cardCornerRadius="16dp"
+                card:cardCornerRadius="16dp"
+                card:cardElevation="2dp"
+                card:cardUseCompatPadding="true"
+                card:contentPadding="0dp"
                 tools:layout_conversion_absoluteHeight="0dp"
                 tools:layout_conversion_absoluteWidth="0dp"></ListView>
         </androidx.cardview.widget.CardView>
