@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nazunamoe.deresutegachasimulatorm.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
@@ -84,10 +88,13 @@ public class CustomListAdapter extends BaseAdapter {
 
         resources = convertView.getResources();
 
-        //Picasso.with(context).load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
-        //Picasso.with(context).setLoggingEnabled(true);
-        Picasso.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
-        Picasso.get().setLoggingEnabled(true);
+        Picasso.Builder builder = new Picasso.Builder(context);
+        builder.downloader(new OkHttp3Downloader(context,Integer.MAX_VALUE));
+        Picasso built = builder.build();
+        built.setIndicatorsEnabled(true);
+        built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
+        built.get().setLoggingEnabled(true);
+
         switch(cardData.Type) {
             case "CUTE": {
                 break;

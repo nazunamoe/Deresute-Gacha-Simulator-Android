@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        long start = System.currentTimeMillis();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
@@ -119,6 +121,10 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.maincontents,new GachaFragment());
         fragmentTransaction.commit();
+
+        long end = System.currentTimeMillis();
+
+        System.out.println("시간 :"+ (end - start));
     }
 
     @Override
