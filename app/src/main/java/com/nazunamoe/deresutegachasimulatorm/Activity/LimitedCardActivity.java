@@ -68,7 +68,6 @@ public class LimitedCardActivity extends AppCompatActivity {
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
                     alert_confirm.setMessage(getResources().getString(R.string.NoMoreLimited));
                 }
-                System.out.println(card2.CardName+"="+card2.Availablity);
                 wholelist.set(position,card2);
                 String json = gson.toJson(wholelist);
                 prefsEditor.putString("GachaCardList", json);

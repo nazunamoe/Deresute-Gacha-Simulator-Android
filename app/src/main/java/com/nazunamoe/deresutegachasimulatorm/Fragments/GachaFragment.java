@@ -27,7 +27,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class GachaFragment extends Fragment {
     ArrayList<Card> wholelist = new ArrayList<Card>();
-    ArrayList<Card> usinglist = new ArrayList<Card>();
+    //ArrayList<Card> usinglist = new ArrayList<Card>(); // 나중에 카드 보관함 기능 추가하면 그때 사용 예정
 
     private OnFragmentInteractionListener mListener;
     CustomListAdapter adapter;
@@ -53,13 +53,6 @@ public class GachaFragment extends Fragment {
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
     Gson gson;
-
-    public static GachaFragment newInstance() {
-        GachaFragment fragment = new GachaFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,87 +88,52 @@ public class GachaFragment extends Fragment {
         CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
         PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
 
+        String json = appSharedPrefs.getString("GachaCardList","");
+        wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String json = appSharedPrefs.getString("GachaCardList","");
-                wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-                Card gacharesult = null;
-                usinglist.clear();
-                System.out.println(pref.getFloat("SSRP",(float)0.0));
-                adapter.clearItem();
-                while(true){
-                    gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
-                    if(!gacharesult.EventCard){
-                        cardRarityTypeCount(gacharesult);
-                        usinglist.add(gacharesult);
-                        break;
-                    }
-                }
-                adapter.addItem(gacharesult);
-                updateGachaStatus();
-                adapter.notifyDataSetChanged();
+                Gacha_Execute(pref, false);
             }
         });
 
         tengacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String json = appSharedPrefs.getString("GachaCardList","");
-                wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-                adapter.clearItem();
-                usinglist.clear();
-                Card gacharesult = null;
-                for(int a=0; a<9; a++){
-                    while(true){
-                        gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
-                        if(!gacharesult.EventCard){
-                            cardRarityTypeCount(gacharesult);
-                            usinglist.add(gacharesult);
-                            break;
-                        }
-                    }
-                    adapter.addItem(gacharesult);
-                }
-                while(true){
-                    gacharesult = getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0)));
-                    if(!gacharesult.EventCard){
-                        cardRarityTypeCount(gacharesult);
-                        usinglist.add(gacharesult);
-                        break;
-                    }
-                }
-                adapter.addItem(gacharesult);
-                updateGachaStatus();
-                adapter.notifyDataSetChanged();
+                Gacha_Execute(pref, true);
             }
         });
 
         goldgacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String json = appSharedPrefs.getString("GachaCardList","");
-                wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-                Card gacharesult = null;
-                adapter.clearItem();
-                usinglist.clear();
-                while(true){
-                    gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
-                    if(!gacharesult.EventCard){
-                        cardRarityTypeCount(gacharesult);
-                        usinglist.add(gacharesult);
-                        break;
-                    }
-                }
-                adapter.addItem(gacharesult);
-                updateGachaStatus();
-                adapter.notifyDataSetChanged();
+                Gacha_Execute(pref, false);
             }
         });
         return view;
     }
 
-    private void cardRarityTypeCount(Card card){
+    private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
+        Card gacharesult = null;
+        adapter.clearItem();
+        if(ten) {
+            for(int a=0; a<9; a++){
+                gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
+                //usinglist.add(gacharesult);
+                adapter.addItem(gacharesult);
+            }
+            gacharesult = getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0)));
+        } else {
+            gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
+        }
+       //usinglist.add(gacharesult);
+        adapter.addItem(gacharesult);
+        updateGachaStatus();
+        adapter.notifyDataSetChanged();
+    }
+
+    private Card cardRarityTypeCount(Card card){
         switch(card.Rarity){
             case "SS RARE":{
                 SSRare++;
@@ -205,17 +163,19 @@ public class GachaFragment extends Fragment {
                 break;
             }
         }
+        return card;
     }
 
     private Card getRarityCard(int Rarity){
         ArrayList<Card> tempList = new ArrayList<Card>();
         for(int a=0; a<wholelist.size(); a++){
-            if((wholelist.get(a).RarityInt == Rarity)&&wholelist.get(a).Availablity){
+            if((wholelist.get(a).RarityInt == Rarity) && wholelist.get(a).Availablity && !wholelist.get(a).EventCard){
                 tempList.add(wholelist.get(a));
             }
         }
         Random random = new Random();
         int pos = random.nextInt(tempList.size());
+        cardRarityTypeCount(tempList.get(pos));
         return tempList.get(pos);
     }
 

@@ -29,8 +29,7 @@ public class Gacha {
             if(temp<MAX*(SSRp*0.01)){
                 result = 7;
                 break;
-            }else
-                {result = 5;
+            }else {result = 5;
                 break;}
         }
         return result;

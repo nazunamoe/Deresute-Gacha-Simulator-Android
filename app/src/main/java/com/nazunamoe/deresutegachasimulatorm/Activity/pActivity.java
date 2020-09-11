@@ -89,7 +89,6 @@ public class pActivity extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                System.out.println(SSRPValue);
                 SSRP.setText (getConvertedValue(progress,1)+" %");
             }
 

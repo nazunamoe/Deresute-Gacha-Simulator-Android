@@ -3,8 +3,6 @@ package com.nazunamoe.deresutegachasimulatorm.Card;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +11,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nazunamoe.deresutegachasimulatorm.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class CustomListAdapter extends BaseAdapter {
@@ -93,7 +87,7 @@ public class CustomListAdapter extends BaseAdapter {
         Picasso built = builder.build();
         built.setIndicatorsEnabled(true);
         built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
-        built.get().setLoggingEnabled(true);
+        built.get().setLoggingEnabled(false);
 
         switch(cardData.Type) {
             case "CUTE": {

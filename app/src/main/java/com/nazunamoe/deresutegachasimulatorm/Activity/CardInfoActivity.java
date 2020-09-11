@@ -19,14 +19,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
-import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.OkHttp3Downloader;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Response;
 
 public class CardInfoActivity extends AppCompatActivity {
     SharedPreferences appSharedPrefs;
@@ -119,7 +113,7 @@ public class CardInfoActivity extends AppCompatActivity {
         built.setIndicatorsEnabled(true);
         Picasso.setSingletonInstance(built);
         built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+card.No+".png").into(CardImage);
-        built.get().setLoggingEnabled(true);
+        built.get().setLoggingEnabled(false);
 
         CardName.setText(card.CharaName);
         CardRarity.setText(card.Rarity);
