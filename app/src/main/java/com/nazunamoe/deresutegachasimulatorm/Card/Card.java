@@ -37,6 +37,7 @@ public class Card{
 
     public Boolean EventCard;
 
+
     public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
                 String skillExplain, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes, Boolean ava){
         this.No = no;

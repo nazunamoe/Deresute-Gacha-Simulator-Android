@@ -20,11 +20,9 @@ public class CustomListAdapter extends BaseAdapter {
 
     private ArrayList<Card> list = new ArrayList<Card>();
     int num;
-    int resourceId;
     Resources resources;
     ImageView type;
     TextView Rarity;
-    View con;
     Card cardData;
     TextView Name;
 
@@ -89,21 +87,6 @@ public class CustomListAdapter extends BaseAdapter {
         built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
         built.get().setLoggingEnabled(false);
 
-        switch(cardData.Type) {
-            case "CUTE": {
-                break;
-            }
-            case "COOL": {
-                break;
-            }
-            case "PASSION": {
-                break;
-            }
-            default: {
-                break;
-            }
-        }
-        con = convertView;
         return convertView;
     }
 

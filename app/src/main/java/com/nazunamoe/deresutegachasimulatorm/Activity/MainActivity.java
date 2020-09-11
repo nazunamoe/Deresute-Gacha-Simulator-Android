@@ -1,6 +1,7 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.SQLException;
@@ -26,6 +27,8 @@ import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
+
+import org.json.JSONArray;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,6 +66,22 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(menuItem);
     }
 
+    private void setStringArrayPref(Context context, String key, ArrayList<Card> values) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = prefs.edit();
+        JSONArray a = new JSONArray();
+        for (int i = 0; i < values.size(); i++) {
+            a.put(values.get(i));
+        }
+        if (!values.isEmpty()) {
+            editor.putString(key, a.toString());
+        } else {
+            editor.putString(key, null);
+        }
+        editor.apply();
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -82,12 +101,11 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         mDBHelper = new DatabaseHelper(this);
 
-
-        try {
+        /*try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
             throw new Error("UnableToUpdateDatabase");
-        }
+        }*/
 
         try {
             mDb = mDBHelper.getWritableDatabase();
@@ -97,13 +115,7 @@ public class MainActivity extends AppCompatActivity
         mDBHelper.openDataBase();
 
         card_list = mDBHelper.getAllCardList();
-        SharedPreferences addSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        SharedPreferences.Editor prefsEditor = addSharedPrefs.edit();
-
-        Gson gson = new Gson();
-        String json = gson.toJson(card_list);
-        prefsEditor.putString("CardList", json);
-        prefsEditor.commit();
+        setStringArrayPref(this.getApplicationContext(),"CardList",card_list);
 
         SharedPreferences Shared = getSharedPreferences("Shared", 0);
         SharedPreferences.Editor editor = Shared.edit();
@@ -129,10 +141,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view  item clicks here.
         int id = item.getItemId();
         Intent intentgogo=null;
-        Bundle bundle = new Bundle();
         if(id == R.id.limitedswitch){
             intentgogo = new Intent(this, LimitedCardActivity.class);
         }else if(id == R.id.pbutton2){

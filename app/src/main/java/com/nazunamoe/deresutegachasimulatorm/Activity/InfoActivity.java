@@ -1,5 +1,6 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,14 +27,10 @@ import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 public class InfoActivity extends AppCompatActivity {
     CustomListAdapter adapter;
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
 
     ArrayList<Card> wholelist;
     ArrayList<Card> usinglist;
@@ -70,7 +67,7 @@ public class InfoActivity extends AppCompatActivity {
     LinearLayout settings;
     ListView listView;
     CardView listViewCard;
-    int s;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +80,6 @@ public class InfoActivity extends AppCompatActivity {
         toolbar.setSubtitleTextColor(Color.WHITE);
         listView = (ListView)findViewById(R.id.CardList);
         listViewCard = (CardView)findViewById(R.id.cardlistcard);
-        s = 0;
         settings = (LinearLayout)findViewById(R.id.settings);
 
         final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
@@ -100,11 +96,9 @@ public class InfoActivity extends AppCompatActivity {
                 if (scrollRange + verticalOffset == 0) {
                     collapsingToolbarLayout.setTitle(getResources().getString(R.string.info));
                     settings.setVisibility(LinearLayout.INVISIBLE);
-                    s = 0;
                     isShow = true;
                 } else if(isShow) {
                     collapsingToolbarLayout.setTitle(" ");
-                    s = 1;
                     settings.setVisibility(LinearLayout.VISIBLE);//careful there should a space between double quote otherwise it wont work
                     isShow = false;
                 }
@@ -151,7 +145,6 @@ public class InfoActivity extends AppCompatActivity {
                 return true;
             }
         });
-        mDBHelper = new DatabaseHelper(this);
 
         cuteonlycheck = (CheckBox)findViewById(R.id.CuteOnly);
         coolonlycheck = (CheckBox)findViewById(R.id.CoolOnly);
@@ -300,11 +293,11 @@ public class InfoActivity extends AppCompatActivity {
         });
 
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+
         Gson gson = new Gson();
-        String json = appSharedPrefs.getString("CardList","");
-        Type type = new TypeToken<List<Card>>(){}.getType();
-        wholelist = gson.fromJson(json, type);
-        usinglist = gson.fromJson(json, type);
+
+        String json = appSharedPrefs.getString("GachaCardList","");
+        wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
         for(int i=0; i<wholelist.size(); i++){
             adapter.addItem(wholelist.get(i));
         }
@@ -312,30 +305,25 @@ public class InfoActivity extends AppCompatActivity {
 
     private void updateListbyType(){
         adapter.clearItem();
-        usinglist.clear();
         for(int i=0; i<wholelist.size(); i++){
             if(cuteonly && wholelist.get(i).Type.equals("CUTE")){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
                 }
             }
             if(coolonly && wholelist.get(i).Type.equals("COOL")){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
                 }
             }
             if(passiononly && wholelist.get(i).Type.equals("PASSION")){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
                 }
             }
             if(!cuteonly && !coolonly && !passiononly){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
                 }
             }
         }
