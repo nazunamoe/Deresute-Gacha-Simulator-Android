@@ -20,6 +20,7 @@ import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -60,8 +61,6 @@ public class GachaFragment extends Fragment {
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
-        String json = appSharedPrefs.getString("GachaCardList","");
-        wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
     }
 
     @Override
@@ -87,8 +86,10 @@ public class GachaFragment extends Fragment {
         CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
         PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
 
-        String json = appSharedPrefs.getString("GachaCardList","");
-        wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+        String json = appSharedPrefs.getString("CardList","");
+
+        Type type = new TypeToken<ArrayList<Card>>(){}.getType();
+        wholelist = gson.fromJson(json, type);
 
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override

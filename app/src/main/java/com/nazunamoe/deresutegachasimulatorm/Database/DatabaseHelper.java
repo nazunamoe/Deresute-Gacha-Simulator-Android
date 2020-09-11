@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10068000.sqlite";
+    private static String DB_NAME = "10074900.sqlite";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -162,6 +162,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<Card> getAllCardList(){
         ArrayList<Card> result = new ArrayList<Card>();
+
         Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info ",null);
         cursor.moveToFirst();
         for(int i=0; i<cursor.getCount(); i++){

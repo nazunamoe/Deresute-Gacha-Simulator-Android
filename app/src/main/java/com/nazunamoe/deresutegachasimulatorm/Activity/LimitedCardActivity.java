@@ -46,7 +46,7 @@ public class LimitedCardActivity extends AppCompatActivity {
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
-        String json = appSharedPrefs.getString("GachaCardList","");
+        String json = appSharedPrefs.getString("CardList","");
         wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
 
         for(int i=0; i<wholelist.size(); i++){
@@ -68,9 +68,10 @@ public class LimitedCardActivity extends AppCompatActivity {
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
                     alert_confirm.setMessage(getResources().getString(R.string.NoMoreLimited));
                 }
+                System.out.println(card2.CardName+"="+card2.Availablity);
                 wholelist.set(position,card2);
                 String json = gson.toJson(wholelist);
-                prefsEditor.putString("GachaCardList", json);
+                prefsEditor.putString("CardList", json);
                 prefsEditor.commit();
                 alert_confirm.setButton(Dialog.BUTTON_POSITIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
 
