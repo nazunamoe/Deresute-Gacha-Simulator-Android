@@ -119,13 +119,13 @@ public class GachaFragment extends Fragment {
         adapter.clearItem();
         if(ten) {
             for(int a=0; a<9; a++){
-                gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
+                gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
                 //usinglist.add(gacharesult);
                 adapter.addItem(gacharesult);
             }
-            gacharesult = getRarityCard(gacha.rensyaSR(pref.getFloat("SSRP",(float)3.0)));
+            gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),true));
         } else {
-            gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0)));
+            gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
         }
        //usinglist.add(gacharesult);
         adapter.addItem(gacharesult);
