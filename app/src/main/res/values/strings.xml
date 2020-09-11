@@ -48,7 +48,7 @@
     <string name="LimitedSetSucess">OK</string>
     <string name="NoMoreLimited">This card is no more limited card now</string>
     <string name="MoreLimited">This card is limited card now</string>
-    <string name="Version" translatable="false">Beta 6</string>
+    <string name="Version" translatable="false">Beta 7</string>
     <string name="Stat">Stat</string>
     <string name="Skill">Skill</string>
     <string name="Vocal">Vocal</string>
