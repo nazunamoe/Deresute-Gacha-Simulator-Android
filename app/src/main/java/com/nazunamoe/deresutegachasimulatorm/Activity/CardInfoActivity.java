@@ -33,6 +33,8 @@ public class CardInfoActivity extends AppCompatActivity {
 
     ImageButton CardImage;
 
+    TextView CardInfoTitle;
+
     TextView CardName;
     TextView CardRarity;
     TextView CardType;
@@ -82,7 +84,8 @@ public class CardInfoActivity extends AppCompatActivity {
             }
         });
 
-        toolbar.setTitle(card.CardName);
+        CardInfoTitle = findViewById(R.id.toolbar5_title);
+        CardInfoTitle.setText(card.CardName);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
