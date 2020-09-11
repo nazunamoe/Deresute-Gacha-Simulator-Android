@@ -171,25 +171,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public ArrayList<Card> getGachaCardList(){
-        ArrayList<Card> result = new ArrayList<Card>();
-        ArrayList<Card> temp = getAllCardList();
-        for(int i=0; i<temp.size(); i++){
-            if(!(temp.get(i).CardName.contains("＋")||temp.get(i).RarityInt==1||temp.get(i).RarityInt==2)||temp.get(i).EventCard){
-                result.add(temp.get(i));
-            }
-        }
-        return result;
-    }
-
-    public ArrayList<Card> getLimitedCardList(){
-        ArrayList<Card> result = new ArrayList<Card>();
-        ArrayList<Card> temp = getGachaCardList();
-        for(int i=0; i<temp.size(); i++){
-            if(!(temp.get(i).Availablity)){
-                result.add(temp.get(i));
-            }
-        }
-        return result;
-    }
 }

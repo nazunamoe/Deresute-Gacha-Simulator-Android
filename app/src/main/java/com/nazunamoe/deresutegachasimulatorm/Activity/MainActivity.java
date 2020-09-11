@@ -37,9 +37,7 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar;
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
-    ArrayList<Card> wholelist;
-    ArrayList<Card> gachalist;
-    ArrayList<Card> limitedlist;
+    ArrayList<Card> card_list;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -67,7 +65,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        long start = System.currentTimeMillis();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -85,6 +82,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         mDBHelper = new DatabaseHelper(this);
 
+
         try {
             mDBHelper.updateDataBase();
         } catch (IOException mIOException) {
@@ -98,18 +96,13 @@ public class MainActivity extends AppCompatActivity
         }
         mDBHelper.openDataBase();
 
-        wholelist = mDBHelper.getAllCardList();
-        gachalist = mDBHelper.getGachaCardList();
-        limitedlist = mDBHelper.getLimitedCardList();
+        card_list = mDBHelper.getAllCardList();
         SharedPreferences addSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         SharedPreferences.Editor prefsEditor = addSharedPrefs.edit();
+
         Gson gson = new Gson();
-        String json = gson.toJson(wholelist);
-        String json2 = gson.toJson(gachalist);
-        String json3 = gson.toJson(limitedlist);
+        String json = gson.toJson(card_list);
         prefsEditor.putString("CardList", json);
-        prefsEditor.putString("GachaCardList", json2);
-        prefsEditor.putString("LimitedCardList", json3);
         prefsEditor.commit();
 
         SharedPreferences Shared = getSharedPreferences("Shared", 0);
@@ -122,9 +115,6 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.replace(R.id.maincontents,new GachaFragment());
         fragmentTransaction.commit();
 
-        long end = System.currentTimeMillis();
-
-        System.out.println("시간 :"+ (end - start));
     }
 
     @Override
