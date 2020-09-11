@@ -79,7 +79,6 @@ public class GachaFragment extends Fragment {
         ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
         listView.setAdapter(adapter);
 
-
         SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
         SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
         RareNumber = (TextView)view.findViewById(R.id.RareNum);
@@ -115,7 +114,7 @@ public class GachaFragment extends Fragment {
     }
 
     private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
-        Card gacharesult = null;
+        Card gacharesult;
         adapter.clearItem();
         if(ten) {
             for(int a=0; a<9; a++){
@@ -127,7 +126,7 @@ public class GachaFragment extends Fragment {
         } else {
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
         }
-       //usinglist.add(gacharesult);
+        //usinglist.add(gacharesult);
         adapter.addItem(gacharesult);
         updateGachaStatus();
         adapter.notifyDataSetChanged();
