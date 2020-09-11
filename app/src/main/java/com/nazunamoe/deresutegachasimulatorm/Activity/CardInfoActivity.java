@@ -111,7 +111,6 @@ public class CardInfoActivity extends AppCompatActivity {
         builder.downloader(new OkHttp3Downloader(this,Integer.MAX_VALUE));
         Picasso built = builder.build();
         built.setIndicatorsEnabled(true);
-        Picasso.setSingletonInstance(built);
         built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+card.No+".png").into(CardImage);
         built.get().setLoggingEnabled(false);
 

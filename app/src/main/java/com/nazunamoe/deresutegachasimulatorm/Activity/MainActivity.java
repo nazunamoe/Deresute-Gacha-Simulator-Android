@@ -30,8 +30,9 @@ import com.nazunamoe.deresutegachasimulatorm.R;
 
 import org.json.JSONArray;
 
-import java.io.IOException;
 import java.util.ArrayList;
+
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GachaFragment.OnFragmentInteractionListener {
@@ -64,21 +65,6 @@ public class MainActivity extends AppCompatActivity
             finishAffinity();
         }
         return super.onOptionsItemSelected(menuItem);
-    }
-
-    private void setStringArrayPref(Context context, String key, ArrayList<Card> values) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = prefs.edit();
-        JSONArray a = new JSONArray();
-        for (int i = 0; i < values.size(); i++) {
-            a.put(values.get(i));
-        }
-        if (!values.isEmpty()) {
-            editor.putString(key, a.toString());
-        } else {
-            editor.putString(key, null);
-        }
-        editor.apply();
     }
 
 
@@ -115,12 +101,17 @@ public class MainActivity extends AppCompatActivity
         mDBHelper.openDataBase();
 
         card_list = mDBHelper.getAllCardList();
-        setStringArrayPref(this.getApplicationContext(),"CardList",card_list);
 
-        SharedPreferences Shared = getSharedPreferences("Shared", 0);
+        SharedPreferences Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         SharedPreferences.Editor editor = Shared.edit();
+
+        Gson gson = new Gson();
+        String CardListJson = gson.toJson(card_list);
+        editor.putString("CardList",CardListJson);
+
         editor.putFloat("SSRP",(float)3.0);
         editor.putFloat("SRP",(float)12.0);
+        editor.commit();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

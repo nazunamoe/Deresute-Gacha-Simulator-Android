@@ -1,9 +1,7 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
 import com.google.android.material.appbar.AppBarLayout;
@@ -24,7 +22,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
-import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
@@ -296,8 +293,9 @@ public class InfoActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
 
-        String json = appSharedPrefs.getString("GachaCardList","");
+        String json = appSharedPrefs.getString("CardList","");
         wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+        usinglist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
         for(int i=0; i<wholelist.size(); i++){
             adapter.addItem(wholelist.get(i));
         }
@@ -305,25 +303,30 @@ public class InfoActivity extends AppCompatActivity {
 
     private void updateListbyType(){
         adapter.clearItem();
+        usinglist.clear();
         for(int i=0; i<wholelist.size(); i++){
             if(cuteonly && wholelist.get(i).Type.equals("CUTE")){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
             }
             if(coolonly && wholelist.get(i).Type.equals("COOL")){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
             }
             if(passiononly && wholelist.get(i).Type.equals("PASSION")){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
             }
             if(!cuteonly && !coolonly && !passiononly){
                 if(updateListbyRarity(wholelist.get(i))){
                     adapter.addItem(wholelist.get(i));
+                    usinglist.add(wholelist.get(i));
                 }
             }
         }
