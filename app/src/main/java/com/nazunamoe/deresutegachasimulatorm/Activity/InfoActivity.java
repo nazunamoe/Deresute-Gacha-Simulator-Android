@@ -68,40 +68,14 @@ public class InfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card_info);
+        setContentView(R.layout.activity_info);
 
         adapter = new CustomListAdapter();
         toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setSubtitleTextColor(Color.WHITE);
         listView = (ListView)findViewById(R.id.CardList);
         listViewCard = (CardView)findViewById(R.id.cardlistcard);
         settings = (LinearLayout)findViewById(R.id.settings);
-
-        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = true;
-            int scrollRange = -1;
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    collapsingToolbarLayout.setTitle(getResources().getString(R.string.info));
-                    settings.setVisibility(LinearLayout.INVISIBLE);
-                    isShow = true;
-                } else if(isShow) {
-                    collapsingToolbarLayout.setTitle(" ");
-                    settings.setVisibility(LinearLayout.VISIBLE);//careful there should a space between double quote otherwise it wont work
-                    isShow = false;
-                }
-                listViewCard.setPadding(16,16,16,verticalOffset);
-            }
-        });
 
         listView.setAdapter(adapter);
 

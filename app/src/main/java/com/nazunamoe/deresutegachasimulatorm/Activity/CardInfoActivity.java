@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
@@ -60,7 +62,11 @@ public class CardInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_card_info2);
+
+        toolbar = findViewById(R.id.toolbar5);
+
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
@@ -75,13 +81,12 @@ public class CardInfoActivity extends AppCompatActivity {
                 CardInfoActivity.super.onBackPressed();
             }
         });
-        toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setSubtitleTextColor(Color.WHITE);
+
         toolbar.setTitle(card.CardName);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.getNavigationIcon().setColorFilter(getResources().getColor(R.color.White,null), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         CardImage = (ImageButton)findViewById(R.id.cardInfoCardImage);
 

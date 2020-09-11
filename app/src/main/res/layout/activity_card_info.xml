@@ -75,7 +75,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="@string/Cute"
                             android:textAlignment="center" />
 
@@ -84,7 +83,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="@string/Cool"
                             android:textAlignment="center" />
 
@@ -93,7 +91,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="@string/Passion"
                             android:textAlignment="center" />
 
@@ -119,7 +116,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="@string/SSRare"
                             android:textAlignment="center" />
 
@@ -137,7 +133,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="@string/Rare"
                             android:textAlignment="center" />
 
@@ -146,7 +141,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-
                             android:text="@string/Normal"
                             android:textAlignment="center" />
                     </LinearLayout>

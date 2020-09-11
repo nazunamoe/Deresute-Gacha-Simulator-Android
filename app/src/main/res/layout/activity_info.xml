@@ -12,13 +12,24 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+
         card:layout_constraintBottom_toTopOf="@+id/cardlistcard"
         card:layout_constraintEnd_toStartOf="parent"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toTopOf="parent"
         card:layout_constraintVertical_weight="1"
-        card:title="@string/CardInfo" />
+
+         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="@string/CardInfo"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
 
         <androidx.cardview.widget.CardView
         android:id="@+id/cardlistcard"

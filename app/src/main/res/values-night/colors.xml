@@ -2,6 +2,6 @@
 <resources>
 <color name="navbarbg">#4D000000</color>.
 <color name="statusbarbg">#00000000</color>
-<color name="accent">#aaf3c1c3</color>
-<color name="accentstatus">#fff3c1c3</color>
+<color name="accent">#4e2897</color>
+<color name="accentstatus">#4e2897</color>
 </resources>
