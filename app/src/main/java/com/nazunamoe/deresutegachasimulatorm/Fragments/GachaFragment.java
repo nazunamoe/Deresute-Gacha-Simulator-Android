@@ -42,7 +42,6 @@ public class GachaFragment extends Fragment {
     int Passion = 0;
 
     Gacha gacha;
-    Resources resources;
     TextView SSRareNumber;
     TextView SRareNumber;
     TextView RareNumber;

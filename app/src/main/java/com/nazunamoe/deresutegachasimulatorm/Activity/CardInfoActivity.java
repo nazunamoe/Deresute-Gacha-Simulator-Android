@@ -2,13 +2,9 @@ package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.appcompat.widget.Toolbar;
@@ -56,9 +52,6 @@ public class CardInfoActivity extends AppCompatActivity {
 
     TextView CardCenterSkill;
     TextView CardCenterSkillStatus;
-
-    int resourceId;
-    Resources resources;
 
 
     @Override
