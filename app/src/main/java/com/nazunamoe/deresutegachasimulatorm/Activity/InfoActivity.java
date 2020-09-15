@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.appcompat.widget.Toolbar;
-import android.view.MotionEvent;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
@@ -26,8 +26,7 @@ import java.util.ArrayList;
 public class InfoActivity extends AppCompatActivity {
     CustomListAdapter adapter;
 
-    ArrayList<Card> wholelist;
-    ArrayList<Card> usinglist;
+    ArrayList<Card> card_list;
 
     CheckBox cuteonlycheck;
     CheckBox coolonlycheck;
@@ -84,33 +83,11 @@ public class InfoActivity extends AppCompatActivity {
                 SharedPreferences addSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor prefsEditor = addSharedPrefs.edit();
                 Gson gson = new Gson();
-                String json = gson.toJson(usinglist.get(position));
+                String json = gson.toJson(card_list.get(position));
                 prefsEditor.putString("SelectedCard", json);
                 prefsEditor.commit();
                 intent = new Intent(getApplicationContext(), CardInfoActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        listView.setOnTouchListener(new ListView.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                int action = event.getAction();
-                switch (action) {
-                    case MotionEvent.ACTION_DOWN:
-                        // Disallow ScrollView to intercept touch events.
-                        v.getParent().requestDisallowInterceptTouchEvent(true);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        // Allow ScrollView to intercept touch events.
-                        v.getParent().requestDisallowInterceptTouchEvent(false);
-                        break;
-                }
-                // Handle ListView touch events.
-                v.onTouchEvent(event);
-                return true;
             }
         });
 
@@ -131,11 +108,7 @@ public class InfoActivity extends AppCompatActivity {
         cuteonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    cuteonly=true;
-                }else if(!isChecked){
-                    cuteonly=false;
-                }
+                cuteonly = check_program(cuteonly);
                 updateListbyType();
             }
         });
@@ -143,11 +116,7 @@ public class InfoActivity extends AppCompatActivity {
         coolonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    coolonly=true;
-                }else if(!isChecked){
-                    coolonly=false;
-                }
+                coolonly = check_program(coolonly);
                 updateListbyType();
             }
         });
@@ -155,11 +124,7 @@ public class InfoActivity extends AppCompatActivity {
         passiononlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    passiononly=true;
-                }else if(!isChecked){
-                    passiononly=false;
-                }
+                passiononly = check_program(passiononly);
                 updateListbyType();
             }
         });
@@ -167,11 +132,7 @@ public class InfoActivity extends AppCompatActivity {
         ssronlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    ssronly=true;
-                }else if(!isChecked){
-                    ssronly=false;
-                }
+                ssronly = check_program(ssronly);
                 updateListbyType();
             }
         });
@@ -179,11 +140,7 @@ public class InfoActivity extends AppCompatActivity {
         sronlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    sronly=true;
-                }else if(!isChecked){
-                    sronly=false;
-                }
+                sronly = check_program(sronly);
                 updateListbyType();
             }
         });
@@ -191,11 +148,7 @@ public class InfoActivity extends AppCompatActivity {
         ronlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    ronly=true;
-                }else if(!isChecked){
-                    ronly=false;
-                }
+                ronly = check_program(ronly);
                 updateListbyType();
             }
         });
@@ -203,11 +156,7 @@ public class InfoActivity extends AppCompatActivity {
         nonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    nonly=true;
-                }else if(!isChecked){
-                    nonly=false;
-                }
+                nonly = check_program(nonly);
                 updateListbyType();
             }
         });
@@ -215,11 +164,7 @@ public class InfoActivity extends AppCompatActivity {
         usualonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    usualonly=true;
-                }else if(!isChecked){
-                    usualonly=false;
-                }
+                usualonly = check_program(usualonly);
                 updateListbyType();
             }
         });
@@ -227,11 +172,7 @@ public class InfoActivity extends AppCompatActivity {
         limitedonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    limitedonly=true;
-                }else if(!isChecked){
-                    limitedonly=false;
-                }
+                limitedonly = check_program(limitedonly);
                 updateListbyType();
             }
         });
@@ -239,11 +180,7 @@ public class InfoActivity extends AppCompatActivity {
         fesonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    fesonly=true;
-                }else if(!isChecked){
-                    fesonly=false;
-                }
+                fesonly = check_program(fesonly);
                 updateListbyType();
             }
         });
@@ -251,11 +188,7 @@ public class InfoActivity extends AppCompatActivity {
         eventonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    eventonly=true;
-                }else if(!isChecked){
-                    eventonly=false;
-                }
+                eventonly = check_program(eventonly);
                 updateListbyType();
             }
         });
@@ -265,39 +198,42 @@ public class InfoActivity extends AppCompatActivity {
         Gson gson = new Gson();
 
         String json = appSharedPrefs.getString("CardList","");
-        wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-        usinglist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-        for(int i=0; i<wholelist.size(); i++){
-            adapter.addItem(wholelist.get(i));
+        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+        for(int i = 0; i< card_list.size(); i++){
+            adapter.addItem(card_list.get(i));
         }
+    }
+
+    private boolean check_program (boolean check_box) {
+        if(check_box){
+            check_box=false;
+        }else if(!check_box){
+            check_box=true;
+        }
+        return check_box;
     }
 
     private void updateListbyType(){
         adapter.clearItem();
-        usinglist.clear();
-        for(int i=0; i<wholelist.size(); i++){
-            if(cuteonly && wholelist.get(i).Type.equals("CUTE")){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
+        for(int i = 0; i< card_list.size(); i++){
+            if(cuteonly && card_list.get(i).Type.equals("CUTE")){
+                if(updateListbyRarity(card_list.get(i))){
+                    adapter.addItem(card_list.get(i));
                 }
             }
-            if(coolonly && wholelist.get(i).Type.equals("COOL")){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
+            if(coolonly && card_list.get(i).Type.equals("COOL")){
+                if(updateListbyRarity(card_list.get(i))){
+                    adapter.addItem(card_list.get(i));
                 }
             }
-            if(passiononly && wholelist.get(i).Type.equals("PASSION")){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
+            if(passiononly && card_list.get(i).Type.equals("PASSION")){
+                if(updateListbyRarity(card_list.get(i))){
+                    adapter.addItem(card_list.get(i));
                 }
             }
             if(!cuteonly && !coolonly && !passiononly){
-                if(updateListbyRarity(wholelist.get(i))){
-                    adapter.addItem(wholelist.get(i));
-                    usinglist.add(wholelist.get(i));
+                if(updateListbyRarity(card_list.get(i))){
+                    adapter.addItem(card_list.get(i));
                 }
             }
         }
