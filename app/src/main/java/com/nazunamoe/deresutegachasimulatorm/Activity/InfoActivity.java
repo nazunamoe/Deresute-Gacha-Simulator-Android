@@ -75,15 +75,20 @@ public class InfoActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
+        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        Gson gson = new Gson();
+        String json = appSharedPrefs.getString("CardList","");
+        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+
         listView.setOnItemClickListener(new ListView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent();
+                Intent intent;
                 SharedPreferences addSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 SharedPreferences.Editor prefsEditor = addSharedPrefs.edit();
                 Gson gson = new Gson();
-                String json = gson.toJson(card_list.get(position));
+                String json = gson.toJson(((Card)adapter.getItem(position)));
                 prefsEditor.putString("SelectedCard", json);
                 prefsEditor.commit();
                 intent = new Intent(getApplicationContext(), CardInfoActivity.class);
@@ -190,18 +195,11 @@ public class InfoActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 eventonly = check_program(eventonly);
                 updateListbyType();
+
             }
         });
 
-        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-
-        Gson gson = new Gson();
-
-        String json = appSharedPrefs.getString("CardList","");
-        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-        for(int i = 0; i< card_list.size(); i++){
-            adapter.addItem(card_list.get(i));
-        }
+        updateListbyType();
     }
 
     private boolean check_program (boolean check_box) {
@@ -215,6 +213,7 @@ public class InfoActivity extends AppCompatActivity {
 
     private void updateListbyType(){
         adapter.clearItem();
+
         for(int i = 0; i< card_list.size(); i++){
             if(cuteonly && card_list.get(i).Type.equals("CUTE")){
                 if(updateListbyRarity(card_list.get(i))){
