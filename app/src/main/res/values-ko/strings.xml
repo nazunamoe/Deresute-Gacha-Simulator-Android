@@ -32,4 +32,5 @@
     <string name="Limited">한정</string>
     <string name="FesCard">페스</string>
     <string name="Event">이벤트</string>
+    <string name="Reset_Button">초기화</string>
 </resources>

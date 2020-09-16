@@ -194,28 +194,15 @@
             tools:layout_editor_absoluteY="13dp">
 
             <Button
-                android:id="@+id/gacha1_gold"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="@string/Gold_gacha"
-                android:textSize="16sp"
-                card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/gacha1"
-                card:layout_constraintStart_toStartOf="parent"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
-
-            <Button
                 android:id="@+id/gacha1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:text="@string/TenGacha"
+                android:text="@string/OneGacha"
                 android:textSize="16sp"
                 card:layout_constraintBottom_toBottomOf="parent"
                 card:layout_constraintEnd_toStartOf="@+id/gacha10"
-                card:layout_constraintStart_toEndOf="@+id/gacha1_gold"
+                card:layout_constraintStart_toStartOf="parent"
                 card:layout_constraintTop_toTopOf="parent"
                 card:layout_constraintVertical_weight="1" />
 
@@ -224,11 +211,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:text="@string/OneGacha"
+                android:text="@string/TenGacha"
+                android:textSize="16sp"
+                card:layout_constraintBottom_toBottomOf="parent"
+                card:layout_constraintEnd_toStartOf="@+id/resetbutton"
+                card:layout_constraintStart_toEndOf="@+id/gacha1"
+                card:layout_constraintTop_toTopOf="parent"
+                card:layout_constraintVertical_weight="1" />
+
+            <Button
+                android:id="@+id/resetbutton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:text="@string/Reset_Button"
                 android:textSize="16sp"
                 card:layout_constraintBottom_toBottomOf="parent"
                 card:layout_constraintEnd_toEndOf="parent"
-                card:layout_constraintStart_toEndOf="@+id/gacha1"
+                card:layout_constraintStart_toEndOf="@+id/gacha10"
                 card:layout_constraintTop_toTopOf="parent"
                 card:layout_constraintVertical_weight="1" />
 

@@ -68,9 +68,9 @@ public class GachaFragment extends Fragment {
         final SharedPreferences pref = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
         gacha = new Gacha();
 
-        Button onegacha = (Button) view.findViewById(R.id.gacha10);
-        Button tengacha = (Button) view.findViewById(R.id.gacha1);
-        Button goldgacha = (Button) view.findViewById(R.id.gacha1_gold);
+        Button onegacha = (Button) view.findViewById(R.id.gacha1);
+        Button tengacha = (Button) view.findViewById(R.id.gacha10);
+        Button resetbutton = (Button) view.findViewById(R.id.resetbutton);
 
         adapter = new CustomListAdapter();
         ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
@@ -107,10 +107,20 @@ public class GachaFragment extends Fragment {
             }
         });
 
-        goldgacha.setOnClickListener(new View.OnClickListener(){
+        resetbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Gacha_Execute(pref, false);
+                if(usinglist != null) {
+                    usinglist.clear();
+                    adapter.clearItem();
+                    adapter.notifyDataSetChanged();
+
+                    UpdateGachaStatus(true);
+
+                    String json = gson.toJson(usinglist);
+                    prefsEditor.putString("GachaList", json);
+                    prefsEditor.commit();
+                }
             }
         });
 
@@ -128,7 +138,10 @@ public class GachaFragment extends Fragment {
     private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
         Card gacharesult;
 
-        if(usinglist != null) usinglist.clear();
+        if(usinglist != null) {
+            usinglist.clear();
+            UpdateGachaStatus(true);
+        }
         else usinglist = new ArrayList<>();
 
         adapter.clearItem();
@@ -146,7 +159,6 @@ public class GachaFragment extends Fragment {
         adapter.addItem(gacharesult);
         UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
-
         String json = gson.toJson(usinglist);
         prefsEditor.putString("GachaList", json);
         prefsEditor.commit();

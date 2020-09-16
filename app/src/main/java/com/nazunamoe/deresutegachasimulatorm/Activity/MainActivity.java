@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences.Editor editor = Shared.edit();
 
         Gson gson = new Gson();
+
         String CardListJson = gson.toJson(card_list);
         editor.putString("CardList",CardListJson);
 

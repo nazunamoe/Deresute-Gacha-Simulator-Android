@@ -6,6 +6,7 @@
     <string name="OneGacha">1 Gacha</string>
     <string name="TenGacha">10 Gacha</string>
     <string name="Gold_gacha">1 Gacha (60)</string>
+    <string name="Reset_Button">Clear</string>
     <string name="cardName">Name</string>
     <string name="cardType">Type</string>
     <string name="GachaSetting">Gacha Settings</string>
