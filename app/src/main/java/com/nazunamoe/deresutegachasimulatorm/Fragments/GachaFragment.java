@@ -116,7 +116,9 @@ public class GachaFragment extends Fragment {
 
         if(usinglist != null) {
             for(Card e : usinglist) {
+                cardRarityTypeCount(e);
                 adapter.addItem(e);
+                UpdateGachaStatus(false);
             }
         }
 
@@ -142,7 +144,7 @@ public class GachaFragment extends Fragment {
         }
         usinglist.add(gacharesult);
         adapter.addItem(gacharesult);
-        updateGachaStatus();
+        UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
 
         String json = gson.toJson(usinglist);
@@ -150,7 +152,8 @@ public class GachaFragment extends Fragment {
         prefsEditor.commit();
     }
 
-    private Card cardRarityTypeCount(Card card){
+    private void cardRarityTypeCount(Card card){
+
         switch(card.Rarity){
             case "SS RARE":{
                 SSRare++;
@@ -180,7 +183,6 @@ public class GachaFragment extends Fragment {
                 break;
             }
         }
-        return card;
     }
 
     private Card getRarityCard(int Rarity){
@@ -196,7 +198,16 @@ public class GachaFragment extends Fragment {
         return tempList.get(pos);
     }
 
-    private void updateGachaStatus(){
+    private void InitializeGachaStatus(){
+        SSRare = 0;
+        SRare = 0;
+        Rare = 0;
+        Cute = 0;
+        Cool = 0;
+        Passion = 0;
+    }
+
+    private void UpdateGachaStatus(Boolean initial) {
         SSRareNumber.setText(""+SSRare);
         SRareNumber.setText(""+SRare);
         RareNumber.setText(""+Rare);
@@ -205,12 +216,7 @@ public class GachaFragment extends Fragment {
         CoolNumber.setText(""+Cool);
         PassionNumber.setText(""+Passion);
 
-        SSRare = 0;
-        SRare = 0;
-        Rare = 0;
-        Cute = 0;
-        Cool = 0;
-        Passion = 0;
+        if(initial) InitializeGachaStatus();
     }
 
     @Override
