@@ -17,5 +17,5 @@
 
 ## 출처
 본 어플리케이션에서 사용되는 모든 이미지는 @summertriangle-dev님이 운영하는 사이트 <br>
-<url>https://starlight.kirara.ca</url>에서 가져오고 있으며, 서버에 최대한 부하를 적게 주기 위하여 Picasso를 이용한 이미지 캐싱을 구현해 사용합니다.<br>
+<url>https://starlight.kirara.ca</url>에서 가져오고 있으며, 서버에 최대한 부하를 적게 주기 위하여 Glide를 이용한 이미지 캐싱을 구현해 사용합니다.<br>
 또한 DB 파일은 실제 게임의 마스터 DB파일을 SQLite로 받아와 가공하여 사용하며, <br>모든 저작권은 [BANDAI NAMCO Entertainment Inc.](https://bandainamcoent.co.jp/)에 귀속됩니다

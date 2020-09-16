@@ -13,12 +13,11 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
-import com.squareup.picasso.OkHttp3Downloader;
-import com.squareup.picasso.Picasso;
 
 public class CardInfoActivity extends AppCompatActivity {
     SharedPreferences appSharedPrefs;
@@ -108,12 +107,7 @@ public class CardInfoActivity extends AppCompatActivity {
         CardCenterSkill = (TextView)findViewById(R.id.cardInfoCardCenterSkill);
         CardCenterSkillStatus = (TextView)findViewById(R.id.cardInfoCardCenterSkillStatus);
 
-        Picasso.Builder builder = new Picasso.Builder(this);
-        builder.downloader(new OkHttp3Downloader(this,Integer.MAX_VALUE));
-        Picasso built = builder.build();
-        built.setIndicatorsEnabled(true);
-        built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+card.No+".png").into(CardImage);
-        built.get().setLoggingEnabled(false);
+        Glide.with(this).load("https://hidamarirhodonite.kirara.ca/icon_card/"+card.No+".png").into(CardImage);
 
         CardName.setText(card.CharaName);
         CardRarity.setText(card.Rarity);

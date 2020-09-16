@@ -10,9 +10,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.nazunamoe.deresutegachasimulatorm.R;
-import com.squareup.picasso.OkHttp3Downloader;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -80,12 +79,7 @@ public class CustomListAdapter extends BaseAdapter {
 
         resources = convertView.getResources();
 
-        Picasso.Builder builder = new Picasso.Builder(context);
-        builder.downloader(new OkHttp3Downloader(context,Integer.MAX_VALUE));
-        Picasso built = builder.build();
-        built.setIndicatorsEnabled(true);
-        built.get().load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
-        built.get().setLoggingEnabled(false);
+        Glide.with(convertView).load("https://hidamarirhodonite.kirara.ca/icon_card/"+cardData.No+".png").into(type);
 
         return convertView;
     }
