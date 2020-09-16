@@ -24,8 +24,6 @@ import java.util.ArrayList;
 
 public class LimitedCardActivity extends AppCompatActivity {
     CustomListAdapter adapter;
-    private DatabaseHelper mDBHelper;
-    private SQLiteDatabase mDb;
     ListView listView;
     ArrayList<Card> wholelist;
     SharedPreferences appSharedPrefs;
@@ -52,6 +50,7 @@ public class LimitedCardActivity extends AppCompatActivity {
         for(int i=0; i<wholelist.size(); i++){
             adapter.addItem(wholelist.get(i));
         }
+
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
