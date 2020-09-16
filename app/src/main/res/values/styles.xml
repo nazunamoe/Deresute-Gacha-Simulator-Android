@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/accentstatus</item>
         <item name="colorPrimaryDark">@color/accentstatus</item>
         <item name="colorControlNormal">@android:color/black</item>
-        <item name="android:navigationBarColor">@color/navbarbg</item>
+        <item name="android:navigationBarColor">@color/accentstatus</item>
     </style>
 
     <style name="Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
