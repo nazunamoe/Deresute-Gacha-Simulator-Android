@@ -2,7 +2,6 @@ package com.nazunamoe.deresutegachasimulatorm.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.fragment.app.Fragment;
@@ -27,8 +26,8 @@ import java.util.Random;
 import static android.content.Context.MODE_PRIVATE;
 
 public class GachaFragment extends Fragment {
-    ArrayList<Card> wholelist = new ArrayList<Card>();
-    //ArrayList<Card> usinglist = new ArrayList<Card>(); // 나중에 카드 보관함 기능 추가하면 그때 사용 예정
+    ArrayList<Card> wholelist = new ArrayList<>();
+    ArrayList<Card> usinglist = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
     CustomListAdapter adapter;
@@ -86,9 +85,13 @@ public class GachaFragment extends Fragment {
         PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
 
         String json = appSharedPrefs.getString("CardList","");
-
         Type type = new TypeToken<ArrayList<Card>>(){}.getType();
+
         wholelist = gson.fromJson(json, type);
+        json = appSharedPrefs.getString("GachaList","");
+
+        usinglist = gson.fromJson(json, type);
+
 
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -110,26 +113,41 @@ public class GachaFragment extends Fragment {
                 Gacha_Execute(pref, false);
             }
         });
+
+        if(usinglist != null) {
+            for(Card e : usinglist) {
+                adapter.addItem(e);
+            }
+        }
+
         return view;
     }
 
     private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
         Card gacharesult;
+
+        if(usinglist != null) usinglist.clear();
+        else usinglist = new ArrayList<>();
+
         adapter.clearItem();
         if(ten) {
             for(int a=0; a<9; a++){
                 gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
-                //usinglist.add(gacharesult);
+                usinglist.add(gacharesult);
                 adapter.addItem(gacharesult);
             }
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),true));
         } else {
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
         }
-        //usinglist.add(gacharesult);
+        usinglist.add(gacharesult);
         adapter.addItem(gacharesult);
         updateGachaStatus();
         adapter.notifyDataSetChanged();
+
+        String json = gson.toJson(usinglist);
+        prefsEditor.putString("GachaList", json);
+        prefsEditor.commit();
     }
 
     private Card cardRarityTypeCount(Card card){
