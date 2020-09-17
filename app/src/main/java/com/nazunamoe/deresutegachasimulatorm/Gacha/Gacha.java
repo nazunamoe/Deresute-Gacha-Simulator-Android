@@ -1,6 +1,6 @@
 package com.nazunamoe.deresutegachasimulatorm.Gacha;
 
-        import java.util.Random;
+import java.util.Random;
 
 public class Gacha {
 
