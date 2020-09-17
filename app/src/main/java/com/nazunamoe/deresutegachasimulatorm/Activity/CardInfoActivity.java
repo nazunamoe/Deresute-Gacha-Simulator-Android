@@ -57,7 +57,7 @@ public class CardInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_card_info2);
+        setContentView(R.layout.activity_card_info_2);
 
         toolbar = findViewById(R.id.toolbar5);
 
