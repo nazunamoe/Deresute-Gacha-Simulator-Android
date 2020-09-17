@@ -37,9 +37,6 @@ public class LimitedCardActivity extends AppCompatActivity {
         adapter = new CustomListAdapter();
         listView = (ListView)findViewById(R.id.gachacardlist);
         toolbar = findViewById(R.id.toolbar4);
-        setSupportActionBar(toolbar);
-        toolbar.setTitleTextColor(Color.WHITE);
-        toolbar.setSubtitleTextColor(Color.WHITE);
 
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
