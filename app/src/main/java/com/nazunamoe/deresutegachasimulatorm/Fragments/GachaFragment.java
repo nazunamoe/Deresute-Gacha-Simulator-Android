@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
-import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
+import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 

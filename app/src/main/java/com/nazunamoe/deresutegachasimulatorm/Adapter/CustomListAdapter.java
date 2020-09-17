@@ -1,4 +1,4 @@
-package com.nazunamoe.deresutegachasimulatorm.Card;
+package com.nazunamoe.deresutegachasimulatorm.Adapter;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
