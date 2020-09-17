@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
     ArrayList<Card> card_list;
+    SharedPreferences Shared;
+    private static boolean firstRun = true;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
         ActionBar actionBar;
         actionBar = getSupportActionBar();
@@ -84,34 +88,38 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
-        mDBHelper = new DatabaseHelper(this);
-
-        try {
-            mDb = mDBHelper.getWritableDatabase();
-        } catch (SQLException mSQLException) {
-            throw mSQLException;
-        }
-        mDBHelper.openDataBase();
-
-        card_list = mDBHelper.getAllCardList();
-
-        SharedPreferences Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
-        SharedPreferences.Editor editor = Shared.edit();
-
-        Gson gson = new Gson();
-
-        String CardListJson = gson.toJson(card_list);
-        editor.putString("CardList",CardListJson);
-
-        editor.putFloat("SSRP",(float)3.0);
-        editor.putFloat("SRP",(float)12.0);
-        editor.commit();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.maincontents,new GachaFragment());
         fragmentTransaction.commit();
 
+        if(firstRun)
+        {
+            mDBHelper = new DatabaseHelper(this);
+
+            try {
+                mDb = mDBHelper.getWritableDatabase();
+            } catch (SQLException mSQLException) {
+                throw mSQLException;
+            }
+            mDBHelper.openDataBase();
+
+            card_list = mDBHelper.getAllCardList();
+
+            Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+            SharedPreferences.Editor editor = Shared.edit();
+
+            Gson gson = new Gson();
+
+            String CardListJson = gson.toJson(card_list);
+            editor.putString("CardList",CardListJson);
+
+            editor.putFloat("SSRP",(float)3.0);
+            editor.putFloat("SRP",(float)12.0);
+            editor.commit();
+        }
+        firstRun = false;
     }
 
     @Override
