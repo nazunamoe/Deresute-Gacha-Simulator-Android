@@ -4,8 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +14,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
-import com.nazunamoe.deresutegachasimulatorm.Card.CustomListAdapter;
-import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
+import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
