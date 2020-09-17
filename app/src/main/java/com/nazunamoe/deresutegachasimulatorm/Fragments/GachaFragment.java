@@ -92,6 +92,8 @@ public class GachaFragment extends Fragment {
 
         usinglist = gson.fromJson(json, type);
 
+        prefsEditor.putString("executed", json);
+        prefsEditor.commit();
 
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
