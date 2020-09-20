@@ -38,7 +38,7 @@ Android10以下のバージョンも対応予定です。
 ## 著作権
 本アプリケーションのイメージは @summertriangle-devのウェブサイト <br>
 <url>https://starlight.kirara.ca</url>から持って来ます, サーバーへの負荷を最大限少なくするため、Glideを利用したイメージキャッシングを実現して使用します。<br>
-DBファイルは実際ゲームのマスターDBファイルをSQLiteを使って加工して使用します、 <br>全ての著作権は [BANDAI NAMCO Entertainment Inc.](https://bandainamcoent.co.jp/)に帰属します。
+DBファイルは実際ゲームのマスターDBファイルをSQLiteを使って加工して使用します、 <br>DBファイルデータの著作権は全て [BANDAI NAMCO Entertainment Inc.](https://bandainamcoent.co.jp/)に帰属します。
 
 # Deresute Gacha Simulator
 
