@@ -15,7 +15,7 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
 
-        card:layout_constraintBottom_toTopOf="@+id/cardlistcard"
+        card:layout_constraintBottom_toTopOf="@+id/idolinfo1stbox"
         card:layout_constraintEnd_toStartOf="parent"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toTopOf="parent"
@@ -395,7 +395,6 @@
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:text="@string/Skill"
-                    android:textAlignment="center"
                     android:textSize="30sp" />
 
                 <LinearLayout
@@ -412,7 +411,6 @@
                         android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:textAlignment="center"
                         android:textSize="20sp" />
 
                     <TextView
@@ -421,8 +419,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:textAlignment="center" />
+                        android:gravity="center_vertical" />
 
                     <TextView
                         android:id="@+id/cardInfoCardCenterSkill"
@@ -431,7 +428,6 @@
                         android:layout_margin="4dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:textAlignment="center"
                         android:textSize="20sp" />
 
                     <TextView
@@ -440,8 +436,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="4dp"
                         android:layout_weight="3"
-                        android:gravity="center_vertical"
-                        android:textAlignment="center" />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
