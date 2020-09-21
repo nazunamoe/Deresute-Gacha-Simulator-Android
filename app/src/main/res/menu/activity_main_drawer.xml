@@ -11,7 +11,7 @@
                 android:id="@+id/limitedswitch"
                 android:title="@string/LimitedSwitch"
                 android:icon="@drawable/ic_card"
-                app:actionLayout="@layout/switch_item"
+                app:actionLayout="@layout/switch_design"
                 app:theme="@style/SwitchCompatTheme"
                 app:showAsAction="always" />
             <item

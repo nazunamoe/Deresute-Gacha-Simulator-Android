@@ -48,7 +48,7 @@ public class CustomListAdapter extends BaseAdapter {
 
         if(convertView == null){
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.card,parent,false);
+            convertView = inflater.inflate(R.layout.card_adapter,parent,false);
         }
 
         Name = (TextView) convertView.findViewById(R.id.cardName);

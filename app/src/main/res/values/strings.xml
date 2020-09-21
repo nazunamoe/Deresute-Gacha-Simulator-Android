@@ -52,6 +52,7 @@
     <string name="Version" translatable="false">Beta 7</string>
     <string name="Stat">Stat</string>
     <string name="Skill">Skill</string>
+    <string name="Center_Skill">Leader Skill</string>
     <string name="Vocal">Vocal</string>
     <string name="Dance">Dance</string>
     <string name="Visual">Visual</string>
