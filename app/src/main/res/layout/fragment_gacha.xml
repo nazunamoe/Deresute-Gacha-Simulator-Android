@@ -8,16 +8,46 @@
     android:weightSum="100"
     tools:context="com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment">
 
-    <include
+    <androidx.cardview.widget.CardView
         android:id="@+id/include4"
-        layout="@layout/gacha_result_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        card:layout_constraintBottom_toTopOf="@+id/gacharesultview"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:elevation="1dp"
+        card:layout_constraintHeight_percent="0.3"
+        card:cardCornerRadius="16dp"
+        card:cardElevation="2dp"
+        card:cardUseCompatPadding="true"
+        card:contentPadding="8dp"
+        card:layout_constraintBottom_toTopOf="@+id/gacharesultcardinfo"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toTopOf="parent"
-        card:layout_constraintVertical_chainStyle="packed" />
+        card:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/gachacardlist"
+            layout="@layout/gacha_result_list" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/gacharesultcardinfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="1dp"
+        card:cardCornerRadius="16dp"
+        card:cardElevation="2dp"
+        card:cardUseCompatPadding="true"
+        card:contentPadding="4dp"
+        card:layout_constraintBottom_toTopOf="@+id/gacharesultview"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintHeight_percent="0.5"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toBottomOf="@+id/include4"
+        card:layout_constraintVertical_chainStyle="packed"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/gacharesultview"
@@ -30,9 +60,9 @@
         card:contentPadding="4dp"
         card:layout_constraintBottom_toTopOf="@+id/cardView2"
         card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintHeight_percent="0.05"
+        card:layout_constraintHeight_percent="0.1"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/include4"
+        card:layout_constraintTop_toBottomOf="@+id/gacharesultcardinfo"
         card:layout_constraintVertical_chainStyle="packed">
 
         <TableLayout
@@ -175,6 +205,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="0dp"
+        card:layout_constraintHeight_percent="0.1"
         card:cardCornerRadius="16dp"
         card:cardElevation="2dp"
         card:cardUseCompatPadding="true"

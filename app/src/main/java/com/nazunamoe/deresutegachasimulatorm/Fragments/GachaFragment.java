@@ -4,7 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +21,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
@@ -30,7 +38,7 @@ public class GachaFragment extends Fragment {
     ArrayList<Card> usinglist = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
-    CustomListAdapter adapter;
+    GachaListAdapter adapter;
 
     int SSRare = 0;
     int SRare = 0;
@@ -72,9 +80,16 @@ public class GachaFragment extends Fragment {
         Button tengacha = (Button) view.findViewById(R.id.gacha10);
         Button resetbutton = (Button) view.findViewById(R.id.resetbutton);
 
-        adapter = new CustomListAdapter();
-        ListView listView = (ListView)view.findViewById(R.id.gachacardlist);
-        listView.setAdapter(adapter);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        this.getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
+
+        adapter = new GachaListAdapter(usinglist,width);
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.gachacardlist);
+        //recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
+        recyclerView.setAdapter(adapter);
+
 
         SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
         SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
@@ -152,6 +167,7 @@ public class GachaFragment extends Fragment {
                 gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
                 usinglist.add(gacharesult);
                 adapter.addItem(gacharesult);
+                adapter.notifyDataSetChanged();
             }
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),true));
         } else {

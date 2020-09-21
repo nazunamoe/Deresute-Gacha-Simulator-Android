@@ -32,7 +32,7 @@ public class LimitedCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_limited_card);
         adapter = new CustomListAdapter();
-        listView = (ListView)findViewById(R.id.gachacardlist);
+        listView = (ListView)findViewById(R.id.limitedCardList);
         toolbar = findViewById(R.id.toolbar4);
 
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
@@ -61,7 +61,6 @@ public class LimitedCardActivity extends AppCompatActivity {
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
                     alert_confirm.setMessage(getResources().getString(R.string.NoMoreLimited));
                 }
-                System.out.println(card2.CardName+"="+card2.Availablity);
                 wholelist.set(position,card2);
                 String json = gson.toJson(wholelist);
                 prefsEditor.putString("CardList", json);
