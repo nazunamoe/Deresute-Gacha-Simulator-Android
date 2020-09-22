@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.LinkedHashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "10075600.sqlite";
@@ -164,6 +164,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         for(int i=0; i<cursor.getCount(); i++){
             result.add(getResult(cursor.getInt(0)));
+            cursor.moveToNext();
+        }
+        return result;
+    }
+
+    public LinkedHashMap<Integer, Card> getAllCardMap() {
+        LinkedHashMap<Integer, Card> result = new LinkedHashMap<>();
+
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info ",null);
+        cursor.moveToFirst();
+        for(int i=0; i<cursor.getCount(); i++){
+            result.put(cursor.getInt(0) ,getResult(cursor.getInt(0)));
             cursor.moveToNext();
         }
         return result;

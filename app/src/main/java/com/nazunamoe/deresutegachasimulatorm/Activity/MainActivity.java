@@ -29,6 +29,7 @@ import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GachaFragment.OnFragmentInteractionListener {
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
     ArrayList<Card> card_list;
+    LinkedHashMap<Integer, Card> temp_cardlist;
     SharedPreferences Shared;
     private static boolean firstRun = true;
 
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity
             mDBHelper.openDataBase();
 
             card_list = mDBHelper.getAllCardList();
+            temp_cardlist = mDBHelper.getAllCardMap();
 
             Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
             SharedPreferences.Editor editor = Shared.edit();
@@ -114,6 +117,8 @@ public class MainActivity extends AppCompatActivity
 
             String CardListJson = gson.toJson(card_list);
             editor.putString("CardList",CardListJson);
+            CardListJson = gson.toJson(temp_cardlist);
+            editor.putString("TempCardList",CardListJson);
 
             editor.putFloat("SSRP",(float)3.0);
             editor.putFloat("SRP",(float)12.0);
