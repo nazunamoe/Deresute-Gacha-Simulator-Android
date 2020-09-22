@@ -56,8 +56,8 @@
     <string name="Vocal">Vocal</string>
     <string name="Dance">Dance</string>
     <string name="Visual">Visual</string>
-    <string name="Sum">Sum</string>
+    <string name="Sum">Total</string>
     <string name="Hp">Hp</string>
     <string name="CharaCVInfo">Chara/CV Info</string>
-
+    <string name="Max_Stat">Max Stat</string>
 </resources>

@@ -8,7 +8,6 @@ import android.preference.PreferenceManager;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.DisplayMetrics;
@@ -16,14 +15,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
-import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
@@ -57,6 +55,10 @@ public class GachaFragment extends Fragment {
     TextView PassionNumber;
     View view;
 
+    CardView CardInfoView;
+
+    Switch Max_Stat;
+
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
     Gson gson;
@@ -84,12 +86,13 @@ public class GachaFragment extends Fragment {
         this.getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
 
-        adapter = new GachaListAdapter(usinglist,width);
+        CardInfoView = (CardView)view.findViewById(R.id.gacharesultcardinfo);
+        Max_Stat = view.findViewById(R.id.Max_Stat);
+
+        adapter = new GachaListAdapter(usinglist,width, CardInfoView, Max_Stat.isChecked());
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.gachacardlist);
-        //recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
-
 
         SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
         SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
