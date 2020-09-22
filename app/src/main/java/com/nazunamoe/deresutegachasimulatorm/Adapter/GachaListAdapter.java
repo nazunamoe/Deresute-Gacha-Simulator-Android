@@ -57,24 +57,6 @@ public class GachaListAdapter extends RecyclerView.Adapter<GachaListAdapter.View
 
     public GachaListAdapter(ArrayList<Card> input, int width, CardView input_test2, Boolean max) {
         this.CardInfoView = input_test2;
-        CardInfo_CardImage = CardInfoView.findViewById(R.id.Gacha_CardInfo_Image);
-
-        CardSubName = CardInfoView.findViewById(R.id.Gacha_CardInfo_SubName);
-        CardName = CardInfoView.findViewById(R.id.Gacha_CardInfo_Name);
-        CardRarity = CardInfoView.findViewById(R.id.Gacha_CardInfo_Rarity);
-
-        CardSkillTitle = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Title);
-        CardSkillSummary = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Summary);
-
-        CardCenterSkillTitle = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Center_Skill_Title);
-        CardCenterSkillSummary = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Center_Skill_Summary);
-
-        CardVocal = CardInfoView.findViewById(R.id.Gacha_CardInfo_Vocal);
-        CardDance = CardInfoView.findViewById(R.id.Gacha_CardInfo_Dance);
-        CardVisual = CardInfoView.findViewById(R.id.Gacha_CardInfo_Visual);
-        CardTotal = CardInfoView.findViewById(R.id.Gacha_CardInfo_Total);
-
-        Max_Stat = CardInfoView.findViewById(R.id.Max_Stat);
 
         Max_Stat_Status = max;
 
@@ -96,45 +78,72 @@ public class GachaListAdapter extends RecyclerView.Adapter<GachaListAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
+        CardInfo_CardImage = CardInfoView.findViewById(R.id.Gacha_CardInfo_Image);
+
+        CardSubName = CardInfoView.findViewById(R.id.Gacha_CardInfo_SubName);
+        CardName = CardInfoView.findViewById(R.id.Gacha_CardInfo_Name);
+        CardRarity = CardInfoView.findViewById(R.id.Gacha_CardInfo_Rarity);
+
+        CardSkillTitle = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Title);
+        CardSkillSummary = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Summary);
+
+        CardCenterSkillTitle = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Center_Skill_Title);
+        CardCenterSkillSummary = CardInfoView.findViewById(R.id.Gacha_CardInfo_Skill_Center_Skill_Summary);
+
+        CardVocal = CardInfoView.findViewById(R.id.Gacha_CardInfo_Vocal);
+        CardDance = CardInfoView.findViewById(R.id.Gacha_CardInfo_Dance);
+        CardVisual = CardInfoView.findViewById(R.id.Gacha_CardInfo_Visual);
+        CardTotal = CardInfoView.findViewById(R.id.Gacha_CardInfo_Total);
+
+        Max_Stat = CardInfoView.findViewById(R.id.Max_Stat);
+
+        System.out.println(list.get(position).CardName);
+
         Glide.with(holder.itemView.getContext())
                 .load("https://hidamarirhodonite.kirara.ca/icon_card/"+list.get(position).No+".png")
                 .override(size)
                 .into(holder.type);
 
+        updateInfo(CardInfoView, position);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Glide.with(v.getContext())
-                        .load("https://hidamarirhodonite.kirara.ca/icon_card/"+list.get(position).No+".png")
-                        .into(CardInfo_CardImage);
-
-                if(list.get(position).RarityInt >= 5) {
-                    CardSubName.setText(list.get(position).CardName.split("］")[0]+"］");
-                    CardName.setText(list.get(position).CardName.split("］")[1]);
-                } else {
-                    CardSubName.setText("");
-                    CardName.setText(list.get(position).CardName);
-                }
-
-                CardRarity.setText(list.get(position).Rarity);
-
-                CardSkillTitle.setText(list.get(position).SkillName);
-                CardSkillSummary.setText(list.get(position).SKillExplain);
-
-                CardCenterSkillTitle.setText(list.get(position).CenterSkillName);
-                CardCenterSkillSummary.setText(list.get(position).CenterSkillExplain);
-
-                updateStat(position, Max_Stat_Status);
-
-                Max_Stat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        updateStat(position, isChecked);
-                    }
-                });
+                updateInfo(v, position);
             }
         });
 
+    }
+
+    private void updateInfo(View v, final int position) {
+        Glide.with(v.getContext())
+                .load("https://hidamarirhodonite.kirara.ca/icon_card/"+list.get(position).No+".png")
+                .into(CardInfo_CardImage);
+
+        if(list.get(position).RarityInt >= 5) {
+            CardSubName.setText(list.get(position).CardName.split("］")[0]+"］");
+            CardName.setText(list.get(position).CardName.split("］")[1]);
+        } else {
+            CardSubName.setText("");
+            CardName.setText(list.get(position).CardName);
+        }
+
+        CardRarity.setText(list.get(position).Rarity);
+
+        CardSkillTitle.setText(list.get(position).SkillName);
+        CardSkillSummary.setText(list.get(position).SKillExplain);
+
+        CardCenterSkillTitle.setText(list.get(position).CenterSkillName);
+        CardCenterSkillSummary.setText(list.get(position).CenterSkillExplain);
+
+        updateStat(position, Max_Stat_Status);
+
+        Max_Stat.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateStat(position, isChecked);
+            }
+        });
     }
 
     private void updateStat(int position, boolean input_case) {
