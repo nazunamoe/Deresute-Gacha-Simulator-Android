@@ -27,6 +27,8 @@ import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -34,6 +36,9 @@ import static android.content.Context.MODE_PRIVATE;
 public class GachaFragment extends Fragment {
     ArrayList<Card> wholelist = new ArrayList<>();
     ArrayList<Card> usinglist = new ArrayList<>();
+
+    LinkedHashMap<Integer, Card> temp_wholelist = new LinkedHashMap<>();
+    LinkedHashMap<Integer, Card> temp_usinglist = new LinkedHashMap<>();
 
     private OnFragmentInteractionListener mListener;
     GachaListAdapter adapter;
@@ -58,6 +63,7 @@ public class GachaFragment extends Fragment {
     CardView CardInfoView;
 
     Switch Max_Stat;
+    Switch Training;
 
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
@@ -88,11 +94,7 @@ public class GachaFragment extends Fragment {
 
         CardInfoView = (CardView)view.findViewById(R.id.gacharesultcardinfo);
         Max_Stat = view.findViewById(R.id.Max_Stat);
-
-        adapter = new GachaListAdapter(usinglist,width, CardInfoView, Max_Stat.isChecked());
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.gachacardlist);
-        recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
-        recyclerView.setAdapter(adapter);
+        Training = view.findViewById(R.id.Training);
 
         SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
         SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
@@ -104,11 +106,19 @@ public class GachaFragment extends Fragment {
 
         String json = appSharedPrefs.getString("CardList","");
         Type type = new TypeToken<ArrayList<Card>>(){}.getType();
-
         wholelist = gson.fromJson(json, type);
-        json = appSharedPrefs.getString("GachaList","");
 
+        json = appSharedPrefs.getString("GachaList","");
         usinglist = gson.fromJson(json, type);
+
+        json = appSharedPrefs.getString("TempCardList","");
+        type = new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType();
+        temp_wholelist  = gson.fromJson(json, type);
+
+        adapter = new GachaListAdapter(temp_wholelist, new ArrayList<>(temp_usinglist.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.gachacardlist);
+        recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
+        recyclerView.setAdapter(adapter);
 
         prefsEditor.putString("executed", json);
         prefsEditor.commit();
@@ -139,6 +149,8 @@ public class GachaFragment extends Fragment {
 
                     String json = gson.toJson(usinglist);
                     prefsEditor.putString("GachaList", json);
+                    json = gson.toJson(temp_usinglist);
+                    prefsEditor.putString("temp_GachaList", json);
                     prefsEditor.commit();
                 }
             }
@@ -160,6 +172,7 @@ public class GachaFragment extends Fragment {
 
         if(usinglist != null) {
             usinglist.clear();
+            temp_usinglist.clear();
             UpdateGachaStatus(true);
         }
         else usinglist = new ArrayList<>();
@@ -169,6 +182,7 @@ public class GachaFragment extends Fragment {
             for(int a=0; a<9; a++){
                 gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
                 usinglist.add(gacharesult);
+                temp_usinglist.put(gacharesult.No, gacharesult);
                 adapter.addItem(gacharesult);
                 adapter.notifyDataSetChanged();
             }
@@ -177,11 +191,14 @@ public class GachaFragment extends Fragment {
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
         }
         usinglist.add(gacharesult);
+        temp_usinglist.put(gacharesult.No, gacharesult);
         adapter.addItem(gacharesult);
         UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
         String json = gson.toJson(usinglist);
         prefsEditor.putString("GachaList", json);
+        json = gson.toJson(temp_usinglist);
+        prefsEditor.putString("temp_GachaList", json);
         prefsEditor.commit();
     }
 

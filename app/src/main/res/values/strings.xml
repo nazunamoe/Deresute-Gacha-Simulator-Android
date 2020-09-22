@@ -60,4 +60,5 @@
     <string name="Hp">Hp</string>
     <string name="CharaCVInfo">Chara/CV Info</string>
     <string name="Max_Stat">Max Stat</string>
+    <string name="Trained">Trained</string>
 </resources>

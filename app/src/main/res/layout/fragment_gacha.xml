@@ -17,7 +17,7 @@
         android:elevation="1dp"
         card:layout_constraintHeight_percent="0.3"
         card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
+        card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="8dp"
         card:layout_constraintBottom_toTopOf="@+id/gacharesultcardinfo"
@@ -38,9 +38,9 @@
         android:layout_height="0dp"
         android:elevation="1dp"
         card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
+        card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
-        card:contentPadding="4dp"
+        card:contentPadding="0dp"
         card:layout_constraintBottom_toTopOf="@+id/gacharesultview"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHeight_percent="0.5"
@@ -49,18 +49,21 @@
         card:layout_constraintVertical_chainStyle="packed">
 
         <LinearLayout
+            android:adjustViewBounds="true"
+            android:id="@+id/gacharesultcardlinearlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="4dp"
-            android:weightSum="10">
+            android:padding="0dp"
+            android:weightSum="10"
+            android:scaleType="fitXY">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.5"
                 android:orientation="horizontal"
-                android:padding="2dp"
+                android:padding="4dp"
                 android:weightSum="10">
 
                 <ImageButton
@@ -68,6 +71,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="8"
+                    android:padding="4dp"
                     android:background="@color/statusbarbg"
                     android:scaleType="fitCenter" />
 
@@ -253,7 +257,15 @@
                             android:id="@+id/Max_Stat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/Max_Stat" />
+                            android:text="@string/Max_Stat"
+                            android:layout_weight="1"/>
+
+                        <Switch
+                            android:id="@+id/Training"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Trained"
+                            android:layout_weight="1"/>
 
                     </LinearLayout>
 
@@ -346,7 +358,7 @@
         android:layout_height="wrap_content"
         android:elevation="1dp"
         card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
+        card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="4dp"
         card:layout_constraintBottom_toTopOf="@+id/cardView2"
@@ -477,28 +489,13 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:elevation="0dp"
-        card:cardCornerRadius="16dp"
-        card:cardElevation="1dp"
-        card:cardUseCompatPadding="true"
-        card:contentPadding="0dp"
-        card:layout_constraintBottom_toTopOf="@+id/cardView2"
-        card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/gacharesultview"
-        card:layout_constraintVertical_chainStyle="packed"/>
-
-    <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="0dp"
         card:layout_constraintHeight_percent="0.1"
         card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
+        card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="0dp"
         card:layout_constraintBottom_toBottomOf="parent"
