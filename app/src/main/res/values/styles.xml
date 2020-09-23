@@ -5,8 +5,8 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="colorPrimary">@color/accentstatus</item>
         <item name="colorPrimaryDark">@color/accentstatus</item>
-        <item name="colorControlNormal">@android:color/black</item>
         <item name="android:navigationBarColor">@color/accentstatus</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="Dialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
@@ -36,6 +36,4 @@
     <style name="text" parent="@style/Base.TextAppearance.AppCompat.Title">
         <item name="android:textSize">15sp</item>
     </style>
-
-
 </resources>
