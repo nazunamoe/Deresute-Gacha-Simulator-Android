@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,8 +28,9 @@ import com.nazunamoe.deresutegachasimulatorm.R;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -237,16 +237,19 @@ public class GachaFragment extends Fragment {
     }
 
     private Card getRarityCard(int Rarity){
-        ArrayList<Card> tempList = new ArrayList<Card>();
-        for(int a=0; a<wholelist.size(); a++){
-            if((wholelist.get(a).RarityInt == Rarity) && wholelist.get(a).Availablity && !wholelist.get(a).EventCard){
-                tempList.add(wholelist.get(a));
+        Random random = new Random();
+        Set<Map.Entry<Integer, Card>> mapSet = temp_wholelist.entrySet();
+        Map.Entry<Integer, Card> elementAt;
+        int pos;
+
+        while(true) {
+            pos = random.nextInt(temp_wholelist.size());
+            elementAt = (Map.Entry<Integer, Card>) mapSet.toArray()[pos];
+            if((elementAt.getValue().RarityInt == Rarity) && elementAt.getValue().Availablity && !elementAt.getValue().EventCard){
+                System.out.println(elementAt.getValue().CardName);
+                return elementAt.getValue();
             }
         }
-        Random random = new Random();
-        int pos = random.nextInt(tempList.size());
-        cardRarityTypeCount(tempList.get(pos));
-        return tempList.get(pos);
     }
 
     private void InitializeGachaStatus(){
