@@ -33,4 +33,15 @@
     <string name="FesCard">페스</string>
     <string name="Event">이벤트</string>
     <string name="Reset_Button">초기화</string>
+    <string name="MoreLimited">이 카드는 가챠에서 나오지 않게 됩니다.</string>
+    <string name="NoMoreLimited">이 카드는 가챠에서 나오게 됩니다.</string>
+    <string name="Stat">스테이터스</string>
+    <string name="Skill">특기</string>
+    <string name="Center_Skill">센터효과</string>
+    <string name="Vocal">보컬</string>
+    <string name="Dance">댄스</string>
+    <string name="Visual">비쥬얼</string>
+    <string name="Sum">총합</string>
+    <string name="Hp">HP</string>
+    <string name="CharaCVInfo">Chara/CV Info</string>
 </resources>
