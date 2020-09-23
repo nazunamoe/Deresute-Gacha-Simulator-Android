@@ -15,22 +15,26 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:elevation="1dp"
-        card:layout_constraintHeight_percent="0.3"
+        card:layout_constraintHeight_percent="0.27"
         card:cardCornerRadius="16dp"
         card:cardElevation="1dp"
-        card:cardUseCompatPadding="true"
         card:contentPadding="8dp"
+        card:cardUseCompatPadding="true"
         card:layout_constraintBottom_toTopOf="@+id/gacharesultcardinfo"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toTopOf="parent">
 
-        <include
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gachacardlist"
-            layout="@layout/gacha_result_list" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:clipToPadding="false"
+            android:scrollbars="none">
+        </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/gacharesultcardinfo"
@@ -43,7 +47,7 @@
         card:contentPadding="0dp"
         card:layout_constraintBottom_toTopOf="@+id/gacharesultview"
         card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintHeight_percent="0.5"
+        card:layout_constraintHeight_percent="0.53"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toBottomOf="@+id/include4"
         card:layout_constraintVertical_chainStyle="packed">
