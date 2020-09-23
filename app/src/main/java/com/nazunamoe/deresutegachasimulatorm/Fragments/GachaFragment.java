@@ -35,11 +35,10 @@ import java.util.Set;
 import static android.content.Context.MODE_PRIVATE;
 
 public class GachaFragment extends Fragment {
-    ArrayList<Card> wholelist = new ArrayList<>();
-    ArrayList<Card> usinglist = new ArrayList<>();
 
-    LinkedHashMap<Integer, Card> temp_wholelist = new LinkedHashMap<>();
-    LinkedHashMap<Integer, Card> temp_usinglist = new LinkedHashMap<>();
+    LinkedHashMap<Integer, Card> Whole_CardList = new LinkedHashMap<>();
+    LinkedHashMap<Integer, Card> Gacha_CardList = new LinkedHashMap<>();
+    Set<Map.Entry<Integer, Card>> Gacha_CardList_MapSet;
 
     private OnFragmentInteractionListener mListener;
     GachaListAdapter adapter;
@@ -69,6 +68,9 @@ public class GachaFragment extends Fragment {
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
     Gson gson;
+
+    String json;
+    Type type;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,18 +107,12 @@ public class GachaFragment extends Fragment {
         CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
         PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
 
-        String json = appSharedPrefs.getString("CardList","");
-        Type type = new TypeToken<ArrayList<Card>>(){}.getType();
-        wholelist = gson.fromJson(json, type);
-
-        json = appSharedPrefs.getString("GachaList","");
-        usinglist = gson.fromJson(json, type);
-
         json = appSharedPrefs.getString("TempCardList","");
         type = new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType();
-        temp_wholelist  = gson.fromJson(json, type);
+        Whole_CardList = gson.fromJson(json, type);
+        Gacha_CardList_MapSet = Gacha_CardList.entrySet();
 
-        adapter = new GachaListAdapter(temp_wholelist, new ArrayList<>(temp_usinglist.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+        adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.gachacardlist);
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
@@ -141,26 +137,22 @@ public class GachaFragment extends Fragment {
         resetbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                if(usinglist != null) {
-                    usinglist.clear();
+                if(Gacha_CardList != null) {
+                    Gacha_CardList.clear();
                     adapter.clearItem();
                     adapter.notifyDataSetChanged();
-
                     UpdateGachaStatus(true);
-
-                    String json = gson.toJson(usinglist);
-                    prefsEditor.putString("GachaList", json);
-                    json = gson.toJson(temp_usinglist);
+                    json = gson.toJson(Gacha_CardList);
                     prefsEditor.putString("temp_GachaList", json);
                     prefsEditor.commit();
                 }
             }
         });
 
-        if(usinglist != null) {
-            for(Card e : usinglist) {
-                cardRarityTypeCount(e);
-                adapter.addItem(e);
+        if(Gacha_CardList != null) {
+            for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
+                cardRarityTypeCount(e.getValue());
+                adapter.addItem(e.getValue());
                 UpdateGachaStatus(false);
             }
         }
@@ -171,19 +163,18 @@ public class GachaFragment extends Fragment {
     private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
         Card gacharesult;
 
-        if(usinglist != null) {
-            usinglist.clear();
-            temp_usinglist.clear();
+        if(Gacha_CardList != null) {
+            Gacha_CardList.clear();
+            Gacha_CardList.clear();
             UpdateGachaStatus(true);
         }
-        else usinglist = new ArrayList<>();
+        else Gacha_CardList = new LinkedHashMap<>();
 
         adapter.clearItem();
         if(ten) {
             for(int a=0; a<9; a++){
                 gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
-                usinglist.add(gacharesult);
-                temp_usinglist.put(gacharesult.No, gacharesult);
+                Gacha_CardList.put(gacharesult.No, gacharesult);
                 adapter.addItem(gacharesult);
                 adapter.notifyDataSetChanged();
             }
@@ -191,14 +182,11 @@ public class GachaFragment extends Fragment {
         } else {
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
         }
-        usinglist.add(gacharesult);
-        temp_usinglist.put(gacharesult.No, gacharesult);
+        Gacha_CardList.put(gacharesult.No, gacharesult);
         adapter.addItem(gacharesult);
         UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
-        String json = gson.toJson(usinglist);
-        prefsEditor.putString("GachaList", json);
-        json = gson.toJson(temp_usinglist);
+        json = gson.toJson(Gacha_CardList);
         prefsEditor.putString("temp_GachaList", json);
         prefsEditor.commit();
     }
@@ -238,12 +226,12 @@ public class GachaFragment extends Fragment {
 
     private Card getRarityCard(int Rarity){
         Random random = new Random();
-        Set<Map.Entry<Integer, Card>> mapSet = temp_wholelist.entrySet();
+        Set<Map.Entry<Integer, Card>> mapSet = Whole_CardList.entrySet();
         Map.Entry<Integer, Card> elementAt;
         int pos;
 
         while(true) {
-            pos = random.nextInt(temp_wholelist.size());
+            pos = random.nextInt(Whole_CardList.size());
             elementAt = (Map.Entry<Integer, Card>) mapSet.toArray()[pos];
             if((elementAt.getValue().RarityInt == Rarity) && elementAt.getValue().Availablity && !elementAt.getValue().EventCard){
                 System.out.println(elementAt.getValue().CardName);
