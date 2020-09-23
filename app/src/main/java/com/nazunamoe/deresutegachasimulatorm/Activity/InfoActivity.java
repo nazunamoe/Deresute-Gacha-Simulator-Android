@@ -1,32 +1,35 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.cardview.widget.CardView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.View;
-import android.widget.AdapterView;
+import android.util.DisplayMetrics;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nazunamoe.deresutegachasimulatorm.Adapter.InfoListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
-import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class InfoActivity extends AppCompatActivity {
-    CustomListAdapter adapter;
+    InfoListAdapter adapter;
 
-    ArrayList<Card> card_list;
+    LinkedHashMap<Integer, Card> card_list;
+    Set<Map.Entry<Integer, Card>> card_list_mapset;
 
     CheckBox cuteonlycheck;
     CheckBox coolonlycheck;
@@ -58,7 +61,7 @@ public class InfoActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     LinearLayout settings;
-    ListView listView;
+    RecyclerView recyclerView;
     CardView listViewCard;
 
     @Override
@@ -66,35 +69,25 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_list);
 
-        adapter = new CustomListAdapter();
-        toolbar = findViewById(R.id.toolbar3);
-        setSupportActionBar(toolbar);
-        listView = (ListView)findViewById(R.id.CardList);
-        listViewCard = (CardView)findViewById(R.id.cardlistcard);
-        settings = (LinearLayout)findViewById(R.id.settings);
-
-        listView.setAdapter(adapter);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = displayMetrics.widthPixels;
 
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
-        String json = appSharedPrefs.getString("CardList","");
-        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+        String json = appSharedPrefs.getString("TempCardList","");
+        card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
+        card_list_mapset = card_list.entrySet();
 
-        listView.setOnItemClickListener(new ListView.OnItemClickListener(){
+        adapter = new InfoListAdapter(card_list, new ArrayList<>(card_list.keySet()), width);
+        toolbar = findViewById(R.id.toolbar3);
+        setSupportActionBar(toolbar);
+        recyclerView = (RecyclerView) findViewById(R.id.CardList);
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 5, RecyclerView.VERTICAL, false));
+        listViewCard = (CardView)findViewById(R.id.cardlistcard);
+        settings = (LinearLayout)findViewById(R.id.settings);
 
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent;
-                SharedPreferences addSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                SharedPreferences.Editor prefsEditor = addSharedPrefs.edit();
-                Gson gson = new Gson();
-                String json = gson.toJson(((Card)adapter.getItem(position)));
-                prefsEditor.putString("SelectedCard", json);
-                prefsEditor.commit();
-                intent = new Intent(getApplicationContext(), CardInfoActivity.class);
-                startActivity(intent);
-            }
-        });
+        recyclerView.setAdapter(adapter);
 
         cuteonlycheck = (CheckBox)findViewById(R.id.CuteOnly);
         coolonlycheck = (CheckBox)findViewById(R.id.CoolOnly);
@@ -213,28 +206,31 @@ public class InfoActivity extends AppCompatActivity {
 
     private void updateListbyType(){
         adapter.clearItem();
-
-        for(int i = 0; i< card_list.size(); i++){
-            if(cuteonly && card_list.get(i).Type.equals("CUTE")){
-                if(updateListbyRarity(card_list.get(i))){
-                    adapter.addItem(card_list.get(i));
+        Map.Entry<Integer, Card> elementAt;
+        for(int i = 0; i< card_list_mapset.size(); i++){
+            elementAt = (Map.Entry<Integer, Card>) card_list_mapset.toArray()[i];
+            //if(elementAt.getValue().No % 2 == 1) {
+                if(cuteonly && elementAt.getValue().Type.equals("CUTE")){
+                    if(updateListbyRarity(elementAt.getValue())){
+                        adapter.addItem(elementAt.getValue());
+                    }
                 }
-            }
-            if(coolonly && card_list.get(i).Type.equals("COOL")){
-                if(updateListbyRarity(card_list.get(i))){
-                    adapter.addItem(card_list.get(i));
+                if(coolonly && elementAt.getValue().Type.equals("COOL")){
+                    if(updateListbyRarity(elementAt.getValue())){
+                        adapter.addItem(elementAt.getValue());
+                    }
                 }
-            }
-            if(passiononly && card_list.get(i).Type.equals("PASSION")){
-                if(updateListbyRarity(card_list.get(i))){
-                    adapter.addItem(card_list.get(i));
+                if(passiononly && elementAt.getValue().Type.equals("PASSION")){
+                    if(updateListbyRarity(elementAt.getValue())){
+                        adapter.addItem(elementAt.getValue());
+                    }
                 }
-            }
-            if(!cuteonly && !coolonly && !passiononly){
-                if(updateListbyRarity(card_list.get(i))){
-                    adapter.addItem(card_list.get(i));
+                if(!cuteonly && !coolonly && !passiononly){
+                    if(updateListbyRarity(elementAt.getValue())){
+                        adapter.addItem(elementAt.getValue());
+                    }
                 }
-            }
+            //}
         }
         adapter.notifyDataSetChanged();
     }
