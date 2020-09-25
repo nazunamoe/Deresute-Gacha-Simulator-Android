@@ -110,6 +110,8 @@ public class GachaFragment extends Fragment {
         json = appSharedPrefs.getString("TempCardList","");
         type = new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType();
         Whole_CardList = gson.fromJson(json, type);
+        json = appSharedPrefs.getString("Gacha_CardList","");
+        Gacha_CardList = gson.fromJson(json, type);
         Gacha_CardList_MapSet = Gacha_CardList.entrySet();
 
         adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
@@ -143,7 +145,7 @@ public class GachaFragment extends Fragment {
                     adapter.notifyDataSetChanged();
                     UpdateGachaStatus(true);
                     json = gson.toJson(Gacha_CardList);
-                    prefsEditor.putString("temp_GachaList", json);
+                    prefsEditor.putString("Gacha_CardList", json);
                     prefsEditor.commit();
                 }
             }
@@ -164,7 +166,6 @@ public class GachaFragment extends Fragment {
         Card gacharesult;
 
         if(Gacha_CardList != null) {
-            Gacha_CardList.clear();
             Gacha_CardList.clear();
             UpdateGachaStatus(true);
         }
@@ -189,7 +190,7 @@ public class GachaFragment extends Fragment {
         UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
         json = gson.toJson(Gacha_CardList);
-        prefsEditor.putString("temp_GachaList", json);
+        prefsEditor.putString("Gacha_CardList", json);
         prefsEditor.commit();
     }
 
@@ -251,7 +252,6 @@ public class GachaFragment extends Fragment {
     }
 
     private void UpdateGachaStatus(Boolean initial) {
-        System.out.println(Rare);
         SSRareNumber.setText(""+SSRare);
         SRareNumber.setText(""+SRare);
         RareNumber.setText(""+Rare);

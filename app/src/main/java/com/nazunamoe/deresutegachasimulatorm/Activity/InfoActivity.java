@@ -82,26 +82,26 @@ public class InfoActivity extends AppCompatActivity {
         adapter = new InfoListAdapter(card_list, new ArrayList<>(card_list.keySet()), width);
         toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
-        recyclerView = (RecyclerView) findViewById(R.id.CardList);
+        recyclerView = findViewById(R.id.CardList);
         recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 5, RecyclerView.VERTICAL, false));
-        listViewCard = (CardView)findViewById(R.id.cardlistcard);
-        settings = (LinearLayout)findViewById(R.id.settings);
+        listViewCard = findViewById(R.id.cardlistcard);
+        settings = findViewById(R.id.settings);
 
         recyclerView.setAdapter(adapter);
 
-        cuteonlycheck = (CheckBox)findViewById(R.id.CuteOnly);
-        coolonlycheck = (CheckBox)findViewById(R.id.CoolOnly);
-        passiononlycheck = (CheckBox)findViewById(R.id.PassionOnly);
+        cuteonlycheck = findViewById(R.id.CuteOnly);
+        coolonlycheck = findViewById(R.id.CoolOnly);
+        passiononlycheck = findViewById(R.id.PassionOnly);
 
-        ssronlycheck = (CheckBox)findViewById(R.id.SSROnly);
-        sronlycheck = (CheckBox)findViewById(R.id.SROnly);
-        ronlycheck = (CheckBox)findViewById(R.id.ROnly);
-        nonlycheck = (CheckBox)findViewById(R.id.NormalOnly);
+        ssronlycheck = findViewById(R.id.SSROnly);
+        sronlycheck = findViewById(R.id.SROnly);
+        ronlycheck = findViewById(R.id.ROnly);
+        nonlycheck = findViewById(R.id.NormalOnly);
 
-        usualonlycheck = (CheckBox)findViewById(R.id.UsualOnly);
-        limitedonlycheck = (CheckBox)findViewById(R.id.LimitedOnly);
-        fesonlycheck = (CheckBox)findViewById(R.id.FesOnly);
-        eventonlycheck = (CheckBox)findViewById(R.id.EventOnly);
+        usualonlycheck = findViewById(R.id.UsualOnly);
+        limitedonlycheck = findViewById(R.id.LimitedOnly);
+        fesonlycheck = findViewById(R.id.FesOnly);
+        eventonlycheck = findViewById(R.id.EventOnly);
 
         cuteonlycheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
