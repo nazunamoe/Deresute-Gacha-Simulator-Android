@@ -77,7 +77,7 @@ public class GachaListAdapter extends RecyclerView.Adapter<GachaListAdapter.View
         this.Max_Stat_Status = max;
         this.Training_Status = training;
 
-        this.size = (int)Math.ceil((width / 5) * 0.852);
+        this.size = (int)Math.ceil((width / 5) * 0.85);
 
         this.whole_list = whole_list;
         this.list = input;

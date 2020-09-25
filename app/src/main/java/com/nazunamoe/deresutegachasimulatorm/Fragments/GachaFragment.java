@@ -87,25 +87,25 @@ public class GachaFragment extends Fragment {
         final SharedPreferences pref = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
         gacha = new Gacha();
 
-        Button onegacha = (Button) view.findViewById(R.id.gacha1);
-        Button tengacha = (Button) view.findViewById(R.id.gacha10);
-        Button resetbutton = (Button) view.findViewById(R.id.resetbutton);
+        Button onegacha = view.findViewById(R.id.gacha1);
+        Button tengacha = view.findViewById(R.id.gacha10);
+        Button resetbutton = view.findViewById(R.id.resetbutton);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         this.getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
 
-        CardInfoView = (CardView)view.findViewById(R.id.gacharesultcardinfo);
+        CardInfoView = view.findViewById(R.id.gacharesultcardinfo);
         Max_Stat = view.findViewById(R.id.Max_Stat);
         Training = view.findViewById(R.id.Training);
 
-        SSRareNumber = (TextView)view.findViewById(R.id.SSRareNum);
-        SRareNumber = (TextView)view.findViewById(R.id.SRareNum);
-        RareNumber = (TextView)view.findViewById(R.id.RareNum);
+        SSRareNumber = view.findViewById(R.id.SSRareNum);
+        SRareNumber = view.findViewById(R.id.SRareNum);
+        RareNumber = view.findViewById(R.id.RareNum);
 
-        CuteNumber = (TextView)view.findViewById(R.id.CuteNum);
-        CoolNumber = (TextView)view.findViewById(R.id.CoolNum);
-        PassionNumber = (TextView)view.findViewById(R.id.PassionNum);
+        CuteNumber = view.findViewById(R.id.CuteNum);
+        CoolNumber = view.findViewById(R.id.CoolNum);
+        PassionNumber = view.findViewById(R.id.PassionNum);
 
         json = appSharedPrefs.getString("TempCardList","");
         type = new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType();
@@ -113,7 +113,7 @@ public class GachaFragment extends Fragment {
         Gacha_CardList_MapSet = Gacha_CardList.entrySet();
 
         adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
-        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.gachacardlist);
+        RecyclerView recyclerView = view.findViewById(R.id.gachacardlist);
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
 
@@ -176,6 +176,7 @@ public class GachaFragment extends Fragment {
                 gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
                 Gacha_CardList.put(gacharesult.No, gacharesult);
                 adapter.addItem(gacharesult);
+                cardRarityTypeCount(gacharesult);
                 adapter.notifyDataSetChanged();
             }
             gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),true));
@@ -184,6 +185,7 @@ public class GachaFragment extends Fragment {
         }
         Gacha_CardList.put(gacharesult.No, gacharesult);
         adapter.addItem(gacharesult);
+        cardRarityTypeCount(gacharesult);
         UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
         json = gson.toJson(Gacha_CardList);
@@ -234,7 +236,6 @@ public class GachaFragment extends Fragment {
             pos = random.nextInt(Whole_CardList.size());
             elementAt = (Map.Entry<Integer, Card>) mapSet.toArray()[pos];
             if((elementAt.getValue().RarityInt == Rarity) && elementAt.getValue().Availablity && !elementAt.getValue().EventCard){
-                System.out.println(elementAt.getValue().CardName);
                 return elementAt.getValue();
             }
         }
@@ -250,6 +251,7 @@ public class GachaFragment extends Fragment {
     }
 
     private void UpdateGachaStatus(Boolean initial) {
+        System.out.println(Rare);
         SSRareNumber.setText(""+SSRare);
         SRareNumber.setText(""+SRare);
         RareNumber.setText(""+Rare);
