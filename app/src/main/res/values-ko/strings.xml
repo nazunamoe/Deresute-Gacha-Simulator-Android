@@ -44,4 +44,6 @@
     <string name="Sum">총합</string>
     <string name="Hp">HP</string>
     <string name="CharaCVInfo">Chara/CV Info</string>
+    <string name="Before_Training">특훈 전</string>
+    <string name="After_Training">특훈 후</string>
 </resources>

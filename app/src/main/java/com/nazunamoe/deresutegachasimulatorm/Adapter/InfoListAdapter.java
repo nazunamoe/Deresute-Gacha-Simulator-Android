@@ -79,6 +79,8 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
             public void onClick(View v) {
                 prefsEditor.putString("SelectedCard",gson.toJson(whole_list.get(list.get(position))));
                 prefsEditor.commit();
+                prefsEditor.putString("SelectedCardTrained",gson.toJson(whole_list.get(list.get(position)+1)));
+                prefsEditor.commit();
                 Intent intent = new Intent(context, CardInfoActivity.class);
                 context.startActivity(intent);
             }
@@ -97,7 +99,6 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
     }
 
     public void addItem(Card input) {
-        //if(input.No % 2 == 1)
             list.add(input.No);
         this.notifyDataSetChanged();
     }

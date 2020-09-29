@@ -209,7 +209,7 @@ public class InfoActivity extends AppCompatActivity {
         Map.Entry<Integer, Card> elementAt;
         for(int i = 0; i< card_list_mapset.size(); i++){
             elementAt = (Map.Entry<Integer, Card>) card_list_mapset.toArray()[i];
-            //if(elementAt.getValue().No % 2 == 1) {
+            if(elementAt.getValue().No % 2 == 1) {
                 if(cuteonly && elementAt.getValue().Type.equals("CUTE")){
                     if(updateListbyRarity(elementAt.getValue())){
                         adapter.addItem(elementAt.getValue());
@@ -230,7 +230,7 @@ public class InfoActivity extends AppCompatActivity {
                         adapter.addItem(elementAt.getValue());
                     }
                 }
-            //}
+            }
         }
         adapter.notifyDataSetChanged();
     }
