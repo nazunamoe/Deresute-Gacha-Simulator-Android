@@ -1,6 +1,9 @@
 package com.nazunamoe.deresutegachasimulatorm.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.nazunamoe.deresutegachasimulatorm.Activity.CardInfoActivity;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
@@ -20,7 +25,15 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
 
     private List<Integer> list;
     private LinkedHashMap<Integer,Card> whole_list;
-    int size;
+    private int size;
+
+    private Card selectedCard;
+    private SharedPreferences appSharedPrefs;
+    private SharedPreferences.Editor prefsEditor;
+    private Context context;
+
+    private String selectedCardgson;
+    private Gson gson;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView type;
@@ -42,7 +55,7 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
         View view = inflater.inflate(R.layout.gacha_card, parent, false) ;
         InfoListAdapter.ViewHolder vh = new InfoListAdapter.ViewHolder(view) ;
@@ -57,7 +70,19 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
                 .override(size)
                 .into(holder.type);
 
-        Card card = whole_list.get(list.get(position));
+        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        prefsEditor = appSharedPrefs.edit();
+        gson = new Gson();
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                prefsEditor.putString("SelectedCard",gson.toJson(whole_list.get(list.get(position))));
+                prefsEditor.commit();
+                Intent intent = new Intent(context, CardInfoActivity.class);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

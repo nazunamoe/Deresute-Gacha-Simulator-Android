@@ -113,7 +113,20 @@ public class GachaFragment extends Fragment {
         json = appSharedPrefs.getString("Gacha_CardList","");
         Gacha_CardList = gson.fromJson(json, type);
 
-        adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+        if(Gacha_CardList != null) {
+            Gacha_CardList_MapSet = Gacha_CardList.entrySet();
+            adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+            for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
+                cardRarityTypeCount(e.getValue());
+                adapter.addItem(e.getValue());
+                UpdateGachaStatus(false);
+            }
+        } else {
+            Gacha_CardList = new LinkedHashMap<>();
+            Gacha_CardList_MapSet = Gacha_CardList.entrySet();
+            adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+        }
+
         RecyclerView recyclerView = view.findViewById(R.id.gachacardlist);
         recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
         recyclerView.setAdapter(adapter);
@@ -146,15 +159,6 @@ public class GachaFragment extends Fragment {
                 }
             }
         });
-
-        if(Gacha_CardList != null) {
-            Gacha_CardList_MapSet = Gacha_CardList.entrySet();
-            for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
-                cardRarityTypeCount(e.getValue());
-                adapter.addItem(e.getValue());
-                UpdateGachaStatus(false);
-            }
-        }
 
         return view;
     }
