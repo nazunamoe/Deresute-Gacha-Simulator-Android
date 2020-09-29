@@ -116,17 +116,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int da_max = cursor.getInt(12);
         int vi_max = cursor.getInt(13);
 
-        int skillcode = cursor.getInt(14);
+        int skillcode = cursor.getInt(15);
 
-        String skillname = cursor.getString(15);
-        String skillexplain = cursor.getString(16);
+        String skillname = cursor.getString(16);
+        String skillexplain = cursor.getString(17);
 
-        int centerskillcode = cursor.getInt(14);
+        int centerskillcode = cursor.getInt(18);
 
-        String centerskillname = cursor.getString(17);
-        String centerskillexplain = cursor.getString(18);
+        String centerskillname = cursor.getString(19);
+        String centerskillexplain = cursor.getString(20);
 
-        String eventname = cursor.getString(19);
+        String eventname = cursor.getString(21);
 
         int limitedint = cursor.getInt(cursor.getColumnIndex("limited2"));
         int fesint = cursor.getInt(cursor.getColumnIndex("fes"));

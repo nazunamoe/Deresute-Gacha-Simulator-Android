@@ -267,6 +267,7 @@ public class GachaListAdapter extends RecyclerView.Adapter<GachaListAdapter.View
     }
 
     public void clearItem(){
+        System.out.println("asd");
         list.removeAll(list);
         CardVocal.setText("");
         CardDance.setText("");

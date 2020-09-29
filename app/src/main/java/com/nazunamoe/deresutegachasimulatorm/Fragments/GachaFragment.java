@@ -165,13 +165,11 @@ public class GachaFragment extends Fragment {
 
     private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
         Card gacharesult;
-
         if(Gacha_CardList != null) {
             Gacha_CardList.clear();
             UpdateGachaStatus(true);
         }
         else Gacha_CardList = new LinkedHashMap<>();
-
         adapter.clearItem();
         if(ten) {
             for(int a=0; a<9; a++){
@@ -233,7 +231,6 @@ public class GachaFragment extends Fragment {
         Set<Map.Entry<Integer, Card>> mapSet = Whole_CardList.entrySet();
         Map.Entry<Integer, Card> elementAt;
         int pos;
-
         while(true) {
             pos = random.nextInt(Whole_CardList.size());
             elementAt = (Map.Entry<Integer, Card>) mapSet.toArray()[pos];
