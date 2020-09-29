@@ -116,8 +116,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int da_max = cursor.getInt(12);
         int vi_max = cursor.getInt(13);
 
+        int skillcode = cursor.getInt(14);
+
         String skillname = cursor.getString(15);
         String skillexplain = cursor.getString(16);
+
+        int centerskillcode = cursor.getInt(14);
+
         String centerskillname = cursor.getString(17);
         String centerskillexplain = cursor.getString(18);
 
@@ -150,8 +155,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // 필요한 정보를 모두 변수에 연결.
         result = new Card(cardno, cardname, charaname, rarity
-                    , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max
-                    , skillname, skillexplain, centerskillname, centerskillexplain
+                    , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max, skillcode
+                    , skillname, skillexplain, centerskillcode, centerskillname, centerskillexplain
                     , eventname, limited, fes, ava);
         return result;
         // DB에서 받아온 정보를 이용해 새 카드 클래스를 생성 후 반환
