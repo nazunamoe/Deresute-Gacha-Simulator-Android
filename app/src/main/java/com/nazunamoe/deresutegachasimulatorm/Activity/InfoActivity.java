@@ -83,7 +83,7 @@ public class InfoActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar3);
         setSupportActionBar(toolbar);
         recyclerView = findViewById(R.id.CardList);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 5, RecyclerView.VERTICAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3, RecyclerView.VERTICAL, false));
         listViewCard = findViewById(R.id.cardlistcard);
         settings = findViewById(R.id.settings);
 

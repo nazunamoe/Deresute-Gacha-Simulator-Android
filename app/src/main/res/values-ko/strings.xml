@@ -78,12 +78,12 @@
     <string name="Skill_TricolorSynergy">시너지</string>
     <string name="Skill_Alternate">얼터네이트</string>
 
-    <string name="LeaderSkill_VocalUp">보컬 업</string>
-    <string name="LeaderSkill_DanceUp">댄스 업</string>
-    <string name="LeaderSkill_VisualUp">비쥬얼 업</string>
-    <string name="LeaderSkill_AllUp">전어필 업</string>
-    <string name="LeaderSkill_SkillUp">스킬 업</string>
-    <string name="LeaderSkill_TricolorVocalUp">트리콜로르 보컬</string>
+    <string name="LeaderSkill_VocalUp">보이스</string>
+    <string name="LeaderSkill_DanceUp">스텝</string>
+    <string name="LeaderSkill_VisualUp">메이크</string>
+    <string name="LeaderSkill_AllUp">브릴리언스</string>
+    <string name="LeaderSkill_SkillUp">스킬</string>
+    <string name="LeaderSkill_TricolorVocalUp">트리콜로르 보이스</string>
     <string name="LeaderSkill_TricolorDanceUp">트리콜로르 스텝</string>
     <string name="LeaderSkill_TricolorVisualUp">트리콜로르 메이크</string>
     <string name="LeaderSkill_TricolorSkillUp">트리콜로르 어빌리티</string>

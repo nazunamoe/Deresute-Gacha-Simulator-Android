@@ -52,9 +52,9 @@
     <string name="Before_Training">特訓戦</string>
     <string name="After_Training">特訓後</string>
 
-    <string name="Skill_ScoreBonus">SCORE ボーナス</string>
-    <string name="Skill_ComboBonus">COMBO ボーナス</string>
-    <string name="Skill_PerfectComboSupport">COMBO サポート</string>
+    <string name="Skill_ScoreBonus">SCOREボーナス</string>
+    <string name="Skill_ComboBonus">COMBOボーナス</string>
+    <string name="Skill_PerfectComboSupport">COMBOサポート</string>
     <string name="Skill_LifeRecovery">ライフ回復</string>
     <string name="Skill_DamageGuard">ダメージ ガード</string>
     <string name="Skill_OverLoad">オーバーロード</string>
@@ -78,11 +78,11 @@
     <string name="Skill_TricolorSynergy">トリコロール・シナジー</string>
     <string name="Skill_Alternate">オルタネイト</string>
 
-    <string name="LeaderSkill_VocalUp">ボーカルアップ</string>
-    <string name="LeaderSkill_DanceUp">ダンスアップ</string>
-    <string name="LeaderSkill_VisualUp">ビジュアルアップ</string>
-    <string name="LeaderSkill_AllUp">全アピールアップ</string>
-    <string name="LeaderSkill_SkillUp">特技アップ</string>
+    <string name="LeaderSkill_VocalUp">ボイス</string>
+    <string name="LeaderSkill_DanceUp">ステップ</string>
+    <string name="LeaderSkill_VisualUp">メイク</string>
+    <string name="LeaderSkill_AllUp">ブリリアンス</string>
+    <string name="LeaderSkill_SkillUp">アビリティ</string>
     <string name="LeaderSkill_TricolorVocalUp">トリコロールボイス</string>
     <string name="LeaderSkill_TricolorDanceUp">トリコロールステップ</string>
     <string name="LeaderSkill_TricolorVisualUp">トリコロールメイク</string>

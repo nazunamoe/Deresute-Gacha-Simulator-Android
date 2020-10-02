@@ -62,7 +62,7 @@
 
     <string name="Skill_ScoreBonus">Score Bonus</string>
     <string name="Skill_ComboBonus">Combo Bonus</string>
-    <string name="Skill_PerfectComboSupport">COMBO Support</string>
+    <string name="Skill_PerfectComboSupport">Combo Support</string>
     <string name="Skill_LifeRecovery">Life Recovery</string>
     <string name="Skill_DamageGuard">Damage Guard</string>
     <string name="Skill_OverLoad">Overload</string>
@@ -86,14 +86,14 @@
     <string name="Skill_TricolorSynergy">Tricolor Synergy</string>
     <string name="Skill_Alternate">Alternate</string>
 
-    <string name="LeaderSkill_VocalUp">Vocal</string>
-    <string name="LeaderSkill_DanceUp">Dance</string>
-    <string name="LeaderSkill_VisualUp">Visual</string>
-    <string name="LeaderSkill_AllUp">Visual</string>
+    <string name="LeaderSkill_VocalUp">Voice</string>
+    <string name="LeaderSkill_DanceUp">Step</string>
+    <string name="LeaderSkill_VisualUp">Make</string>
+    <string name="LeaderSkill_AllUp">Brilliance</string>
     <string name="LeaderSkill_SkillUp">Ability</string>
-    <string name="LeaderSkill_TricolorVocalUp">Tricolor Vocal</string>
-    <string name="LeaderSkill_TricolorDanceUp">Tricolor Dance</string>
-    <string name="LeaderSkill_TricolorVisualUp">Tricolor Visual</string>
+    <string name="LeaderSkill_TricolorVocalUp">Tricolor Voice</string>
+    <string name="LeaderSkill_TricolorDanceUp">Tricolor Step</string>
+    <string name="LeaderSkill_TricolorVisualUp">Tricolor Make</string>
     <string name="LeaderSkill_TricolorSkillUp">Tricolor Ability</string>
     <string name="LeaderSkill_Brilliance">Brilliance</string>
     <string name="LeaderSkill_Princess">Princess</string>
