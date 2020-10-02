@@ -45,8 +45,10 @@ public class CardInfoActivity extends AppCompatActivity {
     TextView CardMaxHp;
     TextView CardMaxSum;
     TextView CardSkill;
+    TextView CardSkillCategory;
     TextView CardSkillStatus;
     TextView CardCenterSkill;
+    TextView CardCenterSkillCategory;
     TextView CardCenterSkillStatus;
 
     private void initialize() {
@@ -65,8 +67,10 @@ public class CardInfoActivity extends AppCompatActivity {
         CardMaxHp = findViewById(R.id.cardInfoCardMaxHp);
         CardMaxSum = findViewById(R.id.cardInfoCardMaxSum);
         CardSkill = findViewById(R.id.cardInfoCardSkill);
+        CardSkillCategory = findViewById(R.id.cardInfoCardSkillCategory);
         CardSkillStatus = findViewById(R.id.cardInfoCardSkillStatus);
         CardCenterSkill = findViewById(R.id.cardInfoCardCenterSkill);
+        CardCenterSkillCategory = findViewById(R.id.cardInfoCardCenterSkillCategory);
         CardCenterSkillStatus = findViewById(R.id.cardInfoCardCenterSkillStatus);
         CardInfoTitle = findViewById(R.id.toolbar5_title);
     }
@@ -165,9 +169,10 @@ public class CardInfoActivity extends AppCompatActivity {
         CardMaxHp.setText(""+updatecard.Hp_Max);
         CardMaxSum.setText(String.valueOf(updatecard.Vocal_Max + updatecard.Visual_Max + updatecard.Dance_Max));
         CardSkill.setText(updatecard.SkillName);
+        CardSkillCategory.setText(updatecard.SkillCategory);
         CardSkillStatus.setText(updatecard.SKillExplain);
         CardCenterSkill.setText(updatecard.CenterSkillName);
+        CardCenterSkillCategory.setText(updatecard.CenterSkillCategory);
         CardCenterSkillStatus.setText(updatecard.CenterSkillExplain);
-
     }
 }

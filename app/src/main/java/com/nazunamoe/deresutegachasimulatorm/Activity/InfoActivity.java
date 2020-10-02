@@ -210,17 +210,17 @@ public class InfoActivity extends AppCompatActivity {
         for(int i = 0; i< card_list_mapset.size(); i++){
             elementAt = (Map.Entry<Integer, Card>) card_list_mapset.toArray()[i];
             if(elementAt.getValue().No % 2 == 1) {
-                if(cuteonly && elementAt.getValue().Type.equals("CUTE")){
+                if(cuteonly && elementAt.getValue().No / 100000 == 1){
                     if(updateListbyRarity(elementAt.getValue())){
                         adapter.addItem(elementAt.getValue());
                     }
                 }
-                if(coolonly && elementAt.getValue().Type.equals("COOL")){
+                if(coolonly && elementAt.getValue().No / 100000 == 2){
                     if(updateListbyRarity(elementAt.getValue())){
                         adapter.addItem(elementAt.getValue());
                     }
                 }
-                if(passiononly && elementAt.getValue().Type.equals("PASSION")){
+                if(passiononly && elementAt.getValue().No / 100000 == 3){
                     if(updateListbyRarity(elementAt.getValue())){
                         adapter.addItem(elementAt.getValue());
                     }

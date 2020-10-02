@@ -17,9 +17,9 @@
     <string name="SSRare" translatable="false">SS Rare</string>
     <string name="SRare" translatable="false">S Rare</string>
     <string name="Rare" translatable="false">Rare</string>
-    <string name="Cute" translatable="false">Cute</string>
-    <string name="Cool" translatable="false">Cool</string>
-    <string name="Passion" translatable="false">Passion</string>
+    <string name="Cute">Cute</string>
+    <string name="Cool">Cool</string>
+    <string name="Passion">Passion</string>
     <string name="Fes">CindeFes</string>
     <string name="LimitedSwitch">Limited</string>
     <string name="OriginalPButton">Original Probability</string>
@@ -59,4 +59,55 @@
     <string name="Trained">Trained</string>
     <string name="Before_Training">Before</string>
     <string name="After_Training">After</string>
+
+    <string name="Skill_ScoreBonus">Score Bonus</string>
+    <string name="Skill_ComboBonus">Combo Bonus</string>
+    <string name="Skill_PerfectComboSupport">COMBO Support</string>
+    <string name="Skill_LifeRecovery">Life Recovery</string>
+    <string name="Skill_DamageGuard">Damage Guard</string>
+    <string name="Skill_OverLoad">Overload</string>
+    <string name="Skill_Concentration">Concentration</string>
+    <string name="Skill_Coordinate">Coordinate</string>
+    <string name="Skill_SkillBoost">Skill Boost</string>
+    <string name="Skill_Focus">Focus</string>
+    <string name="Skill_AllRounder">All Rounder</string>
+    <string name="Skill_Encore">Encore</string>
+    <string name="Skill_LifeSparkle">Life Sparkle</string>
+    <string name="Skill_Tuning">Tuning</string>
+    <string name="Skill_LongAct">Long Act</string>
+    <string name="Skill_FlickAct">Flick Act</string>
+    <string name="Skill_SlideAct">Slide Act</string>
+    <string name="Skill_Ensemble">Ensemble</string>
+    <string name="Skill_VocalMotif">Vocal Motif</string>
+    <string name="Skill_DanceMotif">Dance Motif</string>
+    <string name="Skill_VisualMotif">Visual Motif</string>
+    <string name="Skill_Motif">Motif</string>
+    <string name="Skill_TricolorSymphony">Tricolor Symphony</string>
+    <string name="Skill_TricolorSynergy">Tricolor Synergy</string>
+    <string name="Skill_Alternate">Alternate</string>
+
+    <string name="LeaderSkill_VocalUp">Vocal</string>
+    <string name="LeaderSkill_DanceUp">Dance</string>
+    <string name="LeaderSkill_VisualUp">Visual</string>
+    <string name="LeaderSkill_AllUp">Visual</string>
+    <string name="LeaderSkill_SkillUp">Ability</string>
+    <string name="LeaderSkill_TricolorVocalUp">Tricolor Vocal</string>
+    <string name="LeaderSkill_TricolorDanceUp">Tricolor Dance</string>
+    <string name="LeaderSkill_TricolorVisualUp">Tricolor Visual</string>
+    <string name="LeaderSkill_TricolorSkillUp">Tricolor Ability</string>
+    <string name="LeaderSkill_Brilliance">Brilliance</string>
+    <string name="LeaderSkill_Princess">Princess</string>
+    <string name="LeaderSkill_Unison">Unison</string>
+    <string name="LeaderSkill_LifeUp_Normal">Energy</string>
+    <string name="LeaderSkill_LifeUp_Cheer">Cheer</string>
+    <string name="LeaderSkill_Fortune_Present">Fortune Present</string>
+    <string name="LeaderSkill_Cinderella_Charm">Cinderella Charm</string>
+    <string name="LeaderSkill_Cool_Passion">Cool cross Passion</string>
+    <string name="LeaderSkill_Cute_Passion">Cute cross Passion</string>
+    <string name="LeaderSkill_Cute_Cool">Cute cross Cool</string>
+    <string name="LeaderSkill_Resonant_Voice">Resonant Voice</string>
+    <string name="LeaderSkill_Resonant_Dance">Resonant Dance</string>
+    <string name="LeaderSkill_Resonant_Visual">Resonant Visual</string>
+    <string name="LeaderSkill_Cinderella_Yell">Cinderella Yell</string>
+    <string name="LeaderSkill_WorldLevel">World Level</string>
 </resources>

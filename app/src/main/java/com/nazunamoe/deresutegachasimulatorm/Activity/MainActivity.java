@@ -3,6 +3,7 @@ package com.nazunamoe.deresutegachasimulatorm.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity
     SharedPreferences Shared;
     private static boolean firstRun = true;
 
+    private static Resources res;
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -75,6 +78,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sidebar);
         toolbar = findViewById(R.id.toolbar);
+
+        res = getResources();
 
         setSupportActionBar(toolbar);
         ActionBar actionBar;
@@ -152,5 +157,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static Resources getResourses() {
+        return res;
     }
 }

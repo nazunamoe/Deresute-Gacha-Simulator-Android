@@ -424,15 +424,36 @@
                         android:padding="4dp"
                         android:weightSum="10">
 
-                        <TextView
-                            android:id="@+id/cardInfoCardSkillTitle"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical"
-                            android:text="@string/Skill"
-                            android:textSize="30sp" />
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_weight="8"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+
+                            <TextView
+                                android:id="@+id/cardInfoCardSkillTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:text="@string/Skill"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/cardInfoCardSkillCategory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -461,15 +482,34 @@
 
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/cardInfoCardCenterSkillTitle"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:layout_weight="2"
-                            android:gravity="center_vertical"
-                            android:text="@string/Center_Skill"
-                            android:textSize="30sp" />
+                            android:layout_height="match_parent"
+                            android:layout_margin="0dp"
+                            android:layout_weight="8"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <TextView
+                                android:id="@+id/cardInfoCardCenterSkillTitle"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="8dp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:text="@string/Center_Skill"
+                                android:textSize="30sp" />
+
+                            <TextView
+                                android:id="@+id/cardInfoCardCenterSkillCategory"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="4dp"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
