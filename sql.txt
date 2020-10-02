@@ -65,7 +65,7 @@ CASE
 END AS fes
 FROM card_data 
 LEFT JOIN leader_skill_data ON card_data.leader_skill_id = leader_skill_data.leader_skill_id
-JOIN chara_data USING(chara_id)
+JOIN chara_data USING(c hara_id)
 LEFT JOIN skill_data ON card_data.skill_id = skill_data.skill_id
 WHERE card_data.id<900000 
 GROUP BY card_data.name

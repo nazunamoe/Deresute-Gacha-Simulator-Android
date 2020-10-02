@@ -128,7 +128,7 @@ public class GachaFragment extends Fragment {
         }
 
         RecyclerView recyclerView = view.findViewById(R.id.gachacardlist);
-        recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 2, RecyclerView.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new GridLayoutManager(this.getContext(), 5, RecyclerView.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
         onegacha.setOnClickListener(new View.OnClickListener(){
