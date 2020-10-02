@@ -1,0 +1,633 @@
+
+
+DROP TABLE IF EXISTS card_info;
+DROP TABLE IF EXISTS event_info;
+DROP TABLE IF EXISTS limited_info;
+DROP TABLE IF EXISTS chara_info;
+DROP TABLE IF EXISTS CV_info;
+
+UPDATE leader_skill_data
+SET explain = "自分のダンスアピール値100%アップ、フェイスオープンしたら全員のダンスアピール値130%アップ"
+WHERE id = 116;
+
+ALTER TABLE event_data
+RENAME id TO event_id;
+
+ALTER TABLE skill_data
+RENAME id TO skill_id;
+
+ALTER TABLE leader_skill_data
+RENAME id TO leader_skill_id;
+
+CREATE TABLE event_info AS
+SELECT *
+FROM event_available;
+
+INSERT INTO event_info
+SELECT event_available.event_id, (event_available.reward_id)+1 as reward_id, event_available.recommend_order 
+FROM event_available;
+
+INSERT INTO gacha_sp_effect
+SELECT gacha_id, card_id+1, gacha_effect_type
+FROM gacha_sp_effect;
+
+DROP TABLE IF EXISTS limited_info;
+CREATE TABLE limited_info AS
+SELECT DISTINCT gacha_id, card_id, limited_flag 
+FROM gacha_available_2
+WHERE limited_flag = "1" AND limited_flag = 1
+UNION
+SELECT DISTINCT gacha_id, reward_id AS card_id, limited_flag
+FROM gacha_available
+WHERE substr(gacha_id,1,1)='3' AND limited_flag = 1
+GROUP BY card_id;
+
+INSERT INTO limited_info
+SELECT gacha_id, card_id+1, limited_flag
+FROM limited_info;
+
+CREATE TABLE card_info AS
+SELECT card_data.id, card_data.name, 
+chara_data.name,
+card_data.rarity, card_data.attribute,
+card_data.hp_min, card_data.vocal_min, card_data.dance_min, card_data.visual_min,vocal_min+dance_min+visual_min as total_min,
+card_data.hp_max, card_data.vocal_max, card_data.dance_max, card_data.visual_max,vocal_max+dance_max+visual_max as total_max
+,skill_data.skill_name, skill_data.explain
+,leader_skill_data.name, leader_skill_data.explain,
+(SELECT event_data.name FROM event_data, event_info WHERE event_data.event_id = event_info.event_id AND event_info.reward_id = card_data.id) as event_name,
+CASE
+	WHEN card_data.id IN (SELECT card_data.id FROM card_data JOIN limited_info ON limited_info.card_id = card_data.id WHERE limited_info.limited_flag = 1) THEN 1
+	ELSE 0
+END AS limited2,
+CASE
+	WHEN card_data.id IN (SELECT card_data.id FROM card_data JOIN gacha_sp_effect ON gacha_sp_effect.card_id = card_data.id) THEN 1
+	ELSE 0
+END AS fes
+FROM card_data 
+LEFT JOIN leader_skill_data ON card_data.leader_skill_id = leader_skill_data.leader_skill_id
+JOIN chara_data USING(chara_id)
+LEFT JOIN skill_data ON card_data.skill_id = skill_data.skill_id
+WHERE card_data.id<900000 
+GROUP BY card_data.name
+ORDER BY card_data.id asc;
+
+UPDATE card_info
+SET limited2 = "0"
+WHERE card_info.id = "220249" ;
+
+UPDATE card_info
+SET limited2 = "0"
+WHERE card_info.id = "220250" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300583" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300584" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300585" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300586" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300593" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300594" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300595" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300596" ;
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "300101";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "200103";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "100107";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "300102";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "200104";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "100108";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "100669";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "100670";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "200643";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "200644";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "200377";
+
+UPDATE card_info
+SET limited2 = "1"
+WHERE card_info.id = "200378";
+
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.rarity = "3" OR card_info.rarity = "4";
+
+UPDATE card_info
+SET limited2 = 0
+WHERE card_info.rarity = "3" OR card_info.rarity = "4";
+
+UPDATE card_info
+SET event_name = "Snow Wings"
+WHERE card_info.id IN (300135, 300136, 200129, 200130);
+
+UPDATE card_info
+SET event_name = "Stage Bye Stage"
+WHERE card_info.id IN (100697, 100698, 300687, 300688);
+
+UPDATE card_info
+SET event_name = "Go Just Go!"
+WHERE card_info.id IN (300857, 300858, 300859, 300860);
+
+UPDATE card_info
+SET event_name = "オウムアムアに幸運を"
+WHERE card_info.id IN (100853, 100854, 300837, 300838);
+
+UPDATE card_info
+SET event_name = "夢をのぞいたら"
+WHERE card_info.id IN (100771, 100772, 300763, 300764);
+
+UPDATE card_info
+SET event_name = "TRUE COLORS "
+WHERE card_info.id IN (200727, 200728, 300713, 300714);
+
+CREATE TABLE chara_info AS
+SELECT 
+CASE
+WHEN chara_data.type = 1 THEN "Cute"
+WHEN chara_data.type = 2 THEN "Cool"
+WHEN chara_data.type = 3 THEN "Passion"
+ELSE "Special"
+END AS type,
+chara_data.name, chara_data.name_kana, 
+CASE
+WHEN chara_data.age > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.age % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.age
+END as age, 
+text_data1.text AS hometown, chara_data.height, 
+CASE
+WHEN chara_data.weight > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.weight % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.weight
+END as weight, 
+CASE
+WHEN chara_data.body_size_1 > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.body_size_1 % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.body_size_1
+END as body_size_1, 
+CASE
+WHEN chara_data.body_size_2 > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.body_size_2 % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.body_size_2
+END as body_size_2, 
+CASE
+WHEN chara_data.body_size_3 > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.body_size_3 % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.body_size_3
+END as body_size_3, 
+chara_data.birth_month, chara_data.birth_day, chara_data.favorite,chara_data.voice AS CV
+FROM chara_data
+LEFT JOIN (
+	SELECT text_data."index", text_data.text
+	FROM text_data
+	WHERE text_data.category = 2 
+	) AS text_data1
+WHERE chara_data.home_town = text_data1."index" AND chara_data.chara_id BETWEEN 100 AND 400
+GROUP BY chara_data.name
+ORDER BY chara_data.chara_id asc;
+
+
+CREATE TABLE CV_info(
+CV_name text NOT NULL PRIMARY KEY,
+Chara_name text NOT NULL ,
+CV_furigana text,
+CV_birthday_year,
+CV_birthday_month,
+CV_birthday_day
+);
+
+INSERT INTO CV_info (Chara_name, CV_name)
+SELECT name,CV FROM chara_info WHERE chara_info.CV !="";
+
+UPDATE CV_info 
+SET CV_furigana = "おおはしあやか", CV_birthday_year=1994, CV_birthday_month=9, CV_birthday_day=3
+WHERE CV_name = "大橋彩香";
+
+UPDATE CV_info 
+SET CV_furigana = "しもじしの", CV_birthday_year=1993, CV_birthday_month=6, CV_birthday_day=4
+WHERE CV_name = "下地紫野";
+
+UPDATE CV_info 
+SET CV_furigana = "ふじたあかね", CV_birthday_year=1993, CV_birthday_month=1, CV_birthday_day=26
+WHERE CV_name = "藤田茜";
+
+UPDATE CV_info 
+SET CV_furigana = "とまるちよ", CV_birthday_year=1991, CV_birthday_month=9, CV_birthday_day=28
+WHERE CV_name = "都丸ちよ";
+
+UPDATE CV_info 
+SET CV_furigana = "おおつぼゆか", CV_birthday_year=1993, CV_birthday_month=6, CV_birthday_day=11
+WHERE CV_name = "大坪由佳";
+
+UPDATE CV_info 
+SET CV_furigana = "つだみなみ", CV_birthday_year=1989, CV_birthday_month=6, CV_birthday_day=8
+WHERE CV_name = "津田美波";
+
+UPDATE CV_info 
+SET CV_furigana = "おおぞらなおみ", CV_birthday_year=1989, CV_birthday_month=2, CV_birthday_day=4
+WHERE CV_name = "大空直美";
+
+UPDATE CV_info 
+SET CV_furigana = "たねざきあつみ", CV_birthday_year=0, CV_birthday_month=9, CV_birthday_day=27
+WHERE CV_name = "種﨑敦美";
+
+UPDATE CV_info 
+SET CV_furigana = "てるいはるか", CV_birthday_year=1987, CV_birthday_month=3, CV_birthday_day=7
+WHERE CV_name = "照井春佳";
+
+UPDATE CV_info 
+SET CV_furigana = "あいざわさや", CV_birthday_year=1999, CV_birthday_month=9, CV_birthday_day=9
+WHERE CV_name = "会沢紗弥";
+
+UPDATE CV_info 
+SET CV_furigana = "ふじもとあやか", CV_birthday_year=0, CV_birthday_month=9, CV_birthday_day=9
+WHERE CV_name = "藤本彩花";
+
+UPDATE CV_info 
+SET CV_furigana = "かねこまゆみ", CV_birthday_year=0, CV_birthday_month=7, CV_birthday_day=19
+WHERE CV_name = "金子真由美";
+
+UPDATE CV_info 
+SET CV_furigana = "あいはらことみ", CV_birthday_year=1990, CV_birthday_month=5, CV_birthday_day=2
+WHERE CV_name = "藍原ことみ";
+
+UPDATE CV_info 
+SET CV_furigana = "うえさかすみれ", CV_birthday_year=1991, CV_birthday_month=12, CV_birthday_day=19
+WHERE CV_name = "上坂すみれ";
+
+UPDATE CV_info 
+SET CV_furigana = "たかもりなつみ", CV_birthday_year=1987, CV_birthday_month=2, CV_birthday_day=14
+WHERE CV_name = "高森奈津美";
+
+UPDATE CV_info 
+SET CV_furigana = "たかのあさみ", CV_birthday_year=1988, CV_birthday_month=10, CV_birthday_day=25
+WHERE CV_name = "髙野麻美";
+
+UPDATE CV_info 
+SET CV_furigana = "たちばなりか", CV_birthday_year=1987, CV_birthday_month=2, CV_birthday_day=27
+WHERE CV_name = "立花理香";
+
+UPDATE CV_info 
+SET CV_furigana = "いがらしひろみ", CV_birthday_year=1986, CV_birthday_month=12, CV_birthday_day=13
+WHERE CV_name = "五十嵐裕美";
+
+UPDATE CV_info 
+SET CV_furigana = "にったひより", CV_birthday_year=1997, CV_birthday_month=7, CV_birthday_day=1
+WHERE CV_name = "新田ひより";
+
+UPDATE CV_info 
+SET CV_furigana = "たけたつあやな", CV_birthday_year=1989, CV_birthday_month=6, CV_birthday_day=23
+WHERE CV_name = "竹達彩奈";
+
+UPDATE CV_info 
+SET CV_furigana = "みやけまりえ", CV_birthday_year=1985, CV_birthday_month=6, CV_birthday_day=7
+WHERE CV_name = "三宅麻理恵";
+
+UPDATE CV_info 
+SET CV_furigana = "まきのゆい", CV_birthday_year=1986, CV_birthday_month=1, CV_birthday_day=19
+WHERE CV_name = "牧野由依";
+
+UPDATE CV_info 
+SET CV_furigana = "あさいあやか", CV_birthday_year=1992, CV_birthday_month=5, CV_birthday_day=11
+WHERE CV_name = "朝井彩加";
+
+UPDATE CV_info 
+SET CV_furigana = "なかしまゆき", CV_birthday_year=1997, CV_birthday_month=9, CV_birthday_day=12
+WHERE CV_name = "中島由貴";
+
+UPDATE CV_info 
+SET CV_furigana = "ふくはらあやか", CV_birthday_year=1989, CV_birthday_month=12, CV_birthday_day=31
+WHERE CV_name = "福原綾香";
+
+UPDATE CV_info 
+SET CV_furigana = "とうやまなお", CV_birthday_year=1992, CV_birthday_month=3, CV_birthday_day=11
+WHERE CV_name = "東山奈央";
+
+UPDATE CV_info 
+SET CV_furigana = "まついえりこ", CV_birthday_year=1989, CV_birthday_month=3, CV_birthday_day=8
+WHERE CV_name = "松井恵理子";
+
+UPDATE CV_info 
+SET CV_furigana = "なかしまみな", CV_birthday_year=1989, CV_birthday_month=5, CV_birthday_day=30
+WHERE CV_name = "長島光那";
+
+UPDATE CV_info 
+SET CV_furigana = "たなべるい", CV_birthday_year=1997, CV_birthday_month=5, CV_birthday_day=30
+WHERE CV_name = "田辺留依";
+
+UPDATE CV_info 
+SET CV_furigana = "あおきるりこ", CV_birthday_year=1990, CV_birthday_month=3, CV_birthday_day=24
+WHERE CV_name = "青木瑠璃子";
+
+UPDATE CV_info 
+SET CV_furigana = "いまいあさか", CV_birthday_year=1987, CV_birthday_month=6, CV_birthday_day=23
+WHERE CV_name = "今井麻夏";
+
+UPDATE CV_info 
+SET CV_furigana = "はらださやか", CV_birthday_year=1997, CV_birthday_month=12, CV_birthday_day=23
+WHERE CV_name = "原田彩楓";
+
+UPDATE CV_info 
+SET CV_furigana = "すずきみのり", CV_birthday_year=1997, CV_birthday_month=10, CV_birthday_day=1
+WHERE CV_name = "鈴木みのり";
+
+UPDATE CV_info 
+SET CV_furigana = "すざきあや", CV_birthday_year=1986, CV_birthday_month=12, CV_birthday_day=25
+WHERE CV_name = "洲崎綾";
+
+UPDATE CV_info 
+SET CV_furigana = "さとうあみな", CV_birthday_year=1990, CV_birthday_month=10, CV_birthday_day=16
+WHERE CV_name = "佐藤亜美菜";
+
+UPDATE CV_info 
+SET CV_furigana = "いちみちまお", CV_birthday_year=1992, CV_birthday_month=2, CV_birthday_day=1
+WHERE CV_name = "M・A・O";
+
+UPDATE CV_info 
+SET CV_furigana = "ちすがはるか", CV_birthday_year=1992, CV_birthday_month=1, CV_birthday_day=23
+WHERE CV_name = "千菅春香";
+
+UPDATE CV_info 
+SET CV_furigana = "はやみさおり", CV_birthday_year=1991, CV_birthday_month=5, CV_birthday_day=29
+WHERE CV_name = "早見沙織";
+
+
+UPDATE CV_info 
+SET CV_furigana = "うちだまあや", CV_birthday_year=1989, CV_birthday_month=12, CV_birthday_day=27
+WHERE CV_name = "内田真礼";
+
+UPDATE CV_info 
+SET CV_furigana = "ふちがみまい", CV_birthday_year=1987, CV_birthday_month=5, CV_birthday_day=28
+WHERE CV_name = "渕上舞";
+
+UPDATE CV_info 
+SET CV_furigana = "おうさきちよ", CV_birthday_year=1988, CV_birthday_month=2, CV_birthday_day=12
+WHERE CV_name = "桜咲千依";
+
+UPDATE CV_info 
+SET CV_furigana = "るぅてぃん", CV_birthday_year=1993, CV_birthday_month=12, CV_birthday_day=21
+WHERE CV_name = "ルゥ ティン";
+
+UPDATE CV_info 
+SET CV_furigana = "かやまみさ", CV_birthday_year=0, CV_birthday_month=1, CV_birthday_day=24
+WHERE CV_name = "嘉山未紗";
+
+UPDATE CV_info 
+SET CV_furigana = "ながえりか", CV_birthday_year=0, CV_birthday_month=9, CV_birthday_day=28
+WHERE CV_name = "長江里加";
+
+UPDATE CV_info 
+SET CV_furigana = "たちばなひな", CV_birthday_year=0, CV_birthday_month=6, CV_birthday_day=14
+WHERE CV_name = "立花日菜";
+
+UPDATE CV_info 
+SET CV_furigana = "たちばなひな", CV_birthday_year=0, CV_birthday_month=6, CV_birthday_day=14
+WHERE CV_name = "立花日菜";
+
+UPDATE CV_info 
+SET CV_furigana = "せきぐちりさ", CV_birthday_year=1996, CV_birthday_month=1, CV_birthday_day=13
+WHERE CV_name = "関口理咲";
+
+UPDATE CV_info 
+SET CV_furigana = "さくらかおる", CV_birthday_year=1990, CV_birthday_month=9, CV_birthday_day=29
+WHERE CV_name = "佐倉薫";
+
+UPDATE CV_info 
+SET CV_furigana = "かみたにさやか", CV_birthday_year=1997, CV_birthday_month=6, CV_birthday_day=22
+WHERE CV_name = "神谷早矢佳";
+
+UPDATE CV_info 
+SET CV_furigana = "はなもりゆみり", CV_birthday_year=1997, CV_birthday_month=9, CV_birthday_day=29
+WHERE CV_name = "花守ゆみり";
+
+UPDATE CV_info 
+SET CV_furigana = "はないみはる", CV_birthday_year=1998, CV_birthday_month=2, CV_birthday_day=8
+WHERE CV_name = "花井美春";
+
+UPDATE CV_info 
+SET CV_furigana = "たざわますみ", CV_birthday_year=1993, CV_birthday_month=11, CV_birthday_day=22
+WHERE CV_name = "田澤茉純";
+
+UPDATE CV_info 
+SET CV_furigana = "だてありさ", CV_birthday_year=0, CV_birthday_month=5, CV_birthday_day=10
+WHERE CV_name = "伊達朱里紗";
+
+UPDATE CV_info 
+SET CV_furigana = "ふかがわせりあ", CV_birthday_year=1995, CV_birthday_month=9, CV_birthday_day=26
+WHERE CV_name = "深川芹亜";
+
+UPDATE CV_info 
+SET CV_furigana = "くのみさき", CV_birthday_year=1993, CV_birthday_month=1, CV_birthday_day=19
+WHERE CV_name = "久野美咲";
+
+UPDATE CV_info 
+SET CV_furigana = "はらゆうこ", CV_birthday_year=1992, CV_birthday_month=6, CV_birthday_day=13
+WHERE CV_name = "原優子";
+
+UPDATE CV_info 
+SET CV_furigana = "はらだひとみ", CV_birthday_year=1987, CV_birthday_month=11, CV_birthday_day=18
+WHERE CV_name = "原田ひとみ";
+
+UPDATE CV_info 
+SET CV_furigana = "まつざきれい", CV_birthday_year=1985, CV_birthday_month=5, CV_birthday_day=31
+WHERE CV_name = "松嵜麗";
+
+UPDATE CV_info 
+SET CV_furigana = "あかさきちなつ", CV_birthday_year=1987, CV_birthday_month=8, CV_birthday_day=10
+WHERE CV_name = "赤﨑千夏";
+
+UPDATE CV_info 
+SET CV_furigana = "やまもとのぞみ", CV_birthday_year=1988, CV_birthday_month=8, CV_birthday_day=9
+WHERE CV_name = "山本希望";
+
+UPDATE CV_info 
+SET CV_furigana = "よしむらはるか", CV_birthday_year=0, CV_birthday_month=2, CV_birthday_day=14
+WHERE CV_name = "佳村はるか";
+
+UPDATE CV_info 
+SET CV_furigana = "きむらじゅり", CV_birthday_year=0, CV_birthday_month=6, CV_birthday_day=7
+WHERE CV_name = "木村珠莉";
+
+UPDATE CV_info 
+SET CV_furigana = "たかだゆうき", CV_birthday_year=1993, CV_birthday_month=3, CV_birthday_day=16
+WHERE CV_name = "高田憂希";
+
+UPDATE CV_info 
+SET CV_furigana = "すずきえり", CV_birthday_year=1992, CV_birthday_month=6, CV_birthday_day=22
+WHERE CV_name = "鈴木絵理";
+
+UPDATE CV_info 
+SET CV_furigana = "わきあずみ", CV_birthday_year=1994, CV_birthday_month=9, CV_birthday_day=8
+WHERE CV_name = "和氣あず未";
+
+UPDATE CV_info 
+SET CV_furigana = "まつださつみ", CV_birthday_year=1993, CV_birthday_month=7, CV_birthday_day=17
+WHERE CV_name = "松田颯水";
+
+UPDATE CV_info 
+SET CV_furigana = "のぐちゆり", CV_birthday_year=1992, CV_birthday_month=12, CV_birthday_day=24
+WHERE CV_name = "のぐちゆり";
+
+UPDATE CV_info 
+SET CV_furigana = "はるのななみ", CV_birthday_year=1993, CV_birthday_month=12, CV_birthday_day=17
+WHERE CV_name = "春野ななみ";
+
+UPDATE CV_info 
+SET CV_furigana = "たけだらりさたご", CV_birthday_year=0, CV_birthday_month=9, CV_birthday_day=30
+WHERE CV_name = "武田羅梨沙多胡";
+
+UPDATE CV_info 
+SET CV_furigana = "もりのまこ", CV_birthday_year=1987, CV_birthday_month=1, CV_birthday_day=24
+WHERE CV_name = "杜野まこ";
+
+UPDATE CV_info 
+SET CV_furigana = "やましたななみ", CV_birthday_year=1995, CV_birthday_month=7, CV_birthday_day=19
+WHERE CV_name = "山下七海";
+
+UPDATE CV_info 
+SET CV_furigana = "くろさわともよ", CV_birthday_year=1996, CV_birthday_month=4, CV_birthday_day=10
+WHERE CV_name = "黒沢ともよ";
+
+UPDATE CV_info 
+SET CV_furigana = "やすのきよの", CV_birthday_year=1989, CV_birthday_month=7, CV_birthday_day=9
+WHERE CV_name = "安野希世乃";
+
+UPDATE CV_info 
+SET CV_furigana = "はるせなつみ", CV_birthday_year=1994, CV_birthday_month=6, CV_birthday_day=17
+WHERE CV_name = "春瀬なつみ";
+
+UPDATE CV_info 
+SET CV_furigana = "かねこゆうき", CV_birthday_year=1987, CV_birthday_month=1, CV_birthday_day=19
+WHERE CV_name = "金子有希";
+
+UPDATE CV_info 
+SET CV_furigana = "はらさゆり", CV_birthday_year=1988, CV_birthday_month=11, CV_birthday_day=5
+WHERE CV_name = "原紗友里";
+
+UPDATE CV_info 
+SET CV_furigana = "もりしたらな", CV_birthday_year=1993, CV_birthday_month=10, CV_birthday_day=14
+WHERE CV_name = "森下来奈";
+
+UPDATE CV_info 
+SET CV_furigana = "あおきしき", CV_birthday_year=1990, CV_birthday_month=1, CV_birthday_day=14
+WHERE CV_name = "青木志貴";
+
+UPDATE CV_info 
+SET CV_furigana = "こいちまこと", CV_birthday_year=0, CV_birthday_month=2, CV_birthday_day=17
+WHERE CV_name = "小市眞琴";
+
+UPDATE CV_info 
+SET CV_furigana = "むらなかとも", CV_birthday_year=1989, CV_birthday_month=12, CV_birthday_day=15
+WHERE CV_name = "村中知";
+
+UPDATE CV_info 
+SET CV_furigana = "たかはしかりん", CV_birthday_year=1994, CV_birthday_month=9, CV_birthday_day=9
+WHERE CV_name = "高橋花林";
+
+UPDATE CV_info 
+SET CV_furigana = "いいだゆうこ", CV_birthday_year=1992, CV_birthday_month=9, CV_birthday_day=9
+WHERE CV_name = "飯田友子";
+
+UPDATE CV_info 
+SET CV_furigana = "あまのさとみ", CV_birthday_year=0, CV_birthday_month=11, CV_birthday_day=29
+WHERE CV_name = "天野聡美";
+
+
+
+DROP TABLE chara_info;
+
+CREATE TABLE chara_info AS
+SELECT chara_data.chara_id-100 AS chara_id,
+CASE
+WHEN chara_data.type = 1 THEN "Cute"
+WHEN chara_data.type = 2 THEN "Cool"
+WHEN chara_data.type = 3 THEN "Passion"
+ELSE "Special"
+END AS type,
+chara_data.name, chara_data.name_kana, 
+CASE
+WHEN chara_data.age > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.age % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.age
+END as age, 
+text_data1.text AS hometown, chara_data.height, 
+CASE
+WHEN chara_data.weight > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.weight % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.weight
+END as weight, 
+CASE
+WHEN chara_data.body_size_1 > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.body_size_1 % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.body_size_1
+END as body_size_1, 
+CASE
+WHEN chara_data.body_size_2 > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.body_size_2 % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.body_size_2
+END as body_size_2, 
+CASE
+WHEN chara_data.body_size_3 > 5000 THEN (SELECT text_data.text FROM text_data WHERE chara_data.body_size_3 % 1000 = text_data."index" AND text_data.category = 6) 
+ELSE chara_data.body_size_3
+END as body_size_3, 
+chara_data.birth_month, chara_data.birth_day, chara_data.favorite,chara_data.voice AS CV, 
+CV_info.CV_furigana AS CV_kana, CV_info.CV_birthday_year, CV_info.CV_birthday_month, CV_info.CV_birthday_day
+FROM chara_data
+LEFT JOIN (
+	SELECT text_data."index", text_data.text
+	FROM text_data
+	WHERE text_data.category = 2 
+	) AS text_data1
+LEFT JOIN CV_info ON chara_data.name = CV_info.Chara_name
+WHERE chara_data.home_town = text_data1."index" AND chara_data.chara_id BETWEEN 100 AND 400
+GROUP BY chara_data.name
+ORDER BY chara_data.chara_id asc;
+
+
+UPDATE chara_info SET CV_kana = "" WHERE CV_kana IS NULL;
+UPDATE chara_info SET CV_birthday_year = "" WHERE CV_birthday_year IS NULL;
+UPDATE chara_info SET CV_birthday_month = "" WHERE CV_birthday_month IS NULL;
+UPDATE chara_info SET CV_birthday_day = "" WHERE CV_birthday_day IS NULL;

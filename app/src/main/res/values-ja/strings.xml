@@ -32,6 +32,16 @@
     <string name="FesCard">フェス</string>
     <string name="Limited">限定</string>
     <string name="Usual">通常</string>
+    <string name="Reset_Button">クリア</string>
     <string name="MoreLimited">このカードはガシャから出ません。</string>
     <string name="NoMoreLimited">このカードはガシャで出ます。</string>
+    <string name="Stat">ステータス</string>
+    <string name="Skill">特技</string>
+    <string name="Center_Skill">センター効果</string>
+    <string name="Vocal">ボーカル</string>
+    <string name="Dance">ダンス</string>
+    <string name="Visual">ビジュアル</string>
+    <string name="Sum">トータル</string>
+    <string name="Hp">HP</string>
+    <string name="CharaCVInfo">Chara/CV Info</string>
 </resources>
