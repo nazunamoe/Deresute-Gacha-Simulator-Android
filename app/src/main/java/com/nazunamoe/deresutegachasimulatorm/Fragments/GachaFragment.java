@@ -118,7 +118,6 @@ public class GachaFragment extends Fragment {
             adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
             for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
                 cardRarityTypeCount(e.getValue());
-                adapter.addItem(e.getValue());
                 UpdateGachaStatus(false);
             }
         } else {
