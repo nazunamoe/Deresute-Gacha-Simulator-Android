@@ -96,6 +96,7 @@ public class GachaFragment extends Fragment {
         int width = displayMetrics.widthPixels;
 
         CardInfoView = view.findViewById(R.id.gacharesultcardinfo);
+        CardInfoView.setMinimumHeight((width * 2) + 5);
         Max_Stat = view.findViewById(R.id.Max_Stat);
         Training = view.findViewById(R.id.Training);
 
