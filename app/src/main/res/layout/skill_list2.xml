@@ -30,144 +30,161 @@
                 android:orientation="vertical">
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_Voice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_VocalUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_Step"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_DanceUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_Make"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_VisualUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_Brilliance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_AllUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_Ability"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_SkillUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_TricolorVoice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_TricolorVocalUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_TricolorStep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_TricolorDanceUp"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_TricolorMake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_TricolorVisualUp"
                     android:textAlignment="center" />
 
                 <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_TricolorSkillUp"
-                    android:textAlignment="center" />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_Princess"
-                    android:textAlignment="center" />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_VocalUp"
-                    android:textAlignment="center" />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_Unison"
-                    android:textAlignment="center" />
-
-                <CheckBox
+                    android:id="@+id/CenterSkill_LifeUpNormal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_LifeUp_Normal"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_TricolorAbility"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_TricolorSkillUp"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CenterSkill_Princess"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Princess"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CenterSkill_LifeUpCheer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_LifeUp_Cheer"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_FortunePresent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Fortune_Present"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_CinderellaCharm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Cinderella_Charm"
                     android:textAlignment="center" />
 
                 <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_Cool_Passion"
-                    android:textAlignment="center" />
-
-                <CheckBox
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_Cute_Passion"
-                    android:textAlignment="center" />
-
-                <CheckBox
+                    android:id="@+id/CenterSkill_CuteCool"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Cute_Cool"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_CutePassion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Cute_Passion"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CenterSkill_CoolPassion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Cool_Passion"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CenterSkill_Unison"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Unison"
+                    android:textAlignment="center" />
+
+                <CheckBox
+                    android:id="@+id/CenterSkill_ResoantVoice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Resonant_Voice"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_ResonantStep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Resonant_Dance"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_ResoantMake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Resonant_Visual"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_CinderellaYell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Cinderella_Yell"
                     android:textAlignment="center" />
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_WorldLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_WorldLevel"

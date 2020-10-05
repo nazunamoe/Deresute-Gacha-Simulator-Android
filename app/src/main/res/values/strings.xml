@@ -106,8 +106,8 @@
     <string name="LeaderSkill_Cute_Passion">Cute cross Passion</string>
     <string name="LeaderSkill_Cute_Cool">Cute cross Cool</string>
     <string name="LeaderSkill_Resonant_Voice">Resonant Voice</string>
-    <string name="LeaderSkill_Resonant_Dance">Resonant Dance</string>
-    <string name="LeaderSkill_Resonant_Visual">Resonant Visual</string>
+    <string name="LeaderSkill_Resonant_Dance">Resonant Step</string>
+    <string name="LeaderSkill_Resonant_Visual">Resonant Make</string>
     <string name="LeaderSkill_Cinderella_Yell">Cinderella Yell</string>
     <string name="LeaderSkill_WorldLevel">World Level</string>
 </resources>

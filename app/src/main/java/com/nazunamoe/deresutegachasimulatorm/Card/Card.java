@@ -29,10 +29,12 @@ public class Card{
 
     public int Add_Max;
 
+    public int SkillCode;
     public String SkillCategory;
     public String SkillName;
     public String SKillExplain;
 
+    public int CenterSkillCode;
     public String CenterSkillCategory;
     public String CenterSkillName;
     public String CenterSkillExplain;
@@ -41,8 +43,9 @@ public class Card{
 
     public Boolean Limited;
     public Boolean Fes;
-
     public Boolean EventCard;
+
+    public int CardCategory;
 
     public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, int skillCode, String skillName,
                 String skillExplain, int centerSkillCode, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes, Boolean ava){
@@ -117,6 +120,8 @@ public class Card{
         this.Dance_Max = dance_Max;
         this.Visual_Max = visual_Max;
         this.Add_Max = this.Vocal_Max + this.Dance_Max + this.Visual_Max;
+
+        this.SkillCode = skillCode;
 
         switch(skillCode) {
             case 1: case 2:  {
@@ -220,6 +225,8 @@ public class Card{
         this.SkillName = skillName;
         this.SKillExplain = skillExplain;
 
+        this.CenterSkillCode = centerSkillCode;
+
         switch(centerSkillCode) {
             case 1: case 6: case 11: case 16: case 24: case 29: case 34: case 39: case 47: case 52: case 57: case 62: {
                 CenterSkillCategory = this.Type + " " + getString(R.string.LeaderSkill_VocalUp);
@@ -319,15 +326,14 @@ public class Card{
         this.CenterSkillExplain = centerSkillExplain;
 
         this.EventName = eventName;
-        if(eventName == null){
-            this.EventCard = false;
-        }else{
-            this.EventCard = true;
-        }
 
-        this.Limited = limited;
-        this.Fes = fes;
-        this.Availablity = ava;
+        // CardCategory 0 = 통상 1 = 이벤트 2 = 월말한정 3 = 페스
+
+        CardCategory = 0;
+        if(eventName != null) CardCategory = 1;
+        if(limited) CardCategory = 2;
+        if(fes) CardCategory = 3;
+
     }
 
     private String getString(int id) {
