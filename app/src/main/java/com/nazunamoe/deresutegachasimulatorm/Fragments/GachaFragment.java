@@ -234,7 +234,7 @@ public class GachaFragment extends Fragment {
         while(true) {
             pos = random.nextInt(Whole_CardList.size());
             elementAt = (Map.Entry<Integer, Card>) mapSet.toArray()[pos];
-            if((elementAt.getValue().RarityInt == Rarity) && elementAt.getValue().Availablity && !elementAt.getValue().EventCard){
+            if((elementAt.getValue().RarityInt == Rarity) && elementAt.getValue().Availablity){
                 return elementAt.getValue();
             }
         }

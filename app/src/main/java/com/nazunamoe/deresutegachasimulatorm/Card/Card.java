@@ -1,7 +1,5 @@
 package com.nazunamoe.deresutegachasimulatorm.Card;
 
-import android.content.res.Resources;
-
 import com.nazunamoe.deresutegachasimulatorm.Activity.MainActivity;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
@@ -43,7 +41,6 @@ public class Card{
 
     public Boolean Limited;
     public Boolean Fes;
-    public Boolean EventCard;
 
     public int CardCategory;
 
@@ -327,12 +324,15 @@ public class Card{
 
         this.EventName = eventName;
 
-        // CardCategory 0 = 통상 1 = 이벤트 2 = 월말한정 3 = 페스
+        // CardCategory 0 = 통상 / 1 = 이벤트 / 2 = 월말한정 / 3 = 페스
 
         CardCategory = 0;
         if(eventName != null) CardCategory = 1;
         if(limited) CardCategory = 2;
         if(fes) CardCategory = 3;
+
+        if(eventName != null || limited || fes) Availablity = false;
+        else Availablity = true;
 
     }
 
