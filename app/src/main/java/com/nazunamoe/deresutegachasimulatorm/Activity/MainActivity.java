@@ -39,8 +39,7 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar;
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
-    ArrayList<Card> card_list;
-    LinkedHashMap<Integer, Card> temp_cardlist;
+    LinkedHashMap<Integer, Card> cardlist;
     SharedPreferences Shared;
     private static boolean firstRun = true;
 
@@ -112,15 +111,14 @@ public class MainActivity extends AppCompatActivity
             }
             mDBHelper.openDataBase();
 
-            card_list = mDBHelper.getAllCardList();
-            temp_cardlist = mDBHelper.getAllCardMap();
+            cardlist = mDBHelper.getAllCardMap();
 
             Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
             SharedPreferences.Editor editor = Shared.edit();
 
             Gson gson = new Gson();
 
-            String CardListJson = gson.toJson(temp_cardlist);
+            String CardListJson = gson.toJson(cardlist);
             editor.putString("CardList",CardListJson);
 
             editor.putFloat("SSRP",(float)3.0);
