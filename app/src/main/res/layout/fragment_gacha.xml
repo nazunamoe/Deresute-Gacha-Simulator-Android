@@ -1,240 +1,266 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainlayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:weightSum="100"
     tools:context="com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment">
 
-    <include
-        android:id="@+id/include4"
-        layout="@layout/gacha_result_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        card:layout_constraintBottom_toTopOf="@+id/gacharesultview"
-        card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toTopOf="parent"
-        card:layout_constraintVertical_chainStyle="packed" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/gacharesultview"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:elevation="1dp"
-        card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
-        card:cardUseCompatPadding="true"
-        card:contentPadding="4dp"
-        card:layout_constraintBottom_toTopOf="@+id/cardView2"
-        card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintHeight_percent="0.05"
-        card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/include4"
-        card:layout_constraintVertical_chainStyle="packed">
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="7"
-            android:weightSum="6">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="6">
-
-                <TextView
-                    android:id="@+id/SSRareTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/SSRare"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/SRareTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/SRare"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/RareTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/Rare"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/CuteTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/Cute"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/CoolTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/Cool"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/PassionTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/Passion"
-                    android:textAlignment="center" />
-
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:weightSum="6">
-
-                <TextView
-                    android:id="@+id/SSRareNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/SRareNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/RareNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/CuteNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/CoolNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textAlignment="center" />
-
-                <TextView
-                    android:id="@+id/PassionNum"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/zero"
-                    android:textAlignment="center" />
-            </TableRow>
-
-        </TableLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:elevation="0dp"
-        card:cardCornerRadius="16dp"
-        card:cardElevation="1dp"
-        card:cardUseCompatPadding="true"
-        card:contentPadding="0dp"
-        card:layout_constraintBottom_toTopOf="@+id/cardView2"
-        card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/gacharesultview"
-        card:layout_constraintVertical_chainStyle="packed"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:elevation="0dp"
-        card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
-        card:cardUseCompatPadding="true"
-        card:contentPadding="0dp"
-        card:layout_constraintBottom_toBottomOf="parent"
-        card:layout_constraintEnd_toEndOf="parent"
-        card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/gacharesultview"
-        card:layout_constraintVertical_chainStyle="packed">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/include4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            tools:layout_editor_absoluteX="10dp"
-            tools:layout_editor_absoluteY="13dp">
+            android:elevation="1dp"
+            card:cardCornerRadius="16dp"
+            card:cardElevation="1dp"
+            card:cardUseCompatPadding="true"
+            card:contentPadding="8dp">
 
-            <Button
-                android:id="@+id/gacha1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="@string/OneGacha"
-                android:textSize="16sp"
-                card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/gacha10"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/gachacardlist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:clipToPadding="false"
+                android:scrollbars="none"></androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/gacharesultcardinfolayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gacharesultcardinfo"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:elevation="1dp"
+                card:cardCornerRadius="16dp"
+                card:cardElevation="1dp"
+                card:cardUseCompatPadding="true"
+                card:contentPadding="0dp"
+                card:layout_constrainedHeight="true"
+                card:layout_constraintEnd_toEndOf="parent"
                 card:layout_constraintStart_toStartOf="parent"
                 card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
+                card:layout_constraintBottom_toTopOf="@+id/gacharesultview">
 
-            <Button
-                android:id="@+id/gacha10"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="@string/TenGacha"
-                android:textSize="16sp"
-                card:layout_constraintBottom_toBottomOf="parent"
-                card:layout_constraintEnd_toStartOf="@+id/resetbutton"
-                card:layout_constraintStart_toEndOf="@+id/gacha1"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
+                <include layout="@layout/gacha_cardinfo"/>
 
-            <Button
-                android:id="@+id/resetbutton"
-                android:layout_width="0dp"
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/gacharesultview"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:text="@string/Reset_Button"
-                android:textSize="16sp"
-                card:layout_constraintBottom_toBottomOf="parent"
+                android:elevation="1dp"
+                card:cardCornerRadius="16dp"
+                card:cardElevation="1dp"
+                card:cardUseCompatPadding="true"
+                card:contentPadding="4dp"
                 card:layout_constraintEnd_toEndOf="parent"
-                card:layout_constraintStart_toEndOf="@+id/gacha10"
-                card:layout_constraintTop_toTopOf="parent"
-                card:layout_constraintVertical_weight="1" />
+                card:layout_constraintStart_toStartOf="parent"
+                card:layout_constraintTop_toBottomOf="@+id/gacharesultcardinfo"
+                card:layout_constraintBottom_toTopOf="@+id/cardView2">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:weightSum="6">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:weightSum="6">
+
+                        <TextView
+                            android:id="@+id/SSRareTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/SSRare"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/SRareTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/SRare"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/RareTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/Rare"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/CuteTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/Cute"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/CoolTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/Cool"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/PassionTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/Passion"
+                            android:textAlignment="center" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:weightSum="6">
+
+                        <TextView
+                            android:id="@+id/SSRareNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/zero"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/SRareNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/zero"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/RareNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/zero"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/CuteNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/zero"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/CoolNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/zero"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/PassionNum"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/zero"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                </TableLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="1dp"
+                card:cardCornerRadius="16dp"
+                card:cardElevation="1dp"
+                card:cardUseCompatPadding="true"
+                card:contentPadding="0dp"
+                card:layout_constraintEnd_toEndOf="parent"
+                card:layout_constraintStart_toStartOf="parent"
+                card:layout_constraintTop_toBottomOf="@+id/gacharesultview"
+                card:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="13dp">
+
+                    <Button
+                        android:id="@+id/gacha1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="@string/OneGacha"
+                        android:textSize="16sp"
+                        card:layout_constraintBottom_toBottomOf="parent"
+                        card:layout_constraintEnd_toStartOf="@+id/gacha10"
+                        card:layout_constraintStart_toStartOf="parent"
+                        card:layout_constraintTop_toTopOf="parent"
+                        card:layout_constraintVertical_weight="1" />
+
+                    <Button
+                        android:id="@+id/gacha10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="@string/TenGacha"
+                        android:textSize="16sp"
+                        card:layout_constraintBottom_toBottomOf="parent"
+                        card:layout_constraintEnd_toStartOf="@+id/resetbutton"
+                        card:layout_constraintStart_toEndOf="@+id/gacha1"
+                        card:layout_constraintTop_toTopOf="parent"
+                        card:layout_constraintVertical_weight="1" />
+
+                    <Button
+                        android:id="@+id/resetbutton"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="@string/Reset_Button"
+                        android:textSize="16sp"
+                        card:layout_constraintBottom_toBottomOf="parent"
+                        card:layout_constraintEnd_toEndOf="parent"
+                        card:layout_constraintStart_toEndOf="@+id/gacha10"
+                        card:layout_constraintTop_toTopOf="parent"
+                        card:layout_constraintVertical_weight="1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
 

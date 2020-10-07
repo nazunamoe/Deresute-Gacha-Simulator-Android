@@ -18,10 +18,17 @@ import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class LimitedCardActivity extends AppCompatActivity {
     CustomListAdapter adapter;
     ListView listView;
+
+    LinkedHashMap<Integer, Card> card_list;
+    Set<Map.Entry<Integer, Card>> card_list_mapset;
+
     ArrayList<Card> wholelist;
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
@@ -32,17 +39,23 @@ public class LimitedCardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_limited_card);
         adapter = new CustomListAdapter();
-        listView = (ListView)findViewById(R.id.gachacardlist);
+        listView = findViewById(R.id.limitedCardList);
         toolbar = findViewById(R.id.toolbar4);
 
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
         String json = appSharedPrefs.getString("CardList","");
-        wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+        card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
+        card_list_mapset = card_list.entrySet();
 
-        for(int i=0; i<wholelist.size(); i++){
-            adapter.addItem(wholelist.get(i));
+        //wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+
+        for(int i=0; i<card_list_mapset.size(); i++){
+            Card temp_card = ((Map.Entry<Integer, Card>)card_list_mapset.toArray()[i]).getValue();
+            if(temp_card.RarityInt >= 5) {
+                adapter.addItem(temp_card);
+            }
         }
 
         listView.setAdapter(adapter);
@@ -50,19 +63,20 @@ public class LimitedCardActivity extends AppCompatActivity {
             @Override
             public void onItemClick(final AdapterView<?> parent, View view, final int position, long id) {
                 final View view2 = view;
-                Card card2 = wholelist.get(position);
+
+                Card card2 = (Card)adapter.getItem(position);
                 AlertDialog alert_confirm = new AlertDialog.Builder(LimitedCardActivity.this).create();
-                if(card2.Availablity){
+                System.out.println(card2.Availablity);
+                if(card2.Availablity == true){
                     card2.Availablity = false;
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
-                    alert_confirm.setMessage(getResources().getString(R.string.MoreLimited));
-                }else{
+                    alert_confirm.setMessage(card2.CardName + getResources().getString(R.string.MoreLimited));
+                }else if(card2.Availablity == false){
                     card2.Availablity = true;
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
-                    alert_confirm.setMessage(getResources().getString(R.string.NoMoreLimited));
+                    alert_confirm.setMessage(card2.CardName + getResources().getString(R.string.NoMoreLimited));
                 }
-                System.out.println(card2.CardName+"="+card2.Availablity);
-                wholelist.set(position,card2);
+                card_list.replace(card2.No,card2);
                 String json = gson.toJson(wholelist);
                 prefsEditor.putString("CardList", json);
                 prefsEditor.commit();

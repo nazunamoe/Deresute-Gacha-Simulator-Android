@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="navbarbg">#46000000</color>.
+<color name="navbarbg">#00000000</color>.
 <color name="statusbarbg">#00000000</color>
 <color name="accent">#aaf3c1c3</color>
-<color name="accentstatus">#fff3c1c3</color>
+<color name="accentstatus">#fff3c1c3</color>\
+<color name="tab_background">#666666</color>
 </resources>

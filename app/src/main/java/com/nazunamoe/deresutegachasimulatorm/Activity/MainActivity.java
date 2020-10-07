@@ -3,6 +3,7 @@ package com.nazunamoe.deresutegachasimulatorm.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GachaFragment.OnFragmentInteractionListener {
@@ -38,8 +40,11 @@ public class MainActivity extends AppCompatActivity
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
     ArrayList<Card> card_list;
+    LinkedHashMap<Integer, Card> temp_cardlist;
     SharedPreferences Shared;
     private static boolean firstRun = true;
+
+    private static Resources res;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -74,6 +79,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.sidebar);
         toolbar = findViewById(R.id.toolbar);
 
+        res = getResources();
+
         setSupportActionBar(toolbar);
         ActionBar actionBar;
         actionBar = getSupportActionBar();
@@ -106,13 +113,14 @@ public class MainActivity extends AppCompatActivity
             mDBHelper.openDataBase();
 
             card_list = mDBHelper.getAllCardList();
+            temp_cardlist = mDBHelper.getAllCardMap();
 
             Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
             SharedPreferences.Editor editor = Shared.edit();
 
             Gson gson = new Gson();
 
-            String CardListJson = gson.toJson(card_list);
+            String CardListJson = gson.toJson(temp_cardlist);
             editor.putString("CardList",CardListJson);
 
             editor.putFloat("SSRP",(float)3.0);
@@ -147,5 +155,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public static Resources getResourses() {
+        return res;
     }
 }

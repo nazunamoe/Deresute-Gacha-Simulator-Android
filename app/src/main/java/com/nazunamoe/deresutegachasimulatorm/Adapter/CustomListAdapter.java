@@ -70,7 +70,7 @@ public class CustomListAdapter extends BaseAdapter {
         Type.setText(parent.getResources().getString(R.string.cardType)+" : "+cardData.Type);
         num = cardData.No;
 
-        if(cardData.Fes || cardData.Limited){
+        if(cardData.CardCategory == 2 || cardData.CardCategory == 3){
             Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.CardName+" * ");
             Name.setTextColor(Color.RED);
         }else{
