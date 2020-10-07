@@ -294,6 +294,27 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        skill_liferecovery_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateListbyType();
+            }
+        });
+
+        skill_damageguard_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateListbyType();
+            }
+        });
+
+        skill_overload_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateListbyType();
+            }
+        });
+
         skill_concentration_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -679,7 +700,7 @@ public class InfoActivity extends AppCompatActivity {
         if(centerskill_tricolorvoice.isChecked() && (input.CenterSkillCode == 70 || input.CenterSkillCode == 82)) return true;
         if(centerskill_tricolorstep.isChecked() && (input.CenterSkillCode == 71 || input.CenterSkillCode == 83)) return true;
         if(centerskill_tricolormake.isChecked() && (input.CenterSkillCode == 72 || input.CenterSkillCode == 84)) return true;
-        if(centerskill_tricolorability.isChecked() && (input.CenterSkillCode == 73 || input.CenterSkillCode == 85)) return true;
+        if(centerskill_tricolorability.isChecked() && (input.CenterSkillCode == 73 || input.CenterSkillCode == 114)) return true;
         if(centerskill_princess.isChecked() && ((input.CenterSkillCode >= 74 && input.CenterSkillCode <= 76) || (input.CenterSkillCode >= 86 && input.CenterSkillCode <= 88))) return true;
         if(centerskill_cheer.isChecked() && ((input.CenterSkillCode >= 77 && input.CenterSkillCode <= 79))) return true;
         if(centerskill_fortunepresent.isChecked() && (input.CenterSkillCode == 80 || input.CenterSkillCode == 85)) return true;
