@@ -45,7 +45,7 @@
     <string name="Usual">Usual</string>
     <string name="NoMoreLimited">This card is no more limited card now</string>
     <string name="MoreLimited">This card is limited card now</string>
-    <string name="Version" translatable="false">Beta 7</string>
+    <string name="Version" translatable="false">Beta 8</string>
     <string name="Stat">Stat</string>
     <string name="Skill">Skill</string>
     <string name="Center_Skill">Leader Skill</string>
