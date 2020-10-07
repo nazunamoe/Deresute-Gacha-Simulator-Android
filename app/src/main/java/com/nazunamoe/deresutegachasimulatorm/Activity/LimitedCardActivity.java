@@ -25,11 +25,8 @@ import java.util.Set;
 public class LimitedCardActivity extends AppCompatActivity {
     CustomListAdapter adapter;
     ListView listView;
-
     LinkedHashMap<Integer, Card> card_list;
     Set<Map.Entry<Integer, Card>> card_list_mapset;
-
-    ArrayList<Card> wholelist;
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
     Gson gson;
@@ -49,11 +46,9 @@ public class LimitedCardActivity extends AppCompatActivity {
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         card_list_mapset = card_list.entrySet();
 
-        //wholelist = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
-
         for(int i=0; i<card_list_mapset.size(); i++){
             Card temp_card = ((Map.Entry<Integer, Card>)card_list_mapset.toArray()[i]).getValue();
-            if(temp_card.RarityInt >= 5) {
+            if(temp_card.RarityInt >= 5 && temp_card.RarityInt % 2 == 1 && temp_card.CardCategory != 1) {
                 adapter.addItem(temp_card);
             }
         }
@@ -62,11 +57,8 @@ public class LimitedCardActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(final AdapterView<?> parent, View view, final int position, long id) {
-                final View view2 = view;
-
                 Card card2 = (Card)adapter.getItem(position);
                 AlertDialog alert_confirm = new AlertDialog.Builder(LimitedCardActivity.this).create();
-                System.out.println(card2.Availablity);
                 if(card2.Availablity == true){
                     card2.Availablity = false;
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
@@ -77,7 +69,7 @@ public class LimitedCardActivity extends AppCompatActivity {
                     alert_confirm.setMessage(card2.CardName + getResources().getString(R.string.NoMoreLimited));
                 }
                 card_list.replace(card2.No,card2);
-                String json = gson.toJson(wholelist);
+                String json = gson.toJson(card_list);
                 prefsEditor.putString("CardList", json);
                 prefsEditor.commit();
                 alert_confirm.setButton(Dialog.BUTTON_POSITIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
