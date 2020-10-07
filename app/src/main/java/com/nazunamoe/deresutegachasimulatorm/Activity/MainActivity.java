@@ -120,10 +120,8 @@ public class MainActivity extends AppCompatActivity
 
             Gson gson = new Gson();
 
-            String CardListJson = gson.toJson(card_list);
+            String CardListJson = gson.toJson(temp_cardlist);
             editor.putString("CardList",CardListJson);
-            CardListJson = gson.toJson(temp_cardlist);
-            editor.putString("TempCardList",CardListJson);
 
             editor.putFloat("SSRP",(float)3.0);
             editor.putFloat("SRP",(float)12.0);

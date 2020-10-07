@@ -108,7 +108,7 @@ public class GachaFragment extends Fragment {
         CoolNumber = view.findViewById(R.id.CoolNum);
         PassionNumber = view.findViewById(R.id.PassionNum);
 
-        json = appSharedPrefs.getString("TempCardList","");
+        json = appSharedPrefs.getString("CardList","");
         type = new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType();
         Whole_CardList = gson.fromJson(json, type);
         json = appSharedPrefs.getString("Gacha_CardList","");

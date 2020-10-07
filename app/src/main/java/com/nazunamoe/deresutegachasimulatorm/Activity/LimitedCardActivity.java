@@ -45,7 +45,7 @@ public class LimitedCardActivity extends AppCompatActivity {
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
-        String json = appSharedPrefs.getString("TempCardList","");
+        String json = appSharedPrefs.getString("CardList","");
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         card_list_mapset = card_list.entrySet();
 
@@ -78,7 +78,7 @@ public class LimitedCardActivity extends AppCompatActivity {
                 }
                 card_list.replace(card2.No,card2);
                 String json = gson.toJson(wholelist);
-                prefsEditor.putString("TempCardList", json);
+                prefsEditor.putString("CardList", json);
                 prefsEditor.commit();
                 alert_confirm.setButton(Dialog.BUTTON_POSITIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
 

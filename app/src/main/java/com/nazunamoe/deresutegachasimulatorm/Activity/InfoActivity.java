@@ -111,7 +111,7 @@ public class InfoActivity extends AppCompatActivity {
 
         SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
         Gson gson = new Gson();
-        String json = appSharedPrefs.getString("TempCardList","");
+        String json = appSharedPrefs.getString("CardList","");
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         card_list_mapset = card_list.entrySet();
 
