@@ -70,7 +70,6 @@ public class GachaFragment extends Fragment {
     Gson gson;
 
     String json;
-    Type type;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +83,6 @@ public class GachaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_gacha,container,false);
-        final SharedPreferences pref = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
         gacha = new Gacha();
 
         Button onegacha = view.findViewById(R.id.gacha1);
@@ -109,10 +107,9 @@ public class GachaFragment extends Fragment {
         PassionNumber = view.findViewById(R.id.PassionNum);
 
         json = appSharedPrefs.getString("CardList","");
-        type = new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType();
-        Whole_CardList = gson.fromJson(json, type);
+        Whole_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         json = appSharedPrefs.getString("Gacha_CardList","");
-        Gacha_CardList = gson.fromJson(json, type);
+        Gacha_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
 
         if(Gacha_CardList != null) {
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
@@ -134,14 +131,14 @@ public class GachaFragment extends Fragment {
         onegacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Gacha_Execute(pref, false);
+                Gacha_Execute(false);
             }
         });
 
         tengacha.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Gacha_Execute(pref, true);
+                Gacha_Execute(true);
             }
         });
 
@@ -154,8 +151,7 @@ public class GachaFragment extends Fragment {
                     adapter.notifyDataSetChanged();
                     UpdateGachaStatus(true);
                     json = gson.toJson(Gacha_CardList);
-                    prefsEditor.putString("Gacha_CardList", json);
-                    prefsEditor.commit();
+                    prefsEditor.putString("Gacha_CardList", json).apply();
                 }
             }
         });
@@ -163,7 +159,7 @@ public class GachaFragment extends Fragment {
         return view;
     }
 
-    private void Gacha_Execute(SharedPreferences pref, Boolean ten) {
+    private void Gacha_Execute(Boolean ten) {
         Card gacharesult;
         if(Gacha_CardList != null) {
             Gacha_CardList.clear();
@@ -173,15 +169,14 @@ public class GachaFragment extends Fragment {
         adapter.clearItem();
         if(ten) {
             for(int a=0; a<9; a++){
-                gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
+                gacharesult = getRarityCard(gacha.GachaExecute(appSharedPrefs.getFloat("SSRP",(float)3.0),appSharedPrefs.getFloat("SRP",(float)12.0),false));
                 Gacha_CardList.put(gacharesult.No, gacharesult);
                 adapter.addItem(gacharesult);
                 cardRarityTypeCount(gacharesult);
-                adapter.notifyDataSetChanged();
             }
-            gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),true));
+            gacharesult = getRarityCard(gacha.GachaExecute(appSharedPrefs.getFloat("SSRP",(float)3.0),appSharedPrefs.getFloat("SRP",(float)12.0),true));
         } else {
-            gacharesult = getRarityCard(gacha.GachaExecute(pref.getFloat("SSRP",(float)3.0),pref.getFloat("SRP",(float)12.0),false));
+            gacharesult = getRarityCard(gacha.GachaExecute(appSharedPrefs.getFloat("SSRP",(float)3.0),appSharedPrefs.getFloat("SRP",(float)12.0),false));
         }
         Gacha_CardList.put(gacharesult.No, gacharesult);
         adapter.addItem(gacharesult);
@@ -189,8 +184,7 @@ public class GachaFragment extends Fragment {
         UpdateGachaStatus(true);
         adapter.notifyDataSetChanged();
         json = gson.toJson(Gacha_CardList);
-        prefsEditor.putString("Gacha_CardList", json);
-        prefsEditor.commit();
+        prefsEditor.putString("Gacha_CardList", json).apply();
     }
 
     private void cardRarityTypeCount(Card card){
