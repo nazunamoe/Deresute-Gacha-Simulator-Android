@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.nazunamoe.deresutegachasimulatorm.Activity.LimitedCardActivity;
+import com.nazunamoe.deresutegachasimulatorm.Activity.MainActivity;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
@@ -106,7 +108,7 @@ public class GachaFragment extends Fragment {
         CoolNumber = view.findViewById(R.id.CoolNum);
         PassionNumber = view.findViewById(R.id.PassionNum);
 
-        json = appSharedPrefs.getString("CardList","");
+        json = MainActivity.getListinFragment();
         Whole_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         json = appSharedPrefs.getString("Gacha_CardList","");
         Gacha_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
