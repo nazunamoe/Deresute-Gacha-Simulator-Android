@@ -69,7 +69,6 @@ public class LimitedCardActivity extends AppCompatActivity {
                     alert_confirm.setMessage(card2.CardName + getResources().getString(R.string.NoMoreLimited));
                 }
                 card_list.replace(card2.No,card2);
-                card_list.replace(card2.No + 1,card2);
                 String json = gson.toJson(card_list);
                 prefsEditor.putString("CardList", json);
                 prefsEditor.commit();
