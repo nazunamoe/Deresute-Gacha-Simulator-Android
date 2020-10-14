@@ -141,15 +141,15 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Intent intentgogo=null;
+        Intent intent=null;
         if(id == R.id.limitedswitch){
-            intentgogo = new Intent(this, LimitedCardActivity.class);
+            intent = new Intent(this, LimitedCardActivity.class);
         }else if(id == R.id.pbutton2){
-            intentgogo = new Intent(this, pActivity.class);}
+            intent = new Intent(this, pActivity.class);}
         else if(id == R.id.nav_cardinfo){
-            intentgogo = new Intent(this, InfoActivity.class);
+            intent = new Intent(this, InfoActivity.class);
         }
-        startActivity(intentgogo);
+        startActivity(intent);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
