@@ -17,7 +17,6 @@ import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -30,7 +29,9 @@ public class LimitedCardActivity extends AppCompatActivity {
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
     Gson gson;
+    String json;
     Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +40,14 @@ public class LimitedCardActivity extends AppCompatActivity {
         listView = findViewById(R.id.limitedCardList);
         toolbar = findViewById(R.id.toolbar4);
 
-        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
-        String json = appSharedPrefs.getString("CardList","");
+        json = appSharedPrefs.getString("CardList","");
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         card_list_mapset = card_list.entrySet();
 
-        for(int i=0; i<card_list_mapset.size(); i++){
+        for(int i=0; i<card_list.size(); i++){
             Card temp_card = ((Map.Entry<Integer, Card>)card_list_mapset.toArray()[i]).getValue();
             if(temp_card.RarityInt >= 5 && temp_card.RarityInt % 2 == 1 && temp_card.CardCategory != 1) {
                 adapter.addItem(temp_card);
@@ -69,9 +70,8 @@ public class LimitedCardActivity extends AppCompatActivity {
                     alert_confirm.setMessage(card2.CardName + getResources().getString(R.string.NoMoreLimited));
                 }
                 card_list.replace(card2.No,card2);
-                String json = gson.toJson(card_list);
-                prefsEditor.putString("CardList", json);
-                prefsEditor.commit();
+                json = gson.toJson(card_list);
+                prefsEditor.putString("CardList", json).apply();
                 alert_confirm.setButton(Dialog.BUTTON_POSITIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {

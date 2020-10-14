@@ -29,7 +29,6 @@ import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity
@@ -39,10 +38,10 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar;
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
-    ArrayList<Card> card_list;
-    LinkedHashMap<Integer, Card> temp_cardlist;
+    LinkedHashMap<Integer, Card> cardlist;
     SharedPreferences Shared;
     private static boolean firstRun = true;
+    static String CardListJson2;
 
     private static Resources res;
 
@@ -112,20 +111,19 @@ public class MainActivity extends AppCompatActivity
             }
             mDBHelper.openDataBase();
 
-            card_list = mDBHelper.getAllCardList();
-            temp_cardlist = mDBHelper.getAllCardMap();
+            cardlist = mDBHelper.getAllCardMap();
 
             Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
             SharedPreferences.Editor editor = Shared.edit();
 
             Gson gson = new Gson();
 
-            String CardListJson = gson.toJson(temp_cardlist);
-            editor.putString("CardList",CardListJson);
+            String CardListJson = gson.toJson(cardlist);
+            setListinFragment(CardListJson);
+            editor.putString("CardList",CardListJson).apply();
 
-            editor.putFloat("SSRP",(float)3.0);
-            editor.putFloat("SRP",(float)12.0);
-            editor.commit();
+            editor.putFloat("SSRP",(float)3.0).apply();
+            editor.putFloat("SRP",(float)12.0).apply();
         }
         firstRun = false;
     }
@@ -159,5 +157,13 @@ public class MainActivity extends AppCompatActivity
 
     public static Resources getResourses() {
         return res;
+    }
+
+    public static void setListinFragment(String input) {
+        CardListJson2 = input;
+    }
+
+    public static String getListinFragment() {
+        return CardListJson2;
     }
 }

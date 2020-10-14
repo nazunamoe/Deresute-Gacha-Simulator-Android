@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10076400.sqlite";
+    private static String DB_NAME = "10076900.sqlite";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -160,18 +160,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     , eventname, limited, fes, ava);
         return result;
         // DB에서 받아온 정보를 이용해 새 카드 클래스를 생성 후 반환
-    }
-
-    public ArrayList<Card> getAllCardList(){
-        ArrayList<Card> result = new ArrayList<Card>();
-
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info ",null);
-        cursor.moveToFirst();
-        for(int i=0; i<cursor.getCount(); i++){
-            result.add(getResult(cursor.getInt(0)));
-            cursor.moveToNext();
-        }
-        return result;
     }
 
     public LinkedHashMap<Integer, Card> getAllCardMap() {
