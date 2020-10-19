@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity
     SQLiteDatabase mDb;
     LinkedHashMap<Integer, Card> cardlist;
     SharedPreferences Shared;
+    SharedPreferences.Editor editor;
+
     private static boolean firstRun = true;
 
     GachaFragment gachaFragment;
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        Shared = getSharedPreferences("Shared", MODE_PRIVATE);
+        editor = Shared.edit();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
@@ -89,10 +94,23 @@ public class MainActivity extends AppCompatActivity
         actionBar.setDisplayShowTitleEnabled(false);
 
         gachaFragment = new GachaFragment();
-        infoFragment = new InfoFragment();
         limitedFragment = new LimitedFragment();
+        infoFragment = new InfoFragment();
 
         TabLayout tabLayout = findViewById(R.id.mainTab);
+
+        if(Shared.getString("SelectedTab", "").equals("Gacha")) {
+            TabLayout.Tab tab = tabLayout.getTabAt(0);
+            tab.select();
+        }
+        if(Shared.getString("SelectedTab", "").equals("Info"))  {
+            TabLayout.Tab tab = tabLayout.getTabAt(1);
+            tab.select();
+        }
+        if(Shared.getString("SelectedTab", "").equals("Limited"))  {
+            TabLayout.Tab tab = tabLayout.getTabAt(2);
+            tab.select();
+        }
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -101,14 +119,17 @@ public class MainActivity extends AppCompatActivity
                 switch(tab.getPosition()) {
                     case 0: {
                         selected = gachaFragment;
+                        editor.putString("SelectedTab","Gacha").apply();
                         break;
                     }
                     case 1: {
                         selected = infoFragment;
+                        editor.putString("SelectedTab","Info").apply();
                         break;
                     }
                     case 2: {
                         selected = limitedFragment;
+                        editor.putString("SelectedTab","Limited").apply();
                         break;
                     }
                 }
@@ -129,6 +150,8 @@ public class MainActivity extends AppCompatActivity
         if(firstRun)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.maincontents, gachaFragment).commit();
+            TabLayout.Tab tab = tabLayout.getTabAt(0);
+            tab.select();
 
             mDBHelper = new DatabaseHelper(this);
 
@@ -140,9 +163,6 @@ public class MainActivity extends AppCompatActivity
             mDBHelper.openDataBase();
 
             cardlist = mDBHelper.getAllCardMap();
-
-            Shared = getSharedPreferences("Shared", MODE_PRIVATE);
-            SharedPreferences.Editor editor = Shared.edit();
 
             Gson gson = new Gson();
 
