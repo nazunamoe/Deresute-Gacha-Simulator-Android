@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity
     InfoFragment infoFragment;
     LimitedFragment limitedFragment;
 
-    Fragment selected;
-
     private static Resources res;
 
     @Override
