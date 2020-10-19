@@ -27,12 +27,10 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
     private LinkedHashMap<Integer,Card> whole_list;
     private int size;
 
-    private Card selectedCard;
     private SharedPreferences appSharedPrefs;
     private SharedPreferences.Editor prefsEditor;
     private Context context;
 
-    private String selectedCardgson;
     private Gson gson;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
