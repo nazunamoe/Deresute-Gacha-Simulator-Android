@@ -10,13 +10,8 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import android.view.MenuInflater;
-import androidx.core.view.GravityCompat;
 import android.view.MenuItem;
-import com.google.android.material.navigation.NavigationView;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -42,6 +37,12 @@ public class MainActivity extends AppCompatActivity
     LinkedHashMap<Integer, Card> cardlist;
     SharedPreferences Shared;
     private static boolean firstRun = true;
+
+    GachaFragment gachaFragment;
+    InfoFragment infoFragment;
+    LimitedFragment limitedFragment;
+
+    Fragment selected;
 
     private static Resources res;
 
@@ -87,27 +88,27 @@ public class MainActivity extends AppCompatActivity
         actionBar = getSupportActionBar();
         actionBar.setDisplayShowTitleEnabled(false);
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.maincontents,new GachaFragment());
-        fragmentTransaction.commit();
+        gachaFragment = new GachaFragment();
+        infoFragment = new InfoFragment();
+        limitedFragment = new LimitedFragment();
 
         TabLayout tabLayout = findViewById(R.id.mainTab);
-        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Fragment selected = null;
                 switch(tab.getPosition()) {
                     case 0: {
-                        selected = new GachaFragment();
+                        selected = gachaFragment;
                         break;
                     }
                     case 1: {
-                        selected = new LimitedFragment();
+                        selected = infoFragment;
                         break;
                     }
                     case 2: {
-                        selected = new InfoFragment();
+                        selected = limitedFragment;
                         break;
                     }
                 }
@@ -127,6 +128,8 @@ public class MainActivity extends AppCompatActivity
 
         if(firstRun)
         {
+            getSupportFragmentManager().beginTransaction().replace(R.id.maincontents, gachaFragment).commit();
+
             mDBHelper = new DatabaseHelper(this);
 
             try {
