@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.FragmentManager;
@@ -24,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
@@ -113,13 +113,12 @@ public class MainActivity extends AppCompatActivity
 
             cardlist = mDBHelper.getAllCardMap();
 
-            Shared = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+            Shared = getSharedPreferences("Shared", MODE_PRIVATE);
             SharedPreferences.Editor editor = Shared.edit();
 
             Gson gson = new Gson();
 
             String CardListJson = gson.toJson(cardlist);
-            setListinFragment(CardListJson);
             editor.putString("CardList",CardListJson).apply();
 
             editor.putFloat("SSRP",(float)3.0).apply();
@@ -159,11 +158,4 @@ public class MainActivity extends AppCompatActivity
         return res;
     }
 
-    public static void setListinFragment(String input) {
-        CardListJson2 = input;
-    }
-
-    public static String getListinFragment() {
-        return CardListJson2;
-    }
 }

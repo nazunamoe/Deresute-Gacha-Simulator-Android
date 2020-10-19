@@ -109,7 +109,7 @@ public class InfoActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
 
-        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        SharedPreferences appSharedPrefs = getSharedPreferences("Shared", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = appSharedPrefs.getString("CardList","");
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());

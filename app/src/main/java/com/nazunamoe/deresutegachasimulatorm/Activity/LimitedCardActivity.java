@@ -40,7 +40,7 @@ public class LimitedCardActivity extends AppCompatActivity {
         listView = findViewById(R.id.limitedCardList);
         toolbar = findViewById(R.id.toolbar4);
 
-        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        appSharedPrefs = getSharedPreferences("Shared", MODE_PRIVATE);
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
         json = appSharedPrefs.getString("CardList","");

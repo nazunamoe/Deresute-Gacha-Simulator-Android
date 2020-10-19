@@ -1,5 +1,6 @@
 package com.nazunamoe.deresutegachasimulatorm.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import static android.content.Context.MODE_ENABLE_WRITE_AHEAD_LOGGING;
 import static android.content.Context.MODE_PRIVATE;
 
 public class GachaFragment extends Fragment {
@@ -72,11 +74,13 @@ public class GachaFragment extends Fragment {
     Gson gson;
 
     String json;
+    Activity a;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        a = this.getActivity();
+        appSharedPrefs = a.getSharedPreferences("Shared", MODE_PRIVATE);
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
     }
@@ -108,7 +112,7 @@ public class GachaFragment extends Fragment {
         CoolNumber = view.findViewById(R.id.CoolNum);
         PassionNumber = view.findViewById(R.id.PassionNum);
 
-        json = MainActivity.getListinFragment();
+        json = appSharedPrefs.getString("CardList","");
         Whole_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         json = appSharedPrefs.getString("Gacha_CardList","");
         Gacha_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
