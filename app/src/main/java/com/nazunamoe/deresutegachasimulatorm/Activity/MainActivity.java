@@ -9,11 +9,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.view.MenuInflater;
 import androidx.core.view.GravityCompat;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import com.google.android.material.navigation.NavigationView;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,26 +22,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 
+import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
+import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
+import com.nazunamoe.deresutegachasimulatorm.Fragments.LimitedFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GachaFragment.OnFragmentInteractionListener {
+        implements GachaFragment.OnFragmentInteractionListener {
 
-    NavigationView navigationView;
     Toolbar toolbar;
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
     LinkedHashMap<Integer, Card> cardlist;
     SharedPreferences Shared;
     private static boolean firstRun = true;
-    static String CardListJson2;
 
     private static Resources res;
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
 
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -64,41 +64,66 @@ public class MainActivity extends AppCompatActivity
             alert.setTitle(R.string.info);
             alert.show();
         }
+        if (menuItem.getItemId() == R.id.p_action) {
+            Intent intent = new Intent(getApplicationContext(), pActivity.class);
+            startActivity(intent);
+        }
         if (menuItem.getItemId() == R.id.exit) {
             finishAffinity();
         }
         return super.onOptionsItemSelected(menuItem);
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sidebar);
+        setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
-
         res = getResources();
 
         setSupportActionBar(toolbar);
         ActionBar actionBar;
         actionBar = getSupportActionBar();
-        actionBar.setDisplayShowCustomEnabled(true);
         actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, 0, 0);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.maincontents,new GachaFragment());
         fragmentTransaction.commit();
+
+        TabLayout tabLayout = findViewById(R.id.mainTab);
+        tabLayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Fragment selected = null;
+                switch(tab.getPosition()) {
+                    case 0: {
+                        selected = new GachaFragment();
+                        break;
+                    }
+                    case 1: {
+                        selected = new LimitedFragment();
+                        break;
+                    }
+                    case 2: {
+                        selected = new InfoFragment();
+                        break;
+                    }
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.maincontents, selected).commit();
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         if(firstRun)
         {
@@ -129,29 +154,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        Intent intentgogo=null;
-        if(id == R.id.limitedswitch){
-            intentgogo = new Intent(this, LimitedCardActivity.class);
-        }else if(id == R.id.pbutton2){
-            intentgogo = new Intent(this, pActivity.class);}
-        else if(id == R.id.nav_cardinfo){
-            intentgogo = new Intent(this, InfoActivity.class);
-        }
-        startActivity(intentgogo);
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+        super.onBackPressed();
     }
 
     public static Resources getResourses() {

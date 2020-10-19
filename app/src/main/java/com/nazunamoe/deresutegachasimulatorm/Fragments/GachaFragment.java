@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -21,21 +20,17 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nazunamoe.deresutegachasimulatorm.Activity.LimitedCardActivity;
-import com.nazunamoe.deresutegachasimulatorm.Activity.MainActivity;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import static android.content.Context.MODE_ENABLE_WRITE_AHEAD_LOGGING;
 import static android.content.Context.MODE_PRIVATE;
 
 public class GachaFragment extends Fragment {

@@ -9,6 +9,11 @@
         app:showAsAction="never"/>
 
     <item
+        android:id="@+id/p_action"
+        android:title="@string/pButton"
+        app:showAsAction="never"/>
+
+    <item
         android:id="@+id/exit"
         android:title="@string/Exit"
         app:showAsAction="never"/>
