@@ -116,7 +116,7 @@ public class GachaFragment extends Fragment {
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
             adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
             for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
-                cardRarityTypeCount(e.getValue());
+                if(SSRare + SRare + Rare < 10) cardRarityTypeCount(e.getValue());
                 UpdateGachaStatus(false);
             }
         } else {
@@ -182,8 +182,8 @@ public class GachaFragment extends Fragment {
         Gacha_CardList.put(gacharesult.No, gacharesult);
         adapter.addItem(gacharesult);
         cardRarityTypeCount(gacharesult);
+
         UpdateGachaStatus(true);
-        adapter.notifyDataSetChanged();
         json = gson.toJson(Gacha_CardList);
         prefsEditor.putString("Gacha_CardList", json).apply();
     }
