@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">デレステガシャシミュレーター</string>
+
+    <string name="exit_dialogue">アプリを終了しますか。</string>
+    <string name="exit_dialogue_title">アプリ終了</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+
     <string name="GachaMenu">ガシャ</string>
     <string name="InfoMenu">情報</string>
     <string name="MoneyMenu">課金</string>

@@ -1,6 +1,7 @@
 package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -70,7 +71,21 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
         if (menuItem.getItemId() == R.id.exit) {
-            finishAffinity();
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle(R.string.exit_dialogue_title)
+                    .setMessage(R.string.exit_dialogue)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                            System.exit(0);
+                        }
+
+                    })
+                    .setNegativeButton(R.string.no, null)
+                    .show();
         }
         return super.onOptionsItemSelected(menuItem);
     }
@@ -131,7 +146,10 @@ public class MainActivity extends AppCompatActivity
                         break;
                     }
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.maincontents, selected).commit();
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.maincontents, selected)
+                        .commit();
             }
 
             @Override
@@ -147,7 +165,11 @@ public class MainActivity extends AppCompatActivity
 
         if(firstRun)
         {
-            getSupportFragmentManager().beginTransaction().replace(R.id.maincontents, gachaFragment).commit();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.maincontents, gachaFragment)
+                    .commit();
+
             TabLayout.Tab tab = tabLayout.getTabAt(0);
             tab.select();
 
@@ -175,7 +197,21 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle(R.string.exit_dialogue_title)
+                .setMessage(R.string.exit_dialogue)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                        System.exit(0);
+                    }
+
+                })
+                .setNegativeButton(R.string.no, null)
+                .show();
     }
 
     public static Resources getResourses() {
