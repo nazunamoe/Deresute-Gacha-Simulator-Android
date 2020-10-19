@@ -25,6 +25,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.content.Context.POWER_SERVICE;
 
 public class LimitedFragment extends Fragment {
 
@@ -60,12 +61,7 @@ public class LimitedFragment extends Fragment {
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         card_list_mapset = card_list.entrySet();
 
-        for(int i=0; i<card_list.size(); i++){
-            Card temp_card = ((Map.Entry<Integer, Card>)card_list_mapset.toArray()[i]).getValue();
-            if(temp_card.RarityInt >= 5 && temp_card.RarityInt % 2 == 1 && temp_card.CardCategory != 1) {
-                adapter.addItem(temp_card);
-            }
-        }
+        updateCard();
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -85,16 +81,28 @@ public class LimitedFragment extends Fragment {
                 card_list.replace(card2.No,card2);
                 json = gson.toJson(card_list);
                 prefsEditor.putString("CardList", json).apply();
+                updateCard();
                 alert_confirm.setButton(Dialog.BUTTON_POSITIVE,getResources().getString(R.string.OK), new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 });
-
                 alert_confirm.show();
             }
         });
         return view;
     }
+
+    public void updateCard() {
+        card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
+        adapter.clearItem();
+        for(int i=0; i<card_list.size(); i++){
+            Card temp_card = ((Map.Entry<Integer, Card>)card_list_mapset.toArray()[i]).getValue();
+            if(temp_card.RarityInt >= 5 && temp_card.RarityInt % 2 == 1 && temp_card.CardCategory != 1) {
+                adapter.addItem(temp_card);
+            }
+        }
+        adapter.notifyDataSetChanged();
+    }
+
     }
