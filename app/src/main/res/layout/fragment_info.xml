@@ -5,43 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        card:layout_constraintBottom_toTopOf="@+id/cardlistcard"
-        card:layout_constraintEnd_toStartOf="parent"
-        card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toTopOf="parent"
-        card:layout_constraintVertical_weight="1">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:text="@string/CardInfo"/>
-    </androidx.appcompat.widget.Toolbar>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardlistcard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="0dp"
-        card:cardCornerRadius="16dp"
-        card:cardElevation="2dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        card:cardCornerRadius="8dp"
+        card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="0dp"
         card:layout_constraintBottom_toTopOf="@+id/cardView"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHorizontal_bias="0.0"
         card:layout_constraintStart_toStartOf="parent"
-        card:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        card:layout_constraintTop_toTopOf="parent"
         card:layout_constraintVertical_weight="2.5">
 
         <LinearLayout
@@ -214,10 +193,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="8dp"
-            android:elevation="1dp"
             android:layout_weight="3"
-            card:cardCornerRadius="16dp"
-            card:cardElevation="2dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            card:cardCornerRadius="8dp"
+            card:cardElevation="1dp"
             card:cardUseCompatPadding="true"
             card:contentPadding="0dp">
 
@@ -247,9 +227,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="0dp"
                 android:layout_weight="1"
-                android:elevation="1dp"
-                card:cardCornerRadius="16dp"
-                card:cardElevation="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                card:cardCornerRadius="8dp"
+                card:cardElevation="1dp"
                 card:cardUseCompatPadding="true"
                 card:contentPadding="0dp">
 
@@ -268,9 +249,10 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_weight="1"
-                android:elevation="1dp"
-                card:cardCornerRadius="16dp"
-                card:cardElevation="2dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                card:cardCornerRadius="8dp"
+                card:cardElevation="1dp"
                 card:cardUseCompatPadding="true"
                 card:contentPadding="0dp">
 

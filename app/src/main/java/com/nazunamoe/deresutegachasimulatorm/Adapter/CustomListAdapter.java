@@ -51,11 +51,11 @@ public class CustomListAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.card_adapter,parent,false);
         }
 
-        Name = (TextView) convertView.findViewById(R.id.cardName);
-        Rarity = (TextView) convertView.findViewById(R.id.cardRarity);
-        TextView Type = (TextView) convertView.findViewById(R.id.cardType);
+        Name = convertView.findViewById(R.id.cardName);
+        Rarity = convertView.findViewById(R.id.cardRarity);
+        TextView Type = convertView.findViewById(R.id.cardType);
 
-        type = (ImageView) convertView.findViewById(R.id.typeView);
+        type = convertView.findViewById(R.id.typeView);
 
         cardData = list.get(position);
 
@@ -70,13 +70,9 @@ public class CustomListAdapter extends BaseAdapter {
         Type.setText(parent.getResources().getString(R.string.cardType)+" : "+cardData.Type);
         num = cardData.No;
 
-        if(cardData.CardCategory == 2 || cardData.CardCategory == 3){
-            Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.CardName+" * ");
-            Name.setTextColor(Color.RED);
-        }else{
-            Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.CardName);
-            Name.setTextColor(Rarity.getTextColors());
-        }
+        Name.setText(parent.getResources().getString(R.string.cardName)+" : "+cardData.CardName);
+        if(!cardData.Availablity)Name.setTextColor(Color.RED);
+        else Name.setTextColor(Rarity.getTextColors());
 
         resources = convertView.getResources();
 
@@ -85,16 +81,10 @@ public class CustomListAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(Card input) {
-        list.add(input);
-    }
+    public void addItem(Card input) { list.add(input); }
 
     @Override
-    public void notifyDataSetChanged(){
-        super.notifyDataSetChanged();
+    public void notifyDataSetChanged(){ super.notifyDataSetChanged(); }
 
-    }
-    public void clearItem(){
-        list.removeAll(list);
-    }
+    public void clearItem(){ list.removeAll(list); }
 }

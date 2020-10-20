@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">데레스테 가챠 시뮬레이터</string>
+    <string name="app_name">데레스테 가챠 시뮬레이터</string>
+
+    <string name="exit_dialogue">앱을 닫으시겠습니까?</string>
+    <string name="exit_dialogue_title">앱 종료</string>
+    <string name="yes">네</string>
+    <string name="no">아니오</string>
+
     <string name="GachaMenu">가챠</string>
     <string name="InfoMenu">정보</string>
     <string name="MoneyMenu">과금</string>

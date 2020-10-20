@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Deresute Gacha Simulator</string>
+
+    <string name="exit_dialogue">Are you sure you want to close this app?</string>
+    <string name="exit_dialogue_title">Closing App</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
     <string name="MoneyMenu">Money</string>
     <string name="GachaMenu">Gacha</string>
     <string name="InfoMenu">Info</string>

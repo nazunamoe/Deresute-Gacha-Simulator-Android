@@ -1,18 +1,19 @@
-package com.nazunamoe.deresutegachasimulatorm.Activity;
+package com.nazunamoe.deresutegachasimulatorm.Fragments;
 
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.cardview.widget.CardView;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
+
+import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -25,8 +26,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class InfoActivity extends AppCompatActivity {
+import static android.content.Context.MODE_PRIVATE;
+
+public class InfoFragment extends Fragment {
+
     InfoListAdapter adapter;
+    View view;
 
     LinkedHashMap<Integer, Card> card_list;
     Set<Map.Entry<Integer, Card>> card_list_mapset;
@@ -94,99 +99,99 @@ public class InfoActivity extends AppCompatActivity {
     CheckBox centerskill_cinderellayell;
     CheckBox centerskill_worldlevel;
 
-
-    Toolbar toolbar;
     LinearLayout settings;
     RecyclerView recyclerView;
     CardView listViewCard;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info_list);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_info,container,false);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
 
-        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext());
+        SharedPreferences appSharedPrefs = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = appSharedPrefs.getString("CardList","");
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         card_list_mapset = card_list.entrySet();
 
         adapter = new InfoListAdapter(card_list, new ArrayList<>(card_list.keySet()), width);
-        toolbar = findViewById(R.id.toolbar3);
-        setSupportActionBar(toolbar);
-        recyclerView = findViewById(R.id.CardList);
-        recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 3, RecyclerView.VERTICAL, false));
-        listViewCard = findViewById(R.id.cardlistcard);
-        settings = findViewById(R.id.settings);
+        recyclerView = view.findViewById(R.id.CardList);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3, RecyclerView.VERTICAL, false));
+        listViewCard = view.findViewById(R.id.cardlistcard);
+        settings = view.findViewById(R.id.settings);
 
         recyclerView.setAdapter(adapter);
 
-        cuteonly_check = findViewById(R.id.CuteOnly);
-        coolonly_check = findViewById(R.id.CoolOnly);
-        passiononly_check = findViewById(R.id.PassionOnly);
+        cuteonly_check = view.findViewById(R.id.CuteOnly);
+        coolonly_check = view.findViewById(R.id.CoolOnly);
+        passiononly_check = view.findViewById(R.id.PassionOnly);
 
-        ssronly_check = findViewById(R.id.SSROnly);
-        sronly_check = findViewById(R.id.SROnly);
-        ronly_check = findViewById(R.id.ROnly);
-        nonly_check = findViewById(R.id.NormalOnly);
+        ssronly_check = view.findViewById(R.id.SSROnly);
+        sronly_check = view.findViewById(R.id.SROnly);
+        ronly_check = view.findViewById(R.id.ROnly);
+        nonly_check = view.findViewById(R.id.NormalOnly);
 
-        usualonly_check = findViewById(R.id.UsualOnly);
-        limitedonly_check = findViewById(R.id.LimitedOnly);
-        fesonly_check = findViewById(R.id.FesOnly);
-        eventonly_check = findViewById(R.id.EventOnly);
+        usualonly_check = view.findViewById(R.id.UsualOnly);
+        limitedonly_check = view.findViewById(R.id.LimitedOnly);
+        fesonly_check = view.findViewById(R.id.FesOnly);
+        eventonly_check = view.findViewById(R.id.EventOnly);
 
-        skill_scorebonus_check = findViewById(R.id.Skill_ScoreBonus);
-        skill_combobonus_check = findViewById(R.id.Skill_ComboBonus);
-        skill_combosupport_check = findViewById(R.id.Skill_ComboSupport);
-        skill_concentration_check = findViewById(R.id.Skill_Concentration);
-        skill_skillboost_check = findViewById(R.id.Skill_SkillBoost);
-        skill_focus_check = findViewById(R.id.Skill_Focus);
-        skill_allrounder_check = findViewById(R.id.Skill_AllRounder);
-        skill_encore_check = findViewById(R.id.Skill_Encore);
-        skill_liferecovery_check = findViewById(R.id.Skill_LifeRecovery);
-        skill_damageguard_check = findViewById(R.id.Skill_DamageGuard);
-        skill_overload_check = findViewById(R.id.Skill_Overload);
-        skill_lifesparkle_check = findViewById(R.id.Skill_LifeSparkle);
-        skill_tricolorsynergy_check = findViewById(R.id.Skill_TricolorSynergy);
-        skill_coordinate_check = findViewById(R.id.Skill_Coordinate);
-        skill_tuning_check = findViewById(R.id.Skill_Tuning);
-        skill_flickact_check = findViewById(R.id.Skill_FlickAct);
-        skill_longact_check = findViewById(R.id.Skill_LongAct);
-        skill_slideact_check = findViewById(R.id.Skill_SlideAct);
-        skill_ensemble_check = findViewById(R.id.Skill_Ensemble);
-        skill_vocalmotif_check = findViewById(R.id.Skill_VocalMotif);
-        skill_dancemotif_check = findViewById(R.id.Skill_DanceMotif);
-        skill_visualmotif_check = findViewById(R.id.Skill_VisualMotif);
-        skill_tricolorsymphony_check = findViewById(R.id.Skill_TricolorSymphony);
-        skill_alternate_check = findViewById(R.id.Skill_Alternate);
+        skill_scorebonus_check = view.findViewById(R.id.Skill_ScoreBonus);
+        skill_combobonus_check = view.findViewById(R.id.Skill_ComboBonus);
+        skill_combosupport_check = view.findViewById(R.id.Skill_ComboSupport);
+        skill_concentration_check = view.findViewById(R.id.Skill_Concentration);
+        skill_skillboost_check = view.findViewById(R.id.Skill_SkillBoost);
+        skill_focus_check = view.findViewById(R.id.Skill_Focus);
+        skill_allrounder_check = view.findViewById(R.id.Skill_AllRounder);
+        skill_encore_check = view.findViewById(R.id.Skill_Encore);
+        skill_liferecovery_check = view.findViewById(R.id.Skill_LifeRecovery);
+        skill_damageguard_check = view.findViewById(R.id.Skill_DamageGuard);
+        skill_overload_check = view.findViewById(R.id.Skill_Overload);
+        skill_lifesparkle_check = view.findViewById(R.id.Skill_LifeSparkle);
+        skill_tricolorsynergy_check = view.findViewById(R.id.Skill_TricolorSynergy);
+        skill_coordinate_check = view.findViewById(R.id.Skill_Coordinate);
+        skill_tuning_check = view.findViewById(R.id.Skill_Tuning);
+        skill_flickact_check = view.findViewById(R.id.Skill_FlickAct);
+        skill_longact_check = view.findViewById(R.id.Skill_LongAct);
+        skill_slideact_check = view.findViewById(R.id.Skill_SlideAct);
+        skill_ensemble_check = view.findViewById(R.id.Skill_Ensemble);
+        skill_vocalmotif_check = view.findViewById(R.id.Skill_VocalMotif);
+        skill_dancemotif_check = view.findViewById(R.id.Skill_DanceMotif);
+        skill_visualmotif_check = view.findViewById(R.id.Skill_VisualMotif);
+        skill_tricolorsymphony_check = view.findViewById(R.id.Skill_TricolorSymphony);
+        skill_alternate_check = view.findViewById(R.id.Skill_Alternate);
 
-        centerskill_voice = findViewById(R.id.CenterSkill_Voice);
-        centerskill_step = findViewById(R.id.CenterSkill_Step);
-        centerskill_make = findViewById(R.id.CenterSkill_Make);
-        centerskill_brilliance = findViewById(R.id.CenterSkill_Brilliance);
-        centerskill_energy = findViewById(R.id.CenterSkill_LifeUpNormal);
-        centerskill_ability = findViewById(R.id.CenterSkill_Ability);
-        centerskill_tricolorvoice = findViewById(R.id.CenterSkill_TricolorVoice);
-        centerskill_tricolorstep = findViewById(R.id.CenterSkill_TricolorStep);
-        centerskill_tricolormake = findViewById(R.id.CenterSkill_TricolorMake);
-        centerskill_tricolorability = findViewById(R.id.CenterSkill_TricolorAbility);
-        centerskill_princess = findViewById(R.id.CenterSkill_Princess);
-        centerskill_cheer = findViewById(R.id.CenterSkill_LifeUpCheer);
-        centerskill_fortunepresent = findViewById(R.id.CenterSkill_FortunePresent);
-        centerskill_cinderellacharm = findViewById(R.id.CenterSkill_CinderellaCharm);
-        centerskill_cutecool = findViewById(R.id.CenterSkill_CuteCool);
-        centerskill_cutepassion = findViewById(R.id.CenterSkill_CutePassion);
-        centerskill_coolpassion = findViewById(R.id.CenterSkill_CoolPassion);
-        centerskill_unison = findViewById(R.id.CenterSkill_Unison);
-        centerskill_resonantvoice = findViewById(R.id.CenterSkill_ResoantVoice);
-        centerskill_resonantstep = findViewById(R.id.CenterSkill_ResonantStep);
-        centerskill_resonantmake = findViewById(R.id.CenterSkill_ResoantMake);
-        centerskill_cinderellayell = findViewById(R.id.CenterSkill_CinderellaYell);
-        centerskill_worldlevel = findViewById(R.id.CenterSkill_WorldLevel);
+        centerskill_voice = view.findViewById(R.id.CenterSkill_Voice);
+        centerskill_step = view.findViewById(R.id.CenterSkill_Step);
+        centerskill_make = view.findViewById(R.id.CenterSkill_Make);
+        centerskill_brilliance = view.findViewById(R.id.CenterSkill_Brilliance);
+        centerskill_energy = view.findViewById(R.id.CenterSkill_LifeUpNormal);
+        centerskill_ability = view.findViewById(R.id.CenterSkill_Ability);
+        centerskill_tricolorvoice = view.findViewById(R.id.CenterSkill_TricolorVoice);
+        centerskill_tricolorstep = view.findViewById(R.id.CenterSkill_TricolorStep);
+        centerskill_tricolormake = view.findViewById(R.id.CenterSkill_TricolorMake);
+        centerskill_tricolorability = view.findViewById(R.id.CenterSkill_TricolorAbility);
+        centerskill_princess = view.findViewById(R.id.CenterSkill_Princess);
+        centerskill_cheer = view.findViewById(R.id.CenterSkill_LifeUpCheer);
+        centerskill_fortunepresent = view.findViewById(R.id.CenterSkill_FortunePresent);
+        centerskill_cinderellacharm = view.findViewById(R.id.CenterSkill_CinderellaCharm);
+        centerskill_cutecool = view.findViewById(R.id.CenterSkill_CuteCool);
+        centerskill_cutepassion = view.findViewById(R.id.CenterSkill_CutePassion);
+        centerskill_coolpassion = view.findViewById(R.id.CenterSkill_CoolPassion);
+        centerskill_unison = view.findViewById(R.id.CenterSkill_Unison);
+        centerskill_resonantvoice = view.findViewById(R.id.CenterSkill_ResoantVoice);
+        centerskill_resonantstep = view.findViewById(R.id.CenterSkill_ResonantStep);
+        centerskill_resonantmake = view.findViewById(R.id.CenterSkill_ResoantMake);
+        centerskill_cinderellayell = view.findViewById(R.id.CenterSkill_CinderellaYell);
+        centerskill_worldlevel = view.findViewById(R.id.CenterSkill_WorldLevel);
 
         // 여기서부터 속성 체크박스
 
@@ -605,6 +610,8 @@ public class InfoActivity extends AppCompatActivity {
         });
 
         updateListbyType();
+
+        return view;
     }
 
     private void updateListbyType(){
@@ -674,13 +681,13 @@ public class InfoActivity extends AppCompatActivity {
         if(skill_tricolorsymphony_check.isChecked() && input.SkillCode == 38) return updateListByLeaderSkill(input);
         if(skill_alternate_check.isChecked() && input.SkillCode == 39) return updateListByLeaderSkill(input);
         if(!skill_scorebonus_check.isChecked() && !skill_combobonus_check.isChecked() && !skill_combosupport_check.isChecked() &&
-        !skill_liferecovery_check.isChecked() && !skill_damageguard_check.isChecked() && !skill_overload_check.isChecked() &&
-        !skill_concentration_check.isChecked() && !skill_skillboost_check.isChecked() && !skill_focus_check.isChecked() &&
-        !skill_allrounder_check.isChecked() && !skill_encore_check.isChecked() && !skill_lifesparkle_check.isChecked() &&
-        !skill_tricolorsynergy_check.isChecked() && !skill_coordinate_check.isChecked() && !skill_tuning_check.isChecked() &&
-        !skill_longact_check.isChecked() && !skill_flickact_check.isChecked() && !skill_slideact_check.isChecked() &&
-        !skill_ensemble_check.isChecked() && !skill_vocalmotif_check.isChecked() && !skill_dancemotif_check.isChecked() &&
-        !skill_visualmotif_check.isChecked() && !skill_tricolorsymphony_check.isChecked() && !skill_alternate_check.isChecked()) return updateListByLeaderSkill(input);
+                !skill_liferecovery_check.isChecked() && !skill_damageguard_check.isChecked() && !skill_overload_check.isChecked() &&
+                !skill_concentration_check.isChecked() && !skill_skillboost_check.isChecked() && !skill_focus_check.isChecked() &&
+                !skill_allrounder_check.isChecked() && !skill_encore_check.isChecked() && !skill_lifesparkle_check.isChecked() &&
+                !skill_tricolorsynergy_check.isChecked() && !skill_coordinate_check.isChecked() && !skill_tuning_check.isChecked() &&
+                !skill_longact_check.isChecked() && !skill_flickact_check.isChecked() && !skill_slideact_check.isChecked() &&
+                !skill_ensemble_check.isChecked() && !skill_vocalmotif_check.isChecked() && !skill_dancemotif_check.isChecked() &&
+                !skill_visualmotif_check.isChecked() && !skill_tricolorsymphony_check.isChecked() && !skill_alternate_check.isChecked()) return updateListByLeaderSkill(input);
         return false;
     }
 

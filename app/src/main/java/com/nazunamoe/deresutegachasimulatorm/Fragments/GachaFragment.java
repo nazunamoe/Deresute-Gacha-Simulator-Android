@@ -1,9 +1,9 @@
 package com.nazunamoe.deresutegachasimulatorm.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -20,14 +20,11 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nazunamoe.deresutegachasimulatorm.Activity.LimitedCardActivity;
-import com.nazunamoe.deresutegachasimulatorm.Activity.MainActivity;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -72,11 +69,13 @@ public class GachaFragment extends Fragment {
     Gson gson;
 
     String json;
+    Activity a;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        a = this.getActivity();
+        appSharedPrefs = a.getSharedPreferences("Shared", MODE_PRIVATE);
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
     }
@@ -108,7 +107,7 @@ public class GachaFragment extends Fragment {
         CoolNumber = view.findViewById(R.id.CoolNum);
         PassionNumber = view.findViewById(R.id.PassionNum);
 
-        json = MainActivity.getListinFragment();
+        json = appSharedPrefs.getString("CardList","");
         Whole_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         json = appSharedPrefs.getString("Gacha_CardList","");
         Gacha_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
@@ -117,7 +116,7 @@ public class GachaFragment extends Fragment {
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
             adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
             for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
-                cardRarityTypeCount(e.getValue());
+                if(SSRare + SRare + Rare < 10) cardRarityTypeCount(e.getValue());
                 UpdateGachaStatus(false);
             }
         } else {
@@ -183,8 +182,8 @@ public class GachaFragment extends Fragment {
         Gacha_CardList.put(gacharesult.No, gacharesult);
         adapter.addItem(gacharesult);
         cardRarityTypeCount(gacharesult);
+
         UpdateGachaStatus(true);
-        adapter.notifyDataSetChanged();
         json = gson.toJson(Gacha_CardList);
         prefsEditor.putString("Gacha_CardList", json).apply();
     }
