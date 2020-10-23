@@ -46,7 +46,7 @@ FROM limited_info;
 
 CREATE TABLE card_info AS
 SELECT card_data.id, card_data.name, 
-chara_data.name,
+chara_data.name, card_data.leader_skill_id,
 card_data.rarity, card_data.attribute,
 (SELECT event_data.name FROM event_data, event_info WHERE event_data.event_id = event_info.event_id AND event_info.reward_id = card_data.id) as event_name,
 CASE
