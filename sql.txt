@@ -1,5 +1,3 @@
-
-
 DROP TABLE IF EXISTS card_info;
 DROP TABLE IF EXISTS event_info;
 DROP TABLE IF EXISTS limited_info;
@@ -50,10 +48,6 @@ CREATE TABLE card_info AS
 SELECT card_data.id, card_data.name, 
 chara_data.name,
 card_data.rarity, card_data.attribute,
-card_data.hp_min, card_data.vocal_min, card_data.dance_min, card_data.visual_min,vocal_min+dance_min+visual_min as total_min,
-card_data.hp_max, card_data.vocal_max, card_data.dance_max, card_data.visual_max,vocal_max+dance_max+visual_max as total_max
-,skill_data.skill_type,skill_data.skill_name, skill_data.explain
-,leader_skill_data.leader_skill_id,leader_skill_data.name, leader_skill_data.explain,
 (SELECT event_data.name FROM event_data, event_info WHERE event_data.event_id = event_info.event_id AND event_info.reward_id = card_data.id) as event_name,
 CASE
 	WHEN card_data.id IN (SELECT card_data.id FROM card_data JOIN limited_info ON limited_info.card_id = card_data.id WHERE limited_info.limited_flag = 1) THEN 1
@@ -64,9 +58,7 @@ CASE
 	ELSE 0
 END AS fes
 FROM card_data 
-LEFT JOIN leader_skill_data ON card_data.leader_skill_id = leader_skill_data.leader_skill_id
 JOIN chara_data USING(chara_id)
-LEFT JOIN skill_data ON card_data.skill_id = skill_data.skill_id
 WHERE card_data.id<900000 
 GROUP BY card_data.name
 ORDER BY card_data.id asc;
@@ -159,7 +151,6 @@ UPDATE card_info
 SET limited2 = "1"
 WHERE card_info.id = "200378";
 
-
 UPDATE card_info
 SET event_name = NULL
 WHERE card_info.rarity = "3" OR card_info.rarity = "4";
@@ -191,6 +182,15 @@ WHERE card_info.id IN (100771, 100772, 300763, 300764);
 UPDATE card_info
 SET event_name = "TRUE COLORS "
 WHERE card_info.id IN (200727, 200728, 300713, 300714);
+
+CREATE TABLE stat_skill AS
+SELECT card_data.id, card_data.name, 
+card_data.hp_min, card_data.vocal_min, card_data.dance_min, card_data.visual_min, 
+card_data.hp_max, card_data.vocal_max, card_data.dance_max, card_data.visual_max,
+card_data.bonus_hp, card_data.bonus_vocal, card_data.bonus_dance, card_data.bonus_visual, 
+skill_data.skill_name, skill_data.skill_type, skill_data.skill_trigger_value,
+skill_data.condition, skill_data.probability_type, skill_data.value_2, skill_data.value_3
+FROM card_data INNER JOIN skill_data ON card_data.id = skill_data.skill_id
 
 CREATE TABLE chara_info AS
 SELECT 
@@ -232,7 +232,6 @@ LEFT JOIN (
 WHERE chara_data.home_town = text_data1."index" AND chara_data.chara_id BETWEEN 100 AND 400
 GROUP BY chara_data.name
 ORDER BY chara_data.chara_id asc;
-
 
 CREATE TABLE CV_info(
 CV_name text NOT NULL PRIMARY KEY,
