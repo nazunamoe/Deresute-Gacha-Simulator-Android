@@ -45,30 +45,35 @@ SELECT gacha_id, card_id+1, limited_flag
 FROM limited_info;
 
 CREATE TABLE card_info AS
-SELECT card_data.id, card_data.name, 
+SELECT card_data.id, card_data.name,
 chara_data.name, card_data.leader_skill_id,
 card_data.rarity, card_data.attribute,
 (SELECT event_data.name FROM event_data, event_info WHERE event_data.event_id = event_info.event_id AND event_info.reward_id = card_data.id) as event_name,
 CASE
 	WHEN card_data.id IN (SELECT card_data.id FROM card_data JOIN limited_info ON limited_info.card_id = card_data.id WHERE limited_info.limited_flag = 1) THEN 1
 	ELSE 0
-END AS limited2,
+END AS ava,
+CASE
+	WHEN card_data.id IN (SELECT card_data.id FROM card_data JOIN limited_info ON limited_info.card_id = card_data.id WHERE limited_info.limited_flag = 1) THEN 1
+	ELSE 0
+END AS limited_month,
 CASE
 	WHEN card_data.id IN (SELECT card_data.id FROM card_data JOIN gacha_sp_effect ON gacha_sp_effect.card_id = card_data.id) THEN 1
 	ELSE 0
 END AS fes
-FROM card_data 
+FROM card_data
 JOIN chara_data USING(chara_id)
-WHERE card_data.id<900000 
+WHERE card_data.id<900000
 GROUP BY card_data.name
 ORDER BY card_data.id asc;
 
+
 UPDATE card_info
-SET limited2 = "0"
+SET limited_month = "0"
 WHERE card_info.id = "220249" ;
 
 UPDATE card_info
-SET limited2 = "0"
+SET limited_month = "0"
 WHERE card_info.id = "220250" ;
 
 UPDATE card_info
@@ -104,51 +109,139 @@ SET event_name = "Trust me"
 WHERE card_info.id = "300596" ;
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "300101";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "200103";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "100107";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "300102";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "200104";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "100108";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "100669";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "100670";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "200643";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "200644";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
 WHERE card_info.id = "200377";
 
 UPDATE card_info
-SET limited2 = "1"
+SET limited_month = "1"
+WHERE card_info.id = "200378";
+
+UPDATE card_info
+SET limited = "0"
+WHERE card_info.id = "220249" ;
+
+UPDATE card_info
+SET limited = "0"
+WHERE card_info.id = "220250" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300583" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300584" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300585" ;
+
+UPDATE card_info
+SET event_name = NULL
+WHERE card_info.id = "300586" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300593" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300594" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300595" ;
+
+UPDATE card_info
+SET event_name = "Trust me"
+WHERE card_info.id = "300596" ;
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "300101";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "200103";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "100107";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "300102";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "200104";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "100108";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "100669";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "100670";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "200643";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "200644";
+
+UPDATE card_info
+SET limited = "1"
+WHERE card_info.id = "200377";
+
+UPDATE card_info
+SET limited = "1"
 WHERE card_info.id = "200378";
 
 UPDATE card_info
@@ -156,7 +249,11 @@ SET event_name = NULL
 WHERE card_info.rarity = "3" OR card_info.rarity = "4";
 
 UPDATE card_info
-SET limited2 = 0
+SET limited_month = 0
+WHERE card_info.rarity = "3" OR card_info.rarity = "4";
+
+UPDATE card_info
+SET limited = 0
 WHERE card_info.rarity = "3" OR card_info.rarity = "4";
 
 UPDATE card_info
