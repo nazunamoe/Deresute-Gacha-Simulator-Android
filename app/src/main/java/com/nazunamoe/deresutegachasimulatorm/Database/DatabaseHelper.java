@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10077100.sqlite";
+    private static String DB_NAME = "10077200.sqlite";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -90,45 +90,78 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    // id를 넣어서 카드를 반환받는 메소드
-    public Card getResult(int id){
-        // 결과 카드 선언
-        Card result = null;
-        // SQL문 실행
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info WHERE card_info.id="+id,null);
+    public LinkedHashMap<Integer, Card> getAllCardList_temp() {
+        LinkedHashMap<Integer, Card> result = new LinkedHashMap<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info",null);
         cursor.moveToFirst();
+        for(int i = 0 ; i < cursor.getCount(); i++) {
+            Card temp = cursorToCard(cursor);
+            result.put(temp.No, temp);
+            cursor.moveToNext();
+        }
+        return result;
+    }
+
+    public ArrayList<Card> getAllCardList() {
+        ArrayList<Card> result = new ArrayList<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info",null);
+        cursor.moveToFirst();
+        for(int i = 0 ; i < cursor.getCount(); i++) {
+            result.add(cursorToCard(cursor));
+            cursor.moveToNext();
+        }
+        return result;
+    }
+
+    public Card getRarityCard(int Rarity) {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info " +
+                "WHERE rarity = " + Rarity + " " +
+                "AND ava = 0 " +
+                "AND id % 2 = 1 " +
+                "AND event_name IS NULL " +
+                "ORDER BY RANDOM() LIMIT 1",null);
+        cursor.moveToFirst();
+        return cursorToCard(cursor);
+    }
+
+    public Card cursorToCard(Cursor cursor) {
+        Card result;
+
         /*
             public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
                 String skillExplain, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes){
          */
-        int cardno = cursor.getInt(0);
-        String cardname = cursor.getString(1);
-        String charaname = cursor.getString(2);
-        String rarity = cursor.getString(3);
+        int cardno = cursor.getInt(cursor.getColumnIndex("id"));
+        String cardname = cursor.getString(cursor.getColumnIndex("card_name"));
+        String charaname = cursor.getString(cursor.getColumnIndex("chara_name"));
+        String rarity = cursor.getString(cursor.getColumnIndex("rarity"));
 
-        int hp_min = cursor.getInt(5);
-        int vo_min = cursor.getInt(6);
-        int da_min = cursor.getInt(7);
-        int vi_min = cursor.getInt(8);
+        int hp_min = cursor.getInt(cursor.getColumnIndex("hp_min"));
+        int vo_min = cursor.getInt(cursor.getColumnIndex("vocal_min"));
+        int da_min = cursor.getInt(cursor.getColumnIndex("dance_min"));
+        int vi_min = cursor.getInt(cursor.getColumnIndex("visual_min"));
 
-        int hp_max = cursor.getInt(10);
-        int vo_max = cursor.getInt(11);
-        int da_max = cursor.getInt(12);
-        int vi_max = cursor.getInt(13);
+        int hp_max = cursor.getInt(cursor.getColumnIndex("hp_max"));
+        int vo_max = cursor.getInt(cursor.getColumnIndex("vocal_max"));
+        int da_max = cursor.getInt(cursor.getColumnIndex("dance_max"));
+        int vi_max = cursor.getInt(cursor.getColumnIndex("visual_max"));
 
-        int skillcode = cursor.getInt(15);
+        int skillcode = cursor.getInt(cursor.getColumnIndex("skill_type"));
 
-        String skillname = cursor.getString(16);
-        String skillexplain = cursor.getString(17);
+        String skillname = cursor.getString(cursor.getColumnIndex("skill_name"));
+        String skillexplain = cursor.getString(cursor.getColumnIndex("skill_explain"));
 
-        int centerskillcode = cursor.getInt(18);
+        int centerskillcode = cursor.getInt(cursor.getColumnIndex("leader_skill_id"));
 
-        String centerskillname = cursor.getString(19);
-        String centerskillexplain = cursor.getString(20);
+        String centerskillname = cursor.getString(cursor.getColumnIndex("leader_skill_name"));
+        String centerskillexplain = cursor.getString(cursor.getColumnIndex("leader_skill_explain"));
 
-        String eventname = cursor.getString(21);
+        String eventname = cursor.getString(cursor.getColumnIndex("event_name"));
 
-        int limitedint = cursor.getInt(cursor.getColumnIndex("limited2"));
+        int limitedint = cursor.getInt(cursor.getColumnIndex("limited_month"));
         int fesint = cursor.getInt(cursor.getColumnIndex("fes"));
 
         boolean limited = false;
@@ -147,7 +180,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         boolean ava;
 
-        if(fes||limited) {
+        int avaint = cursor.getInt(cursor.getColumnIndex("ava"));
+
+        if(avaint == 0) {
             ava = false;
         }else{
             ava = true;
@@ -155,22 +190,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // 필요한 정보를 모두 변수에 연결.
         result = new Card(cardno, cardname, charaname, rarity
-                    , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max, skillcode
-                    , skillname, skillexplain, centerskillcode, centerskillname, centerskillexplain
-                    , eventname, limited, fes, ava);
-        return result;
-        // DB에서 받아온 정보를 이용해 새 카드 클래스를 생성 후 반환
-    }
-
-    public LinkedHashMap<Integer, Card> getAllCardMap() {
-        LinkedHashMap<Integer, Card> result = new LinkedHashMap<>();
-
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info ",null);
-        cursor.moveToFirst();
-        for(int i=0; i<cursor.getCount(); i++){
-            result.put(cursor.getInt(0) ,getResult(cursor.getInt(0)));
-            cursor.moveToNext();
-        }
+                , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max, skillcode
+                , skillname, skillexplain, centerskillcode, centerskillname, centerskillexplain
+                , eventname, limited, fes, ava);
         return result;
     }
 
