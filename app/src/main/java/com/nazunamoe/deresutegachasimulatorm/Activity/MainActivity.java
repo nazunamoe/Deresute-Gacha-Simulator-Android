@@ -28,7 +28,6 @@ import com.nazunamoe.deresutegachasimulatorm.Fragments.LimitedFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity
         implements GachaFragment.OnFragmentInteractionListener {

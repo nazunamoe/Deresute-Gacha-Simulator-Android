@@ -31,7 +31,6 @@ import com.nazunamoe.deresutegachasimulatorm.R;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
