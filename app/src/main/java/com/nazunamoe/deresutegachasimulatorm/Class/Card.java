@@ -1,4 +1,4 @@
-package com.nazunamoe.deresutegachasimulatorm.Card;
+package com.nazunamoe.deresutegachasimulatorm.Class;
 
 import com.nazunamoe.deresutegachasimulatorm.Activity.MainActivity;
 import com.nazunamoe.deresutegachasimulatorm.R;

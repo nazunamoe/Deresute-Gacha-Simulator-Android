@@ -6,8 +6,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
-import com.nazunamoe.deresutegachasimulatorm.Card.Gacha_Season;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Gacha_Season;
 
 import java.io.File;
 import java.io.FileOutputStream;

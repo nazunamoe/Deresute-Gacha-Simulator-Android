@@ -17,7 +17,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 public class CardInfoActivity extends AppCompatActivity {

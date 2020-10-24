@@ -1,4 +1,4 @@
-package com.nazunamoe.deresutegachasimulatorm.Card;
+package com.nazunamoe.deresutegachasimulatorm.Class;
 
 import java.util.ArrayList;
 

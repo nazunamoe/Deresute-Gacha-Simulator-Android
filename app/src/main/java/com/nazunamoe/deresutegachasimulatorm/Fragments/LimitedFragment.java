@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaSeasonListAdapter;
-import com.nazunamoe.deresutegachasimulatorm.Card.Gacha_Season;
+import com.nazunamoe.deresutegachasimulatorm.Class.Gacha_Season;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.R;
 

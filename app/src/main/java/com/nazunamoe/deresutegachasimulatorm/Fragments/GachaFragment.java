@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;

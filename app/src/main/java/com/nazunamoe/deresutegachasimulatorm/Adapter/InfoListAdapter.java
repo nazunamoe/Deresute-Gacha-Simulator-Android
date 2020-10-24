@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.nazunamoe.deresutegachasimulatorm.Activity.CardInfoActivity;
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;

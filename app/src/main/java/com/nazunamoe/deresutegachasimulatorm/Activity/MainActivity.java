@@ -20,7 +20,7 @@ import android.view.Menu;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
