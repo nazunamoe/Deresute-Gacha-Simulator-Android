@@ -108,4 +108,8 @@
     <string name="LeaderSkill_Resonant_Visual">레조넌스 메이크</string>
     <string name="LeaderSkill_Cinderella_Yell">신데렐라 엘</string>
     <string name="LeaderSkill_WorldLevel">월드 레벨</string>
+
+    <string name="gacha_season_title">가챠 시즌</string>
+    <string name="gacha_season_date_title">기간</string>
+    <string name="gacha_season_card_list_title">출현 카드</string>
 </resources>

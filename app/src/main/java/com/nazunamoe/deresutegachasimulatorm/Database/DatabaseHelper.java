@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Card.Gacha_Season;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -113,6 +114,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         return result;
+    }
+
+    public ArrayList<Gacha_Season> getAllSeasons() {
+        ArrayList<Gacha_Season> seasonlist = new ArrayList<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM limited_gacha_info ",null);
+        cursor.moveToFirst();
+        for(int i = 0; i < cursor.getCount(); i++) {
+            ArrayList<Card> card_list = new ArrayList<>();
+            String title = cursor.getString(cursor.getColumnIndex("name"));
+            String start_date = cursor.getString(cursor.getColumnIndex("start_date"));
+            String end_date = cursor.getString(cursor.getColumnIndex("end_date"));
+            Cursor cursor2 = mDataBase.rawQuery("SELECT * " +
+                    "FROM limited_gacha_card_list " +
+                    "WHERE id = " + cursor.getInt(cursor.getColumnIndex("id")) ,null);
+            cursor2.moveToFirst();
+            for(int j = 0; j < cursor2.getCount(); j++) {
+                card_list.add(getCard(cursor2.getInt(cursor2.getColumnIndex("card_id"))));
+                cursor2.moveToNext();
+            }
+            Gacha_Season temp = new Gacha_Season(title,start_date,end_date,card_list);
+            seasonlist.add(temp);
+            cursor.moveToNext();
+        }
+        return seasonlist;
+    }
+
+    private Card getCard(int id) {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info " +
+                "WHERE id = " + id,null);
+        cursor.moveToFirst();
+        return cursorToCard(cursor);
     }
 
     public Card getRarityCard(int Rarity) {
