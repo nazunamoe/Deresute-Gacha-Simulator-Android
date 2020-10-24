@@ -18,12 +18,12 @@ import com.nazunamoe.deresutegachasimulatorm.Activity.CardInfoActivity;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
 
 public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHolder> {
 
-    private List<Integer> list;
+    private ArrayList<Card> list;
     private LinkedHashMap<Integer,Card> whole_list;
     private int size;
 
@@ -42,7 +42,7 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
         }
     }
 
-    public InfoListAdapter(LinkedHashMap<Integer,Card> whole_list, List<Integer> input, int width) {
+    public InfoListAdapter(ArrayList<Card> input, int width) {
 
         this.size = (int)Math.ceil((width / 5) * 0.852);
 
@@ -64,7 +64,7 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         Glide.with(holder.itemView.getContext())
-                .load("https://hidamarirhodonite.kirara.ca/icon_card/"+list.get(position)+".png")
+                .load("https://hidamarirhodonite.kirara.ca/icon_card/"+list.get(position).No+".png")
                 .override(size)
                 .into(holder.type);
 
@@ -75,9 +75,9 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prefsEditor.putString("SelectedCard",gson.toJson(whole_list.get(list.get(position))));
+                prefsEditor.putString("SelectedCard",gson.toJson(list.get(position)));
                 prefsEditor.commit();
-                prefsEditor.putString("SelectedCardTrained",gson.toJson(whole_list.get(list.get(position)+1)));
+                prefsEditor.putString("SelectedCardTrained",gson.toJson(list.get(position)));
                 prefsEditor.commit();
                 Intent intent = new Intent(context, CardInfoActivity.class);
                 context.startActivity(intent);
@@ -97,7 +97,7 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
     }
 
     public void addItem(Card input) {
-            list.add(input.No);
+            list.add(input);
         this.notifyDataSetChanged();
     }
 

@@ -27,6 +27,7 @@ import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.LimitedFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class MainActivity extends AppCompatActivity
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar;
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
-    LinkedHashMap<Integer, Card> cardlist;
+    ArrayList<Card> cardlist;
     SharedPreferences Shared;
     SharedPreferences.Editor editor;
 
@@ -182,7 +183,7 @@ public class MainActivity extends AppCompatActivity
             }
             mDBHelper.openDataBase();
 
-            cardlist = mDBHelper.getAllCardMap();
+            cardlist = mDBHelper.getAllCardList();
 
             Gson gson = new Gson();
 

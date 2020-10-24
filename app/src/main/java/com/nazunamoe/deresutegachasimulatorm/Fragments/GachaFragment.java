@@ -3,6 +3,8 @@ package com.nazunamoe.deresutegachasimulatorm.Fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -22,6 +24,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.GachaListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Gacha.Gacha;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
@@ -35,7 +38,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class GachaFragment extends Fragment {
 
-    LinkedHashMap<Integer, Card> Whole_CardList = new LinkedHashMap<>();
     LinkedHashMap<Integer, Card> Gacha_CardList = new LinkedHashMap<>();
     Set<Map.Entry<Integer, Card>> Gacha_CardList_MapSet;
 
@@ -61,6 +63,9 @@ public class GachaFragment extends Fragment {
 
     CardView CardInfoView;
 
+    DatabaseHelper mDBHelper;
+    SQLiteDatabase mDb;
+
     Switch Max_Stat;
     Switch Training;
 
@@ -80,11 +85,24 @@ public class GachaFragment extends Fragment {
         gson = new Gson();
     }
 
+    public void getDB() {
+        mDBHelper = new DatabaseHelper(getActivity());
+
+        try {
+            mDb = mDBHelper.getWritableDatabase();
+        } catch (SQLException mSQLException) {
+            throw mSQLException;
+        }
+        mDBHelper.openDataBase();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_gacha,container,false);
         gacha = new Gacha();
+
+        getDB();
 
         Button onegacha = view.findViewById(R.id.gacha1);
         Button tengacha = view.findViewById(R.id.gacha10);
@@ -107,14 +125,12 @@ public class GachaFragment extends Fragment {
         CoolNumber = view.findViewById(R.id.CoolNum);
         PassionNumber = view.findViewById(R.id.PassionNum);
 
-        json = appSharedPrefs.getString("CardList","");
-        Whole_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         json = appSharedPrefs.getString("Gacha_CardList","");
         Gacha_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
 
         if(Gacha_CardList != null) {
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
-            adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+            adapter = new GachaListAdapter(Gacha_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
             for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
                 if(SSRare + SRare + Rare < 10) cardRarityTypeCount(e.getValue());
                 UpdateGachaStatus(false);
@@ -122,7 +138,7 @@ public class GachaFragment extends Fragment {
         } else {
             Gacha_CardList = new LinkedHashMap<>();
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
-            adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+            adapter = new GachaListAdapter(Gacha_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
         }
 
         RecyclerView recyclerView = view.findViewById(R.id.gachacardlist);
@@ -222,17 +238,7 @@ public class GachaFragment extends Fragment {
     }
 
     private Card getRarityCard(int Rarity){
-        Random random = new Random();
-        Set<Map.Entry<Integer, Card>> mapSet = Whole_CardList.entrySet();
-        Map.Entry<Integer, Card> elementAt;
-        int pos;
-        while(true) {
-            pos = random.nextInt(Whole_CardList.size());
-            elementAt = (Map.Entry<Integer, Card>) mapSet.toArray()[pos];
-            if((elementAt.getValue().RarityInt == Rarity) && elementAt.getValue().Availablity){
-                return elementAt.getValue();
-            }
-        }
+        return mDBHelper.getRarityCard(Rarity);
     }
 
     private void InitializeGachaStatus(){

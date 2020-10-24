@@ -20,6 +20,7 @@ import com.nazunamoe.deresutegachasimulatorm.Adapter.CustomListAdapter;
 import com.nazunamoe.deresutegachasimulatorm.Card.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -32,8 +33,7 @@ public class LimitedFragment extends Fragment {
     View view;
     CustomListAdapter adapter;
     ListView listView;
-    LinkedHashMap<Integer, Card> card_list;
-    Set<Map.Entry<Integer, Card>> card_list_mapset;
+    ArrayList<Card> card_list;
     SharedPreferences appSharedPrefs;
     SharedPreferences.Editor prefsEditor;
     Gson gson;
@@ -58,8 +58,7 @@ public class LimitedFragment extends Fragment {
         prefsEditor = appSharedPrefs.edit();
         gson = new Gson();
         json = appSharedPrefs.getString("CardList","");
-        card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
-        card_list_mapset = card_list.entrySet();
+        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
 
         updateCard();
 
@@ -78,7 +77,6 @@ public class LimitedFragment extends Fragment {
                     alert_confirm.setTitle(getResources().getString(R.string.SuccessTitle));
                     alert_confirm.setMessage(card2.CardName + getResources().getString(R.string.NoMoreLimited));
                 }
-                card_list.replace(card2.No,card2);
                 json = gson.toJson(card_list);
                 prefsEditor.putString("CardList", json).apply();
                 updateCard();
@@ -97,7 +95,7 @@ public class LimitedFragment extends Fragment {
         card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
         adapter.clearItem();
         for(int i=0; i<card_list.size(); i++){
-            Card temp_card = ((Map.Entry<Integer, Card>)card_list_mapset.toArray()[i]).getValue();
+            Card temp_card = card_list.get(i);
             if(temp_card.RarityInt >= 5 && temp_card.RarityInt % 2 == 1 && temp_card.CardCategory != 1) {
                 adapter.addItem(temp_card);
             }
