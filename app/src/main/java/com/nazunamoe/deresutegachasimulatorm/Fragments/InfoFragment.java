@@ -123,7 +123,7 @@ public class InfoFragment extends Fragment {
         appSharedPrefs = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
         gson = new Gson();
         json = appSharedPrefs.getString("CardList","");
-        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
+        if(card_list == null) card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
 
         adapter = new InfoListAdapter(card_list, width);
         recyclerView = view.findViewById(R.id.CardList);
