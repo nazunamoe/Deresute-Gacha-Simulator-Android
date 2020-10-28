@@ -54,6 +54,7 @@ WHERE gacha_available.recommend_order IS NOT 0
 AND gacha_data.dicription LIKE '%限定%'
 AND gacha_data.dicription NOT LIKE '%再登場%'
 AND gacha_data.dicription NOT LIKE '%シンデレラフェス%'
+AND gacha_data.dicription NOT LIKE '%不具合%'
 AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
 GROUP BY gacha_data.id
@@ -75,6 +76,7 @@ WHERE gacha_available.recommend_order IS NOT 0
 AND gacha_data.dicription LIKE '%限定%'
 AND gacha_data.dicription NOT LIKE '%再登場%'
 AND gacha_data.dicription NOT LIKE '%シンデレラフェス%'
+AND gacha_data.dicription NOT LIKE '%不具合%'
 AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
 ORDER BY gacha_data.id ASC;
@@ -110,6 +112,24 @@ AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
 GROUP BY gacha_data.id;
 -- 한정 쓰알 정보, 페스 쓰알 정보 테이블 등록
+
+UPDATE limited_gacha_info
+SET end_date = (SELECT end_date FROM limited_gacha_info WHERE id = "30013")
+WHERE id = "30012";
+
+DELETE FROM limited_gacha_info
+WHERE id = "30013";
+
+UPDATE limited_gacha_info
+SET end_date = (SELECT end_date FROM limited_gacha_info WHERE id = "30026")
+WHERE id = "30025";
+
+DELETE FROM limited_gacha_info
+WHERE id = "30026";
+
+DELETE FROM limited_gacha_card_list
+WHERE id IN ("30013","30026");
+-- 분리된 일부 데이터 통합
 
 CREATE TABLE card_info AS
 SELECT card_data.id, card_data.name AS card_name,
