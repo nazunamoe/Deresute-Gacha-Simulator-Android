@@ -39,7 +39,7 @@ SET limited_flag = 1
 WHERE reward_id IS 100107;
 
 CREATE TABLE limited_gacha_info AS
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, gacha_data.start_date, gacha_data.end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
 FROM gacha_data INNER JOIN gacha_available_2 ON gacha_data.id = gacha_available_2.gacha_id
 INNER JOIN card_data ON gacha_available_2.card_id = card_data.id
 WHERE gacha_data.dicription LIKE '%限定%'
@@ -47,7 +47,7 @@ AND gacha_data.dicription NOT LIKE '%再登場%'
 AND gacha_data.dicription NOT LIKE '%シンデレラフェス%'
 AND gacha_available_2.limited_flag IS 1
 UNION
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, gacha_data.start_date, gacha_data.end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
 FROM gacha_data INNER JOIN gacha_available ON gacha_data.id = gacha_available.gacha_id
 INNER JOIN card_data ON gacha_available.reward_id = card_data.id
 WHERE gacha_available.recommend_order IS NOT 0
@@ -58,10 +58,10 @@ AND gacha_data.dicription NOT LIKE '%不具合%'
 AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
 GROUP BY gacha_data.id
-ORDER BY gacha_data.start_date ASC;
+ORDER BY start_date ASC;
 
 CREATE TABLE limited_gacha_card_list AS
-SELECT gacha_data.id, gacha_available_2.card_id
+SELECT gacha_data.id, gacha_available_2.card_id, card_data.rarity
 FROM gacha_data INNER JOIN gacha_available_2 ON gacha_data.id = gacha_available_2.gacha_id
 INNER JOIN card_data ON gacha_available_2.card_id = card_data.id
 WHERE gacha_data.dicription LIKE '%限定%'
@@ -69,7 +69,7 @@ AND gacha_data.dicription NOT LIKE '%再登場%'
 AND gacha_data.dicription NOT LIKE '%シンデレラフェス%'
 AND gacha_available_2.limited_flag IS 1
 UNION
-SELECT gacha_data.id, gacha_available.reward_id
+SELECT gacha_data.id, gacha_available.reward_id, card_data.rarity
 FROM gacha_data INNER JOIN gacha_available ON gacha_data.id = gacha_available.gacha_id
 INNER JOIN card_data ON gacha_available.reward_id = card_data.id
 WHERE gacha_available.recommend_order IS NOT 0
@@ -79,15 +79,15 @@ AND gacha_data.dicription NOT LIKE '%シンデレラフェス%'
 AND gacha_data.dicription NOT LIKE '%不具合%'
 AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
-ORDER BY gacha_data.id ASC;
+ORDER BY gacha_data.id ASC, card_data.rarity DESC;
 
 CREATE TABLE fes_gacha_info AS
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, gacha_data.start_date, gacha_data.end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
 FROM gacha_data INNER JOIN gacha_available_2 ON gacha_data.id = gacha_available_2.gacha_id
 INNER JOIN card_data ON gacha_available_2.card_id = card_data.id
 WHERE gacha_data.dicription LIKE '%シンデレラフェス%'
 UNION
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, gacha_data.start_date, gacha_data.end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
 FROM gacha_data INNER JOIN gacha_available ON gacha_data.id = gacha_available.gacha_id
 INNER JOIN card_data ON gacha_available.reward_id = card_data.id
 WHERE gacha_available.recommend_order IS NOT 0
@@ -95,22 +95,22 @@ AND gacha_data.dicription LIKE '%シンデレラフェス%'
 AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
 GROUP BY gacha_data.id
-ORDER BY gacha_data.start_date ASC;
+ORDER BY start_date ASC;
 
 CREATE TABLE fes_gacha_card_list AS
-SELECT gacha_data.id, gacha_available_2.card_id
+SELECT gacha_data.id, gacha_available_2.card_id, card_data.rarity
 FROM gacha_data INNER JOIN gacha_available_2 ON gacha_data.id = gacha_available_2.gacha_id
 INNER JOIN card_data ON gacha_available_2.card_id = card_data.id
 WHERE gacha_data.dicription LIKE '%シンデレラフェス%'
 UNION
-SELECT gacha_data.id, gacha_available.reward_id
+SELECT gacha_data.id, gacha_available.reward_id, card_data.rarity
 FROM gacha_data INNER JOIN gacha_available ON gacha_data.id = gacha_available.gacha_id
 INNER JOIN card_data ON gacha_available.reward_id = card_data.id
 WHERE gacha_available.recommend_order IS NOT 0
 AND gacha_data.dicription LIKE '%シンデレラフェス%'
 AND card_data.rarity >= 5
 AND gacha_available.limited_flag IS 1
-GROUP BY gacha_data.id;
+ORDER BY gacha_data.id ASC, card_data.rarity DESC;
 -- 한정 쓰알 정보, 페스 쓰알 정보 테이블 등록
 
 UPDATE limited_gacha_info
