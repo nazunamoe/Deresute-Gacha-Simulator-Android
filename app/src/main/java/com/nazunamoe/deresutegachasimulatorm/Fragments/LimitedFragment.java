@@ -66,7 +66,7 @@ public class LimitedFragment extends Fragment {
 
         if(seasonlist == null) seasonlist = mDBHelper.getAllSeasons();
 
-        gachaSeasonListAdapter = new GachaSeasonListAdapter(seasonlist, getContext(), width);
+        gachaSeasonListAdapter = new GachaSeasonListAdapter(seasonlist, getContext(), width, mDBHelper);
         recyclerView.setAdapter(gachaSeasonListAdapter);
 
         return view;

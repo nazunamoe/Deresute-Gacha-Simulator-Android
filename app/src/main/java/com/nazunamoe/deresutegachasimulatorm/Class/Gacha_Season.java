@@ -9,11 +9,18 @@ public class Gacha_Season {
 
     public ArrayList<Card> Gacha_season_card_list;
 
+    public boolean Availability;
+
     public Gacha_Season(String title, String start_date, String end_date, ArrayList<Card> card_list) {
         this.Gacha_season_title = title;
         this.Gacha_season_start_date = start_date;
         this.Gacha_season_end_date = end_date;
         this.Gacha_season_card_list = card_list;
+
+        Availability = false;
+        for(Card e : card_list) {
+            if(e.Availablity == false) Availability = true;
+        }
     }
 
 }

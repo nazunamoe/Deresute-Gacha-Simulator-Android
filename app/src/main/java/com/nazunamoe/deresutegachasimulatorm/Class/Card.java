@@ -331,8 +331,7 @@ public class Card{
         if(limited) CardCategory = 2;
         if(fes) CardCategory = 3;
 
-        if(eventName != null || limited || fes) Availablity = false;
-        else Availablity = true;
+        this.Availablity = ava;
 
     }
 

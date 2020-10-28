@@ -27,8 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        if (android.os.Build.VERSION.SDK_INT >= 17)
+        if (android.os.Build.VERSION.SDK_INT >= 17) {
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
+            System.out.println("Database File : "+DB_PATH);
+        }
         else
             DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         this.mContext = context;
@@ -62,6 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
     }
+
 
     private void copyDBFile() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
@@ -102,6 +105,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         return result;
+    }
+
+
+    public void setCardLimited(Card input, int limited) {
+        mDataBase.execSQL("UPDATE card_info " +
+                "SET ava = " + limited + " " +
+                "WHERE id = " + input.No);
+        System.out.println("??");
     }
 
     public ArrayList<Card> getAllCardList() {
