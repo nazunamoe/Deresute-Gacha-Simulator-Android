@@ -107,12 +107,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+    public int getSeasonLimited(int seasonid) {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM limited_gacha_info " +
+                "WHERE id = " + seasonid,null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("ava"));
+    }
 
-    public void setCardLimited(Card input, int limited) {
+    public void setSeasonLimited(int seasonid, int limited) {
+        mDataBase.execSQL("UPDATE limited_gacha_info " +
+                "SET ava = " + limited + " " +
+                "WHERE id = " + seasonid);
+    }
+
+     public void setCardLimited(Card input, int limited) {
         mDataBase.execSQL("UPDATE card_info " +
                 "SET ava = " + limited + " " +
                 "WHERE id = " + input.No);
-        System.out.println("??");
     }
 
     public ArrayList<Card> getAllCardList() {
@@ -134,9 +146,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.moveToFirst();
         for(int i = 0; i < cursor.getCount(); i++) {
             ArrayList<Card> card_list = new ArrayList<>();
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
             String title = cursor.getString(cursor.getColumnIndex("name"));
             String start_date = cursor.getString(cursor.getColumnIndex("start_date"));
             String end_date = cursor.getString(cursor.getColumnIndex("end_date"));
+            int avaint = cursor.getInt(cursor.getColumnIndex("ava"));
             Cursor cursor2 = mDataBase.rawQuery("SELECT * " +
                     "FROM limited_gacha_card_list " +
                     "WHERE id = " + cursor.getInt(cursor.getColumnIndex("id")) ,null);
@@ -145,7 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 card_list.add(getCard(cursor2.getInt(cursor2.getColumnIndex("card_id"))));
                 cursor2.moveToNext();
             }
-            Gacha_Season temp = new Gacha_Season(title,start_date,end_date,card_list);
+            Gacha_Season temp = new Gacha_Season(id,title,start_date,end_date,card_list,avaint);
             seasonlist.add(temp);
             cursor.moveToNext();
         }

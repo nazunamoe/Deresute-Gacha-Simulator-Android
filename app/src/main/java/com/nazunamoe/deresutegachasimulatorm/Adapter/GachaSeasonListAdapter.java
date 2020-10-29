@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -33,12 +34,14 @@ public class GachaSeasonListAdapter extends RecyclerView.Adapter<GachaSeasonList
         TextView Gacha_Season_Title;
         TextView Gacha_Season_Date;
         RecyclerView Gacha_Season_Card_List;
+        CheckBox Gacha_Season_SelectBox;
 
         public ViewHolder(View v) {
             super(v);
             Gacha_Season_Title = v.findViewById(R.id.gacha_season_title);
             Gacha_Season_Date = v.findViewById(R.id.gacha_season_date);
             Gacha_Season_Card_List = v.findViewById(R.id.gacha_season_card_list);
+            Gacha_Season_SelectBox = v.findViewById(R.id.gacha_season_checkbox);
         }
     }
 
@@ -62,6 +65,7 @@ public class GachaSeasonListAdapter extends RecyclerView.Adapter<GachaSeasonList
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         season = list.get(position);
+
         holder.Gacha_Season_Title.setText(season.Gacha_season_title);
         holder.Gacha_Season_Date.setText(MainActivity.getResourses().getText(R.string.gacha_season_date_title) + " " + season.Gacha_season_start_date + " ~ " + season.Gacha_season_end_date);
 
@@ -69,20 +73,22 @@ public class GachaSeasonListAdapter extends RecyclerView.Adapter<GachaSeasonList
         Gacha_Season_Card_List_Adapter = new InfoListAdapter(season.Gacha_season_card_list, Width);
         holder.Gacha_Season_Card_List.setAdapter(Gacha_Season_Card_List_Adapter);
 
-        CheckBox t = holder.itemView.findViewById(R.id.gacha_season_checkbox);
+        holder.Gacha_Season_SelectBox.setOnCheckedChangeListener(null);
 
-        if(season.Availability){
-            t.setChecked(true);
+        if(databaseHelper.getSeasonLimited(season.id) == 1){
+            holder.Gacha_Season_SelectBox.setChecked(false);
+        } else {
+            holder.Gacha_Season_SelectBox.setChecked(true);
         }
 
-        System.out.println(t.isChecked());
-        t.setOnClickListener(new View.OnClickListener() {
+        holder.Gacha_Season_SelectBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 season = list.get(position);
                 int limited;
-                if(((CheckBox)v).isChecked()) limited = 0;
+                if(isChecked) limited = 0;
                 else limited = 1;
+                databaseHelper.setSeasonLimited(season.id, limited);
                 for(Card e : season.Gacha_season_card_list) databaseHelper.setCardLimited(e, limited);
             }
         });
@@ -101,7 +107,6 @@ public class GachaSeasonListAdapter extends RecyclerView.Adapter<GachaSeasonList
 
     public void addItem(Gacha_Season input) {
             list.add(input);
-            System.out.println("dsadsa"+input.Gacha_season_title);
         this.notifyDataSetChanged();
     }
 
