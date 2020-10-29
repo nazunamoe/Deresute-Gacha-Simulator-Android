@@ -127,8 +127,15 @@ WHERE id = "30025";
 DELETE FROM limited_gacha_info
 WHERE id = "30026";
 
+UPDATE limited_gacha_info
+SET end_date = (SELECT end_date FROM limited_gacha_info WHERE id = "30139")
+WHERE id = "30138";
+
+DELETE FROM limited_gacha_info
+WHERE id = "30139";
+
 DELETE FROM limited_gacha_card_list
-WHERE id IN ("30013","30026");
+WHERE id IN ("30013","30026","30139");
 -- 분리된 일부 데이터 통합
 
 CREATE TABLE card_info AS
