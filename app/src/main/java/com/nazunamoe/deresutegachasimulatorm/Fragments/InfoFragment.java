@@ -607,7 +607,6 @@ public class InfoFragment extends Fragment {
                 updateListbyType();
             }
         });
-        System.out.println("list_size"+ card_list.size());
         updateListbyType();
 
         return view;
