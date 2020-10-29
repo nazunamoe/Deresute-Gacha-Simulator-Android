@@ -39,7 +39,7 @@ SET limited_flag = 1
 WHERE reward_id IS 100107;
 
 CREATE TABLE limited_gacha_info AS
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date,substr(gacha_data.end_date,0,11) as end_date, 0 as ava
 FROM gacha_data INNER JOIN gacha_available_2 ON gacha_data.id = gacha_available_2.gacha_id
 INNER JOIN card_data ON gacha_available_2.card_id = card_data.id
 WHERE gacha_data.dicription LIKE '%限定%'
@@ -47,7 +47,7 @@ AND gacha_data.dicription NOT LIKE '%再登場%'
 AND gacha_data.dicription NOT LIKE '%シンデレラフェス%'
 AND gacha_available_2.limited_flag IS 1
 UNION
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date, 0 as ava
 FROM gacha_data INNER JOIN gacha_available ON gacha_data.id = gacha_available.gacha_id
 INNER JOIN card_data ON gacha_available.reward_id = card_data.id
 WHERE gacha_available.recommend_order IS NOT 0
@@ -82,12 +82,12 @@ AND gacha_available.limited_flag IS 1
 ORDER BY gacha_data.id ASC, card_data.rarity DESC;
 
 CREATE TABLE fes_gacha_info AS
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date, 0 as ava
 FROM gacha_data INNER JOIN gacha_available_2 ON gacha_data.id = gacha_available_2.gacha_id
 INNER JOIN card_data ON gacha_available_2.card_id = card_data.id
 WHERE gacha_data.dicription LIKE '%シンデレラフェス%'
 UNION
-SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date
+SELECT gacha_data.id, gacha_data.name, gacha_data.dicription, substr(gacha_data.start_date,0,11) as start_date, substr(gacha_data.end_date,0,11) as end_date, 0 as ava
 FROM gacha_data INNER JOIN gacha_available ON gacha_data.id = gacha_available.gacha_id
 INNER JOIN card_data ON gacha_available.reward_id = card_data.id
 WHERE gacha_available.recommend_order IS NOT 0
