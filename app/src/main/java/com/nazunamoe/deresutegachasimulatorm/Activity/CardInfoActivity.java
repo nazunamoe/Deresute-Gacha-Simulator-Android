@@ -2,6 +2,8 @@ package com.nazunamoe.deresutegachasimulatorm.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 
@@ -18,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Class.Card;
+import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 public class CardInfoActivity extends AppCompatActivity {
@@ -25,7 +28,6 @@ public class CardInfoActivity extends AppCompatActivity {
     SharedPreferences.Editor prefsEditor;
     Gson gson;
     Card card;
-    Card card_trained;
 
     Toolbar toolbar;
 
@@ -50,6 +52,20 @@ public class CardInfoActivity extends AppCompatActivity {
     TextView CardCenterSkill;
     TextView CardCenterSkillCategory;
     TextView CardCenterSkillStatus;
+
+    DatabaseHelper mDBHelper;
+    SQLiteDatabase mDb;
+
+    public void getDB() {
+        mDBHelper = new DatabaseHelper(getApplicationContext());
+
+        try {
+            mDb = mDBHelper.getWritableDatabase();
+        } catch (SQLException mSQLException) {
+            throw mSQLException;
+        }
+        mDBHelper.openDataBase();
+    }
 
     private void initialize() {
         CardImage = findViewById(R.id.cardInfoCardImage);
@@ -79,6 +95,8 @@ public class CardInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getDB();
+
         setContentView(R.layout.activity_card_info_2);
 
         toolbar = findViewById(R.id.toolbar5);
@@ -104,21 +122,20 @@ public class CardInfoActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.cardinfotab) ;
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            String json;
+            int no;
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch(tab.getPosition()) {
                     case 0: {
-                        json = appSharedPrefs.getString("SelectedCard","");
+                        no = appSharedPrefs.getInt("SelectedCard",0);
                         break;
                     }
                     case 1: {
-                        json = appSharedPrefs.getString("SelectedCardTrained","");
-
+                        no = appSharedPrefs.getInt("SelectedCardTrained",0);
                         break;
                     }
                 }
-                card = gson.fromJson(json, new TypeToken<Card>(){}.getType());
+                card = mDBHelper.getCard(no);
                 updateData(card);
             }
 
@@ -133,8 +150,8 @@ public class CardInfoActivity extends AppCompatActivity {
             }
         }) ;
 
-        String json = appSharedPrefs.getString("SelectedCard","");
-        card = gson.fromJson(json, new TypeToken<Card>(){}.getType());
+        int no = appSharedPrefs.getInt("SelectedCard",0);
+        card = mDBHelper.getCard(no);
 
         CardInfoTitle.setText(card.CardName);
 

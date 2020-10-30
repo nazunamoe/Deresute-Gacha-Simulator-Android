@@ -70,14 +70,13 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
 
         appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         prefsEditor = appSharedPrefs.edit();
-        gson = new Gson();
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                prefsEditor.putString("SelectedCard",gson.toJson(list.get(position)));
+                prefsEditor.putInt("SelectedCard",list.get(position).No);
                 prefsEditor.commit();
-                prefsEditor.putString("SelectedCardTrained",gson.toJson(list.get(position)));
+                prefsEditor.putInt("SelectedCardTrained",list.get(position).No + 1);
                 prefsEditor.commit();
                 Intent intent = new Intent(context, CardInfoActivity.class);
                 context.startActivity(intent);

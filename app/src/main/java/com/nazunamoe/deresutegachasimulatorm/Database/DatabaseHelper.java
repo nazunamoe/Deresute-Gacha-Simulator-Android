@@ -166,7 +166,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return seasonlist;
     }
 
-    private Card getCard(int id) {
+    public Card getCard(int id) {
         Cursor cursor = mDataBase.rawQuery("SELECT * " +
                 "FROM card_info " +
                 "WHERE id = " + id,null);

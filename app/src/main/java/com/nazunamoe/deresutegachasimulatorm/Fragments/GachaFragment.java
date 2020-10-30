@@ -127,9 +127,11 @@ public class GachaFragment extends Fragment {
         json = appSharedPrefs.getString("Gacha_CardList","");
         Gacha_CardList = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
 
+        LinkedHashMap<Integer, Card> Whole_CardList = mDBHelper.getAllCardList_temp();
+
         if(Gacha_CardList != null) {
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
-            adapter = new GachaListAdapter(Gacha_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+            adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
             for(Map.Entry<Integer, Card> e : Gacha_CardList_MapSet) {
                 if(SSRare + SRare + Rare < 10) cardRarityTypeCount(e.getValue());
                 UpdateGachaStatus(false);
@@ -137,7 +139,7 @@ public class GachaFragment extends Fragment {
         } else {
             Gacha_CardList = new LinkedHashMap<>();
             Gacha_CardList_MapSet = Gacha_CardList.entrySet();
-            adapter = new GachaListAdapter(Gacha_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
+            adapter = new GachaListAdapter(Whole_CardList, new ArrayList<>(Gacha_CardList.keySet()), width, CardInfoView, Max_Stat.isChecked(), Training.isChecked());
         }
 
         RecyclerView recyclerView = view.findViewById(R.id.gachacardlist);
