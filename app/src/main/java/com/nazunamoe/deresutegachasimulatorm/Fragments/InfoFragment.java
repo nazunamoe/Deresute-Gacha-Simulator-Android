@@ -18,13 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.nazunamoe.deresutegachasimulatorm.Adapter.InfoListAdapter;
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -33,8 +30,7 @@ public class InfoFragment extends Fragment {
     InfoListAdapter adapter;
     View view;
 
-    LinkedHashMap<Integer, Card> card_list;
-    Set<Map.Entry<Integer, Card>> card_list_mapset;
+    ArrayList<Card> card_list;
 
     CheckBox cuteonly_check;
     CheckBox coolonly_check;
@@ -103,6 +99,10 @@ public class InfoFragment extends Fragment {
     RecyclerView recyclerView;
     CardView listViewCard;
 
+    SharedPreferences appSharedPrefs;
+    Gson gson;
+    String json;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,13 +116,12 @@ public class InfoFragment extends Fragment {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
 
-        SharedPreferences appSharedPrefs = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = appSharedPrefs.getString("CardList","");
-        card_list = gson.fromJson(json, new TypeToken<LinkedHashMap<Integer, Card>>(){}.getType());
-        card_list_mapset = card_list.entrySet();
+        appSharedPrefs = getActivity().getSharedPreferences("Shared", MODE_PRIVATE);
+        gson = new Gson();
+        json = appSharedPrefs.getString("CardList","");
+        if(card_list == null) card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
 
-        adapter = new InfoListAdapter(card_list, new ArrayList<>(card_list.keySet()), width);
+        adapter = new InfoListAdapter(card_list, width);
         recyclerView = view.findViewById(R.id.CardList);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3, RecyclerView.VERTICAL, false));
         listViewCard = view.findViewById(R.id.cardlistcard);
@@ -608,31 +607,30 @@ public class InfoFragment extends Fragment {
                 updateListbyType();
             }
         });
-
         updateListbyType();
 
         return view;
     }
 
     private void updateListbyType(){
+        card_list = gson.fromJson(json, new TypeToken<ArrayList<Card>>(){}.getType());
         adapter.clearItem();
-        Map.Entry<Integer, Card> elementAt;
-        for(int i = 0; i< card_list_mapset.size(); i++){
-            elementAt = (Map.Entry<Integer, Card>) card_list_mapset.toArray()[i];
-            if(elementAt.getValue().No % 2 == 1) {
-                if(cuteonly_check.isChecked() && elementAt.getValue().No / 100000 == 1){
-                    if(updateListbyRarity(elementAt.getValue())) adapter.addItem(elementAt.getValue());
+        for(int i = 0; i< card_list.size(); i++){
+            if(card_list.get(i).No % 2 == 1) {
+                if(cuteonly_check.isChecked() && (card_list.get(i)).No / 100000 == 1){
+                    if(updateListbyRarity(card_list.get(i))) adapter.addItem((card_list.get(i)));
                 }
-                if(coolonly_check.isChecked() && elementAt.getValue().No / 100000 == 2){
-                    if(updateListbyRarity(elementAt.getValue())) adapter.addItem(elementAt.getValue());
+                if(coolonly_check.isChecked() && (card_list.get(i)).No / 100000 == 2){
+                    if(updateListbyRarity(card_list.get(i))) adapter.addItem((card_list.get(i)));
                 }
-                if(passiononly_check.isChecked() && elementAt.getValue().No / 100000 == 3){
-                    if(updateListbyRarity(elementAt.getValue())) adapter.addItem(elementAt.getValue());
+                if(passiononly_check.isChecked() && (card_list.get(i)).No / 100000 == 3){
+                    if(updateListbyRarity(card_list.get(i))) adapter.addItem((card_list.get(i)));
                 }
                 if(!cuteonly_check.isChecked() && !coolonly_check.isChecked() && !passiononly_check.isChecked()){
-                    if(updateListbyRarity(elementAt.getValue())) adapter.addItem(elementAt.getValue());
+                    if(updateListbyRarity(card_list.get(i))) adapter.addItem((card_list.get(i)));
                 }
             }
+
         }
         adapter.notifyDataSetChanged();
     }

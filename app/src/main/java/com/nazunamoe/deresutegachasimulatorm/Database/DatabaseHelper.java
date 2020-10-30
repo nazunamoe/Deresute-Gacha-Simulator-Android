@@ -6,7 +6,8 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Gacha_Season;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,8 +27,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        if (android.os.Build.VERSION.SDK_INT >= 17)
+        if (android.os.Build.VERSION.SDK_INT >= 17) {
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
+            System.out.println("Database File : "+DB_PATH);
+        }
         else
             DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         this.mContext = context;
@@ -62,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
     private void copyDBFile() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
         OutputStream mOutput = new FileOutputStream(DB_PATH + DB_NAME);
@@ -90,45 +94,133 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    // id를 넣어서 카드를 반환받는 메소드
-    public Card getResult(int id){
-        // 결과 카드 선언
-        Card result = null;
-        // SQL문 실행
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info WHERE card_info.id="+id,null);
+    public LinkedHashMap<Integer, Card> getAllCardList_temp() {
+        LinkedHashMap<Integer, Card> result = new LinkedHashMap<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info",null);
         cursor.moveToFirst();
+        for(int i = 0 ; i < cursor.getCount(); i++) {
+            Card temp = cursorToCard(cursor);
+            result.put(temp.No, temp);
+            cursor.moveToNext();
+        }
+        return result;
+    }
+
+    public int getSeasonLimited(int seasonid) {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM limited_gacha_info " +
+                "WHERE id = " + seasonid,null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("ava"));
+    }
+
+    public void setSeasonLimited(int seasonid, int limited) {
+        mDataBase.execSQL("UPDATE limited_gacha_info " +
+                "SET ava = " + limited + " " +
+                "WHERE id = " + seasonid);
+    }
+
+     public void setCardLimited(Card input, int limited) {
+        mDataBase.execSQL("UPDATE card_info " +
+                "SET ava = " + limited + " " +
+                "WHERE id = " + input.No);
+    }
+
+    public ArrayList<Card> getAllCardList() {
+        ArrayList<Card> result = new ArrayList<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info",null);
+        cursor.moveToFirst();
+        for(int i = 0 ; i < cursor.getCount(); i++) {
+            result.add(cursorToCard(cursor));
+            cursor.moveToNext();
+        }
+        return result;
+    }
+
+    public ArrayList<Gacha_Season> getAllSeasons() {
+        ArrayList<Gacha_Season> seasonlist = new ArrayList<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM limited_gacha_info ",null);
+        cursor.moveToFirst();
+        for(int i = 0; i < cursor.getCount(); i++) {
+            ArrayList<Card> card_list = new ArrayList<>();
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
+            String title = cursor.getString(cursor.getColumnIndex("name"));
+            String start_date = cursor.getString(cursor.getColumnIndex("start_date"));
+            String end_date = cursor.getString(cursor.getColumnIndex("end_date"));
+            int avaint = cursor.getInt(cursor.getColumnIndex("ava"));
+            Cursor cursor2 = mDataBase.rawQuery("SELECT * " +
+                    "FROM limited_gacha_card_list " +
+                    "WHERE id = " + cursor.getInt(cursor.getColumnIndex("id")) ,null);
+            cursor2.moveToFirst();
+            for(int j = 0; j < cursor2.getCount(); j++) {
+                card_list.add(getCard(cursor2.getInt(cursor2.getColumnIndex("card_id"))));
+                cursor2.moveToNext();
+            }
+            Gacha_Season temp = new Gacha_Season(id,title,start_date,end_date,card_list,avaint);
+            seasonlist.add(temp);
+            cursor.moveToNext();
+        }
+        return seasonlist;
+    }
+
+    public Card getCard(int id) {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info " +
+                "WHERE id = " + id,null);
+        cursor.moveToFirst();
+        return cursorToCard(cursor);
+    }
+
+    public Card getRarityCard(int Rarity) {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info " +
+                "WHERE rarity = " + Rarity + " " +
+                "AND ava = 0 " +
+                "AND id % 2 = 1 " +
+                "AND event_name IS NULL " +
+                "ORDER BY RANDOM() LIMIT 1",null);
+        cursor.moveToFirst();
+        return cursorToCard(cursor);
+    }
+
+    public Card cursorToCard(Cursor cursor) {
+        Card result;
+
         /*
             public Card(int no, String cardName, String charaName, String rarity, int hp_Min, int vocal_Min, int dance_Min, int visual_Min, int hp_Max, int vocal_Max, int dance_Max, int visual_Max, String skillName,
                 String skillExplain, String centerSkillName, String centerSkillExplain, String eventName, Boolean limited, Boolean fes){
          */
-        int cardno = cursor.getInt(0);
-        String cardname = cursor.getString(1);
-        String charaname = cursor.getString(2);
-        String rarity = cursor.getString(3);
+        int cardno = cursor.getInt(cursor.getColumnIndex("id"));
+        String cardname = cursor.getString(cursor.getColumnIndex("card_name"));
+        String charaname = cursor.getString(cursor.getColumnIndex("chara_name"));
+        String rarity = cursor.getString(cursor.getColumnIndex("rarity"));
 
-        int hp_min = cursor.getInt(5);
-        int vo_min = cursor.getInt(6);
-        int da_min = cursor.getInt(7);
-        int vi_min = cursor.getInt(8);
+        int hp_min = cursor.getInt(cursor.getColumnIndex("hp_min"));
+        int vo_min = cursor.getInt(cursor.getColumnIndex("vocal_min"));
+        int da_min = cursor.getInt(cursor.getColumnIndex("dance_min"));
+        int vi_min = cursor.getInt(cursor.getColumnIndex("visual_min"));
 
-        int hp_max = cursor.getInt(10);
-        int vo_max = cursor.getInt(11);
-        int da_max = cursor.getInt(12);
-        int vi_max = cursor.getInt(13);
+        int hp_max = cursor.getInt(cursor.getColumnIndex("hp_max"));
+        int vo_max = cursor.getInt(cursor.getColumnIndex("vocal_max"));
+        int da_max = cursor.getInt(cursor.getColumnIndex("dance_max"));
+        int vi_max = cursor.getInt(cursor.getColumnIndex("visual_max"));
 
-        int skillcode = cursor.getInt(15);
+        int skillcode = cursor.getInt(cursor.getColumnIndex("skill_type"));
 
-        String skillname = cursor.getString(16);
-        String skillexplain = cursor.getString(17);
+        String skillname = cursor.getString(cursor.getColumnIndex("skill_name"));
+        String skillexplain = cursor.getString(cursor.getColumnIndex("skill_explain"));
 
-        int centerskillcode = cursor.getInt(18);
+        int centerskillcode = cursor.getInt(cursor.getColumnIndex("leader_skill_id"));
 
-        String centerskillname = cursor.getString(19);
-        String centerskillexplain = cursor.getString(20);
+        String centerskillname = cursor.getString(cursor.getColumnIndex("leader_skill_name"));
+        String centerskillexplain = cursor.getString(cursor.getColumnIndex("leader_skill_explain"));
 
-        String eventname = cursor.getString(21);
+        String eventname = cursor.getString(cursor.getColumnIndex("event_name"));
 
-        int limitedint = cursor.getInt(cursor.getColumnIndex("limited2"));
+        int limitedint = cursor.getInt(cursor.getColumnIndex("limited_month"));
         int fesint = cursor.getInt(cursor.getColumnIndex("fes"));
 
         boolean limited = false;
@@ -147,7 +239,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         boolean ava;
 
-        if(fes||limited) {
+        int avaint = cursor.getInt(cursor.getColumnIndex("ava"));
+
+        if(avaint == 0) {
             ava = false;
         }else{
             ava = true;
@@ -155,22 +249,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // 필요한 정보를 모두 변수에 연결.
         result = new Card(cardno, cardname, charaname, rarity
-                    , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max, skillcode
-                    , skillname, skillexplain, centerskillcode, centerskillname, centerskillexplain
-                    , eventname, limited, fes, ava);
-        return result;
-        // DB에서 받아온 정보를 이용해 새 카드 클래스를 생성 후 반환
-    }
-
-    public LinkedHashMap<Integer, Card> getAllCardMap() {
-        LinkedHashMap<Integer, Card> result = new LinkedHashMap<>();
-
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM card_info ",null);
-        cursor.moveToFirst();
-        for(int i=0; i<cursor.getCount(); i++){
-            result.put(cursor.getInt(0) ,getResult(cursor.getInt(0)));
-            cursor.moveToNext();
-        }
+                , hp_min, vo_min, da_min, vi_min, hp_max, vo_max, da_max, vi_max, skillcode
+                , skillname, skillexplain, centerskillcode, centerskillname, centerskillexplain
+                , eventname, limited, fes, ava);
         return result;
     }
 

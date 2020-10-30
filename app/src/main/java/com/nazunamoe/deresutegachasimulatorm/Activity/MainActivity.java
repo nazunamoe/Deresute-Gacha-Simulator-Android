@@ -20,14 +20,14 @@ import android.view.Menu;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
-import com.nazunamoe.deresutegachasimulatorm.Card.Card;
+import com.nazunamoe.deresutegachasimulatorm.Class.Card;
 import com.nazunamoe.deresutegachasimulatorm.Database.DatabaseHelper;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.GachaFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.InfoFragment;
 import com.nazunamoe.deresutegachasimulatorm.Fragments.LimitedFragment;
 import com.nazunamoe.deresutegachasimulatorm.R;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements GachaFragment.OnFragmentInteractionListener {
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar;
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
-    LinkedHashMap<Integer, Card> cardlist;
+    ArrayList<Card> cardlist;
     SharedPreferences Shared;
     SharedPreferences.Editor editor;
 
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity
             }
             mDBHelper.openDataBase();
 
-            cardlist = mDBHelper.getAllCardMap();
+            cardlist = mDBHelper.getAllCardList();
 
             Gson gson = new Gson();
 

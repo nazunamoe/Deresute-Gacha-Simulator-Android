@@ -116,4 +116,8 @@
     <string name="LeaderSkill_Resonant_Visual">Resonant Make</string>
     <string name="LeaderSkill_Cinderella_Yell">Cinderella Yell</string>
     <string name="LeaderSkill_WorldLevel">World Level</string>
+
+    <string name="gacha_season_title">Gacha Season</string>
+    <string name="gacha_season_date_title">Date</string>
+    <string name="gacha_season_card_list_title">Card list of this season</string>
 </resources>

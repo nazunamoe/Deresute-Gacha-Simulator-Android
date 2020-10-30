@@ -108,4 +108,8 @@
     <string name="LeaderSkill_Resonant_Visual">レゾナンス・メイク</string>
     <string name="LeaderSkill_Cinderella_Yell">シンデレラエール</string>
     <string name="LeaderSkill_WorldLevel">ワールドレベル</string>
+
+    <string name="gacha_season_title">ガシャシーズン</string>
+    <string name="gacha_season_date_title">期間</string>
+    <string name="gacha_season_card_list_title">出現カード</string>
 </resources>
