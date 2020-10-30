@@ -65,7 +65,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-
     private void copyDBFile() throws IOException {
         InputStream mInput = mContext.getAssets().open(DB_NAME);
         OutputStream mOutput = new FileOutputStream(DB_PATH + DB_NAME);
@@ -82,7 +81,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mDataBase = SQLiteDatabase.openDatabase(DB_PATH + DB_NAME, null, SQLiteDatabase.CREATE_IF_NECESSARY);
         return mDataBase != null;
     }
-
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -105,6 +103,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToNext();
         }
         return result;
+    }
+
+    public int getFesLimited() {
+        Cursor cursor = mDataBase.rawQuery("SELECT * " +
+                "FROM card_info " +
+                "WHERE id = 100573",null);
+        cursor.moveToFirst();
+        return cursor.getInt(cursor.getColumnIndex("ava"));
+    }
+
+    public void setFesLimited(int limited) {
+        mDataBase.execSQL("UPDATE card_info " +
+                "SET ava = " + limited + " " +
+                "WHERE fes = 1");
     }
 
     public int getSeasonLimited(int seasonid) {

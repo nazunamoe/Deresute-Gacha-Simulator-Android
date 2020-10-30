@@ -120,4 +120,6 @@
     <string name="gacha_season_title">Gacha Season</string>
     <string name="gacha_season_date_title">Date</string>
     <string name="gacha_season_card_list_title">Card list of this season</string>
+
+    <string name="FesCard_Season_Title">Add fes cards</string>
 </resources>

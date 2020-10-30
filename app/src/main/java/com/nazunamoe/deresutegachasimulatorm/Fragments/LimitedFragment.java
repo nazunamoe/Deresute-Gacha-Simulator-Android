@@ -7,6 +7,8 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -32,6 +34,8 @@ public class LimitedFragment extends Fragment {
 
     DatabaseHelper mDBHelper;
     SQLiteDatabase mDb;
+
+    CheckBox Fes_Switch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,18 @@ public class LimitedFragment extends Fragment {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int width = displayMetrics.widthPixels;
+
+        Fes_Switch = view.findViewById(R.id.FesCardSwitch);
+
+        Fes_Switch.setChecked(mDBHelper.getFesLimited() != 1);
+
+        Fes_Switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) mDBHelper.setFesLimited(0);
+                else mDBHelper.setFesLimited(1);
+            }
+        });
 
         if(seasonlist == null) seasonlist = mDBHelper.getAllSeasons();
 

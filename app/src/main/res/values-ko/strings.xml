@@ -112,4 +112,6 @@
     <string name="gacha_season_title">가챠 시즌</string>
     <string name="gacha_season_date_title">기간</string>
     <string name="gacha_season_card_list_title">출현 카드</string>
+
+    <string name="FesCard_Season_Title">페스 카드 추가</string>
 </resources>
