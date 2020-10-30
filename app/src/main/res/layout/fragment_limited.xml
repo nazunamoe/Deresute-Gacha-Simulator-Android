@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardlistcard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
         android:layout_marginBottom="8dp"
@@ -16,12 +16,12 @@
         card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="0dp"
-        card:layout_constraintBottom_toTopOf="parent"
+        card:layout_constraintBottom_toTopOf="@+id/panel"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHorizontal_bias="0.0"
         card:layout_constraintStart_toStartOf="parent"
         card:layout_constraintTop_toTopOf="parent"
-        card:layout_constraintVertical_weight="2.5">
+        card:layout_constraintVertical_weight="8">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gacha_season_list"
@@ -30,6 +30,33 @@
             android:layout_gravity="center"
             android:clipToPadding="false"
             android:scrollbars="none"></androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/panel"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        card:cardCornerRadius="8dp"
+        card:cardElevation="1dp"
+        card:cardUseCompatPadding="true"
+        card:contentPadding="0dp"
+        card:layout_constraintBottom_toBottomOf="parent"
+        card:layout_constraintEnd_toEndOf="parent"
+        card:layout_constraintStart_toStartOf="parent"
+        card:layout_constraintTop_toBottomOf="@+id/cardlistcard"
+        card:layout_constraintVertical_weight="0.8">
+
+            <CheckBox
+                android:id="@+id/FesCardSwitch"
+                android:layout_marginRight="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="right"
+                android:text="@string/FesCard_Season_Title" />
 
     </androidx.cardview.widget.CardView>
 

@@ -19,6 +19,6 @@ public class Gacha_Season {
         this.Gacha_season_end_date = end_date;
         this.Gacha_season_card_list = card_list;
 
-        this.Availability = ava == 0;
+        this.Availability = ava != 1;
     }
 }
