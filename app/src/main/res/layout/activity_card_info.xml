@@ -231,7 +231,6 @@
                 android:cacheColorHint="#00000000"
                 android:divider="#00000000"
                 android:dividerHeight="0dp"
-                app:cardCornerRadius="16dp"
                 card:cardCornerRadius="16dp"
                 card:cardElevation="2dp"
                 card:cardUseCompatPadding="true"
