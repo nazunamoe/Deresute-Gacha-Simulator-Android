@@ -719,12 +719,11 @@ public class InfoFragment extends Fragment {
         if(centerskill_resonantmake.isChecked() &&input.CenterSkillCode == 106) return true;
         if(centerskill_cinderellayell.isChecked() &&input.CenterSkillCode == 113) return true;
         if(centerskill_worldlevel.isChecked() &&input.CenterSkillCode == 116) return true;
-        if(!centerskill_voice.isChecked() && !centerskill_step.isChecked() && !centerskill_make.isChecked() && !centerskill_brilliance.isChecked() && !centerskill_energy.isChecked() &&
+        return !centerskill_voice.isChecked() && !centerskill_step.isChecked() && !centerskill_make.isChecked() && !centerskill_brilliance.isChecked() && !centerskill_energy.isChecked() &&
                 !centerskill_ability.isChecked() && !centerskill_tricolorvoice.isChecked() && !centerskill_tricolorstep.isChecked() && !centerskill_tricolormake.isChecked() && !centerskill_tricolorability.isChecked() &&
                 !centerskill_princess.isChecked() && !centerskill_cheer.isChecked() && !centerskill_fortunepresent.isChecked() && !centerskill_cinderellacharm.isChecked() && !centerskill_cutecool.isChecked() &&
                 !centerskill_cutepassion.isChecked() && !centerskill_coolpassion.isChecked() && !centerskill_unison.isChecked() && !centerskill_resonantvoice.isChecked() && !centerskill_resonantstep.isChecked() &&
-                !centerskill_resonantmake.isChecked() && !centerskill_cinderellayell.isChecked() && !centerskill_worldlevel.isChecked()) return true;
-        return false;
+                !centerskill_resonantmake.isChecked() && !centerskill_cinderellayell.isChecked() && !centerskill_worldlevel.isChecked();
     }
 
 }

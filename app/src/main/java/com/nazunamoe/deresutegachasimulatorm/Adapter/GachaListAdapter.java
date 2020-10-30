@@ -31,8 +31,8 @@ import java.util.List;
 
 public class GachaListAdapter extends RecyclerView.Adapter<GachaListAdapter.ViewHolder> {
 
-    private List<Integer> list;
-    private LinkedHashMap<Integer,Card> whole_list;
+    private final List<Integer> list;
+    private final LinkedHashMap<Integer,Card> whole_list;
     int size;
 
     CardView CardInfoView;

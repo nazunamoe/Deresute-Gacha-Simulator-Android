@@ -16,7 +16,7 @@
         card:cardElevation="1dp"
         card:cardUseCompatPadding="true"
         card:contentPadding="0dp"
-        card:layout_constraintBottom_toTopOf="@+id/cardView"
+        card:layout_constraintBottom_toTopOf="parent"
         card:layout_constraintEnd_toEndOf="parent"
         card:layout_constraintHorizontal_bias="0.0"
         card:layout_constraintStart_toStartOf="parent"

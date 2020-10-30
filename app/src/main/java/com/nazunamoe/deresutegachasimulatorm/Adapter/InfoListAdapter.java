@@ -23,9 +23,9 @@ import java.util.LinkedHashMap;
 
 public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHolder> {
 
-    private ArrayList<Card> list;
+    private final ArrayList<Card> list;
     private LinkedHashMap<Integer,Card> whole_list;
-    private int size;
+    private final int size;
 
     private SharedPreferences appSharedPrefs;
     private SharedPreferences.Editor prefsEditor;

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static String DB_NAME = "10077200.sqlite";
+    private static final String DB_NAME = "10077200.sqlite";
     private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
 
@@ -224,28 +224,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         int fesint = cursor.getInt(cursor.getColumnIndex("fes"));
 
         boolean limited = false;
-        if(limitedint == 1){
-            limited = true;
-        }else{
-            limited = false;
-        }
+        limited = limitedint == 1;
 
         boolean fes = false;
-        if(fesint == 1){
-            fes = true;
-        }else{
-            fes = false;
-        }
+        fes = fesint == 1;
 
         boolean ava;
 
         int avaint = cursor.getInt(cursor.getColumnIndex("ava"));
 
-        if(avaint == 0) {
-            ava = false;
-        }else{
-            ava = true;
-        }
+        ava = avaint != 0;
 
         // 필요한 정보를 모두 변수에 연결.
         result = new Card(cardno, cardname, charaname, rarity

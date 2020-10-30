@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class GachaSeasonListAdapter extends RecyclerView.Adapter<GachaSeasonListAdapter.ViewHolder> {
 
-    private ArrayList<Gacha_Season> list;
+    private final ArrayList<Gacha_Season> list;
     Gacha_Season season;
     Context context;
 
@@ -75,11 +75,7 @@ public class GachaSeasonListAdapter extends RecyclerView.Adapter<GachaSeasonList
 
         holder.Gacha_Season_SelectBox.setOnCheckedChangeListener(null);
 
-        if(databaseHelper.getSeasonLimited(season.id) == 1){
-            holder.Gacha_Season_SelectBox.setChecked(false);
-        } else {
-            holder.Gacha_Season_SelectBox.setChecked(true);
-        }
+        holder.Gacha_Season_SelectBox.setChecked(databaseHelper.getSeasonLimited(season.id) != 1);
 
         holder.Gacha_Season_SelectBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
