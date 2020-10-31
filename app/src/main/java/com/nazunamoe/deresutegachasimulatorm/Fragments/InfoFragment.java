@@ -70,6 +70,7 @@ public class InfoFragment extends Fragment {
     CheckBox skill_visualmotif_check;
     CheckBox skill_tricolorsymphony_check;
     CheckBox skill_alternate_check;
+    CheckBox skill_refrain_check;
 
     CheckBox centerskill_voice;
     CheckBox centerskill_step;
@@ -94,6 +95,7 @@ public class InfoFragment extends Fragment {
     CheckBox centerskill_resonantmake;
     CheckBox centerskill_cinderellayell;
     CheckBox centerskill_worldlevel;
+    CheckBox centerskill_cinderellawish;
 
     LinearLayout settings;
     RecyclerView recyclerView;
@@ -167,6 +169,7 @@ public class InfoFragment extends Fragment {
         skill_visualmotif_check = view.findViewById(R.id.Skill_VisualMotif);
         skill_tricolorsymphony_check = view.findViewById(R.id.Skill_TricolorSymphony);
         skill_alternate_check = view.findViewById(R.id.Skill_Alternate);
+        skill_refrain_check = view.findViewById(R.id.Skill_Refrain);
 
         centerskill_voice = view.findViewById(R.id.CenterSkill_Voice);
         centerskill_step = view.findViewById(R.id.CenterSkill_Step);
@@ -191,6 +194,7 @@ public class InfoFragment extends Fragment {
         centerskill_resonantmake = view.findViewById(R.id.CenterSkill_ResoantMake);
         centerskill_cinderellayell = view.findViewById(R.id.CenterSkill_CinderellaYell);
         centerskill_worldlevel = view.findViewById(R.id.CenterSkill_WorldLevel);
+        centerskill_cinderellawish = view.findViewById(R.id.CenterSkill_CinderellaWish);
 
         // 여기서부터 속성 체크박스
 
@@ -445,6 +449,13 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        skill_refrain_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                updateListbyType();
+            }
+        });
+
         // 여기부터 센터스킬 체크박스
 
         centerskill_voice.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -609,6 +620,13 @@ public class InfoFragment extends Fragment {
         });
         updateListbyType();
 
+        centerskill_cinderellawish.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                updateListbyType();
+            }
+        });
+
         return view;
     }
 
@@ -678,6 +696,7 @@ public class InfoFragment extends Fragment {
         if(skill_visualmotif_check.isChecked() && input.SkillCode == 37) return updateListByLeaderSkill(input);
         if(skill_tricolorsymphony_check.isChecked() && input.SkillCode == 38) return updateListByLeaderSkill(input);
         if(skill_alternate_check.isChecked() && input.SkillCode == 39) return updateListByLeaderSkill(input);
+        if(skill_refrain_check.isChecked() && input.SkillCode == 40) return updateListByLeaderSkill(input);
         if(!skill_scorebonus_check.isChecked() && !skill_combobonus_check.isChecked() && !skill_combosupport_check.isChecked() &&
                 !skill_liferecovery_check.isChecked() && !skill_damageguard_check.isChecked() && !skill_overload_check.isChecked() &&
                 !skill_concentration_check.isChecked() && !skill_skillboost_check.isChecked() && !skill_focus_check.isChecked() &&
@@ -685,7 +704,8 @@ public class InfoFragment extends Fragment {
                 !skill_tricolorsynergy_check.isChecked() && !skill_coordinate_check.isChecked() && !skill_tuning_check.isChecked() &&
                 !skill_longact_check.isChecked() && !skill_flickact_check.isChecked() && !skill_slideact_check.isChecked() &&
                 !skill_ensemble_check.isChecked() && !skill_vocalmotif_check.isChecked() && !skill_dancemotif_check.isChecked() &&
-                !skill_visualmotif_check.isChecked() && !skill_tricolorsymphony_check.isChecked() && !skill_alternate_check.isChecked()) return updateListByLeaderSkill(input);
+                !skill_visualmotif_check.isChecked() && !skill_tricolorsymphony_check.isChecked() && !skill_alternate_check.isChecked() &&
+                !skill_refrain_check.isChecked()) return updateListByLeaderSkill(input);
         return false;
     }
 
@@ -719,11 +739,12 @@ public class InfoFragment extends Fragment {
         if(centerskill_resonantmake.isChecked() &&input.CenterSkillCode == 106) return true;
         if(centerskill_cinderellayell.isChecked() &&input.CenterSkillCode == 113) return true;
         if(centerskill_worldlevel.isChecked() &&input.CenterSkillCode == 116) return true;
+        if(centerskill_cinderellawish.isChecked() &&input.CenterSkillCode == 117) return true;
         return !centerskill_voice.isChecked() && !centerskill_step.isChecked() && !centerskill_make.isChecked() && !centerskill_brilliance.isChecked() && !centerskill_energy.isChecked() &&
                 !centerskill_ability.isChecked() && !centerskill_tricolorvoice.isChecked() && !centerskill_tricolorstep.isChecked() && !centerskill_tricolormake.isChecked() && !centerskill_tricolorability.isChecked() &&
                 !centerskill_princess.isChecked() && !centerskill_cheer.isChecked() && !centerskill_fortunepresent.isChecked() && !centerskill_cinderellacharm.isChecked() && !centerskill_cutecool.isChecked() &&
                 !centerskill_cutepassion.isChecked() && !centerskill_coolpassion.isChecked() && !centerskill_unison.isChecked() && !centerskill_resonantvoice.isChecked() && !centerskill_resonantstep.isChecked() &&
-                !centerskill_resonantmake.isChecked() && !centerskill_cinderellayell.isChecked() && !centerskill_worldlevel.isChecked();
+                !centerskill_resonantmake.isChecked() && !centerskill_cinderellayell.isChecked() && !centerskill_worldlevel.isChecked() && !centerskill_cinderellawish.isChecked();
     }
 
 }

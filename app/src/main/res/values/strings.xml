@@ -91,6 +91,7 @@
     <string name="Skill_TricolorSymphony">Tricolor Symphony</string>
     <string name="Skill_TricolorSynergy">Tricolor Synergy</string>
     <string name="Skill_Alternate">Alternate</string>
+    <string name="Skill_Refrain">Refrain</string>
 
     <string name="LeaderSkill_VocalUp">Voice</string>
     <string name="LeaderSkill_DanceUp">Step</string>
@@ -116,6 +117,7 @@
     <string name="LeaderSkill_Resonant_Visual">Resonant Make</string>
     <string name="LeaderSkill_Cinderella_Yell">Cinderella Yell</string>
     <string name="LeaderSkill_WorldLevel">World Level</string>
+    <string name="LeaderSkill_Cinderella_Wish">Cinderella Wish</string>
 
     <string name="gacha_season_title">Gacha Season</string>
     <string name="gacha_season_date_title">Date</string>

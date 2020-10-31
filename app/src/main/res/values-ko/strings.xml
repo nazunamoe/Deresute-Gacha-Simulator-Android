@@ -83,6 +83,7 @@
     <string name="Skill_TricolorSymphony">심포니</string>
     <string name="Skill_TricolorSynergy">시너지</string>
     <string name="Skill_Alternate">얼터네이트</string>
+    <string name="Skill_Refrain">리프레인</string>
 
     <string name="LeaderSkill_VocalUp">보이스</string>
     <string name="LeaderSkill_DanceUp">스텝</string>
@@ -108,6 +109,7 @@
     <string name="LeaderSkill_Resonant_Visual">레조넌스 메이크</string>
     <string name="LeaderSkill_Cinderella_Yell">신데렐라 엘</string>
     <string name="LeaderSkill_WorldLevel">월드 레벨</string>
+    <string name="LeaderSkill_Cinderella_Wish">신데렐라 위시</string>
 
     <string name="gacha_season_title">가챠 시즌</string>
     <string name="gacha_season_date_title">기간</string>

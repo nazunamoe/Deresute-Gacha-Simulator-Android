@@ -83,6 +83,7 @@
     <string name="Skill_TricolorSymphony">トリコロール・シンフォニー</string>
     <string name="Skill_TricolorSynergy">トリコロール・シナジー</string>
     <string name="Skill_Alternate">オルタネイト</string>
+    <string name="Skill_Refrain">リフレイン</string>
 
     <string name="LeaderSkill_VocalUp">ボイス</string>
     <string name="LeaderSkill_DanceUp">ステップ</string>
@@ -108,6 +109,7 @@
     <string name="LeaderSkill_Resonant_Visual">レゾナンス・メイク</string>
     <string name="LeaderSkill_Cinderella_Yell">シンデレラエール</string>
     <string name="LeaderSkill_WorldLevel">ワールドレベル</string>
+    <string name="LeaderSkill_Cinderella_Wish">シンデレラウィッシュ</string>
 
     <string name="gacha_season_title">ガシャシーズン</string>
     <string name="gacha_season_date_title">期間</string>

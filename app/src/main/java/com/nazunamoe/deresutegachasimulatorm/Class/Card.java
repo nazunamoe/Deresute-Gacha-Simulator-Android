@@ -217,6 +217,10 @@ public class Card{
                 SkillCategory = getString(R.string.Skill_Alternate);
                 break;
             }
+            case 40: {
+                SkillCategory = getString(R.string.Skill_Refrain);
+                break;
+            }
         }
 
         this.SkillName = skillName;
@@ -315,6 +319,10 @@ public class Card{
             }
             case 116: {
                 CenterSkillCategory = getString(R.string.LeaderSkill_WorldLevel);
+                break;
+            }
+            case 117: {
+                CenterSkillCategory = getString(R.string.LeaderSkill_Cinderella_Wish);
                 break;
             }
         }
