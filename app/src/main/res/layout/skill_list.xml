@@ -34,168 +34,192 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_ScoreBonus"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_ComboBonus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_ComboBonus"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_ComboSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_PerfectComboSupport"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_LifeRecovery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_LifeRecovery"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_DamageGuard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_DamageGuard"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Overload"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_OverLoad"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Concentration"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Concentration"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Coordinate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Coordinate"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_SkillBoost"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_SkillBoost"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Focus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Focus"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_AllRounder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_AllRounder"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Encore"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Encore"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_LifeSparkle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_LifeSparkle"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Tuning"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Tuning"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_LongAct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_LongAct"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_FlickAct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_FlickAct"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_SlideAct"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_SlideAct"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Ensemble"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Ensemble"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_VocalMotif"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_VocalMotif"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_DanceMotif"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_DanceMotif"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_VisualMotif"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_VisualMotif"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_TricolorSymphony"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_TricolorSymphony"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_TricolorSynergy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_TricolorSynergy"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/Skill_Alternate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/Skill_Alternate"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
             </LinearLayout>
 
