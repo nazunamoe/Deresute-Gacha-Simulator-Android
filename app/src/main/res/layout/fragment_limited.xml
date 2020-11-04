@@ -56,7 +56,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_gravity="right"
-                android:text="@string/FesCard_Season_Title" />
+                android:text="@string/FesCard_Season_Title"
+                android:buttonTint="@color/checkbox_color"/>
 
     </androidx.cardview.widget.CardView>
 
