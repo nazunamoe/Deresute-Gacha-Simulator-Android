@@ -150,6 +150,14 @@
                     android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_CoolCute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Cool_Cute"
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
+
+                <CheckBox
                     android:id="@+id/CenterSkill_CutePassion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -158,10 +166,26 @@
                     android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
+                    android:id="@+id/CenterSkill_PassionCute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Passion_Cute"
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
+
+                <CheckBox
                     android:id="@+id/CenterSkill_CoolPassion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Cool_Passion"
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
+
+                <CheckBox
+                    android:id="@+id/CenterSkill_PassionCool"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/LeaderSkill_Passion_Cool"
                     android:textAlignment="center"
                     android:buttonTint="@color/checkbox_color"/>
 

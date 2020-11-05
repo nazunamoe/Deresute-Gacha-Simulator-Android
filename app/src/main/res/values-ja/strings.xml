@@ -103,8 +103,11 @@
     <string name="LeaderSkill_Fortune_Present">フォーチュンプレゼント</string>
     <string name="LeaderSkill_Cinderella_Charm">シンデレラチャーム</string>
     <string name="LeaderSkill_Cool_Passion">クール・クロス・パッション</string>
+    <string name="LeaderSkill_Passion_Cool">パッション・クロス・クール</string>
     <string name="LeaderSkill_Cute_Passion">キュート・クロス・パッション</string>
+    <string name="LeaderSkill_Passion_Cute">パッション・クロス・キュート</string>
     <string name="LeaderSkill_Cute_Cool">キュート・クロス・クール</string>
+    <string name="LeaderSkill_Cool_Cute">クール・クロス・キュート</string>
     <string name="LeaderSkill_Resonant_Voice">レゾナンス・ボイス</string>
     <string name="LeaderSkill_Resonant_Dance">レゾナンス・ステップ</string>
     <string name="LeaderSkill_Resonant_Visual">レゾナンス・メイク</string>

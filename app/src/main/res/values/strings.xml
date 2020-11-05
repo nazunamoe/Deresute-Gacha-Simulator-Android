@@ -111,8 +111,11 @@
     <string name="LeaderSkill_Fortune_Present">Fortune Present</string>
     <string name="LeaderSkill_Cinderella_Charm">Cinderella Charm</string>
     <string name="LeaderSkill_Cool_Passion">Cool cross Passion</string>
+    <string name="LeaderSkill_Passion_Cool">Passion cross Cool</string>
     <string name="LeaderSkill_Cute_Passion">Cute cross Passion</string>
+    <string name="LeaderSkill_Passion_Cute">Passion cross Cute</string>
     <string name="LeaderSkill_Cute_Cool">Cute cross Cool</string>
+    <string name="LeaderSkill_Cool_Cute">Cool cross Cute</string>
     <string name="LeaderSkill_Resonant_Voice">Resonant Voice</string>
     <string name="LeaderSkill_Resonant_Dance">Resonant Step</string>
     <string name="LeaderSkill_Resonant_Visual">Resonant Make</string>

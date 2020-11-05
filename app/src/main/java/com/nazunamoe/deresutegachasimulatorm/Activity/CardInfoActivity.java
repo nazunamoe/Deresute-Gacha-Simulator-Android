@@ -188,8 +188,7 @@ public class CardInfoActivity extends AppCompatActivity {
         CardSkill.setText(updatecard.SkillName);
         CardSkillCategory.setText(updatecard.SkillCategory);
         CardSkillStatus.setText(updatecard.SKillExplain);
-        CardCenterSkill.setText(updatecard.CenterSkillName);
-        CardCenterSkillCategory.setText(updatecard.CenterSkillCategory);
+        CardCenterSkill.setText(updatecard.CenterSkillCategory);
         CardCenterSkillStatus.setText(updatecard.CenterSkillExplain);
     }
 }

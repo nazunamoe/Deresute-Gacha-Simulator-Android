@@ -305,16 +305,28 @@ public class Card{
                 CenterSkillCategory = getString(R.string.LeaderSkill_Cinderella_Charm);
                 break;
             }
-            case 91: case 109: case 89: {
+            case 89: case 107: {
                 CenterSkillCategory = getString(R.string.LeaderSkill_Cute_Cool);
                 break;
             }
-            case 90: case 108: case 93: case 111: {
+            case 90: case 108: {
                 CenterSkillCategory = getString(R.string.LeaderSkill_Cute_Passion);
                 break;
             }
-            case 92: case 110: case 94: {
+            case 91: case 109: {
+                CenterSkillCategory = getString(R.string.LeaderSkill_Cool_Cute);
+                break;
+            }
+            case 92: case 110: {
                 CenterSkillCategory = getString(R.string.LeaderSkill_Cool_Passion);
+                break;
+            }
+            case 93: case 111: {
+                CenterSkillCategory = getString(R.string.LeaderSkill_Passion_Cute);
+                break;
+            }
+            case 94: case 112: {
+                CenterSkillCategory = getString(R.string.LeaderSkill_Passion_Cool);
                 break;
             }
             case 101: case 102: case 103: {

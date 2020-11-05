@@ -103,8 +103,11 @@
     <string name="LeaderSkill_Fortune_Present">프레젠트</string>
     <string name="LeaderSkill_Cinderella_Charm">신데렐라 챰</string>
     <string name="LeaderSkill_Cool_Passion">쿨 크로스 패션</string>
+    <string name="LeaderSkill_Passion_Cool">패션 크로스 쿨</string>
     <string name="LeaderSkill_Cute_Passion">큐트 크로스 패션</string>
+    <string name="LeaderSkill_Passion_Cute">패션 크로스 큐트</string>
     <string name="LeaderSkill_Cute_Cool">큐트 크로스 쿨</string>
+    <string name="LeaderSkill_Cool_Cute">쿨 크로스 큐트</string>
     <string name="LeaderSkill_Resonant_Voice">레조넌스 보이스</string>
     <string name="LeaderSkill_Resonant_Dance">레조넌스 스텝</string>
     <string name="LeaderSkill_Resonant_Visual">레조넌스 메이크</string>
