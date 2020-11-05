@@ -88,7 +88,6 @@
     <string name="LeaderSkill_VocalUp">보이스</string>
     <string name="LeaderSkill_DanceUp">스텝</string>
     <string name="LeaderSkill_VisualUp">메이크</string>
-    <string name="LeaderSkill_AllUp">브릴리언스</string>
     <string name="LeaderSkill_SkillUp">스킬</string>
     <string name="LeaderSkill_Shiny">샤이니</string>
     <string name="LeaderSkill_TricolorVocalUp">트리콜로르 보이스</string>
@@ -114,6 +113,128 @@
     <string name="LeaderSkill_Cinderella_Yell">신데렐라 엘</string>
     <string name="LeaderSkill_WorldLevel">월드 레벨</string>
     <string name="LeaderSkill_Cinderella_Wish">신데렐라 위시</string>
+
+    <string name="LeaderSkill_Cute_VocalUp_Explain_1">큐트 아이돌의 보컬 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cute_VocalUp_Explain_2">큐트 아이돌의 보컬 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Cute_VocalUp_Explain_3">큐트 아이돌의 보컬 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_1">큐트 아이돌의 댄스 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_2">큐트 아이돌의 댄스 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_3">큐트 아이돌의 댄스 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_1">큐트 아이돌의 비쥬얼 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_2">큐트 아이돌의 비쥬얼 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_3">큐트 아이돌의 비쥬얼 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_1">큐트 아이돌의 특기발동확률 10% 상승</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_2">큐트 아이돌의 특기발동확률 30% 상승</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_3">큐트 아이돌의 특기발동확률 40% 상승</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_1">큐트 아이돌의 전 어필 수치 10% 상승</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_2">큐트 아이돌의 전 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_3">큐트 아이돌의 전 어필 수치 40% 상승</string>
+    <string name="LeaderSkill_Cute_Princess_Explain_1">큐트 아이돌로만 구성 시, 전원의 전 어필 수치 35% 상승</string>
+    <string name="LeaderSkill_Cute_Princess_Explain_2">큐트 아이돌로만 구성 시, 전원의 전 어필 수치 50% 상승</string>
+    <string name="LeaderSkill_Cute_Unison_Explain">큐트 아이돌의 전 어필 수치 30% 상승, 큐트 곡 플레이 시 55% 상승</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_1">큐트 아이돌의 라이프 수치 10% 상승</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_2">큐트 아이돌의 라이프 수치 20% 상승</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_3">큐트 아이돌의 라이프 수치 30% 상승</string>
+    <string name="LeaderSkill_Cute_LifeUp_Cheer_Explain">큐트 아이돌로만 구성 시, 전원의 라이프 수치 40％ 상승</string>
+
+    <string name="LeaderSkill_Cool_VocalUp_Explain_1">쿨 아이돌의 보컬 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cool_VocalUp_Explain_2">쿨 아이돌의 보컬 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Cool_VocalUp_Explain_3">쿨 아이돌의 보컬 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_1">쿨 아이돌의 댄스 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_2">쿨 아이돌의 댄스 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_3">쿨 아이돌의 댄스 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_1">쿨 아이돌의 비쥬얼 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_2">쿨 아이돌의 비쥬얼 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_3">쿨 아이돌의 비쥬얼 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_1">쿨 아이돌의 특기발동확률 10% 상승</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_2">쿨 아이돌의 특기발동확률 30% 상승</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_3">쿨 아이돌의 특기발동확률 40% 상승</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_1">쿨 아이돌의 전 어필 수치 10% 상승</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_2">쿨 아이돌의 전 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_3">쿨 아이돌의 전 어필 수치 40% 상승</string>
+    <string name="LeaderSkill_Cool_Princess_Explain_1">쿨 아이돌로만 구성 시, 전원의 전 어필 수치 35% 상승</string>
+    <string name="LeaderSkill_Cool_Princess_Explain_2">쿨 아이돌로만 구성 시, 전원의 전 어필 수치 50% 상승</string>
+    <string name="LeaderSkill_Cool_Unison_Explain">쿨 아이돌의 전 어필 수치 30% 상승, 쿨 곡 플레이 시 55% 상승</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_1">쿨 아이돌의 라이프 수치 10% 상승</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_2">쿨 아이돌의 라이프 수치 20% 상승</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_3">쿨 아이돌의 라이프 수치 30% 상승</string>
+    <string name="LeaderSkill_Cool_LifeUp_Cheer_Explain">쿨 아이돌로만 구성 시, 전원의 라이프 수치 40％ 상승</string>
+
+    <string name="LeaderSkill_Passion_VocalUp_Explain_1">패션 아이돌의 보컬 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Passion_VocalUp_Explain_2">패션 아이돌의 보컬 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Passion_VocalUp_Explain_3">패션 아이돌의 보컬 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_1">패션 아이돌의 댄스 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_2">패션 아이돌의 댄스 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_3">패션 아이돌의 댄스 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_1">패션 아이돌의 비쥬얼 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_2">패션 아이돌의 비쥬얼 어필 수치 60% 상승</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_3">패션 아이돌의 비쥬얼 어필 수치 90% 상승</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_1">패션 아이돌의 특기발동확률 10% 상승</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_2">패션 아이돌의 특기발동확률 30% 상승</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_3">패션 아이돌의 특기발동확률 40% 상승</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_1">패션 아이돌의 전 어필 수치 10% 상승</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_2">패션 아이돌의 전 어필 수치 30% 상승</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_3">패션 아이돌의 전 어필 수치 40% 상승</string>
+    <string name="LeaderSkill_Passion_Princess_Explain_1">패션 아이돌로만 구성 시, 전원의 전 어필 수치 35% 상승</string>
+    <string name="LeaderSkill_Passion_Princess_Explain_2">패션 아이돌로만 구성 시, 전원의 전 어필 수치 50% 상승</string>
+    <string name="LeaderSkill_Passion_Unison_Explain">패션 아이돌의 전 어필 수치 30% 상승, 패션 곡 플레이 시 55% 상승</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_1">패션 아이돌의 라이프 수치 10% 상승</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_2">패션 아이돌의 라이프 수치 20% 상승</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_3">패션 아이돌의 라이프 수치 30% 상승</string>
+    <string name="LeaderSkill_Passion_LifeUp_Cheer_Explain">패션 아이돌로만 구성 시, 전원의 라이프 수치 40％ 상승</string>
+
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_1">전원의 보컬 어필 수치 24% 상승</string>
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_2">전원의 보컬 어필 수치 48% 상승</string>
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_3">전원의 보컬 어필 수치 80% 상승</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_1">전원의 댄스 어필 수치 24% 상승</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_2">전원의 댄스 어필 수치 48% 상승</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_3">전원의 댄스 어필 수치 80% 상승</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_1">전원의 비쥬얼 어필 수치 24% 상승</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_2">전원의 비쥬얼 어필 수치 48% 상승</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_3">전원의 비쥬얼 어필 수치 80% 상승</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_1">전원의 전 어필 수치 8% 상승</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_2">전원의 전 어필 수치 16% 상승</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_3">전원의 전 어필 수치 24% 상승</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_1">전원의 라이프 8% 상승</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_2">전원의 라이프 16% 상승</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_3">전원의 라이프 24% 상승</string>
+
+    <string name="LeaderSkill_TricolorVocalUp_Explain_1">3 타입의 모든 아이돌 편성 시, 전원의 보컬 수치 80% 상승</string>
+    <string name="LeaderSkill_TricolorVocalUp_Explain_2">3 타입의 모든 아이돌 편성 시, 전원의 보컬 수치 100% 상승</string>
+    <string name="LeaderSkill_TricolorDanceUp_Explain_1">3 타입의 모든 아이돌 편성 시, 전원의 댄스 수치 80% 상승</string>
+    <string name="LeaderSkill_TricolorDanceUp_Explain_2">3 타입의 모든 아이돌 편성 시, 전원의 댄스 수치 100% 상승</string>
+    <string name="LeaderSkill_TricolorVisualUp_Explain_1">3 타입의 모든 아이돌 편성 시, 전원의 비쥬얼 수치 80% 상승</string>
+    <string name="LeaderSkill_TricolorVisualUp_Explain_2">3 타입의 모든 아이돌 편성 시, 전원의 비쥬얼 수치 100% 상승</string>
+    <string name="LeaderSkill_TricolorSkillUp_Explain_1">3 타입의 모든 아이돌 편성 시, 전원의 특기발동확률 40% 상승</string>
+    <string name="LeaderSkill_TricolorSkillUp_Explain_2">3 타입의 모든 아이돌 편성 시, 전원의 특기발동확률 50% 상승</string>
+
+    <string name="LeaderSkill_Fortune_Present_Explain">라이브 클리어 시, 특별 보상을 추가로 획득</string>
+    <string name="LeaderSkill_Cinderella_Charm_Explain_1">라이브 클리어 시, 획득 팬 수가 32% 상승</string>
+    <string name="LeaderSkill_Cinderella_Charm_Explain_2">라이브 클리어 시, 획득 팬 수가 40% 상승</string>
+
+    <string name="LeaderSkill_Cool_Passion_Explain_1">쿨과 패션 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 전원의 특기발동확률 25% 상승</string>
+    <string name="LeaderSkill_Passion_Cool_Explain_1">패션과 쿨 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 전원의 라이프 15% 상승</string>
+    <string name="LeaderSkill_Cute_Passion_Explain_1">큐트와 패션 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 획득 팬 수 8% 상승</string>
+    <string name="LeaderSkill_Passion_Cute_Explain_1">패션과 큐트 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 전원의 라이프 15% 상승</string>
+    <string name="LeaderSkill_Cute_Cool_Explain_1">큐트와 쿨 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 획득 팬 수 8% 상승</string>
+    <string name="LeaderSkill_Cool_Cute_Explain_1">쿨과 큐트 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 전원의 특기발동확률 25% 상승</string>
+
+    <string name="LeaderSkill_Cool_Passion_Explain_2">쿨과 패션 아이돌 편성 시, 전원의 전 어필 수치 30% 상승, 전원의 특기발동확률 35% 상승</string>
+    <string name="LeaderSkill_Passion_Cool_Explain_2">패션과 쿨 아이돌 편성 시, 전원의 전 어필 수치 30% 상승, 전원의 라이프 25% 상승</string>
+    <string name="LeaderSkill_Cute_Passion_Explain_2">큐트와 패션 아이돌 편성 시, 전원의 전 어필 수치 30% 상승, 획득 팬 수 10% 상승</string>
+    <string name="LeaderSkill_Passion_Cute_Explain_2">패션과 큐트 아이돌 편성 시, 전원의 전 어필 수치 30% 상승, 전원의 라이프 25% 상승</string>
+    <string name="LeaderSkill_Cute_Cool_Explain_2">큐트와 쿨 아이돌 편성 시, 전원의 전 어필 수치 30% 상승, 획득 팬 수 10% 상승</string>
+    <string name="LeaderSkill_Cool_Cute_Explain_2">쿨과 큐트 아이돌 편성 시, 전원의 전 어필 수치 20% 상승, 전원의 특기발동확률 25% 상승</string>
+
+    <string name="LeaderSkill_Resonant_Voice_Explain">5 종류의 특기 편성 시, 보컬 어필에만 적용하여 모든 특기효과가 중복시에 가산되어 적용</string>
+    <string name="LeaderSkill_Resonant_Dance_Explain">5 종류의 특기 편성 시, 댄스 어필에만 적용하여 모든 특기효과가 중복시에 가산되어 적용</string>
+    <string name="LeaderSkill_Resonant_Visual_Explain">5 종류의 특기 편성 시, 비쥬얼 어필에만 적용하여 모든 특기효과가 중복시에 가산되어 적용</string>
+
+    <string name="LeaderSkill_Cinderella_Yell_Explain">라이브 클리어 시, 획득경험치/머니/우정pt 50% 상승</string>
+
+    <string name="LeaderSkill_WorldLevel_Explain">자신의 댄스 어필 수치를 100% 상승、페이스 오프 시 전원의 댄스 어필 130% 상승</string>
+
+    <string name="LeaderSkill_Cinderella_Wish_Explain">라이브 클리어 시, 스타랭크에 따라 스타피스를 획득</string>
 
     <string name="gacha_season_title">가챠 시즌</string>
     <string name="gacha_season_date_title">기간</string>

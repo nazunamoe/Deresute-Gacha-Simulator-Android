@@ -96,7 +96,6 @@
     <string name="LeaderSkill_VocalUp">Voice</string>
     <string name="LeaderSkill_DanceUp">Step</string>
     <string name="LeaderSkill_VisualUp">Make</string>
-    <string name="LeaderSkill_AllUp">Brilliance</string>
     <string name="LeaderSkill_SkillUp">Ability</string>
     <string name="LeaderSkill_Shiny">Shiny</string>
     <string name="LeaderSkill_TricolorVocalUp">Tricolor Voice</string>
@@ -122,6 +121,129 @@
     <string name="LeaderSkill_Cinderella_Yell">Cinderella Yell</string>
     <string name="LeaderSkill_WorldLevel">World Level</string>
     <string name="LeaderSkill_Cinderella_Wish">Cinderella Wish</string>
+
+    <string name="LeaderSkill_Cute_VocalUp_Explain_1">Raises the Vocal appeal of all Cute members by 30%.</string>
+    <string name="LeaderSkill_Cute_VocalUp_Explain_2">Raises the Vocal appeal of all Cute members by 60%.</string>
+    <string name="LeaderSkill_Cute_VocalUp_Explain_3">Raises the Vocal appeal of all Cute members by 90%.</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_1">Raises the Dance appeal of all Cute members by 30%.</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_2">Raises the Dance appeal of all Cute members by 60%.</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_3">Raises the Dance appeal of all Cute members by 90%.</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_1">Raises the Visual appeal of all Cute members by 30%.</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_2">Raises the Visual appeal of all Cute members by 60%.</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_3">Raises the Visual appeal of all Cute members by 90%.</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_1">Raises the skill probability of all Cute members by 15%.</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_2">Raises the skill probability of all Cute members by 30%.</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_3">Raises the skill probability of all Cute members by 40%.</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_1">Raises all appeals of all Cute members by 10%.</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_2">Raises all appeals of all Cute members by 30%.</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_3">Raises all appeals of all Cute members by 40%.</string>
+    <string name="LeaderSkill_Cute_Princess_Explain_1">If there are only Cute idols on the team: Raises all appeals of all Cute members by 35%.</string>
+    <string name="LeaderSkill_Cute_Princess_Explain_2">If there are only Cute idols on the team: Raises all appeals of all Cute members by 50%.</string>
+    <string name="LeaderSkill_Cute_Unison_Explain">Raises all appeals of all Cute members by 30%. (55% when playing a Cute-type song)</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_1">Raises the life of all Cute members by 10%.</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_2">Raises the life of all Cute members by 20%.</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_3">Raises the life of all Cute members by 30%.</string>
+    <string name="LeaderSkill_Cute_LifeUp_Cheer_Explain">If there are only Cute idols on the team: Raises the life of all Cute members by 40%.</string>
+
+    <string name="LeaderSkill_Cool_VocalUp_Explain_1">Raises the Vocal appeal of all Cool members by 30%.</string>
+    <string name="LeaderSkill_Cool_VocalUp_Explain_2">Raises the Vocal appeal of all Cool members by 60%.</string>
+    <string name="LeaderSkill_Cool_VocalUp_Explain_3">Raises the Vocal appeal of all Cool members by 90%.</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_1">Raises the Dance appeal of all Cool members by 30%.</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_2">Raises the Dance appeal of all Cool members by 60%.</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_3">Raises the Dance appeal of all Cool members by 90%.</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_1">Raises the Visual appeal of all Cool members by 30%.</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_2">Raises the Visual appeal of all Cool members by 60%.</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_3">Raises the Visual appeal of all Cool members by 90%.</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_1">Raises the skill probability of all Cool members by 15%.</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_2">Raises the skill probability of all Cool members by 30%.</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_3">Raises the skill probability of all Cool members by 40%.</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_1">Raises all appeals of all Cool members by 10%.</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_2">Raises all appeals of all Cool members by 30%.</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_3">Raises all appeals of all Cool members by 40%.</string>
+    <string name="LeaderSkill_Cool_Princess_Explain_1">If there are only Cool idols on the team: Raises all appeals of all Cool members by 35%.</string>
+    <string name="LeaderSkill_Cool_Princess_Explain_2">If there are only Cool idols on the team: Raises all appeals of all Cool members by 50%.</string>
+    <string name="LeaderSkill_Cool_Unison_Explain">Raises all appeals of all Cool members by 30%. (55%. when playing a Cool-type song)</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_1">Raises the life of all Cool members by 10%.</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_2">Raises the life of all Cool members by 20%.</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_3">Raises the life of all Cool members by 30%.</string>
+    <string name="LeaderSkill_Cool_LifeUp_Cheer_Explain">If there are only Cool idols on the team: Raises the life of all Cool members by 40%.</string>
+
+    <string name="LeaderSkill_Passion_VocalUp_Explain_1">Raises the Vocal appeal of all Passion members by 30%.</string>
+    <string name="LeaderSkill_Passion_VocalUp_Explain_2">Raises the Vocal appeal of all Passion members by 60%.</string>
+    <string name="LeaderSkill_Passion_VocalUp_Explain_3">Raises the Vocal appeal of all Passion members by 90%.</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_1">Raises the Dance appeal of all Passion members by 30%.</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_2">Raises the Dance appeal of all Passion members by 60%.</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_3">Raises the Dance appeal of all Passion members by 90%.</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_1">Raises the Visual appeal of all Passion members by 30%.</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_2">Raises the Visual appeal of all Passion members by 60%.</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_3">Raises the Visual appeal of all Passion members by 90%.</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_1">Raises the skill probability of all Passion members by 15%.</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_2">Raises the skill probability of all Passion members by 30%.</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_3">Raises the skill probability of all Passion members by 40%.</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_1">Raises all appeals of all Passion members by 10%.</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_2">Raises all appeals of all Passion members by 30%.</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_3">Raises all appeals of all Passion members by 40%.</string>
+    <string name="LeaderSkill_Passion_Princess_Explain_1">If there are only Passion idols on the team: Raises all appeals of all Passion members by 35%.</string>
+    <string name="LeaderSkill_Passion_Princess_Explain_2">If there are only Passion idols on the team: Raises all appeals of all Passion members by 50%.</string>
+    <string name="LeaderSkill_Passion_Unison_Explain">Raises all appeals of all Passion members by 30%. (55%. when playing a Passion-type song)</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_1">Raises the life of all Passion members by 10%.</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_2">Raises the life of all Passion members by 20%.</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_3">Raises the life of all Passion members by 30%.</string>
+    <string name="LeaderSkill_Passion_LifeUp_Cheer_Explain">If there are only Passion idols on the team: Raises the life of all Passion members by 40%.</string>
+
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_1">Raises the Vocal appeal of all members by 24%.</string>
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_2">Raises the Vocal appeal of all members by 48%.</string>
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_3">Raises the Vocal appeal of all members by 80%.</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_1">Raises the Dance appeal of all members by 24%.</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_2">Raises the Dance appeal of all members by 48%.</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_3">Raises the Dance appeal of all members by 60%.</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_1">Raises the Visual appeal of all members by 24%.</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_2">Raises the Visual appeal of all members by 48%.</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_3">Raises the Visual appeal of all members by 60%.</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_1">Raises all appeals of all members by 8%.</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_2">Raises all appeals of all members by 16%.</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_3">Raises all appeals of all members by 24%.</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_1">Raises the life of all members by 8%.</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_2">Raises the life of all members by 16%.</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_3">Raises the life of all members by 24%.</string>
+
+    <string name="LeaderSkill_TricolorVocalUp_Explain_1">If there are Cute, Cool, and Passion idols on the team: Raises the Vocal appeal of all members by 80%.</string>
+    <string name="LeaderSkill_TricolorVocalUp_Explain_2">If there are Cute, Cool, and Passion idols on the team: Raises the Vocal appeal of all members by 100%.</string>
+    <string name="LeaderSkill_TricolorDanceUp_Explain_1">If there are Cute, Cool, and Passion idols on the team: Raises the Dance appeal of all members by 80%.</string>
+    <string name="LeaderSkill_TricolorDanceUp_Explain_2">If there are Cute, Cool, and Passion idols on the team: Raises the Dance appeal of all members by 100%.</string>
+    <string name="LeaderSkill_TricolorVisualUp_Explain_1">If there are Cute, Cool, and Passion idols on the team: Raises the Visual appeal of all members by 80%.</string>
+    <string name="LeaderSkill_TricolorVisualUp_Explain_2">If there are Cute, Cool, and Passion idols on the team: Raises the Visual appeal of all members by 100%.</string>
+    <string name="LeaderSkill_TricolorSkillUp_Explain_1">If there are Cute, Cool, and Passion idols on the team: Raises the skill probability of all members by 40%.</string>
+    <string name="LeaderSkill_TricolorSkillUp_Explain_2">If there are Cute, Cool, and Passion idols on the team: Raises the skill probability of all members by 50%.</string>
+
+    <string name="LeaderSkill_Fortune_Present_Explain">May give extra rewards when you finish a live. The drop rate scales based on star rank.</string>
+    <string name="LeaderSkill_Cinderella_Charm_Explain_1">Increases fan gain by 32% when you finish a live.</string>
+    <string name="LeaderSkill_Cinderella_Charm_Explain_2">Increases fan gain by 40% when you finish a live.</string>
+
+    <string name="LeaderSkill_Cool_Passion_Explain_1">If there are Cool and Passion idols on the team: Raises all appeals of all members by 20%, and the skill probability of all members by 25%.</string>
+    <string name="LeaderSkill_Passion_Cool_Explain_1">If there are Passion and Cool idols on the team: Raises all appeals of all members by 20%, and the life of all members by 15%.</string>
+    <string name="LeaderSkill_Cute_Passion_Explain_1">If there are Cute and Passion idols on the team: Raises all appeals of all members by 20%, and the fan gain of all members by 8%.</string>
+    <string name="LeaderSkill_Passion_Cute_Explain_1">If there are Passion and Cute idols on the team: Raises all appeals of all members by 20%, and the life of all members by 15%.</string>
+    <string name="LeaderSkill_Cute_Cool_Explain_1">If there are Cute and Cool idols on the team: Raises all appeals of all members by 20%, and the fan gain of all members by 8%.</string>
+    <string name="LeaderSkill_Cool_Cute_Explain_1">If there are Cool and Cute idols on the team: Raises all appeals of all members by 20%, and skill probability of all members by 25%.</string>
+
+    <string name="LeaderSkill_Cool_Passion_Explain_2">If there are Cool and Passion idols on the team: Raises all appeals of all members by 30%, and the skill probability of all members by 35%.</string>
+    <string name="LeaderSkill_Passion_Cool_Explain_2">If there are Passion and Cool idols on the team: Raises all appeals of all members by 30%, and the life of all members by 25%.</string>
+    <string name="LeaderSkill_Cute_Passion_Explain_2">If there are Cute and Passion idols on the team: Raises all appeals of all members by 30%, and the fan gain of all members by 10%.</string>
+    <string name="LeaderSkill_Passion_Cute_Explain_2">If there are Passion and Cute idols on the team: Raises all appeals of all members by 30%, and the life of all members by 25%.</string>
+    <string name="LeaderSkill_Cute_Cool_Explain_2">If there are Cute and Cool idols on the team: Raises all appeals of all members by 30%, and the fan gain of all members by 10%.</string>
+    <string name="LeaderSkill_Cool_Cute_Explain_2">If there are Cool and Cute idols on the team: Raises all appeals of all members by 30%, and skill probability of all members by 35%.</string>
+
+    <string name="LeaderSkill_Resonant_Voice_Explain">If the team has at least 5 different skill types: Allows active skill effects to stack, but only the Vocal appeal of the team applies during the live.</string>
+    <string name="LeaderSkill_Resonant_Dance_Explain">If the team has at least 5 different skill types: Allows active skill effects to stack, but only the Dance appeal of the team applies during the live.</string>
+    <string name="LeaderSkill_Resonant_Visual_Explain">If the team has at least 5 different skill types: Allows active skill effects to stack, but only the Visual appeal of the team applies during the live.</string>
+
+    <string name="LeaderSkill_Cinderella_Yell_Explain">Raises the XP, money, and friend points that you receive by 50% when you finish a live.</string>
+
+    <string name="LeaderSkill_WorldLevel_Explain">Raises this card s own Dance appeal by 100%. If this card s costume is equipped and on your own team, raises the Dance appeal of all members by 130% when her mask is removed.</string>
+
+    <string name="LeaderSkill_Cinderella_Wish_Explain">May drop star pieces when you finish a live. The drop rate scales based on star rank.</string>
+
 
     <string name="gacha_season_title">Gacha Season</string>
     <string name="gacha_season_date_title">Date</string>

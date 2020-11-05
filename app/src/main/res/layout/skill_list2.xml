@@ -57,7 +57,7 @@
                     android:id="@+id/CenterSkill_Brilliance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/LeaderSkill_AllUp"
+                    android:text="@string/LeaderSkill_Brilliance"
                     android:textAlignment="center"
                     android:buttonTint="@color/checkbox_color"/>
 
