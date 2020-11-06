@@ -343,15 +343,15 @@ public class Card{
                 CenterSkillCategory = Type + " " + getString(R.string.LeaderSkill_VisualUp);
                 switch(No/100000){
                     case 1:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_DanceUp_Explain_1);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_VisualUp_Explain_1);
                         break;
                     }
                     case 2:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_DanceUp_Explain_1);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_VisualUp_Explain_1);
                         break;
                     }
                     case 3:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_DanceUp_Explain_1);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_VisualUp_Explain_1);
                         break;
                     }
                 }
@@ -361,15 +361,15 @@ public class Card{
                 CenterSkillCategory = Type + " " + getString(R.string.LeaderSkill_VisualUp);
                 switch(No/100000){
                     case 1:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_DanceUp_Explain_2);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_VisualUp_Explain_2);
                         break;
                     }
                     case 2:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_DanceUp_Explain_2);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_VisualUp_Explain_2);
                         break;
                     }
                     case 3:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_DanceUp_Explain_2);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_VisualUp_Explain_2);
                         break;
                     }
                 }
@@ -379,15 +379,70 @@ public class Card{
                 CenterSkillCategory = Type + " " + getString(R.string.LeaderSkill_VisualUp);
                 switch(No/100000){
                     case 1:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_DanceUp_Explain_3);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_VisualUp_Explain_3);
                         break;
                     }
                     case 2:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_DanceUp_Explain_3);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_VisualUp_Explain_3);
                         break;
                     }
                     case 3:{
-                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_DanceUp_Explain_3);
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_VisualUp_Explain_3);
+                        break;
+                    }
+                }
+                break;
+            }
+
+            case 21: case 22: case 23: {
+                CenterSkillCategory = Type + " " + getString(R.string.LeaderSkill_SkillUp);
+                switch(No/100000){
+                    case 1:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_SkillUp_Explain_1);
+                        break;
+                    }
+                    case 2:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_SkillUp_Explain_1);
+                        break;
+                    }
+                    case 3:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_SkillUp_Explain_1);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 44: case 45: case 46: {
+                CenterSkillCategory = Type + " " + getString(R.string.LeaderSkill_SkillUp);
+                switch(No/100000){
+                    case 1:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_SkillUp_Explain_2);
+                        break;
+                    }
+                    case 2:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_SkillUp_Explain_2);
+                        break;
+                    }
+                    case 3:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_SkillUp_Explain_2);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 67: case 68: case 69: {
+                CenterSkillCategory = Type + " " + getString(R.string.LeaderSkill_SkillUp);
+                switch(No/100000){
+                    case 1:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cute_SkillUp_Explain_3);
+                        break;
+                    }
+                    case 2:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Cool_SkillUp_Explain_3);
+                        break;
+                    }
+                    case 3:{
+                        CenterSkillExplain = getString(R.string.LeaderSkill_Passion_SkillUp_Explain_3);
                         break;
                     }
                 }
