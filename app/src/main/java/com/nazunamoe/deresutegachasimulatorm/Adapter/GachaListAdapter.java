@@ -171,7 +171,7 @@ public class GachaListAdapter extends RecyclerView.Adapter<GachaListAdapter.View
         CardSkillTitle.setText(info.SkillName);
         CardSkillSummary.setText(info.SKillExplain);
 
-        CardCenterSkillTitle.setText(info.CenterSkillName);
+        CardCenterSkillTitle.setText(info.CenterSkillCategory);
         CardCenterSkillSummary.setText(info.CenterSkillExplain);
 
         update(v, Training_Status, Max_Stat_Status, info.No);

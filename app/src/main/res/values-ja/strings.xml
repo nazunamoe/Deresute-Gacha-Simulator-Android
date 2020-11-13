@@ -88,8 +88,8 @@
     <string name="LeaderSkill_VocalUp">ボイス</string>
     <string name="LeaderSkill_DanceUp">ステップ</string>
     <string name="LeaderSkill_VisualUp">メイク</string>
-    <string name="LeaderSkill_AllUp">ブリリアンス</string>
     <string name="LeaderSkill_SkillUp">アビリティ</string>
+    <string name="LeaderSkill_Shiny">シャイニー</string>
     <string name="LeaderSkill_TricolorVocalUp">トリコロールボイス</string>
     <string name="LeaderSkill_TricolorDanceUp">トリコロールステップ</string>
     <string name="LeaderSkill_TricolorVisualUp">トリコロールメイク</string>
@@ -102,14 +102,139 @@
     <string name="LeaderSkill_Fortune_Present">フォーチュンプレゼント</string>
     <string name="LeaderSkill_Cinderella_Charm">シンデレラチャーム</string>
     <string name="LeaderSkill_Cool_Passion">クール・クロス・パッション</string>
+    <string name="LeaderSkill_Passion_Cool">パッション・クロス・クール</string>
     <string name="LeaderSkill_Cute_Passion">キュート・クロス・パッション</string>
+    <string name="LeaderSkill_Passion_Cute">パッション・クロス・キュート</string>
     <string name="LeaderSkill_Cute_Cool">キュート・クロス・クール</string>
+    <string name="LeaderSkill_Cool_Cute">クール・クロス・キュート</string>
     <string name="LeaderSkill_Resonant_Voice">レゾナンス・ボイス</string>
     <string name="LeaderSkill_Resonant_Dance">レゾナンス・ステップ</string>
     <string name="LeaderSkill_Resonant_Visual">レゾナンス・メイク</string>
     <string name="LeaderSkill_Cinderella_Yell">シンデレラエール</string>
     <string name="LeaderSkill_WorldLevel">ワールドレベル</string>
     <string name="LeaderSkill_Cinderella_Wish">シンデレラウィッシュ</string>
+
+    <string name="LeaderSkill_Cute_VocalUp_Explain_1">キュートアイドルのボーカルアピール値30％アップ</string>
+    <string name="LeaderSkill_Cute_VocalUp_Explain_2">キュートアイドルのボーカルアピール値60％アップ</string>
+    <string name="LeaderSkill_Cute_VocalUp_Explain_3">キュートアイドルのボーカルアピール値90％アップ</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_1">キュートアイドルのダンスアピール値30％アップ</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_2">キュートアイドルのダンスアピール値60％アップ</string>
+    <string name="LeaderSkill_Cute_DanceUp_Explain_3">キュートアイドルのダンスアピール値90％アップ</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_1">キュートアイドルのビジュアルアピール値30％アップ</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_2">キュートアイドルのビジュアルアピール値60％アップ</string>
+    <string name="LeaderSkill_Cute_VisualUp_Explain_3">キュートアイドルのビジュアルアピール値90％アップ</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_1">キュートアイドルの特技発動確率15％アップ</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_2">キュートアイドルの特技発動確率30％アップ</string>
+    <string name="LeaderSkill_Cute_SkillUp_Explain_3">キュートアイドルの特技発動確率40％アップ</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_1">キュートアイドルの全アピール値10％アップ</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_2">キュートアイドルの全アピール値30％アップ</string>
+    <string name="LeaderSkill_Cute_Brilliance_Explain_3">キュートアイドルの全アピール値40％アップ</string>
+    <string name="LeaderSkill_Cute_Princess_Explain_1">キュートアイドルのみ編成時、全員の全アピール値35％アップ</string>
+    <string name="LeaderSkill_Cute_Princess_Explain_2">キュートアイドルのみ編成時、全員の全アピール値50％アップ</string>
+    <string name="LeaderSkill_Cute_Unison_Explain">キュートアイドルの全アピール値30％アップ、キュート楽曲なら55％アップ</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_1">キュートアイドルのライフ10％アップ</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_2">キュートアイドルのライフ20％アップ</string>
+    <string name="LeaderSkill_Cute_LifeUp_Normal_Explain_3">キュートアイドルのライフ30％アップ</string>
+    <string name="LeaderSkill_Cute_LifeUp_Cheer_Explain">キュートアイドルのみ編成時、全員のライフ40％アップ</string>
+
+    <string name="LeaderSkill_Cool_VocalUp_Explain_1">クールアイドルのボーカルアピール値30％アップ</string>
+    <string name="LeaderSkill_Cool_VocalUp_Explain_2">クールアイドルのボーカルアピール値60％アップ</string>
+    <string name="LeaderSkill_Cool_VocalUp_Explain_3">クールアイドルのボーカルアピール値90％アップ</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_1">クールアイドルのダンスアピール値30％アップ</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_2">クールアイドルのダンスアピール値60％アップ</string>
+    <string name="LeaderSkill_Cool_DanceUp_Explain_3">クールアイドルのダンスアピール値90％アップ</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_1">クールアイドルのビジュアルアピール値30％アップ</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_2">クールアイドルのビジュアルアピール値60％アップ</string>
+    <string name="LeaderSkill_Cool_VisualUp_Explain_3">クールアイドルのビジュアルアピール値90％アップ</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_1">クールアイドルの特技発動確率15％アップ</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_2">クールアイドルの特技発動確率30％アップ</string>
+    <string name="LeaderSkill_Cool_SkillUp_Explain_3">クールアイドルの特技発動確率40％アップ</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_1">クールアイドルの全アピール値10％アップ</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_2">クールアイドルの全アピール値30％アップ</string>
+    <string name="LeaderSkill_Cool_Brilliance_Explain_3">クールアイドルの全アピール値40％アップ</string>
+    <string name="LeaderSkill_Cool_Princess_Explain_1">クールアイドルのみ編成時、全員の全アピール値35％アップ</string>
+    <string name="LeaderSkill_Cool_Princess_Explain_2">クールアイドルのみ編成時、全員の全アピール値50％アップ</string>
+    <string name="LeaderSkill_Cool_Unison_Explain">クールアイドルの全アピール値30％アップ、クール楽曲なら55％アップ</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_1">クールアイドルのライフ10％アップ</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_2">クールアイドルのライフ20％アップ</string>
+    <string name="LeaderSkill_Cool_LifeUp_Normal_Explain_3">クールアイドルのライフ30％アップ</string>
+    <string name="LeaderSkill_Cool_LifeUp_Cheer_Explain">クールアイドルのみ編成時、全員のライフ40％アップ</string>
+
+    <string name="LeaderSkill_Passion_VocalUp_Explain_1">パッションアイドルのボーカルアピール値30％アップ</string>
+    <string name="LeaderSkill_Passion_VocalUp_Explain_2">パッションアイドルのボーカルアピール値60％アップ</string>
+    <string name="LeaderSkill_Passion_VocalUp_Explain_3">パッションアイドルのボーカルアピール値90％アップ</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_1">パッションアイドルのダンスアピール値30％アップ</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_2">パッションアイドルのダンスアピール値60％アップ</string>
+    <string name="LeaderSkill_Passion_DanceUp_Explain_3">パッションアイドルのダンスアピール値90％アップ</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_1">パッションアイドルのビジュアルアピール値30％アップ</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_2">パッションアイドルのビジュアルアピール値60％アップ</string>
+    <string name="LeaderSkill_Passion_VisualUp_Explain_3">パッションアイドルのビジュアルアピール値90％アップ</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_1">パッションアイドルの特技発動確率15％アップ</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_2">パッションアイドルの特技発動確率30％アップ</string>
+    <string name="LeaderSkill_Passion_SkillUp_Explain_3">パッションアイドルの特技発動確率40％アップ</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_1">パッションアイドルの全アピール値10％アップ</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_2">パッションアイドルの全アピール値30％アップ</string>
+    <string name="LeaderSkill_Passion_Brilliance_Explain_3">パッションアイドルの全アピール値40％アップ</string>
+    <string name="LeaderSkill_Passion_Princess_Explain_1">パッションアイドルのみ編成時、全員の全アピール値35％アップ</string>
+    <string name="LeaderSkill_Passion_Princess_Explain_2">パッションアイドルのみ編成時、全員の全アピール値50％アップ</string>
+    <string name="LeaderSkill_Passion_Unison_Explain">パッションアイドルの全アピール値30％アップ、パッション楽曲なら55％アップ</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_1">パッションアイドルのライフ10％アップ</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_2">パッションアイドルのライフ20％アップ</string>
+    <string name="LeaderSkill_Passion_LifeUp_Normal_Explain_3">パッションアイドルのライフ30％アップ</string>
+    <string name="LeaderSkill_Passion_LifeUp_Cheer_Explain">パッションアイドルのみ編成時、全員のライフ40％アップ</string>
+
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_1">全員のボーカルアピール値24％アップ</string>
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_2">全員のボーカルアピール値48％アップ</string>
+    <string name="LeaderSkill_Shiny_VocalUp_Explain_3">全員のボーカルアピール値80％アップ</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_1">全員のダンスアピール値24％アップ</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_2">全員のダンスアピール値48％アップ</string>
+    <string name="LeaderSkill_Shiny_DanceUp_Explain_3">全員のダンスアピール値80％アップ</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_1">全員のビジュアルアピール値24％アップ</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_2">全員のビジュアルアピール値48％アップ</string>
+    <string name="LeaderSkill_Shiny_VisualUp_Explain_3">全員のビジュアルアピール値80％アップ</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_1">全員の全アピール値8％アップ</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_2">全員の全アピール値16％アップ</string>
+    <string name="LeaderSkill_Shiny_Brilliance_Explain_3">全員の全アピール値24％アップ</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_1">全員のライフ8％アップ</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_2">全員のライフ16％アップ</string>
+    <string name="LeaderSkill_Shiny_LifeUp_Normal_Explain_3">全員のライフ24％アップ</string>
+
+    <string name="LeaderSkill_TricolorVocalUp_Explain_1">3タイプ全てのアイドル編成時、全員のボーカルアピール値80％アップ</string>
+    <string name="LeaderSkill_TricolorVocalUp_Explain_2">3タイプ全てのアイドル編成時、全員のボーカルアピール値100％アップ</string>
+    <string name="LeaderSkill_TricolorDanceUp_Explain_1">3タイプ全てのアイドル編成時、全員のダンスアピール値80％アップ</string>
+    <string name="LeaderSkill_TricolorDanceUp_Explain_2">3タイプ全てのアイドル編成時、全員のダンスアピール値100％アップ</string>
+    <string name="LeaderSkill_TricolorVisualUp_Explain_1">3タイプ全てのアイドル編成時、全員のビジュアルアピール値80％アップ</string>
+    <string name="LeaderSkill_TricolorVisualUp_Explain_2">3タイプ全てのアイドル編成時、全員のビジュアルアピール値100％アップ</string>
+    <string name="LeaderSkill_TricolorSkillUp_Explain_1">3タイプ全てのアイドル編成時、全員の特技発動確率40％アップ</string>
+    <string name="LeaderSkill_TricolorSkillUp_Explain_2">3タイプ全てのアイドル編成時、全員の特技発動確率50％アップ</string>
+
+    <string name="LeaderSkill_Fortune_Present_Explain">LIVEクリア時、特別報酬を追加で獲得</string>
+    <string name="LeaderSkill_Cinderella_Charm_Explain_1">LIVEクリア時、獲得ファン数が32%アップ</string>
+    <string name="LeaderSkill_Cinderella_Charm_Explain_2">LIVEクリア時、獲得ファン数が40%アップ</string>
+
+    <string name="LeaderSkill_Cool_Passion_Explain_1">クールとパッションのアイドル編成時、全員の全アピール値20%アップ、全員の特技発動率25%アップ</string>
+    <string name="LeaderSkill_Passion_Cool_Explain_1">パッションとクールのアイドル編成時、全員の全アピール値20%アップ、全員のライフ15％アップ</string>
+    <string name="LeaderSkill_Cute_Passion_Explain_1">キュートとパッションのアイドル編成時、全員の全アピール値20％アップ、獲得ファン数が8％アップ</string>
+    <string name="LeaderSkill_Passion_Cute_Explain_1">パッションとキュートのアイドル編成時、全員の全アピール値20％アップ、全員のライフ15％アップ</string>
+    <string name="LeaderSkill_Cute_Cool_Explain_1">キュートとクールのアイドル編成時、全員の全アピール値20％アップ、獲得ファン数が8％アップ</string>
+    <string name="LeaderSkill_Cool_Cute_Explain_1">クールとキュートのアイドル編成時、全員の全アピール値20％アップ、全員の特技発動率25％アップ</string>
+
+    <string name="LeaderSkill_Cool_Passion_Explain_2">クールとパッションのアイドル編成時、全員の全アピール値30%アップ、全員の特技発動率35%アップ</string>
+    <string name="LeaderSkill_Passion_Cool_Explain_2">パッションとクールのアイドル編成時、全員の全アピール値30%アップ、全員のライフ25％アップ</string>
+    <string name="LeaderSkill_Cute_Passion_Explain_2">キュートとパッションのアイドル編成時、全員の全アピール値30％アップ、獲得ファン数が10％アップ</string>
+    <string name="LeaderSkill_Passion_Cute_Explain_2">パッションとキュートのアイドル編成時、全員の全アピール値30％アップ、全員のライフ25％アップ</string>
+    <string name="LeaderSkill_Cute_Cool_Explain_2">キュートとクールのアイドル編成時、全員の全アピール値30％アップ、獲得ファン数が10％アップ</string>
+    <string name="LeaderSkill_Cool_Cute_Explain_2">クールとキュートのアイドル編成時、全員の全アピール値30％アップ、全員の特技発動率35％アップ</string>
+
+    <string name="LeaderSkill_Resonant_Voice_Explain">5種類の特技編成時、ダンスアピール値のみ適用し、全ての特技効果が重複時に加算</string>
+    <string name="LeaderSkill_Resonant_Dance_Explain">5種類の特技編成時、ボーカルアピール値のみ適用し、全ての特技効果が重複時に加算</string>
+    <string name="LeaderSkill_Resonant_Visual_Explain">5種類の特技編成時、ビジュアルアピール値のみ適用し、全ての特技効果が重複時に加算</string>
+
+    <string name="LeaderSkill_Cinderella_Yell_Explain">LIVEクリア時、獲得経験値/マニー/友情ptが50%アップ</string>
+
+    <string name="LeaderSkill_WorldLevel_Explain">自分のダンスアピール値100%アップ、フェイスオープンしたら全員のダンスアピール値130%アップ</string>
+
+    <string name="LeaderSkill_Cinderella_Wish_Explain">LIVEクリア時、中確率でスターピースを獲得</string>
 
     <string name="gacha_season_title">ガシャシーズン</string>
     <string name="gacha_season_date_title">期間</string>

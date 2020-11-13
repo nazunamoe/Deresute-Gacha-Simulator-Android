@@ -87,8 +87,11 @@ public class InfoFragment extends Fragment {
     CheckBox centerskill_fortunepresent;
     CheckBox centerskill_cinderellacharm;
     CheckBox centerskill_cutecool;
+    CheckBox centerskill_coolcute;
     CheckBox centerskill_cutepassion;
+    CheckBox centerskill_passioncute;
     CheckBox centerskill_coolpassion;
+    CheckBox centerskill_passioncool;
     CheckBox centerskill_unison;
     CheckBox centerskill_resonantvoice;
     CheckBox centerskill_resonantstep;
@@ -186,8 +189,11 @@ public class InfoFragment extends Fragment {
         centerskill_fortunepresent = view.findViewById(R.id.CenterSkill_FortunePresent);
         centerskill_cinderellacharm = view.findViewById(R.id.CenterSkill_CinderellaCharm);
         centerskill_cutecool = view.findViewById(R.id.CenterSkill_CuteCool);
+        centerskill_coolcute = view.findViewById(R.id.CenterSkill_CoolCute);
         centerskill_cutepassion = view.findViewById(R.id.CenterSkill_CutePassion);
+        centerskill_passioncute = view.findViewById(R.id.CenterSkill_PassionCute);
         centerskill_coolpassion = view.findViewById(R.id.CenterSkill_CoolPassion);
+        centerskill_passioncool = view.findViewById(R.id.CenterSkill_PassionCool);
         centerskill_unison = view.findViewById(R.id.CenterSkill_Unison);
         centerskill_resonantvoice = view.findViewById(R.id.CenterSkill_ResoantVoice);
         centerskill_resonantstep = view.findViewById(R.id.CenterSkill_ResonantStep);
@@ -563,6 +569,13 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        centerskill_coolcute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateListbyType();
+            }
+        });
+
         centerskill_cutepassion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -570,7 +583,21 @@ public class InfoFragment extends Fragment {
             }
         });
 
+        centerskill_passioncute.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateListbyType();
+            }
+        });
+
         centerskill_coolpassion.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateListbyType();
+            }
+        });
+
+        centerskill_passioncool.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 updateListbyType();
@@ -730,9 +757,12 @@ public class InfoFragment extends Fragment {
         if(centerskill_cheer.isChecked() && ((input.CenterSkillCode >= 77 && input.CenterSkillCode <= 79))) return true;
         if(centerskill_fortunepresent.isChecked() && (input.CenterSkillCode == 80 || input.CenterSkillCode == 85)) return true;
         if(centerskill_cinderellacharm.isChecked() && (input.CenterSkillCode == 81 || input.CenterSkillCode == 115)) return true;
-        if(centerskill_cutecool.isChecked() && (input.CenterSkillCode == 91 || input.CenterSkillCode == 109 || input.CenterSkillCode == 89)) return true;
-        if(centerskill_cutepassion.isChecked() && (input.CenterSkillCode == 90 || input.CenterSkillCode == 108 || input.CenterSkillCode == 93 || input.CenterSkillCode == 111)) return true;
-        if(centerskill_coolpassion.isChecked() && (input.CenterSkillCode == 92 || input.CenterSkillCode == 110 || input.CenterSkillCode == 94)) return true;
+        if(centerskill_cutecool.isChecked() && (input.CenterSkillCode == 89 || input.CenterSkillCode == 107)) return true;
+        if(centerskill_cutepassion.isChecked() && (input.CenterSkillCode == 90 || input.CenterSkillCode == 108)) return true;
+        if(centerskill_coolcute.isChecked() && (input.CenterSkillCode == 91 || input.CenterSkillCode == 109)) return true;
+        if(centerskill_coolpassion.isChecked() && (input.CenterSkillCode == 92 || input.CenterSkillCode == 110)) return true;
+        if(centerskill_passioncute.isChecked() && (input.CenterSkillCode == 93 || input.CenterSkillCode == 111)) return true;
+        if(centerskill_passioncool.isChecked() && (input.CenterSkillCode == 94 || input.CenterSkillCode == 112)) return true;
         if(centerskill_unison.isChecked() && (input.CenterSkillCode == 101 || input.CenterSkillCode == 102 || input.CenterSkillCode == 102 || input.CenterSkillCode == 103)) return true;
         if(centerskill_resonantvoice.isChecked() &&input.CenterSkillCode == 104) return true;
         if(centerskill_resonantstep.isChecked() &&input.CenterSkillCode == 105) return true;
@@ -742,9 +772,8 @@ public class InfoFragment extends Fragment {
         if(centerskill_cinderellawish.isChecked() &&input.CenterSkillCode == 117) return true;
         return !centerskill_voice.isChecked() && !centerskill_step.isChecked() && !centerskill_make.isChecked() && !centerskill_brilliance.isChecked() && !centerskill_energy.isChecked() &&
                 !centerskill_ability.isChecked() && !centerskill_tricolorvoice.isChecked() && !centerskill_tricolorstep.isChecked() && !centerskill_tricolormake.isChecked() && !centerskill_tricolorability.isChecked() &&
-                !centerskill_princess.isChecked() && !centerskill_cheer.isChecked() && !centerskill_fortunepresent.isChecked() && !centerskill_cinderellacharm.isChecked() && !centerskill_cutecool.isChecked() &&
-                !centerskill_cutepassion.isChecked() && !centerskill_coolpassion.isChecked() && !centerskill_unison.isChecked() && !centerskill_resonantvoice.isChecked() && !centerskill_resonantstep.isChecked() &&
-                !centerskill_resonantmake.isChecked() && !centerskill_cinderellayell.isChecked() && !centerskill_worldlevel.isChecked() && !centerskill_cinderellawish.isChecked();
+                !centerskill_princess.isChecked() && !centerskill_cheer.isChecked() && !centerskill_fortunepresent.isChecked() && !centerskill_cinderellacharm.isChecked() && !centerskill_cutecool.isChecked() && !centerskill_coolcute.isChecked() &&
+                !centerskill_cutepassion.isChecked() && !centerskill_passioncute.isChecked() && !centerskill_coolpassion.isChecked() && !centerskill_passioncool.isChecked() && !centerskill_unison.isChecked() && !centerskill_resonantvoice.isChecked() &&
+                !centerskill_resonantstep.isChecked() && !centerskill_resonantmake.isChecked() && !centerskill_cinderellayell.isChecked() && !centerskill_worldlevel.isChecked() && !centerskill_cinderellawish.isChecked();
     }
-
 }

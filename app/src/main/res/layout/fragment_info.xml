@@ -57,7 +57,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Cute"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/CoolOnly"
@@ -65,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Cool"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/PassionOnly"
@@ -73,7 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Passion"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
             </LinearLayout>
 
@@ -98,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/SSRare"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/SROnly"
@@ -106,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/SRare"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/ROnly"
@@ -114,7 +119,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Rare"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/NormalOnly"
@@ -122,7 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Normal"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
             </LinearLayout>
 
             <LinearLayout
@@ -146,7 +153,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Usual"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/LimitedOnly"
@@ -154,7 +162,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Limited"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/FesOnly"
@@ -162,7 +171,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/FesCard"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/EventOnly"
@@ -170,7 +180,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/Event"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
             </LinearLayout>
         </LinearLayout>
 
