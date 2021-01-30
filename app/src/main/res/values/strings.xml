@@ -121,6 +121,7 @@
     <string name="LeaderSkill_Cinderella_Yell">Cinderella Yell</string>
     <string name="LeaderSkill_WorldLevel">World Level</string>
     <string name="LeaderSkill_Cinderella_Wish">Cinderella Wish</string>
+    <string name="LeaderSkill_Cinderella_Bress">Cinderella Bress</string>
 
     <string name="LeaderSkill_Cute_VocalUp_Explain_1">Raises the Vocal appeal of all Cute members by 30%.</string>
     <string name="LeaderSkill_Cute_VocalUp_Explain_2">Raises the Vocal appeal of all Cute members by 60%.</string>
@@ -244,6 +245,7 @@
 
     <string name="LeaderSkill_Cinderella_Wish_Explain">May drop star pieces when you finish a live. The drop rate scales based on star rank.</string>
 
+    <string name="LeaderSkill_Cinderella_Bress_Explain">Each member on your team will receive the best available leader effect from your team (including your guest s leader effect).</string>
 
     <string name="gacha_season_title">Gacha Season</string>
     <string name="gacha_season_date_title">Date</string>

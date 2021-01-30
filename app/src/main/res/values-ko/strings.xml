@@ -113,6 +113,7 @@
     <string name="LeaderSkill_Cinderella_Yell">신데렐라 엘</string>
     <string name="LeaderSkill_WorldLevel">월드 레벨</string>
     <string name="LeaderSkill_Cinderella_Wish">신데렐라 위시</string>
+    <string name="LeaderSkill_Cinderella_Bress">신데렐라 브레스</string>
 
     <string name="LeaderSkill_Cute_VocalUp_Explain_1">큐트 아이돌의 보컬 어필 수치 30% 상승</string>
     <string name="LeaderSkill_Cute_VocalUp_Explain_2">큐트 아이돌의 보컬 어필 수치 60% 상승</string>
@@ -235,6 +236,8 @@
     <string name="LeaderSkill_WorldLevel_Explain">자신의 댄스 어필 수치를 100% 상승、페이스 오프 시 전원의 댄스 어필 130% 상승</string>
 
     <string name="LeaderSkill_Cinderella_Wish_Explain">라이브 클리어 시, 스타랭크에 따라 스타피스를 획득</string>
+
+    <string name="LeaderSkill_Cinderella_Bress_Explain">게스트를 포함한 편성 아이돌 전원의 센터 효과를 발휘, 가장 좋은 효과를 적용.</string>
 
     <string name="gacha_season_title">가챠 시즌</string>
     <string name="gacha_season_date_title">기간</string>

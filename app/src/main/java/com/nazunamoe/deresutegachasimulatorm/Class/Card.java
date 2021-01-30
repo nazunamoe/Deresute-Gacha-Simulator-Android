@@ -859,6 +859,11 @@ public class Card{
                 CenterSkillExplain = getString(R.string.LeaderSkill_Cinderella_Wish_Explain);
                 break;
             }
+            case 118: {
+                CenterSkillCategory = getString(R.string.LeaderSkill_Cinderella_Bress);
+                CenterSkillExplain = getString(R.string.LeaderSkill_Cinderella_Bress_Explain);
+                break;
+            }
         }
 
         this.CenterSkillName = centerSkillName;

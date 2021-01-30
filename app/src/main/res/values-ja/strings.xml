@@ -113,6 +113,7 @@
     <string name="LeaderSkill_Cinderella_Yell">シンデレラエール</string>
     <string name="LeaderSkill_WorldLevel">ワールドレベル</string>
     <string name="LeaderSkill_Cinderella_Wish">シンデレラウィッシュ</string>
+    <string name="LeaderSkill_Cinderella_Bress">シンデレラブレス</string>
 
     <string name="LeaderSkill_Cute_VocalUp_Explain_1">キュートアイドルのボーカルアピール値30％アップ</string>
     <string name="LeaderSkill_Cute_VocalUp_Explain_2">キュートアイドルのボーカルアピール値60％アップ</string>
@@ -235,6 +236,8 @@
     <string name="LeaderSkill_WorldLevel_Explain">自分のダンスアピール値100%アップ、フェイスオープンしたら全員のダンスアピール値130%アップ</string>
 
     <string name="LeaderSkill_Cinderella_Wish_Explain">LIVEクリア時、中確率でスターピースを獲得</string>
+
+    <string name="LeaderSkill_Cinderella_Bress_Explain">ゲストを含むユニット編成アイドル全員のセンター効果を発揮し、最も高い効果を適用</string>
 
     <string name="gacha_season_title">ガシャシーズン</string>
     <string name="gacha_season_date_title">期間</string>
