@@ -228,6 +228,13 @@
                     android:text="@string/Skill_Refrain"
                     android:textAlignment="center" />
 
+                <CheckBox
+                    android:id="@+id/Skill_Magic"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Skill_Cinderella_Magic"
+                    android:textAlignment="center" />
+
             </LinearLayout>
 
         </ScrollView>

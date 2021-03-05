@@ -221,6 +221,10 @@ public class Card{
                 SkillCategory = getString(R.string.Skill_Refrain);
                 break;
             }
+            case 41: {
+                SkillCategory = getString(R.string.Skill_Cinderella_Magic);
+                break;
+            }
         }
 
         this.SkillName = skillName;
