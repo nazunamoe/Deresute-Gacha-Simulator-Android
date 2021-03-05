@@ -242,14 +242,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Cinderella_Wish"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
                 <CheckBox
                     android:id="@+id/CenterSkill_CinderellaBress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/LeaderSkill_Cinderella_Bress"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:buttonTint="@color/checkbox_color"/>
 
             </LinearLayout>
 
