@@ -19,11 +19,10 @@ import java.util.LinkedHashMap;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "10082900.sqlite";
-    private static String DB_PATH = "";
     private static final int DB_VERSION = 1;
-
-    private SQLiteDatabase mDataBase;
+    private static String DB_PATH = "";
     private final Context mContext;
+    private SQLiteDatabase mDataBase;
 
     public DatabaseHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
